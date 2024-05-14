@@ -4,7 +4,7 @@
 ### 🆕 ***H2 2024 NOVELTY : Enter in the world of connected intelligence from 499€*** 🎁
 ### 🔜 ***The Xplorer4 product line will be available in Q3 2024 & Xplorer5 expected Q4 2024*** ⏳
 ### [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)
-### [Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/)
+### [Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/) ❓💲🛒
 
 [![Xplorer](/images/XplorerProductLine.png)](https://austral-eng.com/en/xplorer-cm5/)
 
