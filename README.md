@@ -54,3 +54,13 @@ Provide intelligence and connectivity to Boats, Unmanned Vehicles (UAV, USV, AUV
 **DIY Marine Computer:** Open Plotter platform for sailors  
 [![Applications](/images/Applications.png)](https://austral-eng.com/en/xplorer-cm5/)
 
+## Ready to shape the future with low power, low latency, offline generative AI
+The M.2 Hailo 8 TPU outperform onchip TPU solutions (iMX95, RK3588…) in performance and upgradability and outperform NVIDIA solutions in power efficiency :  
+– **CM4+Hailo_8 vs Orin Nano 1/2:** Inference Time 13 times lower  
+– **CM4+Hailo 8 vs Orin Nano 2/2:** Double FPS and same inference time at 2/3 of the power  
+– **Hailo 8 vs Xavier NX :** “Similar performance at a fraction of power consumption and cost”  
+– **Hailo 8 vs AGX Xavier :** “NVIDIA solution is more flexible since you can also do training on the platform, while Hailo-8 is only made for low-power inference which it does at 20 times the power efficiency”.  
+
+**The new Asic based M.2 Hailo-10H TPU, expected Q4 2024, outperforms NVIDIA GPU based solution and Intel’s Core Ultra “AI Boost” NPU.**  
+“The Hailo-10 brings generative AI to the edge, it can run Llama2-7B with up to 10 tokens per second (TPS) at under 5W of power, while it can generate one image from text in under 5 seconds using Stable Diffusion 2.1 in the same power envelope. Like other many technologies, generative AI is moving from the cloud to the device itself enabling lower latency and offline support”.  
+[![Generative-AI](/images/Generative-AI.webp)](https://austral-eng.com/en/xplorer-cm5/)
