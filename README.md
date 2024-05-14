@@ -1,7 +1,7 @@
 # Xplorer Series – Rugged Industrial Edge IoT/AIoT Controller &amp; Embedded Mission Computers – Raspberry PI CM4/CM5, Google Edge &amp; Hailo AI Ecosystems
 *[www.austral-elec.com](http://austral-eng.com/en/accueil-english-2/) - Intelligent Technologies for Marine, Industrial IoT and Unmanned Vehicles*  
 
-### 🆕 ***H2 2024 NOVELTY : Enter in the world of connected intelligence from 499€ *** 🎁
+### 🆕 ***H2 2024 NOVELTY : Enter in the world of connected intelligence from 499€*** 🎁
 ### 🔜 ***The Xplorer4 product line will be available in Q3 2024 & Xplorer5 expected Q4 2024***
 ### [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/) 🔎
 ### [Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/) ❓💲⏳🛒
@@ -87,15 +87,15 @@ The **Model M** includes M.2 modules of 2 types: 1xE and 2xM and a PCIE 3.0 pack
 [![Xplorer_PCB_2](/images/Xplorer_PCB_2.png)](https://austral-eng.com/en/xplorer-cm5/)
 
 ## Hardware Specifications
-[Preliminary specifications](https://austral-eng.com/en/xplorer-cm5/)  
+[Preliminary specifications](https://austral-eng.com/en/xplorer-cm5/) 🔎   
  
 ## Configure your Xplorer
 [![Xplorer_Black_Blue](/images/Xplorer_Black_Blue.png)](https://austral-eng.com/en/xplorer-cm5/)  
-[Choose or configure your Xplorer here](https://austral-eng.com/en/xplorer-cm5/)  
-[Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/)
+[Choose or configure your Xplorer](https://austral-eng.com/en/xplorer-cm5/) 🔎  
+[Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/) ❓💲⏳🛒  
 
 ## OS and framework Compatibility
-[OS and framework Compatibility](https://austral-eng.com/en/xplorer-cm5/)  
+[OS and framework Compatibility](https://austral-eng.com/en/xplorer-cm5/) 🔎  
 
 ## Software Support
 👨‍💼✍💻 Will be here soon 👨‍💼✍💻  
