@@ -22,7 +22,7 @@
 - **Best in class flexibility:** Versatile and scalable through various M.2 modules, you can use a single hardware and software base for multiple projects.  
 - **Best in class community support:** Software support, OS and frameworks compatibility…  
 - **Best in class AI Power Efficiency:** 3 TOPS/W with the Hailo 8 TPU now and **11.4 TOPS/W** expected with the Hailo-10H TPU  
-Cybersecurity : Your data are protected with a TMP2.0 secure cryptoprocessor.  
+- **Cybersecurity:** Your data are protected with a TMP2.0 secure cryptoprocessor.  
 
 ## One product line, A huge versatility, Ulimited Possibilities
 
