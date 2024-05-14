@@ -77,4 +77,7 @@ The **Model E** includes M.2 modules of 3 types B, E, M and a PCIE 2.0 packet sw
 The **Model M** includes M.2 modules of 2 types: 1xE and 2xM and a PCIE 3.0 packet switch to take full advantage of SSD performance and the new CM5 and Hailo10H products.  
 - Type M 2230 is reserved for an SSD  
 - Type B will be used preferably for cellular communication or advanced positionning.  
-- Type M 2242 for Hailo 8 or Hailo10H TPU, or more SSD  
+- Type M 2242 for Hailo 8 or Hailo10H TPU, or more SSD
+- 
+[![Xplorer_PCB_1](/images/Xplorer_PCB_1.png)](https://austral-eng.com/en/xplorer-cm5/)  
+[![Xplorer_PCB_2](/images/Xplorer_PCB_2.png)](https://austral-eng.com/en/xplorer-cm5/)
