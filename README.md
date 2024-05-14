@@ -63,4 +63,18 @@ The M.2 Hailo 8 TPU outperform onchip TPU solutions (iMX95, RK3588…) in perfor
 
 **The new Asic based M.2 Hailo-10H TPU, expected Q4 2024, outperforms NVIDIA GPU based solution and Intel’s Core Ultra “AI Boost” NPU.**  
 “The Hailo-10 brings generative AI to the edge, it can run Llama2-7B with up to 10 tokens per second (TPS) at under 5W of power, while it can generate one image from text in under 5 seconds using Stable Diffusion 2.1 in the same power envelope. Like other many technologies, generative AI is moving from the cloud to the device itself enabling lower latency and offline support”.  
-[![Generative-AI](/images/Generative-AI.webp)](https://austral-eng.com/en/xplorer-cm5/)
+
+[![Generative-AI](/images/Generative-AI.webp)](https://austral-eng.com/en/xplorer-cm5/)  
+Evolution of edge AI from discriminative AI to generative AI – Source: Hailo’s blog  
+
+## When Ubiquity and scalability meet miniaturization
+With its exceptional modularity (3x M.2 modules, 1x CPU module, 2x LPWAN multiprotocol modules), you can tailor the hardware to your needs with two PCB variants :
+The **Model E** includes M.2 modules of 3 types B, E, M and a PCIE 2.0 packet switch :  
+- Type M 2230 is reserved for SSD.  
+- Type B will be used preferably for cellular communication but can be use also more SSD or advanced positionning.  
+- Type E includes a 2-lane PCIE to take full advantage of TPU performance but can be used also for Cellular IoT or advanced positionning.  
+
+The **Model M** includes M.2 modules of 2 types: 1xE and 2xM and a PCIE 3.0 packet switch to take full advantage of SSD performance and the new CM5 and Hailo10H products.  
+- Type M 2230 is reserved for an SSD  
+- Type B will be used preferably for cellular communication or advanced positionning.  
+- Type M 2242 for Hailo 8 or Hailo10H TPU, or more SSD  
