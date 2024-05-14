@@ -94,5 +94,5 @@ See the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)
 
 See the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
 
-
+[![Xplorer_Black_Blue](/images/Xplorer_Black_Blue.png)](https://austral-eng.com/en/xplorer-cm5/)
 
