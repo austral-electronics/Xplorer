@@ -26,3 +26,17 @@ Cybersecurity : Your data are protected with a TMP2.0 secure cryptoprocessor.
 ## One product line, A huge versatility, Ulimited Possibilities
 
 [![AI_IoT_Meerkat](/images/AI_IoT_Meerkat.png)](https://austral-eng.com/en/xplorer-cm5/)
+**Austral Xplorer4 and Xplorer5** are a family of products for use when **Reliability is not an option**. They can be used for **IIoT, AIoT & Edge Gateways or Controllers** but also as **Embedded Mission Computers** for **harsh environment**. Installed near antennas, it is intented for a Web, Remote or voice HMI and can be used with or without AI, Storage, Wireless or Positioning options. Its powerfull AI can analyze tirelessly many IP cameras at the same time. It is design to Professional, Scientific, Defence industry, Academic project, Sailor and AI Geek in :
+
+## Smart, Connected Automation and Supervision :
+**Industry 4.0, Energy, Oil & Gas:** Machine Automation, PLC/Cloud Gateway, Overall Equipement Effectiveness, Predictive Maintenance, Smart Quality control….  
+**City Infrastructure Management:** Parking, Lighting, Occupancy Detection, Traffic control, Pedestrian Safety, Population Flow, Air/Water/Noise quality monitoring, Waste…
+Building, Ship: Automation, Voice Assistant, Energy, Safety, Security, Fire Control, Climate Control, HVAC…  
+**Farming:** Smart supervision & automation for Animals & Plants  
+**Store:** Smart thief surveillance  
+**Medical, Independence Assistance:** Smart supervision & automation for Hospital bed, Handicap, Physical or mental loss of autonomy…  
+**Sport:** Electronic referee, Statistics  
+**Big Data Collection:** Site survey, Data+Video Recorder for AI training, Ocean Science (Survey, Buoy…)  
+**DIY & Academic:**  
+- Residential, Boat, RV: Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
+- Education: ROS2, Node-Red, TensorFlow, OpenPLC… learning  
