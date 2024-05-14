@@ -18,10 +18,10 @@
 – Industrial Gigabit LAN Ready for IP Camera, Modbus TCP, Profinet, ETherNet/IP, BACnet, OPC-UA, MQTT, DDS, Websocket, ZMQ, UDP, TCP, NMEA OneNet…  
 – Multiples CANbus FD, RS232, RS485, Modbus, some with galvanic isolation, Digital and Analog I/O.  
 – And more connectivity using M.2 expansion.  
-- **Best in class wireless connectivity capability:** Wifi, Bluetooth, GNSS (RTK, INS), 3G, **4G LTE**, 5G, CAT-M1, NB-IoT, Wifi Halow, WiGig, **LoRa**, ZigFox, **ZigBee**, Thread, **Matter**, BLE Mesh, RF-ID UHF, SDR, ASK/FSK Modem, **Starlink Direct To Cell ready**…  
-- **Best in class flexibility:** Versatile and scalable through various M.2 modules, you can use a single hardware and software base for multiple projects.  
-- **Best in class community support:** Software support, OS and frameworks compatibility…  
-- **Best in class AI Power Efficiency:** 3 TOPS/W with the Hailo 8 TPU now and **11.4 TOPS/W** expected with the Hailo-10H TPU  
+- **🏆 Best in class wireless connectivity capability:** Wifi, Bluetooth, GNSS (RTK, INS), 3G, **4G LTE**, 5G, CAT-M1, NB-IoT, Wifi Halow, WiGig, **LoRa**, ZigFox, **ZigBee**, Thread, **Matter**, BLE Mesh, RF-ID UHF, SDR, ASK/FSK Modem, **Starlink Direct To Cell ready**…  
+- **🏆 Best in class flexibility:** Versatile and scalable through various M.2 modules, you can use a single hardware and software base for multiple projects.  
+- **🏆 Best in class community support:** Software support, OS and frameworks compatibility…  
+- **🏆 Best in class AI Power Efficiency:** 3 TOPS/W with the Hailo 8 TPU now and **11.4 TOPS/W** expected with the Hailo-10H TPU  
 - **Cybersecurity:** Your data are protected with a TMP2.0 secure cryptoprocessor.  
 
 ## One product line, A huge versatility, Ulimited Possibilities
