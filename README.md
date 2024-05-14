@@ -40,6 +40,7 @@ Building, Ship: Automation, Voice Assistant, Energy, Safety, Security, Fire Cont
 **DIY & Academic:**  
 - Residential, Boat, RV: Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
 - Education: ROS2, Node-Red, TensorFlow, OpenPLC… learning
+[![AI_City_Football](/images/AI_City_Football.png)](https://austral-eng.com/en/xplorer-cm5/)
 
 ## Sea, Air & land Intelligent Mobility :
 Provide intelligence and connectivity to Boats, Unmanned Vehicles (UAV, USV, AUV), Robots, Special Vehicles, Farming vehicles, Offshore Energy, Oil & Gaz systems…  
@@ -51,3 +52,5 @@ Provide intelligence and connectivity to Boats, Unmanned Vehicles (UAV, USV, AUV
 **Tracking:** Cloud gateway  
 **Human Attentivness Control** of Driver, Pilot, Skipper…  
 **DIY Marine Computer:** Open Plotter platform for sailors  
+[![Applications](/images/Applications.png)](https://austral-eng.com/en/xplorer-cm5/)
+
