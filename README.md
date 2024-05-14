@@ -83,16 +83,17 @@ The **Model M** includes M.2 modules of 2 types: 1xE and 2xM and a PCIE 3.0 pack
 [![Xplorer_PCB_1](/images/Xplorer_PCB_1.png)](https://austral-eng.com/en/xplorer-cm5/)  
 [![Xplorer_PCB_2](/images/Xplorer_PCB_2.png)](https://austral-eng.com/en/xplorer-cm5/)
 
-## Preliminary Hardware Specifications
-See the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
+## Hardware Specifications
+Preliminary specifications on the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
 
 ## OS and framework Compatibility
 See the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
 
+## Software Support
+Will be here soon  
+
 ## Configure your product
-
-
-See the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
+See the product Line on the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
 
 [![Xplorer_Black_Blue](/images/Xplorer_Black_Blue.png)](https://austral-eng.com/en/xplorer-cm5/)
 
