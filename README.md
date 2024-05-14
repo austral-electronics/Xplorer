@@ -39,4 +39,15 @@ Building, Ship: Automation, Voice Assistant, Energy, Safety, Security, Fire Cont
 **Big Data Collection:** Site survey, Data+Video Recorder for AI training, Ocean Science (Survey, Buoy…)  
 **DIY & Academic:**  
 - Residential, Boat, RV: Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
-- Education: ROS2, Node-Red, TensorFlow, OpenPLC… learning  
+- Education: ROS2, Node-Red, TensorFlow, OpenPLC… learning
+
+## Sea, Air & land Intelligent Mobility :
+Provide intelligence and connectivity to Boats, Unmanned Vehicles (UAV, USV, AUV), Robots, Special Vehicles, Farming vehicles, Offshore Energy, Oil & Gaz systems…  
+
+**Software-Defined Vehicle:** AI Detection, Obstacle Avoidance, Navigation, ML Control-Command…  
+**Marine Mission Computer:** True Wind Calculation, Sails automation, Autopilot brain, Foiler Flight Control System, MultiFunction Display gateway…  
+**Consumable Military Hardware:** ITAR-free Training target, Decoy, Drone…  
+**Voyage/Flight Data Recorder** for non IMO ship or unmanned vehicle  
+**Tracking:** Cloud gateway  
+**Human Attentivness Control** of Driver, Pilot, Skipper…  
+**DIY Marine Computer:** Open Plotter platform for sailors  
