@@ -2,7 +2,7 @@
 *[www.austral-elec.com](http://austral-eng.com/en/accueil-english-2/) - Intelligent Technologies for Marine, Industrial IoT and Unmanned Vehicles*  
 
 ## 🎁 ***H2 2024 NOVELTY : Enter in the world of connected intelligence from 499€*** 🎁
-## 😀 ***The Xplorer4 product line will be available in Q3 2024 & Xplorer5 expected Q4 2024*** 😀
+## ⏳ ***The Xplorer4 product line will be available in Q3 2024 & Xplorer5 expected Q4 2024*** ⏳
 ## For more information, Keep updated, pricing... goto the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)
 
 [![Xplorer](/images/XplorerProductLine.png)](https://austral-eng.com/en/xplorer-cm5/)
@@ -38,8 +38,9 @@ Building, Ship: Automation, Voice Assistant, Energy, Safety, Security, Fire Cont
 - **Sport:** Electronic referee, Statistics  
 - **Big Data Collection:** Site survey, Data+Video Recorder for AI training, Ocean Science (Survey, Buoy…)  
 - **DIY & Academic:**  
-- **Residential, Boat, RV:** Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
-- **Education:** ROS2, Node-Red, TensorFlow, OpenPLC… learning
+    - **Residential, Boat, RV:** Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
+    - **Education:** ROS2, Node-Red, TensorFlow, OpenPLC… learning
+
 [![AI_City_Football](/images/AI_City_Football.png)](https://austral-eng.com/en/xplorer-cm5/)
 
 ## Sea, Air & land Intelligent Mobility :
