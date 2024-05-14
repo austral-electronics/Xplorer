@@ -56,7 +56,7 @@ Provide intelligence and connectivity to Boats, Unmanned Vehicles (UAV, USV, AUV
 [![Applications](/images/Applications.png)](https://austral-eng.com/en/xplorer-cm5/)
 
 ## Ready to shape the future with low power, low latency, offline generative AI
-The M.2 Hailo 8 TPU outperform onchip TPU solutions (iMX95, RK3588…) in performance and upgradability and outperform NVIDIA solutions in power efficiency :  
+**The M.2 Hailo 8 TPU outperform onchip TPU solutions (iMX95, RK3588…) in performance and upgradability and outperform NVIDIA solutions in power efficiency :**  
 – **CM4+Hailo_8 vs Orin Nano 1/2:** Inference Time 13 times lower  
 – **CM4+Hailo 8 vs Orin Nano 2/2:** Double FPS and same inference time at 2/3 of the power  
 – **Hailo 8 vs Xavier NX :** “Similar performance at a fraction of power consumption and cost”  
