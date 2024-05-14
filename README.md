@@ -38,8 +38,8 @@ Building, Ship: Automation, Voice Assistant, Energy, Safety, Security, Fire Cont
 - **Sport:** Electronic referee, Statistics  
 - **Big Data Collection:** Site survey, Data+Video Recorder for AI training, Ocean Science (Survey, Buoy…)  
 - **DIY & Academic:**  
-- Residential, Boat, RV: Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
-- Education: ROS2, Node-Red, TensorFlow, OpenPLC… learning
+- **Residential, Boat, RV:** Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
+- **Education:** ROS2, Node-Red, TensorFlow, OpenPLC… learning
 [![AI_City_Football](/images/AI_City_Football.png)](https://austral-eng.com/en/xplorer-cm5/)
 
 ## Sea, Air & land Intelligent Mobility :
