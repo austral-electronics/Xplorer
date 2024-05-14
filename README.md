@@ -7,8 +7,8 @@
 
 [![Xplorer](/images/XplorerProductLine.png)](https://austral-eng.com/en/xplorer-cm5/)
 
-Xplorer4 & 5 Features – Wall mounted CNC black anodized aluminium enclosure  
-Ready for the Compute module CM5, Matter, Starlink Direct To Cell, New Generative AI modules…  
+*Xplorer4 & 5 Features – Wall mounted CNC black anodized aluminium enclosure*  
+*Ready for the Compute module CM5, Matter, Starlink Direct To Cell, New Generative AI modules…*  
 
 ## Benefit from an uncompromising design :
 - **SWaP-C Optimization:** Cost-effective, industrial, rugged, waterproof and dustproof **IP67**, wide temperature range, miniaturized, very lightweight, very low power consumption, fanless…  
