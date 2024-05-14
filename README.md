@@ -26,8 +26,9 @@ Cybersecurity : Your data are protected with a TMP2.0 secure cryptoprocessor.
 
 ## One product line, A huge versatility, Ulimited Possibilities
 
-[![AI_IoT_Meerkat](/images/AI_IoT_Meerkat.png)](https://austral-eng.com/en/xplorer-cm5/)
-**Austral Xplorer4 and Xplorer5** are a family of products for use when **Reliability is not an option**. They can be used for **IIoT, AIoT & Edge Gateways or Controllers** but also as **Embedded Mission Computers** for **harsh environment**. Installed near antennas, it is intented for a Web, Remote or voice HMI and can be used with or without AI, Storage, Wireless or Positioning options. Its powerfull AI can analyze tirelessly many IP cameras at the same time. It is design to Professional, Scientific, Defence industry, Academic project, Sailor and AI Geek in :
+[![AI_IoT_Meerkat](/images/AI_IoT_Meerkat.png)](https://austral-eng.com/en/xplorer-cm5/)  
+**Austral Xplorer4 and Xplorer5** are a family of products for use when **Reliability is not an option**. They can be used for **IIoT, AIoT & Edge Gateways or Controllers** but also as **Embedded Mission Computers** for **harsh environment**.  
+Installed near antennas, it is intented for a Web, Remote or voice HMI and can be used with or without AI, Storage, Wireless or Positioning options. Its powerfull AI can analyze tirelessly many IP cameras at the same time. It is design to Professional, Scientific, Defence industry, Academic project, Sailor and AI Geek in :
 
 ## Smart, Connected Automation and Supervision :
 - **Industry 4.0, Energy, Oil & Gas:** Machine Automation, PLC/Cloud Gateway, Overall Equipement Effectiveness, Predictive Maintenance, Smart Quality control….  
@@ -86,16 +87,17 @@ The **Model M** includes M.2 modules of 2 types: 1xE and 2xM and a PCIE 3.0 pack
 [![Xplorer_PCB_2](/images/Xplorer_PCB_2.png)](https://austral-eng.com/en/xplorer-cm5/)
 
 ## Hardware Specifications
-Preliminary specifications on the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
+[Preliminary specifications](https://austral-eng.com/en/xplorer-cm5/)  
+ 
+## Configure your Xplorer
+[![Xplorer_Black_Blue](/images/Xplorer_Black_Blue.png)](https://austral-eng.com/en/xplorer-cm5/)  
+[Choose or configure your Xplorer here](https://austral-eng.com/en/xplorer-cm5/)  
+[Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/)
 
 ## OS and framework Compatibility
-See the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
+[OS and framework Compatibility](https://austral-eng.com/en/xplorer-cm5/)  
 
 ## Software Support
-Will be here soon  
+👨‍💼✍💻 Will be here soon 👨‍💼✍💻  
 
-## Configure your product
-See the product Line on the [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/)  
-
-[![Xplorer_Black_Blue](/images/Xplorer_Black_Blue.png)](https://austral-eng.com/en/xplorer-cm5/)
 
