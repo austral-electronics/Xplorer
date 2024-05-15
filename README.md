@@ -6,7 +6,7 @@
 ### [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/) 🔎
 ### [Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/) ❓💲⏳🛒
 
-[![Xplorer](/images/XplorerProductLine.png)](https://austral-eng.com/en/xplorer-cm5/)
+[![Xplorer](/images/XplorerProductLine_Large.png)](https://austral-eng.com/en/xplorer-cm5/)
 
 *Xplorer4 & 5 Features – Wall mounted CNC black anodized aluminium enclosure*  
 *Ready for the Compute module CM5, Matter, Starlink Direct To Cell, New Generative AI modules…*  
