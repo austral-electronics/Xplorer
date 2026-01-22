@@ -1,63 +1,82 @@
-# XPLORER CM5 FLEX - DATASHEET
+# <code style="color : BLACK">XPLORER CM5 FLEX - Datasheet - 🅰🆄🆂🆃🆁🅰🅻 Electronics</code>
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Overview.png)
 ## 📚 Table of Contents
-- **PRODUCT HIGHLIGHT**
-- **SWAP-C MODULAR DESIGN**
-- **TECHNICAL SPECIFICATIONS**
-- **INSTALLATION**
-- **ELECTRICAL INTERFACES**
-  - [Goals](#goals)
-  - [Status](#status)
-  - [Warnings](#warnings)
-
+**[PRODUCT HIGHLIGHT](#0)** 
+**[1 - SWAP-C MODULAR DESIGN](#1)** 
+**[2 - TECHNICAL SPECIFICATIONS](#2)** 
+- **[3 - ORDERING INFORMATION](#3)**
+- **[4 - OPTIONAL ACCESSORIES](#4)**
+- **[5 - DIMENSIONS](#5)**
+- **[6 - INSTALLATION](#6)**
+- **[7 - ELECTRICAL INTERFACES](#7)**
+  - [7.1 - CAN1/PWR](#7.1)
+  - [7.2 - USB-C](#7.2)
+  - [7.3 - DAQ/CAN2](#7.3)
+  - [7.4 - SERIALS](#7.4)
+  - [7.5 - LAN](#7.5)
+  - [7.6 - WIFI/BT](#7.6)
+  - [7.7 - LPWAN/LTE2/SAT2](#7.7)
+  - [7.8 - GNSS](#7.8)
+  - [7.9 - LTE1/SAT1](#7.9)
+  - [7.10 - Left cap : BOOT @ uSD-CARD](#7.10)
+  - [7.11 - Right cap : Micro HDMI & nano SIM card](#7.11)
+- **[8 - MAINTENANCE](#8)**
+  - [8.1 - Change the RTC battery](#8.1)
+  - [8.2 - Change an SSD](#8.2)
+  - [8.3 - Repair a board](#8.3)
+- **[9 - SOFTWARE SUPPORT](#9)**
+- **[10 - CONTACT](#10)**
     
 ---
-## PRODUCT HIGHLIGHT
-✅ **Raspberry PI CM5** based waterproof rugged industrial edge IoT/AIoT gateway, embedded mission computer, In-vehicle/Boat Smart Hub, Roadside computer…
-✅ Ecosystem with a **huge community** facilitating support, scalability, and updates
-✅  **Future Proof** and **Highly customizable** modular design
-✅  **Best in class wireless connectivity capability** (WiFi, BT, BLE, GNSS, 4G LTE, 5G, Direct-To-Cell Ready, NB-IoT NTN Ready, LoRa, SigFox, Matter, Thread, Zigbee...)
-✅  Optional **Hailo AI Accelerator** providing up to 2x 26 TOPS of AI for machine learning, video analytics, smart automation and supervision
-✅  **Rich in connectivity** and industrial field buses (1x GbE, 8x Serials, 2x CANbus, DAQ)
-✅  **Numerous storage** solutions (eMMC, Multiples M.2 SSD, uSD card, USB-C drive)
-✅  **Cybersecurity** (TPM2.0, AES256 SSD option, Unique ID, security uSD…)
-✅  **B2B Ready** : customize configuration, markings and packaging
+## PRODUCT HIGHLIGHT <a name="0"></a>
+- ✅ **Raspberry PI CM5** based waterproof rugged industrial edge IoT/AIoT gateway, embedded mission computer, In-vehicle/Boat Smart Hub, Roadside computer…
+- ✅ Ecosystem with a **huge community** facilitating support, scalability, and updates
+- ✅  **Future Proof** and **Highly customizable** modular design
+- ✅  **Best in class wireless connectivity capability** (WiFi, BT, BLE, GNSS, 4G LTE, 5G, Direct-To-Cell Ready, NB-IoT NTN Ready, LoRa, SigFox, Matter, Thread, Zigbee...)
+- ✅  Optional **Hailo AI Accelerator** providing up to 2x 26 TOPS of AI for machine learning, video analytics, smart automation and supervision
+- ✅  **Rich in connectivity** and industrial field buses (1x GbE, 8x Serials, 2x CANbus, DAQ)
+- ✅  **Numerous storage** solutions (eMMC, Multiples M.2 SSD, uSD card, USB-C drive)
+- ✅  **Cybersecurity** (TPM2.0, AES256 SSD option, Unique ID, security uSD…)
+- ✅  **B2B Ready** : customize configuration, markings and packaging
 
-## 1 - SWAP-C MODULAR DESIGN
+## 1 - SWAP-C MODULAR DESIGN <a name="1"></a>
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Inside.png)
 
 ---
-## 2 - TECHNICAL SPECIFICATIONS
+## 2 - TECHNICAL SPECIFICATIONS <a name="2"></a>
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Spec_1_2.png)
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Spec_2_2.png)
 
 ---
-## 3 - ORDERING INFORMATION
+## 3 - ORDERING INFORMATION <a name="3"></a>
 
 **Build your part number :** In this example P/N 200-003-002(3.1)-W-8-32-256-N-5GS-Y-C-B
 
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Ordering.png)
+
+---
+
+## 4 - OPTIONAL ACCESSORIES <a name="4"></a>
+![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Accessories.png)
+
 All cables and antennas are standard and available for purchase off the shelf for reasonable prices.
 
 ---
 
-## 4 - OPTIONAL ACCESSORIES
-![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Accessories.png)
----
-
-## 5 - DIMENSIONS
+## 5 - DIMENSIONS <a name="5"></a>
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Dimensions.png)
 ---
 
-## 6 - INSTALLATION
+## 6 - INSTALLATION <a name="6"></a>
 
 The Xplorer CM5 is thermally designed to be installed vertically with the M12 connectors facing downwards and the SMA connectors facing upwards.
 By default, the mounting is wall-mounted, but DIN rail mounting is available as an option.
 If you do not wish to drill holes, you can attach the product using two strips of 3M Dual Lock after thoroughly degreasing the surfaces. We can also supply carbon supports with inserts to be bonded with epoxy glue.
+
 ⚠️ In an exposed environment, put caps on unused connectors.
 
-## 7 - ELECTRICAL INTERFACES
-### 7.1 - CAN1/PWR
+## 7 - ELECTRICAL INTERFACES <a name="7"></a>
+### 7.1 - CAN1/PWR <a name="7.1"></a>
 This connector is compatible with the standardised DeviceNet/NMEA2000 5-pin male⁉️ A-coded M12 screw connector.
 It allows both the Xplorer CM5 to be powered and communication via a CANbus or a CAN-FD bus.
 If you are connecting the Xplorer CM5 directly to an NMEA2000 bus, place it close to the power supply T in order to minimise voltage drops.
@@ -69,7 +88,7 @@ If you are connecting the Xplorer CM5 directly to an NMEA2000 bus, place it clos
 | J17.4| **CAN1-H**      | GND       | White     | CAN1 Positive/NET-H (To N2K White wire) 
 | J17.5| **CAN1-L**      | GND       | Blue      | CAN1 Negative/NET-L (To N2K Blue wire)
 
-### 7.2 - USB-C
+### 7.2 - USB-C <a name="7.2"></a>
 This connector has a dual role :
 - It allows a Linux image to be bootloaded into the EMMc if the bootload switch is set to the SMA connectors side (top) when the power is turned on. The blue Status LED lights up continuously in this mode.
 - Otherwise, it is a USB-C connector that delivers both USB 2.0 (480Mbits/s half duplex) and USB 3.0 (5 Gbits/s full duplex), and is dual role, i.e. it can be either a host or a device. In host mode, it can power a device with 5V up to 1A, you can connect peripherals such as flash drive, 5GbE Ethernet, camera, voice interface, external DAQ, more Serials, more CANbus etc.
@@ -83,7 +102,7 @@ This connector has a dual role :
 **Recommended USB-C peripherals:**
 - Flash Drive: Samsung [MUF 64DA](https://www.samsung.com/fr/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/) familly (64 to 512GB) 
 
-### 7.3 - DAQ/CAN2
+### 7.3 - DAQ/CAN2 <a name="7.3"></a>
 This connector is a 12-pin male A-coded M12 screw type.
 It allows data aquisition and more field connectivity:
 - ✅ **2x Open Drain Digital Output**
@@ -135,7 +154,7 @@ https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
 | J5.11| 12 | **IN3_RXDD**| GND_ANA   | Grey/Pink|IO2| 12 bits 0-2.5V or 0-5V Analog/Digital Input 3 or RXDD RS232 Rx Only
 | J5.12| 11 | **OUT1**    | GND_ANA   | Red/Blue |IO4| 12 bits 0-2.5V or 0-5V Analog/Digital Output
 
-### 7.4 - SERIALS
+### 7.4 - SERIALS <a name="7.4"></a>
 This connector is a 12-pin female A-coded M12 screw type.
 It allows field connectivity:
 - ✅ **COM1 : RS232**
@@ -191,7 +210,7 @@ mode with the pinout
 | 2  | **RS485(B-)**| Connect to COMx_B
 | 5  | **GND**      | Ground 
 
-### 7.5 - LAN
+### 7.5 - LAN <a name="7.5"></a>
 This connector is a 8-pin female X-coded M12 screw type.
 M12 to RJ45 Cable : 
 - [Molex 1203410502](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/120/120341/1203410502_sd.pdf)
@@ -213,15 +232,15 @@ M12 to RJ45 Cable :
 | J13.8     | **BI-DC+**| Blue
 | J13.Shield| **Shield**| Shield
 
-### 7.6 - WIFI/BT
-### 7.7 - LPWAN/LTE2/SAT2
-### 7.8 - GNSS
-### 7.9 - LTE1/SAT1
+### 7.6 - WIFI/BT <a name="7.6"></a>
+### 7.7 - LPWAN/LTE2/SAT2 <a name="7.7"></a>
+### 7.8 - GNSS <a name="7.8"></a>
+### 7.9 - LTE1/SAT1 <a name="7.9"></a>
 
-### 7.10 - Left cap : BOOT @ uSD-CARD
+### 7.10 - Left cap : BOOT @ uSD-CARD <a name="7.10"></a>
 > [!CAUTION]
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal.  
-### 7.11 Right cap : Micro HDMI & nano SIM card
+### 7.11 - Right cap : Micro HDMI & nano SIM card <a name="7.11"></a>
 > [!CAUTION]
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
 
@@ -248,14 +267,14 @@ M12 to RJ45 Cable :
 | J16.19| **+5 V Power (power EDID/DDC)**
 
 ---
-## 8 - MAINTENANCE
-### 8.1 - Change the RTC battery 
+## 8 - MAINTENANCE <a name="8"></a>
+### 8.1 - Change the RTC battery <a name="8.1"></a>
 
 This product include a ML2032 rechargeable battery (lithium manganese dioxide, 3V3, 64mAh) in order to maintain the Real Time Clock and datalog at startup with the correct time without waiting an NTP or GNSS time syncronisation.
 > [!CAUTION]
 > Change the battery every 10 years. Contact the after sale.
 
-### 8.2 - Change an SSD
+### 8.2 - Change an SSD <a name="8.2"></a>
 
 When performing continuous data logging, for example for video, the SSDs are components that wear out and must be replaced periodically.
 This replacement interval must be calculated based on the characteristics of the SSDs (Size, TBW), the frequency of writes, and the RAID mode.
@@ -273,7 +292,7 @@ This replacement interval must be calculated based on the characteristics of the
 > Contact the after sale.    
 
 ---
-## 8.2 - REPAIR A BOARD
+## 8.3 - Repair a board <a name="8.3"></a>
 
 > [!TIP]
 > If you wish to repair a faulty card yourself that is no longer under warranty, here is some useful information.
@@ -296,22 +315,22 @@ This replacement interval must be calculated based on the characteristics of the
 
 
 ---
-## 9 - SOFTWARE SUPPORT
+## 9 - SOFTWARE SUPPORT <a name="9"></a>
 
-Product web page : 	https://austral-eng.com/en/xplorer-cm5/
-Online Software support : 	https://github.com/austral-electronics/Xplorer
+Product web page : 	https://austral-eng.com/en/xplorer-cm5/ 
+Online Software Wiki : 	https://github.com/austral-electronics/Xplorer
 
 ---
-## 10 - CONTACT
+## 10 - CONTACT <a name="10"></a>
 
 This product can be sold by unit for evaluation or in volume and is designed to fit to your needs (memories, wireless, AI, accessories…). It can be customized with your company's visual for 100 units (logo, colors, marking...). Austral electronics is a design office, we can support you on your specific needs in electronics, embedded computing, specific Linux, sector specific certification...
 
 **Contact us to begin the pricing and ordering process**
 
-**AUSTRAL ELECTRONICS**
-Espace Teknica, 4 Rue Galilée
-Parc Technologique de Soye
+**AUSTRAL ELECTRONICS** 
+Espace Teknica, 4 Rue Galilée 
+Parc Technologique de Soye 
 56270 Ploemeur – FRANCE
 
-**Mail :** contact@austral-eng.com
+**Mail :** contact@austral-eng.com 
 **Website :** http://austral-eng.com/en
