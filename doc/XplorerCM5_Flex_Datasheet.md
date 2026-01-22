@@ -327,10 +327,10 @@ This product can be sold by unit for evaluation or in volume and is designed to 
 
 **Contact us to begin the pricing and ordering process**
 
-**AUSTRAL ELECTRONICS** 
-Espace Teknica, 4 Rue Galilée 
-Parc Technologique de Soye 
-56270 Ploemeur – FRANCE
+ **AUSTRAL ELECTRONICS**
+ Espace Teknica, 4 Rue Galilée
+ Parc Technologique de Soye
+ 56270 Ploemeur – FRANCE
 
-**Mail :** contact@austral-eng.com 
-**Website :** http://austral-eng.com/en
+ **Mail :** contact@austral-eng.com
+ **Website :** http://austral-eng.com/en
