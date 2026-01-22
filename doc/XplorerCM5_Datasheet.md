@@ -1,0 +1,314 @@
+# XPLORER CM5 - HARDWARE SPECIFICATIONS
+![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5 Flex_overview.png)
+## 📚 Table of Contents
+- **Introduction**
+  - [Goals](#goals)
+  - [Status](#status)
+  - [Warnings](#warnings)
+- **Assets & Hardware Info**
+  - [Bill of Materials (BOM)](#bill-of-materials-bom)
+  - [PINOUT & LEGEND](#pinout--legend)
+    - [MicroSD Express to M.2 NVMe Mapping](#microsd-express-to-m2-nvme-mapping)
+    - [M.2 NVMe Pinout](#m2-nvme-pinout)
+    - [MicroSD Express Pinout](#microsd-express-pinout)
+    
+
+🍓🍕🔗🛠️💾📊📢💻💚🍓🥧📸🎒🚨 🔍 ✅ ⚠️ 👨‍💻 ❤️  💪🏻 💡🤝🏻📩 💬 ➡️🚀👉🏰 🎯📍​​🚢​​​​🚤​​​​💥​​​​📸​​🔌⚡🧩🛡️🤖
+
+---
+## INTRODUCTION
+![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Inside.png)
+![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_PCB_2.png)
+
+---
+## SPECIFICATIONS
+
+<table>
+    <tr>
+        <td><CENTER><b>Feature</b></CENTER></td>
+        <td><CENTER><b>Xplorer CM5-M</b></CENTER></td>
+        <td><b>Xplorer CM5-M+E</b></td>
+        <td><b>Remark / Option</b></td>
+    </tr>
+    <tr>
+        <CENTER><td><b>Available</b></td>
+        <td>Pre-production</td>
+        <td>Q1 2026</td>
+        <td></td>
+        </CENTER></tr>
+    <tr>
+        <td>CPU/GPU</td>
+        <td colspan="2">ARM Cortex A76 Quad-core, 64 bits, 2.4Ghz, Cryptographic Extension, VideoCore VII</td>
+        <td>HPL: 30.2 Gflops, 2.75 Gflops/W</td>
+    </tr>
+    <tr>
+        <td>Cellule 1</td>
+        <td>Cellule 2</td>
+    </tr>
+</table>
+
+Conso : 4.235W sans M.2/USB <1% CPU, version desktop, ETH + WIFI
+ - 4.222W sans WIFI et BT (Wifi+BT=13mW)
+ - 4.150W sans WIFI, BT, ETH LED (ETH LED=mW)
+ - 1.996W (Idem + shutdown)
+ + 0.3W SSD KIOXIA 128GB with no acces
+ + 0W SSD Samsung 128GB with no acces
+ + 0.75W Hailo 8L no acces
+ + 0.6W SIM7600 no acces
+ + 388mW ETH GbE
+ + 288mW ETH 100 mbps
+ + 2.1W pendant hdparm test sur SSD NVMe
+---
+
+## INSTALLATION
+
+The Xplorer CM5 is thermally designed to be installed vertically with the M12 connectors facing downwards and the SMA connectors facing upwards.
+By default, the mounting is wall-mounted, but DIN rail mounting is available as an option.
+If you do not wish to drill holes, you can attach the product using two strips of 3M Dual Lock after thoroughly degreasing the surfaces. We can also supply carbon supports with inserts to be bonded with epoxy glue.
+⚠️ In an exposed environment, put caps on unused connectors.
+
+## ELECTRICAL INTERFACES
+### CAN1/PWR
+This connector is compatible with the standardised DeviceNet/NMEA2000 5-pin male⁉️ A-coded M12 screw connector.
+It allows both the Xplorer CM5 to be powered and communication via a CANbus or a CAN-FD bus.
+If you are connecting the Xplorer CM5 directly to an NMEA2000 bus, place it close to the power supply T in order to minimise voltage drops.
+| Pin  | Name            | Reference | N2K cable | Description                                                                          
+|----------------------- |-----------|-----------|-------------|-|
+| J17.1| **CAN1-SHIELD** | GND       | Shield    | CAN1 Shield
+| J17.2| **VIN**         | GND       | Red       | 8-33V / Power Supply Input Positive
+| J17.3| **GND**         | GND       | Black     | 0V / Power Supply Input Negative
+| J17.4| **CAN1-H**      | GND       | White     | CAN1 Positive/NET-H (To N2K White wire) 
+| J17.5| **CAN1-L**      | GND       | Blue      | CAN1 Negative/NET-L (To N2K Blue wire)
+
+### USB-C
+This connector has a dual role :
+- It allows a Linux image to be bootloaded into the EMMc if the bootload switch is set to the SMA connectors side (top) when the power is turned on. The blue Status LED lights up continuously in this mode.
+- Otherwise, it is a USB-C connector that delivers both USB 2.0 (480Mbits/s half duplex) and USB 3.0 (5 Gbits/s full duplex), and is dual role, i.e. it can be either a host or a device. In host mode, it can power a device with 5V up to 1A, you can connect peripherals such as flash drive, 5GbE Ethernet, camera, voice interface, external DAQ, more Serials, more CANbus etc.
+
+**Note :**
+- ⚠️ This connector is not compatible with DisplayPort (DP Alt Mode), there is a Micro HDMI connector under a plug for connecting a monitor for a development need.
+- 💻 For development, it is also possible to connect one or more monitors, keyboard, mouse, webcam via a **USB-C DisplayLink docking station**. Latency will be much lower than with a Remote Desktop solution via GbE ou WiFi. You will need to choose a docking station with its own power supply so as not to place too much thermal stress on the Xplorer CM5.
+- 💧 This connector is waterproof but not dustproof. It is best to put a silicone plug on it when not in use, you can also add vaseline to protect more from corrosion.
+- 🧩 USB-C is not an industrial connector, for environments subject to shocks and vibrations, a single-screw locking mechanism solution compliant with the Universal Serial Bus Type-C [specification](https://www.usb.org/sites/default/files/documents/usb_type-c_locking_connector_specification_rev_1_0_20160309_0.pdf) can be provided as an enclosure option.
+
+**Recommended USB-C peripherals:**
+- Flash Drive: Samsung [MUF 64DA](https://www.samsung.com/fr/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/) familly (64 to 512GB) 
+
+### DAQ/CAN2
+This connector is a 12-pin male A-coded M12 screw type.
+It allows data aquisition and more field connectivity:
+- ✅ **2x Open Drain Digital Output**
+    - <27V <1A (6A peak), 27V/350W ESD Protection Diode, 30kV ESD.
+- ✅ **2x 12 bits 0-2.5V or 0-5V Analog Output**
+    -  Up to 400 kSPS, 13.5V/150W ESD Protection Diode, +/- 15kV ESD
+    -  ⚠️ 2K output impedance (to ensure robustness against wiring errors and ESD)
+    -  👍 Can also be used as general-purpose digital input/output pins.
+    -  🧩 Optional RC filter (C154, C153 not implanted by default)
+- ✅ **Up to 4x 12 bits 0-2.5V or 0-5V Analog Input**
+    -  Up to 400 kSPS, 3.5V/150W ESD Protection Diode, +/- 15kV ESD, 13.3K/10nF RC Filter
+    -  ⚠️ Share with 4x RS232 inputs (Rx Only)
+    -  👍 Can also be used as general-purpose digital input/output pins.
+    -  🧩 Other RC Filter in hardware option
+- ✅ **Up to 4x RS232 inputs (Rx Only mode)**
+    -  14V/150W ESD Diode, 3.3K input impedance below 0V or above 5V.
+    -  ⚠️ Shared with 4x Analog inputs
+    -  ⚠️ IN1_RXDB is not functional with the **Matter** hardware option
+    -  ⚠️ IN4_RXDC is not functional with the **LoRa** hardware option
+- ✅ **1x isolated CANbus or CAN-FD**
+    - 3kV Isolation, 5 Mbps Max, ESD +/-8kV, +/-58V DC bus fault protection, +/-12V common-mode voltage range.
+    - Uses the Microchip [MCP2518FDT](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/External-CAN-FD-Controller-with-SPI-Interface-DS20006027B.pdf) controller connected to SPI0.2
+
+The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI0.1. It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
+
+https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r
+https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz
+https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html
+https://www.youtube.com/watch?v=jSnT0_RSBUk
+https://github.com/SpazzTech/AD5592_Snack_Board
+https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html
+https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
+
+
+**Recommanded M12 to wires cable** : Altech [CBF12-S12N0 Familly](https://legacy.altechcorp.com/sensor-connectors/pdfs/Molded_Female_Cable_Assemblies.pdf) ([1m](https://docs.rs-online.com/9161/A700000007160909.pdf), [2m](https://katlax.s3.ap-south-1.amazonaws.com/datasheets/02-M12/A-Coded/MouldedConnector/CBF12-S12N0-02BPUR.pdf) or 5m, PVC or PUR).
+
+| CON  | PCB| Name        | Reference | Color    | IO | Description                                                                          
+|------|----|-------------|-----------|----------|----|-|
+| J5.1 |  2 | **OUT4**    | GND_ANA   | Brown    |IO7| Open Drain digital Output 4
+| J5.2 |  1 | **GND_CAN2**| -         | Blue     | - | Isolated CAN2 Ground
+| J5.3 |  9 | **CAN2_L**  | GND_CAN2  | White    | - | Isolated CAN2-L (To N2K Blue wire)
+| J5.4 |  8 | **CAN2_H**  | GND_CAN2  | Green    | - | Isolated CAN2-H (To N2K White wire)
+| J5.5 |  7 | **IN4_RXDC**| GND_ANA   | Pink     |IO3| 12 bits 0-2.5V or 0-5V Analog/Digital Input 4 or RXDC RS232 Rx Only
+| J5.6 |  6 | **IN2_RXDA**| GND_ANA   | Yellow   |IO1| 12 bits 0-2.5V or 0-5V Analog/Digital Input 2 or RXDA RS232 Rx Only
+| J5.7 |  5 | **IN1_RXDB**| GND_ANA   | Black    |IO0| 12 bits 0-2.5V or 0-5V Analog/Digital Input 1 or RXDB RS232 Rx Only)
+| J5.8 |  4 | **OUT2**    | GND_ANA   | Grey     |IO5| 12 bits 0-2.5V or 0-5V Analog/Digital Output
+| J5.9 |  3 | **OUT3**    | GND_ANA   | Red      |IO6| Open Drain digital Output 3 (Connected to IO6)
+| J5.10| 10 | **GND_ANA** | -         | Violet   | - | Analog Ground (Ground Plane connected to GND via a 0 ohm resistor)
+| J5.11| 12 | **IN3_RXDD**| GND_ANA   | Grey/Pink|IO2| 12 bits 0-2.5V or 0-5V Analog/Digital Input 3 or RXDD RS232 Rx Only
+| J5.12| 11 | **OUT1**    | GND_ANA   | Red/Blue |IO4| 12 bits 0-2.5V or 0-5V Analog/Digital Output
+
+### SERIALS
+This connector is a 12-pin female A-coded M12 screw type.
+It allows field connectivity:
+- ✅ **COM1 : RS232**
+    - Non Isolated, 250Kbps max, +/-15kV ESD
+- ✅ **COM2 : RS232 with CTS/PPS Input**
+    - Port suitable for GNSS or INS/GNSS with PPS connected to CTS
+    - Non Isolated, 250Kbps max, +/-15kV ESD
+    - 🧩 The logic level of the PPS can be inverted (hardware option, Implantation of R46 = 0 Ohm)
+- ✅ **COM3 : Isolated RS232/RS485/Modbus**
+    - 3KVrms Isolation, +/-15kV ESD
+    - Set GPIO18 to switch in RS485/Modbus Mode
+    - In RS485/Modbus mode : 20Mbps max, No bias or terminator resistor, RTS controls the low impedance, 1/8th Unit Load, up to 256 receivers on bus.
+    - In RS232 mode : 1Mbps max
+- ✅ **COM4 : Isolated RS485/Modbus**
+    - [MAX22025AWA+](https://www.analog.com/media/en/technical-documentation/data-sheets/MAX22025-MAX22028F.pdf) chipset with autoDirection Control (No need impedance control with RTS), 500Kbps max, 3.5kVrms Isolation, +/-10kV ESD.
+    - Integrated R6 & R11, 620 ohm bias resistors (To isolated 0V and 5V)
+    - ⚠️ 120 ohm terminator not integrated
+    - 🧩 16Mbps in hardware option
+
+**Recommanded Push Pull M12 to wires cable** : Amphenol LTW [M12A-12BMMM-PL8D01](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/5849/M12A-XXBMMM-PL8DXX%28E%29.pdf) (1m, PVC with 2m, 3m, 4m or 5m available)
+
+| Pin   | Name            | Reference| Color    | Description                                                                          
+|-------------------------|----------|----------|-------------|-|
+| J12.1 | **COM1_RXD**   | GND      | White    | COM1 RS232-RXD
+| J12.2 | **COM2_CTS/PPS**| GND      | Brown    | COM2 RS232-CTS (External GNSS PPS Input)
+| J12.3 | **COM3_TXD/B**  | GND_SER  | Green    | COM3 Isolated RS232-TXD OR RS485-B or Negative
+| J12.4 | **COM3_RTS/A**  | GND_SER  | Yellow   | COM3 Isolated RS232-RTS OR RS485-A or Positive
+| J12.5 | **GND_SER**     | -        | Grey     | 0V for isolated ports
+| J12.6 | **COM4_A**      | GND_SER  | Pink     | COM4 Isolated RS485-A/P
+| J12.7 | **COM4_B**      | GND_SER  | Blue     | COM4 Isolated RS485-B/N
+| J12.8 | **COM1_TXD**    | GND      | Red      | COM1 RS232-TXD
+| J12.9 | **COM2_TXD**    | GND      | Black    | COM2 RS232-TXD (External GNSS/INS)
+| J12.10| **COM2_RXD**    | GND      | Violet   | COM2 RS232-RXD (External GNSS/INS)
+| J12.11| **COM3_RXD**    | GND_SER  | Grey/Pink| COM3 Isolated RS232-RXD
+| J12.12| **GND**         | -        | Red/Blue | 0V for non isolated ports
+
+If you need to test the serials or your software with a computer, you will require additional converter and DB9 connectors:
+
+**FTDI USB 2.0 to RS232 cable :**
+The M12 **"Serial"** cable is connected to a DB9 Female with the pinout
+| Pin| Name| Description                                                                          
+|----------------|-------------|-|
+| 2  | **RXD_PC**| Connect to COMx_TXD
+| 3  | **TXD_PC**| Connect to COMx_RXD
+| 5  | **GND**   | Ground 
+
+**[Dtech](https://www.dtechelectronics.com/uploadfile/downloads/IOT5081%20USB%20to%20RS485%20RS422%20Manual.pdf) USB 2.0 to RS485 cable :**
+The M12 **"Serial"** cable is connected to a DB9 Female in Half Duplex
+mode with the pinout
+| Pin| Name         | Description                                                                          
+|-------------------|-------------|-|
+| 1  | **RS485(A+)**| Connect to COMx_A
+| 2  | **RS485(B-)**| Connect to COMx_B
+| 5  | **GND**      | Ground 
+
+### LAN
+This connector is a 8-pin female X-coded M12 screw type.
+M12 to RJ45 Cable : 
+- [Molex 1203410502](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/120/120341/1203410502_sd.pdf)
+- [Phoenix contact 1407472](https://eu.mouser.com/datasheet/3/507/7/phoenix_contact_1407472_en.pdf)
+- [Eaton NM12-602-05M-BL](https://assets.tripplite.com/product-pdfs/en/nm1260202mbl.pdf)
+- [TE RPC-M12X-8MS-1.0SH-RJ45-8MS-TPE](https://www.te.com/en/product-CAT-SI113-M1ZB.html), 1 to 15m
+- [Delock 80868](https://www.delock.com/produkt/87845/merkmale.html?d=557), 1 to 5m
+- [CAZN M12-8A1-X-P/S-RJ45-XM](https://www.caznelectrics.com/portfolio/items/m12-rj45-ethernet-industrial-camara-connector)
+   
+| Pin       | Name      | Color                                                                               
+|-----------|-----------|-|
+| J13.1     | **BI-DA+**| White/Orange
+| J13.2     | **BI-DA-**| Orange
+| J13.3     | **BI-DB+**| White/Green
+| J13.4     | **BI-DB-**| Green
+| J13.5     | **BI-DD+**| White/Brown
+| J13.6     | **BI-DD-**| Brown
+| J13.7     | **BI-DC-**| White/Blue
+| J13.8     | **BI-DC+**| Blue
+| J13.Shield| **Shield**| Shield
+
+### WIFI/BT
+### LPWAN/LTE2/SAT2
+### GNSS
+### LTE1/SAT1
+
+### Left cap : BOOT @ uSD-CARD
+> [!CAUTION]
+> The cap must be lightly greased with vaseline after each opening to ensure a good seal.  
+### Right cap : Micro HDMI & nano SIM card
+> [!CAUTION]
+> The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
+
+| Pin   | Name                                                                               
+|-------|-|
+| J16.1 | **Hot Plug Detect/HEC-**
+| J16.2 | **Utility/HEAC+**
+| J16.3 | **TDMS Data 2+**
+| J16.4 | **TDMS Data 2 Shield**
+| J16.5 | **TDMS Data 2-**
+| J16.6 | **TDMS Data 1+**
+| J16.7 | **TDMS Data 1 Shield**
+| J16.8 | **TDMS Data 1-**
+| J16.9 | **TDMS Data 0+**
+| J16.10| **TDMS Data 0 Shield**
+| J16.11| **TDMS Data 0-**
+| J16.12| **TDMS Clock+**
+| J16.13| **TDMS Clock Shield**
+| J16.14| **TDMS Clock-**
+| J16.15| **CEC (Control)**
+| J16.16| **DDC/CEC/HEAC Ground**
+| J16.17| **SCL (DDC clock)**
+| J16.18| **SDA (DDC data)**
+| J16.19| **+5 V Power (power EDID/DDC)**
+
+---
+## MAINTENANCE
+### Change the RTC battery 
+
+This product include a ML2032 rechargeable battery (lithium manganese dioxide, 3V3, 64mAh) in order to maintain the Real Time Clock and datalog at startup with the correct time without waiting an NTP or GNSS time syncronisation.
+> [!CAUTION]
+> Change the battery every 10 years. Contact the after sale.
+
+### Change an SSD
+
+When performing continuous data logging, for example for video, the SSDs are components that wear out and must be replaced periodically.
+This replacement interval must be calculated based on the characteristics of the SSDs (Size, TBW), the frequency of writes, and the RAID mode.
+   
+#### Removing the board to acces to the SSD under the board
+> [!CAUTION]
+> SMA cable must be disconnected and reconnected carefully.
+> The thermal pads must be replaced during reassembly.
+> Threadlocker must be used on internal screws.
+> Contact the after sale. 
+#### Close the enclosure
+> [!CAUTION]
+> The O-ring must be replaced and greased after each opening to ensure a good seal.
+> Tef-gel must be used between the stainless steel screws and the aluminium enclosure to limit corrosion.
+> Contact the after sale.    
+
+---
+## REPAIR A BOARD
+
+> [!TIP]
+> If you wish to repair a faulty card yourself that is no longer under warranty, here is some useful information.
+> The board contains 0201 SMD components, which cannot be changed manually.
+> We can take care of the repair or replacement of a component or of a board. Contact the after sale.
+### Fuses
+| Fuses      | MPN | Description|                                                                                                  
+|------------|-----|------------|
+| **F1**     | BSMD2920-400-30V | 30VDC/4A Resettable Fuse 
+| **F2, F5** | FMC16302WHTP | 32VDC/3A                                                       
+### Test pads
+| Test pads      | Description     |                                                                                                  
+|----------------|-----------------|
+| **TP1**        | xxxx.       
+| **TP2**        | xxxx.  
+| **TP3**        | xxxx.  
+| **TP4**        | xxxx.  
+| **TP5**        | xxxx.  
+| **TP6**        | xxxx.                                                                
+
+
+---
+## FAQ
+---
+## REQUEST MORE INFORMATION
+
+
