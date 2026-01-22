@@ -1,0 +1,156 @@
+# For more options and information see
+# http://rptl.io/configtxt
+# Some settings may impact device functionality. See link above for details
+
+# Uncomment some or all of these to enable the optional hardware interfaces
+dtparam=i2c_arm=on
+#dtparam=i2s=on
+#dtparam=spi=on
+
+# Enable audio (loads snd_bcm2835)
+#dtparam=audio=on
+
+# Additional overlays and parameters are documented
+# /boot/firmware/overlays/README
+
+# Automatically load overlays for detected cameras
+camera_auto_detect=1
+
+# Automatically load overlays for detected DSI displays
+display_auto_detect=1
+
+# Automatically load initramfs files, if found
+auto_initramfs=1
+
+# Enable DRM VC4 V3D driver
+dtoverlay=vc4-kms-v3d
+max_framebuffers=2
+
+# Don't have the firmware create an initial video= setting in cmdline.txt.
+# Use the kernel's default instead.
+disable_fw_kms_setup=1
+
+# Run in 64-bit mode
+arm_64bit=1
+
+# Disable compensation for displays with overscan
+disable_overscan=1
+
+# Run as fast as firmware / board allows
+arm_boost=1
+
+[cm4]
+# Enable host mode on the 2711 built-in XHCI USB controller.
+# This line should be removed if the legacy DWC2 controller is required
+# (e.g. for USB device mode) or if USB support is not required.
+otg_mode=1
+
+[cm5]
+dtoverlay=dwc2,dr_mode=host
+
+[all]
+# Xplorer CM5 : TPM 2.0 (/dev/i2c-13)
+dtoverlay=tpm-slb9673
+
+# Xplorer CM5 : SPI DAQ
+#dtoverlay=spi1-3cs
+dtoverlay=spi1-3cs,cs0_spidev=off
+#dtoverlay=mcp251xfd,spi1-0
+
+# Xplorer CM5 : SPI CAN1 (can1)
+dtoverlay=mcp251xfd,spi1-1,oscillator=40000000,interrupt=7
+
+# Xplorer CM5 : SPI Isolated CAN2 (can0)
+dtoverlay=mcp251xfd,spi1-2,oscillator=40000000,interrupt=10
+
+# Xplorer CM5 : Option LoRa or Option IMU - Internal UART (ttyS0)
+dtparam=uart0_console=off
+dtparam=uart0=off
+#dtparam=uart0=on
+
+# Xplorer CM5 : COM1 RS232 (ttyAMA1)
+enable_uart=1
+dtoverlay=uart1
+
+# Xplorer CM5 : COM2 RS232, Optional CTS/PPS (ttyAMA2)
+dtoverlay=uart2
+#dtoverlay=uart2,cts
+
+# Xplorer CM5 : COM3 - Isolated RS232 mode (ttyAMA3)
+dtoverlay=uart3
+gpio=11=op,dl
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
+
+# Xplorer CM5 : COM3 - XOR Isolated RS485 mode (ttyAMA3)
+#dtoverlay=uart3,rts
+#dtparam=pwr_led_trigger=none
+#dtparam=pwr_led_activelow=on
+
+# Xplorer CM5 : COM4 - Isolated Autodir RS485 (ttyAMA2)
+dtoverlay=uart4
+
+# Xplorer CM5 : micro SD Card
+dtoverlay=sdio
+
+# Xplorer CM5 : External WiFi/BT Antenna
+dtparam=ant2
+
+# Xplorer CM5 : Charge the RTC Battery  
+dtparam=rtc_bbat_vchg=3000000
+
+# Xplorer CM5 : Activity LED to a load indicator
+dtparam=act_led_trigger=timer
+#dtparam=act_led_activatelow=on
+
+#========================================================
+# Xplorer CM5 : Reduce the power consumption down to 2.8W
+#========================================================
+
+#--- No fan
+#dtparam=cooling_fan=off
+
+#--- Headless: Disable video outputs, reduce GPU RAM, Disable HDMI audio, GPU f>
+#hdmi_blanking=2
+#display_default_lcd=0
+#gpu_mem=4
+#dtparam=audio=off
+#gpu_freq=200
+#dtoverlay=vc4-kms-v3d,noaudio
+#dtoverlay=vc4-kms-v3d,nohdmi
+#dtparam=hdmi=off
+
+#--- Reduce Ethernet speed to 100MB (-0.25W)
+#dtparam=eth_max_speed=100
+
+#--- Disable unused RTC
+#dtparam=rtc=off
+
+#--- Disable unused Wireless
+#dtoverlay=disable-wifi
+#dtoverlay=disable-bt
+
+#--- Disable Activity LEDs
+#dtparam=act_led_trigger=none
+#dtparam=act_led_activelow=off
+
+#--- Disable SD card
+#dtoverlay=disable-sdcard
+
+#--- Underclocking & small undervolting (<=1.2Ghz)
+#arm_freq=1200
+#arm_freq_min=600
+#gpu_freq=250
+#over_voltage=-2
+
+#--- Aggressive Underclocking & undervolting (<=1Ghz)
+#arm_freq=1000
+#arm_freq_min=400
+#gpu_freq=200
+#over_voltage=-5
+
+#--- For low power SSD -> activate ASPM L0s/L1/L1.2
+#pcie_aspm=force
+
+#--- No PCIe M.2 modules -> Desactivate the PCIe switch (-1.3W)
+#dtparam=pciex1=off
