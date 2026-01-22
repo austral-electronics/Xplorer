@@ -1,5 +1,5 @@
-# XPLORER CM5 - HARDWARE SPECIFICATIONS
-![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5 Flex_overview.png)
+# XPLORER CM5 - DATASHEET
+![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Overview.png)
 ## 📚 Table of Contents
 - **Introduction**
   - [Goals](#goals)
@@ -12,13 +12,9 @@
     - [M.2 NVMe Pinout](#m2-nvme-pinout)
     - [MicroSD Express Pinout](#microsd-express-pinout)
     
-
-🍓🍕🔗🛠️💾📊📢💻💚🍓🥧📸🎒🚨 🔍 ✅ ⚠️ 👨‍💻 ❤️  💪🏻 💡🤝🏻📩 💬 ➡️🚀👉🏰 🎯📍​​🚢​​​​🚤​​​​💥​​​​📸​​🔌⚡🧩🛡️🤖
-
 ---
 ## INTRODUCTION
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Inside.png)
-![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_PCB_2.png)
 
 ---
 ## SPECIFICATIONS
