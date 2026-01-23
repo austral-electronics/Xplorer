@@ -25,12 +25,20 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
   - [7.9 - LTE1/SAT1](#7.9)
   - [7.10 - Left cap : BOOT @ uSD-CARD](#7.10)
   - [7.11 - Right cap : Micro HDMI & nano SIM card](#7.11)
-- **[8 - MAINTENANCE](#8)**
-  - [8.1 - Change the RTC battery](#8.1)
-  - [8.2 - Change an SSD](#8.2)
-  - [8.3 - Repair a board](#8.3)
-- **[9 - SOFTWARE SUPPORT](#9)**
-- **[10 - CONTACT](#10)**
+- **[8 - OPTIONAL MODULES](#8)**
+  - [8.1 - SSD](#8.1)
+  - [8.2 - 4G LTE](#8.2)
+  - [8.3 - 5G RedCap](#8.3)
+  - [8.4 - AI Accelerator](#8.4)
+  - [8.5 - GNSS RTK+IMU](#8.5)
+  - [8.6 - Multi-Protocol Wireless Network co-processor](#8.5)
+  - [8.7 - LoRa/SigFox](#8.5)
+- **[9 - MAINTENANCE](#9)**
+  - [9.1 - Change the RTC battery](#9.1)
+  - [9.2 - Change an SSD](#9.2)
+  - [9.3 - Repair a board](#9.3)
+- **[10 - SOFTWARE SUPPORT](#10)**
+- **[11 - CONTACT](#11)**
     
 ---
 ## PRODUCT HIGHLIGHT <a name="0"></a>
@@ -93,6 +101,10 @@ If you are connecting the Xplorer CM5 directly to an NMEA2000 bus, place it clos
 | J17.3| **GND**         | GND       | Black     | 0V / Power Supply Input Negative
 | J17.4| **CAN1-H**      | GND       | White     | CAN1 Positive/NET-H (To N2K White wire) 
 | J17.5| **CAN1-L**      | GND       | Blue      | CAN1 Negative/NET-L (To N2K Blue wire)
+ 
+CAN-FD Specifications:
+- Uses the Microchip [MCP2518FDT](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/External-CAN-FD-Controller-with-SPI-Interface-DS20006027B.pdf) controller connected to SPI1.1
+- 3kV Isolation, 5 Mbps Max, ESD +/-8kV, +/-58V DC bus fault protection, +/-12V common-mode voltage range
 
 ### 7.2 - USB-C <a name="7.2"></a>
 This connector has a dual role :
@@ -103,10 +115,11 @@ This connector has a dual role :
 - ⚠️ This connector is not compatible with DisplayPort (DP Alt Mode), there is a Micro HDMI connector under a plug for connecting a monitor for a development need.
 - 💻 For development, it is also possible to connect one or more monitors, keyboard, mouse, webcam via a **USB-C DisplayLink docking station**. Latency will be much lower than with a Remote Desktop solution via GbE ou WiFi. You will need to choose a docking station with its own power supply so as not to place too much thermal stress on the Xplorer CM5.
 - 💧 This connector is waterproof but not dustproof. It is best to put a silicone plug on it when not in use, you can also add vaseline to protect more from corrosion.
-- 🧩 USB-C is not an industrial connector, for environments subject to shocks and vibrations, a single-screw locking mechanism solution compliant with the Universal Serial Bus Type-C [specification](https://www.usb.org/sites/default/files/documents/usb_type-c_locking_connector_specification_rev_1_0_20160309_0.pdf) can be provided as an enclosure option.
+- 🔨 USB-C is not an industrial connector, for environments subject to shocks and vibrations, a single-screw locking mechanism solution compliant with the Universal Serial Bus Type-C [specification](https://www.usb.org/sites/default/files/documents/usb_type-c_locking_connector_specification_rev_1_0_20160309_0.pdf) can be provided as an enclosure option.
 
 **Recommended USB-C peripherals:**
-- Flash Drive: Samsung [MUF 64DA](https://www.samsung.com/fr/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/) familly (64 to 512GB) 
+- Flash Drive: [Samsung MUF 64DA](https://www.samsung.com/fr/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/) familly (64 to 512GB) 
+- External Hailo-10H AI Accelerator: [ASUS UGen300](https://www.asus.com/motherboards-components/ai-accelerator/ugen/ugen300-usb-8g/)
 
 ### 7.3 - DAQ/CAN2 <a name="7.3"></a>
 This connector is a 12-pin male A-coded M12 screw type.
@@ -127,24 +140,12 @@ It allows data aquisition and more field connectivity:
     -  14V/150W ESD Diode, 3.3K input impedance below 0V or above 5V.
     -  ⚠️ Shared with 4x Analog inputs
     -  ⚠️ IN1_RXDB is not functional with the **Matter** hardware option
-    -  ⚠️ IN4_RXDC is not functional with the **LoRa** hardware option
 - ✅ **1x isolated CANbus or CAN-FD**
     - 3kV Isolation, 5 Mbps Max, ESD +/-8kV, +/-58V DC bus fault protection, +/-12V common-mode voltage range.
-    - Uses the Microchip [MCP2518FDT](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/External-CAN-FD-Controller-with-SPI-Interface-DS20006027B.pdf) controller connected to SPI0.2
+    - It uses the Microchip [MCP2518FDT](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/External-CAN-FD-Controller-with-SPI-Interface-DS20006027B.pdf) CAN-FD controller connected to SPI1.2
 
-The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI0.1.  
+The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0.  
 It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
-
-https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r
-https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz
-https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html
-https://www.youtube.com/watch?v=jSnT0_RSBUk
-https://github.com/SpazzTech/AD5592_Snack_Board
-https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html
-https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
-
-
-**Recommanded M12 to wires cable** : Altech [CBF12-S12N0 Familly](https://legacy.altechcorp.com/sensor-connectors/pdfs/Molded_Female_Cable_Assemblies.pdf) ([1m](https://docs.rs-online.com/9161/A700000007160909.pdf), [2m](https://katlax.s3.ap-south-1.amazonaws.com/datasheets/02-M12/A-Coded/MouldedConnector/CBF12-S12N0-02BPUR.pdf) or 5m, PVC or PUR).
 
 | CON  | PCB| Name        | Reference | Color    | IO | Description                                                                          
 |------|----|-------------|-----------|----------|----|-|
@@ -160,6 +161,8 @@ https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
 | J5.10| 10 | **GND_ANA** | -         | Violet   | - | Analog Ground (Ground Plane connected to GND via a 0 ohm resistor)
 | J5.11| 12 | **IN3_RXDD**| GND_ANA   | Grey/Pink|IO2| 12 bits 0-2.5V or 0-5V Analog/Digital Input 3 or RXDD RS232 Rx Only
 | J5.12| 11 | **OUT1**    | GND_ANA   | Red/Blue |IO4| 12 bits 0-2.5V or 0-5V Analog/Digital Output
+
+**Recommanded M12 to wires cable** : Altech [CBF12-S12N0 Familly](https://legacy.altechcorp.com/sensor-connectors/pdfs/Molded_Female_Cable_Assemblies.pdf) ([1m](https://docs.rs-online.com/9161/A700000007160909.pdf), [2m](https://katlax.s3.ap-south-1.amazonaws.com/datasheets/02-M12/A-Coded/MouldedConnector/CBF12-S12N0-02BPUR.pdf) or 5m, PVC or PUR).
 
 ### 7.4 - SERIALS <a name="7.4"></a>
 This connector is a 12-pin female A-coded M12 screw type.
@@ -181,8 +184,6 @@ It allows field connectivity:
     - ⚠️ 120 ohm terminator not integrated
     - 🧩 16Mbps in hardware option
 
-**Recommanded Push Pull M12 to wires cable** : Amphenol LTW [M12A-12BMMM-PL8D01](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/5849/M12A-XXBMMM-PL8DXX%28E%29.pdf) (1m, PVC with 2m, 3m, 4m or 5m available)
-
 | Pin   | Name            | Reference| Color    | Description                                                                          
 |-------------------------|----------|----------|-------------|-|
 | J12.1 | **COM1_RXD**   | GND      | White    | COM1 RS232-RXD
@@ -197,6 +198,8 @@ It allows field connectivity:
 | J12.10| **COM2_RXD**    | GND      | Violet   | COM2 RS232-RXD (External GNSS/INS)
 | J12.11| **COM3_RXD**    | GND_SER  | Grey/Pink| COM3 Isolated RS232-RXD
 | J12.12| **GND**         | -        | Red/Blue | 0V for non isolated ports
+
+**Recommanded Push Pull M12 to wires cable** : Amphenol LTW [M12A-12BMMM-PL8D01](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/5849/M12A-XXBMMM-PL8DXX%28E%29.pdf) (1m, PVC with 2m, 3m, 4m or 5m available)
 
 If you need to test the serials or your software with a computer, you will require additional converter and DB9 connectors:
 
@@ -219,13 +222,6 @@ mode with the pinout
 
 ### 7.5 - LAN <a name="7.5"></a>
 This connector is a 8-pin female X-coded M12 screw type.
-M12 to RJ45 Cable : 
-- [Molex 1203410502](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/120/120341/1203410502_sd.pdf)
-- [Phoenix contact 1407472](https://eu.mouser.com/datasheet/3/507/7/phoenix_contact_1407472_en.pdf)
-- [Eaton NM12-602-05M-BL](https://assets.tripplite.com/product-pdfs/en/nm1260202mbl.pdf)
-- [TE RPC-M12X-8MS-1.0SH-RJ45-8MS-TPE](https://www.te.com/en/product-CAT-SI113-M1ZB.html), 1 to 15m
-- [Delock 80868](https://www.delock.com/produkt/87845/merkmale.html?d=557), 1 to 5m
-- [CAZN M12-8A1-X-P/S-RJ45-XM](https://www.caznelectrics.com/portfolio/items/m12-rj45-ethernet-industrial-camara-connector)
    
 | Pin       | Name      | Color                                                                               
 |-----------|-----------|-|
@@ -239,15 +235,52 @@ M12 to RJ45 Cable :
 | J13.8     | **BI-DC+**| Blue
 | J13.Shield| **Shield**| Shield
 
+M12 to RJ45 Cable : 
+- [Delock 80868](https://www.delock.com/produkt/87845/merkmale.html?d=557), 1 to 5m
+- [Molex 1203410502](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/120/120341/1203410502_sd.pdf)
+- [Phoenix contact 1407472](https://eu.mouser.com/datasheet/3/507/7/phoenix_contact_1407472_en.pdf)
+- [Eaton NM12-602-05M-BL](https://assets.tripplite.com/product-pdfs/en/nm1260202mbl.pdf)
+- [TE RPC-M12X-8MS-1.0SH-RJ45-8MS-TPE](https://www.te.com/en/product-CAT-SI113-M1ZB.html), 1 to 15m
+- [CAZN M12-8A1-X-P/S-RJ45-XM](https://www.caznelectrics.com/portfolio/items/m12-rj45-ethernet-industrial-camara-connector)
+
+
 ### 7.6 - WIFI/BT <a name="7.6"></a>
+Internally connected to the Wifi/Bluetooth of the RPI CM5.  
+Connected to an external SMA(M) 2.4/5Ghz Antenna.  
+Antenna included with the antennas starter kit: [Taoglas GW.26.0111](https://cdn.taoglas.com/datasheets/GW.26.0111.pdf) (2.4Ghz, IP65, 2.2dBi Peak).   
+Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.tech/fr/antennas/puck-5/)
+
 ### 7.7 - LPWAN/LTE2/SAT2 <a name="7.7"></a>
+Internally connected to :
+- A Multiprotocol Wireless Module (Matter over Thread, Zigbee, BLE Mesh...)
+- Or a LoRa/Sigfox module
+- Or the diversity output of a 4G LTE or 5G RedCap M.2 Module
+
+For SMA(M) Antennas.  
+Antenna included with the Multiprotocol Wireless starter kit: [Taoglas GW.26.0111](https://cdn.taoglas.com/datasheets/GW.26.0111.pdf) (2.4Ghz, IP65, 2.2dBi).  
+Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.tech/fr/antennas/puck-5/)
+
 ### 7.8 - GNSS <a name="7.8"></a>
+Internally connected to the 4G LTE or 5G RedCap or GNSS M.2 Module.
+For SMA(M) Antennas or cable.
+Antenna included with the antennas starter kit: [Quectel YEGT002AA](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/5871/Quectel_Antenna_YEGT002AA_Datasheet_V1.2.pdf) (GNSS L1 band, IP64, 1.75dBi)
+Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.tech/fr/antennas/puck-5/)
+
 ### 7.9 - LTE1/SAT1 <a name="7.9"></a>
+Internally connected to the 4G LTE or 5G RedCap M.2 Module.
+For SMA(M) Antennas or cable.
+Antenna included with the antennas starter kit: [Pulse/Yaego W1696-M](https://yageogroup.com/content/datasheet/asset/file/DATASHEET_W1696_W1697_W1696-M_W1696-MW) (617MHz ~ 960MHz, 1.71GHz ~ 2.69GHz, 3.4GHz ~ 3.8GHz, IP65 , Gain : -0.5dBi, 1dBi, 0dBi).  
+Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.tech/fr/antennas/puck-5/)
 
 ### 7.10 - Left cap : BOOT @ uSD-CARD <a name="7.10"></a>
+- Provides access to a boot switch to launch the bootloader via USB-C. The board is in bootloader mode when it is switched toward the SMA connectors.  
+- Also allows you to insert a micro SD card for storage or cybersecurity. 
 > [!CAUTION]
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal.  
 ### 7.11 - Right cap : Micro HDMI & nano SIM card <a name="7.11"></a>
+- Provides access to a Micro HDMI for debug purpose
+- Also allows you to insert a nano SIM card or a 4FF Plastic eSIM card
+- 
 > [!CAUTION]
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
 
@@ -274,14 +307,24 @@ M12 to RJ45 Cable :
 | J16.19| **+5 V Power (power EDID/DDC)**
 
 ---
-## 8 - MAINTENANCE <a name="8"></a>
-### 8.1 - Change the RTC battery <a name="8.1"></a>
+## 8 - OPTIONAL MODULES <a name="8"></a>
+### 8.1 - SSD <a name="8.1"></a>
+### 8.2 - 4G LTE <a name="8.2"></a>
+### 8.3 - 5G RedCap <a name="8.3"></a>
+### 8.4 - AI Accelerator <a name="8.4"></a>
+### 8.5 - GNSS RTK+IMU <a name="8.5"></a>
+### 8.6 - Multi-Protocol Wireless Network co-processor <a name="8.5"></a>
+### 8.7 - LoRa/SigFox <a name="8.5"></a>
+
+## 9 - MAINTENANCE <a name="9"></a>
+
+### 9.1 - Change the RTC battery <a name="9.1"></a>
 
 This product include a ML2032 rechargeable battery (lithium manganese dioxide, 3V3, 64mAh) in order to maintain the Real Time Clock and datalog at startup with the correct time without waiting an NTP or GNSS time syncronisation.
 > [!CAUTION]
 > Change the battery every 10 years. Contact the after sale.
 
-### 8.2 - Change an SSD <a name="8.2"></a>
+### 9.2 - Change an SSD <a name="9.2"></a>
 
 When performing continuous data logging, for example for video, the SSDs are components that wear out and must be replaced periodically.  
 This replacement interval must be calculated based on the characteristics of the SSDs (Size, TBW), the frequency of writes, and the RAID mode.
@@ -299,36 +342,25 @@ This replacement interval must be calculated based on the characteristics of the
 > Contact the after sale.    
 
 ---
-## 8.3 - Repair a board <a name="8.3"></a>
+## 9.3 - Repair a board <a name="9.3"></a>
 
 > [!TIP]
 > If you wish to repair a faulty card yourself that is no longer under warranty, here is some useful information.
 > The board contains 0201 SMD components, which cannot be changed manually.
 > We can take care of the repair or replacement of a component or of a board. Contact the after sale.
 ### Fuses
-| Fuses      | MPN | Description|                                                                                                  
+| Fuses      | Package | Description|                                                                                                  
 |------------|-----|------------|
-| **F1**     | BSMD2920-400-30V | 30VDC/4A Resettable Fuse 
-| **F2, F5** | FMC16302WHTP | 32VDC/3A                                                       
-### Test pads
-| Test pads      | Description     |                                                                                                  
-|----------------|-----------------|
-| **TP1**        | xxxx.       
-| **TP2**        | xxxx.  
-| **TP3**        | xxxx.  
-| **TP4**        | xxxx.  
-| **TP5**        | xxxx.  
-| **TP6**        | xxxx.                                                                
-
-
+| **F1**     | 2920 | 30VDC, 4A, 4s, Resettable Fuse 
+| **F2, F5** | 0603 | 32VDC, 3A Fuse                                                     
 ---
-## 9 - SOFTWARE SUPPORT <a name="9"></a>
+## 10 - SOFTWARE SUPPORT <a name="10"></a>
 
 Product web page : 	https://austral-eng.com/en/xplorer-cm5/  
 Online Software Wiki : 	https://github.com/austral-electronics/Xplorer
 
 ---
-## 10 - CONTACT <a name="10"></a>
+## 11 - CONTACT <a name="11"></a>
 
 This product can be sold by unit for evaluation or in volume and is designed to fit to your needs (memories, wireless, AI, accessories…).  
 It can be customized with your company's visual for 100 units (logo, colors, marking...).  
