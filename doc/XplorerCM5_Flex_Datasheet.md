@@ -27,7 +27,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
   - [7.11 - Right cap : Micro HDMI & nano SIM card](#7.11)
 - **[8 - OPTIONAL MODULES](#8)**
   - [8.1 - SSD](#8.1)
-  - [8.2 - 4G LTE](#8.2)
+  - [8.2 - 4G LTE-A](#8.2)
   - [8.3 - 5G RedCap](#8.3)
   - [8.4 - AI Accelerator](#8.4)
   - [8.5 - GNSS RTK+IMU](#8.5)
@@ -274,16 +274,19 @@ Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.t
 
 ### 7.10 - Left cap : BOOT @ uSD-CARD <a name="7.10"></a>
 - Provides access to a boot switch to launch the bootloader via USB-C. The board is in bootloader mode when it is switched toward the SMA connectors.  
-- Also allows you to insert a micro SD card for storage or cybersecurity. 
+- Also allows you to insert a micro SD card for storage or cybersecurity (Push Pull connector). 
 > [!CAUTION]
+> It is possible to insert the SD card next to the connector and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal.  
 ### 7.11 - Right cap : Micro HDMI & nano SIM card <a name="7.11"></a>
 - Provides access to a Micro HDMI for debug purpose
-- Also allows you to insert a nano SIM card or a 4FF Plastic eSIM card
-- 
+- Also allows you to insert a nano SIM card or a 4FF Plastic eSIM card (Push Pull connector)
 > [!CAUTION]
+> It is possible to insert the SD card next to the connector and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
+> The Micro HDMI connector is fragile and not designed for harsh environments. Use it only for debugging in a protected environment.
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
 
+Micro HDMI Pinout:
 | Pin   | Name                                                                               
 |-------|-|
 | J16.1 | **Hot Plug Detect/HEC-**
@@ -309,8 +312,55 @@ Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.t
 ---
 ## 8 - OPTIONAL MODULES <a name="8"></a>
 ### 8.1 - SSD <a name="8.1"></a>
-### 8.2 - 4G LTE <a name="8.2"></a>
+The RPI CM5 module includes an eMMC with up to 64GB of storage that can be configured as read-only to ensure that the OS is not corrupted. An additional SSD is recommended for storing data logs.  
+
+The main SSD is a M.2 key M 2230 NVMe SSD (Up to 2TB in 2025).  
+The secondary SSD is a M.2 key M 2230 or 2242 NVMe SSD (Up to 4TB in 2025).  
+SSDs can be configured in RAID 0 or 1 to create a robust NAS.  
+SSDs can be industrial grade and/or feature an AES256 encryption (contact us).
+
+By default, the SSDs installed are:
+- Up to 512GB: [Samsung PM991a](https://github.com/austral-electronics/Xplorer/blob/main/datasheets/SSD/256GB/Samsung%20PM991a-M.2-22x30-SSD-Datasheet_-v0.1_for-Gen_.pdf) 
+- From 1TB: [Crucial P310](https://github.com/austral-electronics/Xplorer/blob/main/datasheets/SSD/1TB/crucial-P310-2230-b2c-product-flyer-en_combination.pdf)
+
+### 8.2 - 4G LTE-A <a name="8.2"></a>
+The 4G LTE-A functionality is provided by an M.2 key B 3042 module.
+The default model installed is the [Quectel EM60K-GL](https://www.quectel.com/product/lte-a-em060k-series/#summary).  
+| Item   | Description                                                                               
+|-------|-|
+| Technology | LTE - cat 6
+| Region | Global
+| Fallback | 3G 
+| Max DL Speed | 300 Mbps
+| Max UL Speed | 50 Mbps
+| Temperature | -25 - +75 °C
+| LTE Bands | B1, B2, B3, B4, B5, B7, B8, B12, B13, B14, B17, B18, B19, B20, B25, B26, B28, B29, B30, B32, B34, B38, B39, B40, B41, B42, B43, B46, B48, B66, B71
+| GNSS | GPS, Galileo, GLONASS, BDS, QZSS
+| Chipset | Qualcomm SDX12
+
+The documentation is available [here](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/EM060K)
+
 ### 8.3 - 5G RedCap <a name="8.3"></a>
+
+The 5G RedCap functionality is provided by an M.2 key B 3042 module.
+The default model installed is the [SIMCOM SIM8230G-M2](https://www.simcom.com/product/SIM8230G-M2.html).
+This model is low power and compatible with the n25 and n26 bands that will be used for Starlink and AST Mobile **Direct-To-Cell**.
+
+| Item   | Description                                                                               
+|-------|-|
+| Technology | 5G sub-6, 3GPP Rel-17 RedCap, 1T2R/1T1R operation
+| Region | Global
+| Fallback | 4G LTE 
+| Max DL Speed | 220 Mbps
+| Max UL Speed | 100 Mbps
+| Temperature | -30 - +70 °C
+| 5G Bands | n1, n2, n3, n5, n7, n8, n12, n13, n14, n18, n2à, n25, n26, n28, n30, n38, n40, n41, n48, n66, n70, n71, n77, n78, n79 
+| LTE Bands | B1, B2, B3, B4, B5, B7, B8, B12, B13, B14, B17, B18, B19, B20, B25, B26, B28, B30, B34, B38, B39, B40, B41, B42, B43, B48, B66, B71
+| GNSS | GPS, Galileo, GLONASS, BeiDou
+| Chipset | Qualcomm SDX35
+
+The documentation is available [here](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/SIM8230G-M2)
+
 ### 8.4 - AI Accelerator <a name="8.4"></a>
 ### 8.5 - GNSS RTK+IMU <a name="8.5"></a>
 ### 8.6 - Multi-Protocol Wireless Network co-processor <a name="8.5"></a>
@@ -337,7 +387,7 @@ This replacement interval must be calculated based on the characteristics of the
 > Contact the after sale. 
 #### Close the enclosure
 > [!CAUTION]
-> The O-ring must be replaced and greased after each opening to ensure a good seal.
+> The Butyle sealant must be cleaned and replaced after each opening to ensure a good seal.
 > Tef-gel must be used between the stainless steel screws and the aluminium enclosure to limit corrosion.
 > Contact the after sale.    
 
@@ -351,7 +401,7 @@ This replacement interval must be calculated based on the characteristics of the
 ### Fuses
 | Fuses      | Package | Description|                                                                                                  
 |------------|-----|------------|
-| **F1**     | 2920 | 30VDC, 4A, 4s, Resettable Fuse 
+| **F1**     | 2920 | 30VDC, 4A, 4s Resettable Fuse 
 | **F2, F5** | 0603 | 32VDC, 3A Fuse                                                     
 ---
 ## 10 - SOFTWARE SUPPORT <a name="10"></a>
