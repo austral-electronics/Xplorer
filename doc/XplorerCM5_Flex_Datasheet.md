@@ -1,9 +1,14 @@
 # <code style="color : BLACK">XPLORER CM5 FLEX - Datasheet - 🅰🆄🆂🆃🆁🅰🅻 Electronics</code>
+
+**Xplorer CM5 – Waterproof Rugged Industrial Edge IoT/AIoT Controller & Embedded Mission Computer – Raspberry PI CM5 & Hailo AI Ecosystems**
+
+Xplorer CM5 are a familly of products. They can be used when reliability is not an option for IIoT, AIoT & Edge Gateways or Controllers for Smart, Connected Automation and Supervision but also as Embedded Mission Computers for Sea, Air & Land Intelligent Mobility in harsh environment.
+
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Overview.png)
 ## 📚 Table of Contents
-**[PRODUCT HIGHLIGHT](#0)** 
-**[1 - SWAP-C MODULAR DESIGN](#1)** 
-**[2 - TECHNICAL SPECIFICATIONS](#2)** 
+- **[PRODUCT HIGHLIGHT](#0)** 
+- **[1 - SWAP-C MODULAR DESIGN](#1)** 
+- **[2 - TECHNICAL SPECIFICATIONS](#2)** 
 - **[3 - ORDERING INFORMATION](#3)**
 - **[4 - OPTIONAL ACCESSORIES](#4)**
 - **[5 - DIMENSIONS](#5)**
@@ -29,15 +34,15 @@
     
 ---
 ## PRODUCT HIGHLIGHT <a name="0"></a>
-- ✅ **Raspberry PI CM5** based waterproof rugged industrial edge IoT/AIoT gateway, embedded mission computer, In-vehicle/Boat Smart Hub, Roadside computer…
-- ✅ Ecosystem with a **huge community** facilitating support, scalability, and updates
-- ✅  **Future Proof** and **Highly customizable** modular design
-- ✅  **Best in class wireless connectivity capability** (WiFi, BT, BLE, GNSS, 4G LTE, 5G, Direct-To-Cell Ready, NB-IoT NTN Ready, LoRa, SigFox, Matter, Thread, Zigbee...)
-- ✅  Optional **Hailo AI Accelerator** providing up to 2x 26 TOPS of AI for machine learning, video analytics, smart automation and supervision
-- ✅  **Rich in connectivity** and industrial field buses (1x GbE, 8x Serials, 2x CANbus, DAQ)
-- ✅  **Numerous storage** solutions (eMMC, Multiples M.2 SSD, uSD card, USB-C drive)
-- ✅  **Cybersecurity** (TPM2.0, AES256 SSD option, Unique ID, security uSD…)
-- ✅  **B2B Ready** : customize configuration, markings and packaging
+✅ **Raspberry PI CM5** based waterproof rugged industrial edge IoT/AIoT gateway, embedded mission computer, In-vehicle/Boat Smart Hub, Roadside computer…  
+✅ Ecosystem with a **huge community** facilitating support, scalability, and updates  
+✅  **Future Proof** and **Highly customizable** modular design   
+✅  **Best in class wireless connectivity capability** (WiFi, BT, BLE, GNSS, 4G LTE, 5G, Direct-To-Cell Ready, NB-IoT NTN Ready, LoRa, SigFox, Matter, Thread, Zigbee...)  
+✅  Optional **Hailo AI Accelerator** providing up to 2x 26 TOPS of AI for machine learning, video analytics, smart automation and supervision  
+✅  **Rich in connectivity** and industrial field buses (1x GbE, 8x Serials, 2x CANbus, DAQ)  
+✅  **Numerous storage** solutions (eMMC, Multiples M.2 SSD, uSD card, USB-C drive)  
+✅  **Cybersecurity** (TPM2.0, AES256 SSD option, Unique ID, security uSD…)  
+✅  **B2B Ready** : customize configuration, markings and packaging  
 
 ## 1 - SWAP-C MODULAR DESIGN <a name="1"></a>
 ![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Inside.png)
@@ -69,17 +74,18 @@ All cables and antennas are standard and available for purchase off the shelf fo
 
 ## 6 - INSTALLATION <a name="6"></a>
 
-The Xplorer CM5 is thermally designed to be installed vertically with the M12 connectors facing downwards and the SMA connectors facing upwards.
-By default, the mounting is wall-mounted, but DIN rail mounting is available as an option.
-If you do not wish to drill holes, you can attach the product using two strips of 3M Dual Lock after thoroughly degreasing the surfaces. We can also supply carbon supports with inserts to be bonded with epoxy glue.
+The Xplorer CM5 is thermally designed to be installed vertically with the M12 connectors facing downwards and the SMA connectors facing upwards.  
+By default, the mounting is wall-mounted, but DIN rail mounting is available as an option.  
+If you do not wish to drill holes, you can attach the product using two strips of 3M Dual Lock after thoroughly degreasing the surfaces.  
+We can also supply carbon supports with inserts to be bonded with epoxy glue.  
 
 ⚠️ In an exposed environment, put caps on unused connectors.
 
 ## 7 - ELECTRICAL INTERFACES <a name="7"></a>
 ### 7.1 - CAN1/PWR <a name="7.1"></a>
-This connector is compatible with the standardised DeviceNet/NMEA2000 5-pin male⁉️ A-coded M12 screw connector.
-It allows both the Xplorer CM5 to be powered and communication via a CANbus or a CAN-FD bus.
-If you are connecting the Xplorer CM5 directly to an NMEA2000 bus, place it close to the power supply T in order to minimise voltage drops.
+This connector is compatible with the standardised DeviceNet/NMEA2000 5-pin male⁉️ A-coded M12 screw connector.  
+It allows both the Xplorer CM5 to be powered and communication via a CANbus or a CAN-FD bus.  
+If you are connecting the Xplorer CM5 directly to an NMEA2000 bus, place it close to the power supply T in order to minimise voltage drops.  
 | Pin  | Name            | Reference | N2K cable | Description                                                                          
 |----------------------- |-----------|-----------|-------------|-|
 | J17.1| **CAN1-SHIELD** | GND       | Shield    | CAN1 Shield
@@ -126,7 +132,8 @@ It allows data aquisition and more field connectivity:
     - 3kV Isolation, 5 Mbps Max, ESD +/-8kV, +/-58V DC bus fault protection, +/-12V common-mode voltage range.
     - Uses the Microchip [MCP2518FDT](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/External-CAN-FD-Controller-with-SPI-Interface-DS20006027B.pdf) controller connected to SPI0.2
 
-The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI0.1. It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
+The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI0.1.  
+It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
 
 https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r
 https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz
@@ -276,7 +283,7 @@ This product include a ML2032 rechargeable battery (lithium manganese dioxide, 3
 
 ### 8.2 - Change an SSD <a name="8.2"></a>
 
-When performing continuous data logging, for example for video, the SSDs are components that wear out and must be replaced periodically.
+When performing continuous data logging, for example for video, the SSDs are components that wear out and must be replaced periodically.  
 This replacement interval must be calculated based on the characteristics of the SSDs (Size, TBW), the frequency of writes, and the RAID mode.
    
 #### Removing the board to acces to the SSD under the board
@@ -317,20 +324,21 @@ This replacement interval must be calculated based on the characteristics of the
 ---
 ## 9 - SOFTWARE SUPPORT <a name="9"></a>
 
-Product web page : 	https://austral-eng.com/en/xplorer-cm5/ 
+Product web page : 	https://austral-eng.com/en/xplorer-cm5/  
 Online Software Wiki : 	https://github.com/austral-electronics/Xplorer
 
 ---
 ## 10 - CONTACT <a name="10"></a>
 
-This product can be sold by unit for evaluation or in volume and is designed to fit to your needs (memories, wireless, AI, accessories…). It can be customized with your company's visual for 100 units (logo, colors, marking...). Austral electronics is a design office, we can support you on your specific needs in electronics, embedded computing, specific Linux, sector specific certification...
+This product can be sold by unit for evaluation or in volume and is designed to fit to your needs (memories, wireless, AI, accessories…).  
+It can be customized with your company's visual for 100 units (logo, colors, marking...).  
+Austral electronics is a design office, we can support you on your specific needs in electronics, embedded computing, specific Linux, sector specific certification...
 
 **Contact us to begin the pricing and ordering process**
 
- **AUSTRAL ELECTRONICS**
- Espace Teknica, 4 Rue Galilée
- Parc Technologique de Soye
- 56270 Ploemeur – FRANCE
-
- **Mail :** contact@austral-eng.com
- **Website :** http://austral-eng.com/en
+**AUSTRAL ELECTRONICS**  
+Espace Teknica, 4 Rue Galilée  
+Parc Technologique de Soye  
+56270 Ploemeur – FRANCE  
+**Mail :** contact@austral-eng.com  
+**Website :** http://austral-eng.com/en
