@@ -37,7 +37,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.4.9 - Test IN4_RXDC on ttyUSB2](#4.4.9)
         - [4.4.10 - Test IN3_RXDD on ttyUSB3](#4.4.10)
     - [4.5 - Test CAN-FD buses](#4.5)
-        - [4.5.1 - Check the driver](#4.5.1)
+        - [4.5.1 - Check the SPI driver](#4.5.1)
         - [4.5.2 - Test CAN1](#4.5.2)
         - [4.5.3 - Test CAN2](#4.5.3)
     - [4.6 - Test CyberSecurity Chips](#4.6)
@@ -633,7 +633,7 @@ Read Test :
 cat /dev/ttyUSB3
 ```
 ## 4.5 - Test CAN-FD buses <a name="4.5"></a>
-### 4.5.1 - Check the driver <a name="4.5.1"></a>
+### 4.5.1 - Check the SPI driver <a name="4.5.1"></a>
 ```
 dmesg | grep -i -E "(mcp|spi)"
 ```
@@ -697,9 +697,6 @@ cansend can0 7DF#0201050000000000
 
 ## 4.6 - Test CyberSecurity Chips <a name="4.6"></a>
 ### 4.6.1 - Check I2C bus <a name="4.6.1"></a>
-[I2C Tools Tutorial](https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/)
-[Check ATECC608A Chip](https://wiki.seeedstudio.com/check_Encryption_Chip/)
-
 Enable I2C (raspi-config -> Interface options -> I2C -> Enable):
 ```
 sudo raspi-config
@@ -716,7 +713,6 @@ and:
 ```
 sudo apt-get install i2c-tools
 ```
-[I2C Tools Tutorial](https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/)
 List I2C & TPM devices and I2C pilot :
 ```
 sudo i2cdetect -l|sort && i2cdetect -y -r 13 && ls -l /dev/tpm* && lsmod | grep i2c
@@ -746,9 +742,10 @@ i2c_gpio               49152  0
 i2c_algo_bit           49152  1 i2c_gpio
 i2c_dev                49152  0
 ```
-
 TPM2.0 with the SLB9673AU20FW2610XTMA1 : Adr 2E -> 0x2E or UU
 Option CryptoAuthentication with the ATECC608A-MAHDA : Adr 0x60 -> 0x60 or UU
+
+[I2C Tools Tutorial](https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/)
 
 ### 4.6.2 - Check TPM2.0 Chip <a name="4.6.2"></a>
 
@@ -822,72 +819,13 @@ Displays a Unique ID:
 ```
 0123ceb0b0dbc3d2ee
 ```
-
-#### DAQ :
-The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0.  
-It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
-
-https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r
-https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz
-https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html
-https://www.youtube.com/watch?v=jSnT0_RSBUk
-https://github.com/SpazzTech/AD5592_Snack_Board
-https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html
-https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
-### 💪🏻 Benchmark
-Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
-https://pimylifeup.com/raspberry-pi-5-benchmark/
-
-#### Get the boot time
-```
-$ systemd-analyze
-Startup finished in 1.342s (kernel) + 4.842s (userspace) = 6.184s 
-graphical.target reached after 4.830s in userspace.
-```
-#### Pi Benchmark script
-```
-$ sudo curl https://raw.githubusercontent.com/TheRemote/PiBenchmarks/master/     Category                  Test                      Result     
-HDParm                    Disk Read                 308.40 MB/sec            
-HDParm                    Cached Disk Read          212.31 MB/sec            
-DD                        Disk Write                110 MB/s                 
-FIO                       4k random read            23621 IOPS (94486 KB/s)  
-FIO                       4k random write           25252 IOPS (101011 KB/s) 
-IOZone                    4k read                   44281 KB/s               
-IOZone                    4k write                  67744 KB/s               
-IOZone                    4k random read            44411 KB/s               
-IOZone                    4k random write           55907 KB/s               
-
-                          Score: 13083                                       
-```
-#### GeekBench6
-```
-cd ~/Downloads
-wget https://cdn.geekbench.com/Geekbench-6.4.0-LinuxARMPreview.tar.gz
-tar xf Geekbench-6.4.0-LinuxARMPreview.tar.gz
-rm Geekbench-6.4.0-LinuxARMPreview.tar.gz
-cd Geekbench-6.4.0-LinuxARMPreview
-./geekbench6
-```
-```
-890 Single core
-1936 Multi-core
-```
-#### sysbench
-```
-sudo apt -y install sysbench
-sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
-```
-```
-CPU speed:
-    events per second:  4036.34
-```
-
-### 💾  Memories
-
-### PCIe M.2 Modules
-The 'lspci' command must discover the ASM1184e chip and equiped M.2 modules (below with one SSDs and one Hailo AI module).
+## 4.7 - Test the storages <a name="4.7"></a>
+### 4.7.1 - List PCIe peripherals <a name="4.7.1"></a>
+The 'lspci' command must discover the ASM1184e PCIe switch and equiped M.2 modules (below with one KIOXIA SSDs and one Hailo-8 AI module).
 ```
 lspci
+```
+```
 0001:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
 0001:01:00.0 PCI bridge: ASMedia Technology Inc. ASM1184e 4-Port PCIe x1 Gen2 Packet Switch
 0001:02:01.0 PCI bridge: ASMedia Technology Inc. ASM1184e 4-Port PCIe x1 Gen2 Packet Switch
@@ -898,16 +836,13 @@ lspci
 0001:06:00.0 Co-processor: Hailo Technologies Ltd. Hailo-8 AI Processor (rev 01)
 0002:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
 0002:01:00.0 Ethernet controller: Raspberry Pi Ltd RP1 PCIe 2.0 South Bridge
-
-lspci -vvv
-
 ```
-
-
-### USB M.2 Modules
-The 'lsusb' command must discover the FT4232H chip, equiped M.2 type B modules (below a 4G/LTE Qualcomm M.2 module) and external USB-C device.
+### 4.7.2 - List USB peripherals <a name="4.7.2"></a>
+The 'lsusb' command must discover the FT4232H USB2 to 4 serials chip, equiped M.2 type B modules (below a 4G/LTE Qualcomm M.2 module) and external USB-C device if connected.
 ```
 lsusb
+```
+```
 Bus 001 Device 002: ID 1e0e:9001 Qualcomm / Option SimTech, Incorporated
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 005 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
@@ -916,19 +851,13 @@ Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
+### 4.7.3 - Test a Type-C External Flash Drive  <a name="4.7.2"></a>
 
-### USB-C peripherals
-
-#### USB-C Drive
-Test with a Samsung MUF-64DA/PAC key (64GB, USB3.1, <300MB/S read speed, reversible ports, formated in FAT)
-https://www.samsung.com/uk/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/
-
-https://pimylifeup.com/raspberry-pi-mount-usb-drive/
-https://www.jeffgeerling.com/blog/2020/raspberry-pi-usb-boot-uasp-trim-and-performance
-
-
+This test show you how to test a USB3 peripheral, it is made with a small USB-C key connected to the USB-C, it uses the [Samsung MUF-64DA/PAC](https://www.samsung.com/uk/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/) (64GB, USB3.1, <300MB/S read speed, reversible ports, formated in FAT, Waterproof)
 ```
-$ lsusb
+lsusb
+```
+```
 ...
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 005 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
@@ -939,9 +868,11 @@ Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ...
 ```
-⚠️ You must see Linux "Linux Foundation 3.0" for USB 3.0 peripherals
+⚠️ You must see the "Samsung Electronics Co., Ltd Type-C" device and "Linux Foundation 3.0" for USB 3.0 peripherals
 ```
-$ lsusb -t | grep xhci
+lsusb -t | grep xhci
+```
+```
 /:  Bus 05.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M
 /:  Bus 04.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/2p, 480M
 /:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M
@@ -951,7 +882,9 @@ $ lsusb -t | grep xhci
 
 To check USB version of your disk:
 ```
-$ sudo lsusb -v 2>/dev/null | grep -e "^Bus\|bcdUSB"
+sudo lsusb -v 2>/dev/null | grep -e "^Bus\|bcdUSB"
+```
+```
 ...
 Bus 003 Device 002: ID 04e8:6300 Samsung Electronics Co., Ltd Type-C
   bcdUSB               3.10
@@ -959,7 +892,9 @@ Bus 003 Device 002: ID 04e8:6300 Samsung Electronics Co., Ltd Type-C
 ```
 Disk size and name :
 ```
-$ lsblk -D
+lsblk -D
+```
+```
 NAME         DISC-ALN DISC-GRAN DISC-MAX DISC-ZERO
 sda                 0      512B       0B         0
 └─sda1              0      512B       0B         0
@@ -968,27 +903,42 @@ mmcblk0             0        4M     2.2G         0
 └─mmcblk0p2         0        4M     2.2G         0
 mmcblk0boot0        0        4M     2.2G         0
 
-
-$ sudo cat /proc/mounts
+```
+```
+sudo cat /proc/mounts
+```
+```
 ...
-/dev/sda1 /media/praude/Samsung\ USB vfat rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,showexec,utf8,flush,errors=remount-ro 0 0
+/dev/sda1 /media/xplr/Samsung\ USB vfat rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,showexec,utf8,flush,errors=remount-ro 0 0
 ...
+```
 
-$ cd /media/praude/Samsung\ USB/
-$ ls -l
+```
+cd /media/xplr/Samsung\ USB/
+ls -l
+```
 
-$ ls -l /dev/disk/by-uuid
+```
+ls -l /dev/disk/by-uuid
+```
+```
 total 0
 lrwxrwxrwx 1 root root 10 Aug  1 14:20 3FFA-6704 -> ../../sda1
 lrwxrwxrwx 1 root root 15 Jul 26 16:17 d6ecfcd5-2703-41bf-9301-10c403b6fb0c -> ../../mmcblk0p2
 lrwxrwxrwx 1 root root 15 Jul 26 16:17 F737-8E10 -> ../../mmcblk0p1
-
-$ df -h
+```
+```
+df -h
+```
+```
 ...
-/dev/sda1        60G  3.5M   60G   1% /media/xxxxx/Samsung USB
+/dev/sda1        60G  3.5M   60G   1% /media/xplr/Samsung USB
 ...
-
-$ sudo fdisk -l
+```
+```
+sudo fdisk -l
+```
+```
 ...
 Disk /dev/sda: 59.75 GiB, 64160400896 bytes, 125313283 sectors
 Disk model: Type-C          
@@ -999,14 +949,14 @@ Disklabel type: dos
 Disk identifier: 0x00000000
 
 Device     Boot Start       End   Sectors  Size Id Type
-
-$ sudo blkid /dev/sda1
+```
+```
+sudo blkid /dev/sda1
+```
+```
 /dev/sda1: LABEL="Samsung USB" UUID="3FFA-6704" BLOCK_SIZE="512" TYPE="vfat"
 ```
-
-USB-C disk read speed:
-https://admantium.medium.com/raspberry-pi-comparing-hdd-disk-read-and-write-performance-for-external-usb-and-sata-drives-4d9f5e06e274
-
+Benchmark the Type-C USB Flash Drive read speed:
 ```
 sudo apt-get install hdparm
 sudo hdparm -tT --direct /dev/sda1
@@ -1017,21 +967,20 @@ sudo hdparm -tT --direct /dev/sda1
  Timing O_DIRECT disk reads: 546 MB in  3.00 seconds = 181.89 MB/sec
 ```
 ```
-sudo dd bs=10M count=500 if=/dev/sda1 of=/home/praude/test.bin
+sudo dd bs=10M count=500 if=/dev/sda1 of=/home/xplr/test.bin
 ```
 ```
 ...
 5242880000 bytes (5.2 GB, 4.9 GiB) copied, 42.4844 s, 123 MB/s
 ```
-USB-C disk write speed:
+Benchmark the Type-C USB Flash Drive write speed:
 ```
-sudo dd bs=2M count=500 if=/dev/sda1 of=/media/praude/Samsung\ USB/test.bin
+sudo dd bs=2M count=500 if=/dev/sda1 of=/media/xplr/Samsung\ USB/test.bin
 ```
 ```
 ...
 1048576000 bytes (1.0 GB, 1000 MiB) copied, 34.7954 s, 30.1 MB/s
 ```
-
 ### Test NVMe SSD(s)
 The main SSD is a 2232 Key M, M.2 module installed on the J15 slot (CM5 side).
 To make a Raid 0 or 1 NAS, another 2232/2242 Key M, M.2 SSD can be installed on the J4 slot (Bottom plate side). A third 2232/2242 Key B, M.2 SSD can also be used if needed.
@@ -1122,6 +1071,64 @@ sudo dd if=/dev/mmcblk0 of=/dev/mmcblk2 bs=4M status=progress
 To clone the SD to the main SSD:
 ```
 sudo dd if=/dev/mmcblk2 of=/dev/nvme0n1 bs=4M status=progress
+```
+#### DAQ :
+The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0.  
+It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
+
+https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r
+https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz
+https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html
+https://www.youtube.com/watch?v=jSnT0_RSBUk
+https://github.com/SpazzTech/AD5592_Snack_Board
+https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html
+https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
+### 💪🏻 Benchmark
+Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
+https://pimylifeup.com/raspberry-pi-5-benchmark/
+
+#### Get the boot time
+```
+$ systemd-analyze
+Startup finished in 1.342s (kernel) + 4.842s (userspace) = 6.184s 
+graphical.target reached after 4.830s in userspace.
+```
+#### Pi Benchmark script
+```
+$ sudo curl https://raw.githubusercontent.com/TheRemote/PiBenchmarks/master/     Category                  Test                      Result     
+HDParm                    Disk Read                 308.40 MB/sec            
+HDParm                    Cached Disk Read          212.31 MB/sec            
+DD                        Disk Write                110 MB/s                 
+FIO                       4k random read            23621 IOPS (94486 KB/s)  
+FIO                       4k random write           25252 IOPS (101011 KB/s) 
+IOZone                    4k read                   44281 KB/s               
+IOZone                    4k write                  67744 KB/s               
+IOZone                    4k random read            44411 KB/s               
+IOZone                    4k random write           55907 KB/s               
+
+                          Score: 13083                                       
+```
+#### GeekBench6
+```
+cd ~/Downloads
+wget https://cdn.geekbench.com/Geekbench-6.4.0-LinuxARMPreview.tar.gz
+tar xf Geekbench-6.4.0-LinuxARMPreview.tar.gz
+rm Geekbench-6.4.0-LinuxARMPreview.tar.gz
+cd Geekbench-6.4.0-LinuxARMPreview
+./geekbench6
+```
+```
+890 Single core
+1936 Multi-core
+```
+#### sysbench
+```
+sudo apt -y install sysbench
+sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
+```
+```
+CPU speed:
+    events per second:  4036.34
 ```
 
 
