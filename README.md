@@ -1,101 +1,1697 @@
-# Xplorer Series – Rugged Industrial Edge IoT/AIoT Controller &amp; Embedded Mission Computers – Raspberry PI CM4/CM5, Google Edge &amp; Hailo AI Ecosystems
-*[www.austral-elec.com](http://austral-eng.com/en/accueil-english-2/) - Intelligent Technologies for Marine, Industrial IoT and Unmanned Vehicles*  
+# <code style="color : BLACK">XPLORER CM5 - Software Guide - 🅰🆄🆂🆃🆁🅰🅻 Electronics</code>
+**Xplorer CM5 – Waterproof Rugged Industrial Edge IoT/AIoT Controller & Embedded Mission Computer – Raspberry PI CM5 & Hailo AI Ecosystems**  
 
-### [Xplorer Product line Web Page](https://austral-eng.com/en/xplorer-cm5/) 🔎
-### [Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/) ❓💲⏳🛒
+Xplorer CM5 are a familly of products. They can be used when reliability is not an option for IIoT, AIoT & Edge Gateways or Controllers for Smart, Connected Automation and Supervision but also as Embedded Mission Computers for Sea, Air & Land Intelligent Mobility in harsh environment.
 
-[![Xplorer](/images/XplorerProductLine_Large.png)](https://austral-eng.com/en/xplorer-cm5/)
+![image](https://github.com/austral-electronics/Xplorer/raw/main/images/Xplorer_CM5_Flex_Overview.png)
+*[www.austral-eng.com](http://austral-eng.com/en/accueil-english-2/) - Intelligent Technologies for Marine, Industrial IoT and Unmanned Vehicles*  
 
-*Xplorer4 & 5 Features – Wall mounted CNC black anodized aluminium enclosure*  
-*Ready for the Compute module CM5, Matter, Starlink Direct To Cell, New Generative AI modules…*  
+---
+# 📚 TABLE OF CONTENTS
+- **[1 - INTRODUCTION](#1)**
+- **[2 - FLASH AN IMAGE](#2)**
+  - [2.1 Install the flashing tools on your computer](#2.1)
+  - [2.2 Flash procedure](#2.2)
+- **[3 - GETTING STARTED](#3)**
+    - [3.1 - Launch a SSH console](#3.1)
+    - [3.2 - Update the linux and eeprom](#3.2)
+    - [3.3 - Patch the configuration file](#3.3)
+    - [3.4 - Enable I2C](#3.4)
+    - [3.5 - Option : Activate a RS232 console](#3.5)
+    - [3.6 - Option : Static IP configuration](#3.6)
+    - [3.7 - Installation of usefull tools](#3.7)
 
-## Benefit from an uncompromising design :
-- **SWaP-C Optimization:** Cost-effective, industrial, rugged, waterproof and dustproof **IP67**, wide temperature range, miniaturized, very lightweight, very low power consumption, fanless…  
-- **Industrial, Marine & Vehicle field connectivity:**  
-– M12 Connectors with cost-effective on the selves cables  
-– Industrial Gigabit LAN Ready for IP Camera, Modbus TCP, Profinet, ETherNet/IP, BACnet, OPC-UA, MQTT, DDS, Websocket, ZMQ, UDP, TCP, NMEA OneNet…  
-– Multiples CANbus FD, RS232, RS485, Modbus, some with galvanic isolation, Digital and Analog I/O.  
-– And more connectivity using M.2 expansion.  
-- **🏆 Best in class wireless connectivity capability:** Wifi, Bluetooth, GNSS (RTK, INS), 3G, **4G LTE**, 5G, CAT-M1, NB-IoT, Wifi Halow, WiGig, **LoRa**, ZigFox, **ZigBee**, Thread, **Matter**, BLE Mesh, RF-ID UHF, SDR, ASK/FSK Modem, **Starlink Direct To Cell ready**…  
-- **🏆 Best in class flexibility:** Versatile and scalable through various M.2 modules, you can use a single hardware and software base for multiple projects.  
-- **🏆 Best in class community support:** Software support, OS and frameworks compatibility…  
-- **🏆 Best in class AI Power Efficiency:** 3 TOPS/W with the Hailo 8 TPU now and **11.4 TOPS/W** expected with the Hailo-10H TPU  
-- **Cybersecurity:** Your data are protected with a TMP2.0 secure cryptoprocessor.  
 
-## One product line, A huge versatility, Ulimited Possibilities
+---
+# 1 - INTRODUCTION <a name="1"></a>
+Welcome to the **software guide for the Xplorer CM5**, a ruggedized industrial edge IoT / AIoT controller and mission computer designed for harsh environments based on the [Raspberry Pi CM5](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032) 🍓🥧 module. The Xplorer CM5 series is engineered for reliability where failure is not an option—ideal for smart automation, connected infrastructure, unmanned systems, and embedded intelligence projects.
 
-[![AI_IoT_Meerkat](/images/AI_IoT_Meerkat.png)](https://austral-eng.com/en/xplorer-cm5/)  
-**Austral Xplorer4 and Xplorer5** are a family of products for use when **Reliability is not an option**. They can be used for **IIoT, AIoT & Edge Gateways or Controllers** but also as **Embedded Mission Computers** for **harsh environment**.  
-Installed near antennas, it is intented for a Web, Remote or voice HMI and can be used with or without AI, Storage, Wireless or Positioning options. Its powerfull AI can analyze tirelessly many IP cameras at the same time. It is design to Professional, Scientific, Defence industry, Academic project, Sailor and AI Geek in :
-
-## Smart, Connected Automation and Supervision :
-- **Industry 4.0, Energy, Oil & Gas:** Machine Automation, PLC/Cloud Gateway, Overall Equipement Effectiveness, Predictive Maintenance, Smart Quality control….  
-- **City Infrastructure Management:** Parking, Lighting, Occupancy Detection, Traffic control, Pedestrian Safety, Population Flow, Air/Water/Noise quality monitoring, Waste…
-Building, Ship: Automation, Voice Assistant, Energy, Safety, Security, Fire Control, Climate Control, HVAC…  
-- **Farming:** Smart supervision & automation for Animals & Plants  
-- **Store:** Smart thief surveillance  
-- **Medical, Independence Assistance:** Smart supervision & automation for Hospital bed, Handicap, Physical or mental loss of autonomy…  
-- **Sport:** Electronic referee, Statistics  
-- **Big Data Collection:** Site survey, Data+Video Recorder for AI training, Ocean Science (Survey, Buoy…)  
-- **DIY & Academic:**  
-    - **Residential, Boat, RV:** Smart surveillance and automation using Frigate AI/NVR + Home Assistant + Node-Red + a voice assistant  
-    - **Education:** ROS2, Node-Red, TensorFlow, OpenPLC… learning
-
-[![AI_City_Football](/images/AI_City_Football.png)](https://austral-eng.com/en/xplorer-cm5/)
-
-## Sea, Air & land Intelligent Mobility :
-Provide intelligence and connectivity to Boats, Unmanned Vehicles (UAV, USV, AUV), Robots, Special Vehicles, Farming vehicles, Offshore Energy, Oil & Gaz systems…  
-
-- **Software-Defined Vehicle:** AI Detection, Obstacle Avoidance, Navigation, ML Control-Command…  
-- **Marine Mission Computer:** True Wind Calculation, Sails automation, Autopilot brain, Foiler Flight Control System, MultiFunction Display gateway…  
-- **Consumable Military Hardware:** ITAR-free Training target, Decoy, Drone…  
-- **Voyage/Flight Data Recorder** for non IMO ship or unmanned vehicle  
-- **Tracking:** Cloud gateway  
-- **Human Attentivness Control** of Driver, Pilot, Skipper…  
-- **DIY Marine Computer:** Open Plotter platform for sailors
-
-[![Applications](/images/Applications.png)](https://austral-eng.com/en/xplorer-cm5/)
-
-## Ready to shape the future with low power, low latency, offline generative AI
-**The M.2 Hailo 8 TPU outperform onchip TPU solutions (iMX95, RK3588…) in performance and upgradability and outperform NVIDIA solutions in power efficiency :**  
-– **CM4+Hailo_8 vs Orin Nano 1/2:** Inference Time 13 times lower  
-– **CM4+Hailo 8 vs Orin Nano 2/2:** Double FPS and same inference time at 2/3 of the power  
-– **Hailo 8 vs Xavier NX :** “Similar performance at a fraction of power consumption and cost”  
-– **Hailo 8 vs AGX Xavier :** “NVIDIA solution is more flexible since you can also do training on the platform, while Hailo-8 is only made for low-power inference which it does at 20 times the power efficiency”.  
-
-**The new Asic based M.2 Hailo-10H TPU, expected Q4 2024, outperforms NVIDIA GPU based solution and Intel’s Core Ultra “AI Boost” NPU.**  
-“The Hailo-10 brings generative AI to the edge, it can run Llama2-7B with up to 10 tokens per second (TPS) at under 5W of power, while it can generate one image from text in under 5 seconds using Stable Diffusion 2.1 in the same power envelope. Like other many technologies, generative AI is moving from the cloud to the device itself enabling lower latency and offline support”.  
-
-[![Generative-AI](/images/Generative-AI.webp)](https://austral-eng.com/en/xplorer-cm5/)  
-*Evolution of edge AI from discriminative AI to generative AI – Source: Hailo’s blog*  
-
-## When Ubiquity and scalability meet miniaturization
-With its exceptional modularity (3x M.2 modules, 1x CPU module, 2x LPWAN multiprotocol modules), you can tailor the hardware to your needs with two PCB variants :  
-The **Model E** includes M.2 modules of 3 types B, E, M and a PCIE 2.0 packet switch :  
-- Type M 2230 is reserved for SSD.  
-- Type B will be used preferably for cellular communication but can be use also more SSD or advanced positionning.  
-- Type E includes a 2-lane PCIE to take full advantage of TPU performance but can be used also for Cellular IoT or advanced positionning.  
-
-The **Model M** includes M.2 modules of 2 types: 1xE and 2xM and a PCIE 3.0 packet switch to take full advantage of SSD performance and the new CM5 and Hailo10H products.  
-- Type M 2230 is reserved for an SSD  
-- Type B will be used preferably for cellular communication or advanced positionning.  
-- Type M 2242 for Hailo 8 or Hailo10H TPU, or more SSD
-
-[![Xplorer_PCB_1](/images/Xplorer_PCB_1.png)](https://austral-eng.com/en/xplorer-cm5/)  
-[![Xplorer_PCB_2](/images/Xplorer_PCB_2.png)](https://austral-eng.com/en/xplorer-cm5/)
-
-## Hardware Specifications
-[Preliminary specifications](https://austral-eng.com/en/xplorer-cm5/) 🔎   
+In this guide, we will cover only software aspects of the Xplorer CM5:
  
-## Configure your Xplorer
-[![Xplorer_Black_Blue](/images/Xplorer_Black_Blue.png)](https://austral-eng.com/en/xplorer-cm5/)  
-[Choose or configure your Xplorer](https://austral-eng.com/en/xplorer-cm5/) 🔎  
-[Keep me updated, Questions, Pricing...](https://austral-eng.com/keep-me-updated/) ❓💲⏳🛒  
+- 🏁 Getting started: installing tools, flashing firmware, booting up, and basic setup  
+- 🔧 Configuration and connectivity testing : Networks, Serials, CANbus, DAQ, Expansion M.2 modules (SSD, AI accelerator, Cellular, GNSS), optional welded modules (LoRa, Zigbee, Matter over Thread)    
+- 🔋 Energy consumption optimization 
+- 🧪 Supported operating systems and frameworks.
 
-## OS and framework Compatibility
-[OS and framework Compatibility](https://austral-eng.com/en/xplorer-cm5/) 🔎  
+Where to find more documentation :
 
-## Software Support
-👨‍💼✍💻 Will be here soon 👨‍💼✍💻  
+- For an overview on highlight and areas of application, please refer to our [Xplorer CM5 Web Page](https://austral-eng.com/en/xplorer-cm5/) or the [Xplorer CM5 Family Flyer](https://github.com/austral-electronics/Xplorer/tree/main/doc/Xplorer_CM5_OEM_Flyer.pdf).  
+- Regarding essential specifications, verify integration, building your configuration, pricing and ordering, please refer to our [Xplorer CM5 Flex Brief Sheet](https://github.com/austral-electronics/Xplorer/tree/main/doc/Xplorer_CM5_Flex_Datasheet_01.pdf).
+- Regarding detailed specifications, options, hardware architecture, electrical wiring and installation, maintenance, Please refer to the [Xplorer CM5 Flex Web Datasheet](https://github.com/austral-electronics/Xplorer/tree/main/doc/XplorerCM5_Flex_Datasheet.md).
+- When it comes to online software support for the features of this product, you've come to the right place, but you'll also may need to consult the extensive [documentation provided by the Raspberry Pi Foundation](https://www.raspberrypi.com/documentation/) and if you're working with AI, check out [Hailo's resources](https://hailo.ai/resources/).
 
+How to get support :
+
+- One of the greatest strengths of this ecosystem is the **reliability of the OS** with its **periodic updates** that help you keep up if you want with the last software developments and its vibrant community that can help you solve problems that are difficult to overcome and ensure that your company does not need multiple specialists. Consider joining the [official Raspberry Pi forums](https://forums.raspberrypi.com/).
+- Check [YouTube](https://www.youtube.com/results?search_query=raspberry+pi) regularly to keep up to date with the latest news and find countless tutorials.
+- [Austral Electronics](https://austral-eng.com/en/electronics-and-embedded-computing/) is a design office, we can support you on your specific needs in electronics, embedded computing, marine protocols, specific Linux, sector specific certification... Contact our customer support at contact@austral-eng.com.
+
+Whether you're integrating Xplorer CM5 into industrial systems, vehicle, marine or unmanned platforms, or deploying AI at the edge, this tutorial walks you step-by-step through the essential software setup and usage. Let’s get started! 🏁
+
+---
+# 2 - FLASH AN IMAGE <a name="2"></a>
+
+> [!NOTE] 
+>  An image with Raspberry PI OS Trixie Lite (64-bit) with default settings is pre-installed in the product. To test it first for the first time, go directly to the [chapter 3](#3).
+
+## 2.1 Install the flashing tools on your computer <a name="2.1"></a>
+
+To change the factory version or OS, you must first install the required tools on your computer.
+
+The Official Raspberry Pi CM5 flashing documentation on the [Compute Module CM5 IO Board is 👉 [here](https://www.raspberrypi.com/documentation/computers/compute-module.html#flash-compute-module-emmc)
+with a tutorial video 👉 [here](https://www.youtube.com/watch?v=SWv-WYlHJWQ&t=44s)
+
+Folow this tutorial to install **rpiboot** and **Raspberry Pi Imager** on your computer.
+
+## 2.2 Flash procedure <a name="2.2"></a>
+
+> [!CAUTION] Please note that with the Xplorer CM5 :
+>  - the J2 jumper of the Officiel I/O board is replace with a switch under the right cap.
+>  - This switch must be flip for the entire duration of the download.
+>  - The Xplorer CM5 is not powered via USB-C; it must be powered via CAN1-PWR during the entire flashing process.
+>  - If your PC prompts you to format disks via pop-up windows during the flashing process, ignore and close the windows.
+
+The flashing procedure is:
+- Disconnect USB-C and CAN1-PWR cables
+- Remove the cap on the right side of the enclosure
+- Flip the switch under this cap toward the SMA connectors
+- Power up via CAN1-PWR
+- Launch **rpiboot** on your PC
+```
+RPIBOOT: build-date 2025/05/19 pkg-version local 402baf02
+
+Please fit the EMMC_DISABLE / RPIBOOT jumper before connecting the power and USB cables to the target device.
+If the device fails to connect then please see https://rpltd.co/rpiboot for debugging tips.
+Waiting for BCM2835/6/7/2711/2712...
+```
+- Connect the USB-C cable
+- **rpiboot** should detect Xplorer CM5 and read several files
+```
+Directory not specified - trying default /usr/share/rpiboot/mass-storage-gadget64/
+read_file: Failed to read "2712/bootcode5.bin" from "/usr/share/rpiboot/mass-storage-gadget64/bootfiles.bin" - No such f
+ile or directory
+Trying local path mass-storage-gadget64/
+Sending bootcode.bin
+Successful read 4 bytes
+Waiting for BCM2835/6/7/2711/2712...
+Second stage boot server
+File read: mcb. bin
+File read: memsys00.bin
+File read: memsys01.bin
+File read: memsys02.bin
+File read: memsys03.bin
+File read: bootmain
+Loading: mass-storage-gadget64//config.txt
+File read: config.txt
+Loading: mass-storage-gadget64//boot.img
+File read: boot.img
+```
+- Launch **Raspberry Pi Imager** on your PC
+- Select a Raspberry PI5/CM5 model
+- Select your image :
+    - RPI OS without desktop (Recommanded):
+        - In raspberry Pi OS (Other) -> Raspberry PI OS Lite (64-bit) to select last Debian (Trixie factory delivery)
+        - Or 👉 [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/) to select an old LTS RPI OS image
+    - RPI OS with desktop :
+        - Last Debian Trixie 64 bits
+        - Or 👉 [here](https://downloads.raspberrypi.org/raspios_full_arm64/images/) to select an old LTS RPI OS image
+    - Or in Other general-purpose OS -> Ubuntu to select an Ubuntu desktop or server Image
+- Choose :
+    - **mmcblk0** for eMMC (recommanded for the OS)
+    - **nvme0n1** for the main NVMe SSD storage (you must change the boot order if you choose this drive)
+- Configure the settings, the default factory settings are :
+    - host: **xplorercm5.local**
+    - User : **xplr**
+    - Password : **changeme**
+    - Wifi : yes
+    - SSID : Austral_4g (put your WIFI hotspot name)
+    - Password : m******123 (put your WIFI password)
+    - ssh : yes
+- Start flashing, it can last for several minutes ☕
+- At the end of programming
+  - Disconnect the USB-C
+  - Turn off the power via CAN1-PWR
+  - Switch the switch back to the M12 connector direction
+  - Put the cap back on
+  - Power up via CAN1-PWR
+
+---
+
+# 3 - GETTING STARTED 🏁 <a name="3"></a>
+
+## 3.1 - Launch a SSH console 🔐 <a name="3.1"></a>
+Connect the Xplorer to your ethernet network, and verify the switch (1GbE).
+To get a DHCP defined IP address, you have multiples solutions :
+
+**Solution 1 :** With a ping
+```
+ping -c 3 xplorercm5.local
+```
+```
+PING xplorercm5.local (10.10.10.191): 56 data bytes
+64 bytes from 10.10.10.191: icmp_seq=0 ttl=64 time=0.451 ms
+```
+**Solution 2 :** With a network scanning with [Angryip](https://angryip.org/)
+```
+...
+10.10.10.191     18 ms    xplorercm5.ts.net lan    [n/a]
+...
+```
+**Solution 3 :** Startup with a monitor connected to the Xplorer with a micro HDMI to HDMI (or mini HDMI) cable
+```
+...
+You IP address is 10.10.10.191
+...
+```
+**Solution 4 :** Open a putty console connected to COM1 at 115200 bauds
+```
+...
+My IP address is 10.10.10.191
+...
+```
+In our case our local Ethernet DHCP IP address is : 10.10.10.191
+
+Open a ssh console using Ethernet with the IP address displayed :
+```
+ssh xplr@10.10.10.191
+```
+with the default password : **changeme**
+
+> [!NOTE]  
+> At the first connection you must accept the connection
+
+```
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+```
+
+> [!TIP]  
+> After changing the hostname, you will have a message ending with
+> ```Host key verification failed.```. Remove the problematic IP or hostname with 
+> ```
+> ssh-keygen -R 10.10.10.191
+> ```
+> and try to open a ssh console again.
+
+## 3.2 - Update the linux and eeprom 🗓️ <a name="3.2"></a>
+If you have an unconfigured 4G LTE or 5G module, you may have to disable usb0 or ppp0 to have access to internet :
+```
+sudo ip link set dev usb0 down
+```
+or 
+```
+sudo ip link set dev ppp0 down
+```
+Update the package list, distribution, eeprom:
+```
+sudo apt --yes update && sudo apt --yes full-upgrade
+sudo rpi-eeprom-update -a
+```
+Reboot:
+```
+sudo reboot
+```
+
+## 3.3 - Patch the configuration file <a name="3.2"></a>
+
+> [!NOTE]  
+> If you have flashed a new image, you must configure the Xplorer CM5 peripherals.
+> **This step is not necessary with the factory image**.
+
+https://www.raspberrypi.com/documentation/computers/config_txt.html
+https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/overlays/README
+https://raspberrypi.stackexchange.com/questions/69674/are-there-other-act-led-trigger-options-besides-mmc-and-heartbeat
+
+Edit config.txt :
+```
+sudo nano /boot/firmware/config.txt
+```
+Enable I2C and disable audio if you don't use it :
+```
+...
+dtparam=i2c_arm=on
+...
+#dtparam=audio=on
+...
+[all]
+```
+And add at the end after [all] :
+```
+# Xplorer CM5 : TPM 2.0 (/dev/i2c-13)
+dtoverlay=tpm-slb9673
+
+# Xplorer CM5 : SPI DAQ
+#dtoverlay=spi1-3cs
+dtoverlay=spi1-3cs,cs0_spidev=off
+#dtoverlay=mcp251xfd,spi1-0
+
+# Xplorer CM5 : SPI CAN1 (can1)
+dtoverlay=mcp251xfd,spi1-1,oscillator=40000000,interrupt=7
+
+# Xplorer CM5 : SPI Isolated CAN2 (can0)
+dtoverlay=mcp251xfd,spi1-2,oscillator=40000000,interrupt=10
+
+# Xplorer CM5 : Option LoRa or Option IMU - Internal UART (ttyS0)
+dtparam=uart0_console=off
+dtparam=uart0=off
+#dtparam=uart0=on
+
+# Xplorer CM5 : COM1 RS232 (ttyAMA1)
+enable_uart=1
+dtoverlay=uart1
+
+# Xplorer CM5 : COM2 RS232, Optional CTS/PPS (ttyAMA2)
+dtoverlay=uart2
+#dtoverlay=uart2,cts
+
+# Xplorer CM5 : COM3 - Isolated RS232 mode (ttyAMA3)
+dtoverlay=uart3
+gpio=11=op,dl
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
+
+# Xplorer CM5 : COM3 - XOR Isolated RS485 mode (ttyAMA3)
+#dtoverlay=uart3,rts
+#dtparam=pwr_led_trigger=none
+#dtparam=pwr_led_activelow=on
+
+# Xplorer CM5 : COM4 - Isolated Autodir RS485 (ttyAMA2)
+dtoverlay=uart4
+
+# Xplorer CM5 : micro SD Card
+dtoverlay=sdio        
+
+# Xplorer CM5 : External WiFi/BT Antenna
+dtparam=ant2
+
+# Xplorer CM5 : Charge the RTC Battery  
+dtparam=rtc_bbat_vchg=3000000
+
+# Xplorer CM5 : Activity LED to 1Hz blink or Heartbeat
+#dtparam=act_led_trigger=timer
+dtparam=act_led_trigger=heartbeat
+dtparam=act_led_activelow=off
+
+# Xplorer CM5 : Enable the watchdog
+#dtparam=watchdog=on
+
+# Xplorer CM5 with option MGM240PA32 : GPIO39 Control NRST, GPIO45 Control NBOOT
+gpio=39=op,dh
+gpio=45=op,dh
+
+#========================================================
+# Xplorer CM5 : Reduce the power consumption down to 2.8W
+#========================================================
+
+#--- No fan
+#dtparam=cooling_fan=off
+
+#--- Headless: Disable video outputs, reduce GPU RAM, Disable HDMI audio, GPU freq to mini
+#hdmi_blanking=2
+#display_default_lcd=0
+#gpu_mem=4
+#dtparam=audio=off
+#gpu_freq=200
+#dtoverlay=vc4-kms-v3d,noaudio
+#dtoverlay=vc4-kms-v3d,nohdmi
+#dtparam=hdmi=off
+
+#--- Reduce Ethernet speed to 100MB (-0.25W)
+#dtparam=eth_max_speed=100
+
+#--- Disable unused RTC
+#dtparam=rtc=off
+
+#--- Disable unused Wireless
+#dtoverlay=disable-wifi
+#dtoverlay=disable-bt
+
+#--- Disable Activity LEDs
+#dtparam=act_led_trigger=none
+#dtparam=act_led_activelow=off
+
+#--- Disable SD card
+#dtoverlay=disable-sdcard
+
+#--- Underclocking & small undervolting (<=1.2Ghz)
+#arm_freq=1200
+#arm_freq_min=600
+#gpu_freq=250
+#over_voltage=-2
+
+#--- Aggressive Underclocking & undervolting (<=1Ghz)
+#arm_freq=1000
+#arm_freq_min=400
+#gpu_freq=200
+#over_voltage=-5
+
+#--- For low power SSD -> activate ASPM L0s/L1/L1.2
+#pcie_aspm=force
+
+#--- No PCIe M.2 modules -> Desactivate the PCIe switch (-1.3W)
+#dtparam=pciex1=off
+
+```
+## 3.4 - Enable I2C <a name="3.4"></a>
+Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config. 
+```
+sudo raspi-config nonint do_i2c 0
+```
+## 3.5 - Option : Activate a RS232 console <a name="3.5"></a>
+To activate a console on the COM1 port to view the boot sequence and debug the network configuration. You need to replace ```console=serial0,115200``` with ```console=ttyAMA1,115200``` in ```/boot/firmware/cmdline.txt```. Note that ```console=tty1``` is for HDMI.
+
+You can do it with :
+```
+sudo sed -i 's/serial0/ttyAMA1/g' /boot/firmware/cmdline.txt
+```
+And reboot if needed to apply now.
+> [!TIP]
+> To follow the log trace with date and time on a console, wired COM1 to a RS232 to USB Cable, open a putty terminal at 115200 Bauds on your computer, log and launch ```dmesg -Tw```
+
+## 3.6 - Option : Static IP configuration <a name="3.6"></a>
+Open the NetworkManager Configuration :
+```
+sudo nmcli connection show
+```
+Modify the Connection to Set a Static IP :
+```
+sudo nmcli connection modify "Wired connection 1" ipv4.addresses 192.168.1.100/24
+sudo nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.1.1
+sudo nmcli connection modify "Wired connection 1" ipv4.dns "8.8.8.8 8.8.4.4"
+sudo nmcli connection modify "Wired connection 1" ipv4.method manual
+```
+Replace 192.168.1.100 with your desired IP, and adjust the gateway and DNS settings as needed.
+Save and Apply the Configuration :
+```
+sudo nmcli connection up "Wired connection 1"
+```
+Verify the Static IP:
+```
+ip addr show eth0
+```
+## 3.7 - Installation of usefull tools <a name="3.7"></a>
+Install usefull tools to follow this tutorial and reboot :
+```
+sudo apt --yes install ethtool i2c-tools libtss2-* tpm-udev tpm2-abrmd tpm2-tools can-utils minicom
+sudo usermod --append --groups tss $(whoami)
+sudo reboot
+```
+> [!CAUTION]
+> If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
+
+---
+# 🎓 TEST THE PERIPHERALS
+## Get the system configuration
+### 💻 Linux
+#### Linux version :
+```
+$ uname -a
+Linux xplorercm5 6.12.47+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.47-1+rpt1 (2025-09-16) aarch64 GNU/Linux
+```
+#### OS version :
+```
+$ cat /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+...
+```
+#### Debian version :
+```
+$ cat /etc/debian_version
+13.2
+```
+
+#### Check ETHERNET Speed:
+
+```
+sudo apt install ethtool
+```
+```
+ethtool eth0
+```
+You should see:
+```
+...
+Speed: 1000Mb/s
+Duplex: Full
+...
+```
+
+#### Check WIFI:
+
+External antenna , config.txt
+```
+# Switch to external antenna.
+dtparam=ant2
+```
+Params:
+- ant1 : Select antenna 1 = internal (default)
+- ant2 : Select antenna 2 = external
+- noant: Disable both antennas
+
+#### Check SERIALS :
+List all the ports:
+```
+ls /dev/ttyA*
+```
+You should see 5 ports:
+```
+/dev/ttyAMA0  /dev/ttyAMA10  /dev/ttyAMA3
+/dev/ttyAMA1  /dev/ttyAMA2   /dev/ttyAMA4
+```
+And:
+```
+ls -l /dev/ttyUSB*
+```
+You should see at least 4 ports:
+```
+/dev/ttyUSB0  /dev/ttyUSB1  /dev/ttyUSB2  /dev/ttyUSB3
+```
+ttyUSB0 to ttyUSB4 correspond to RXD_A to RXD_D
+Note: You can see more ttyUSB depending of M.2 modules options (Cellular, GNSS...)
+
+##### Test UART0 on ttyAMA0 :
+This UART is used internaly by the options : LoRa/Sigfox xor IMU
+
+⚠️ By default this port is in linux console mode, to deactivate the console and use as an UART, config.txt must contain :
+```
+dtparam=uart0_console=off
+dtparam=uart0=on
+```
+Configure Baudrate:
+```
+stty -F /dev/ttyAMA0 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyAMA0
+```
+Write Test :
+```
+echo -e "TX UART0 is Working\x0D\x0A" > /dev/ttyAMA0
+```
+##### Test COM1 on ttyAMA1 :
+
+Configure Baudrate:
+```
+stty -F /dev/ttyAMA1 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyAMA1
+```
+Write Test :
+```
+echo -e "TX COM1 Working \x0D\x0A" > /dev/ttyAMA1
+```
+##### Test COM2 on ttyAMA2 :
+
+Configure Baudrate:
+```
+stty -F /dev/ttyAMA2 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyAMA2
+```
+Write Test :
+```
+echo -e "TX COM2 Working \x0D\x0A" > /dev/ttyAMA2
+```
+
+##### Test COM3 on ttyAMA3 in RS232 Mode :
+This port is an isolated dual-mode RS232 or RS485 port. By default, this port is in 3 wires RS232 mode (TXD, RXD, RTS).
+The power LED is used to select the mode RS232 or RS485.
+RTS/GPIO11 is used for the RS485 low impedance
+
+In RS232 mode the config.txt must contain :
+```
+dtoverlay=uart3
+gpio=11=op,dl
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
+```
+Configure Baudrate:
+```
+stty -F /dev/ttyAMA3 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyAMA3
+```
+Write Test :
+```
+echo -e "TX COM3 is Working in RS232\x0D\x0A" > /dev/ttyAMA3
+```
+
+##### Test COM3 on ttyAMA3 in RS485 Mode :
+In RS485 mode config.txt must contain :
+```
+dtoverlay=uart3,rts
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=on
+```
+To send a sentence using RTS controlling DE, test with a basic python script :
+```
+import serial
+from serial.rs485 import RS485Settings
+
+ser = serial.Serial('/dev/ttyAMA3', baudrate=19200, timeout=0.1)
+ser.rs485_mode = RS485Settings(
+    rts_level_for_tx=True,
+    rts_level_for_rx=False,
+    rts_before_send=0.0005,
+    rts_after_send=0.0005
+)
+ser.write(b'TX COM3 is Working in RS485\x0D\x0A')
+ser.flush()
+```
+
+##### Test COM4 on ttyAMA4 :
+
+COM4 is an half duplex RS485 port with AutoDirection Control (No DE via RTS to command Transmit low impedance). Configure Baudrate:
+```
+stty -F /dev/ttyAMA4 speed 19200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyAMA4
+```
+Write Test :
+```
+echo -e "TX COM4 Working \x0D\x0A" > /dev/ttyAMA4
+```
+
+##### Test IN2_RXDA on ttyUSB0 :
+```
+stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyUSB0
+```
+##### Test IN1_RXDB on ttyUSB1 :
+⚠️ IN1_RXDB is not functional with the **Matter** hardware option
+```
+stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyUSB1
+```
+##### Test IN4_RXDC on ttyUSB2 :
+⚠️ IN4_RXDC is not functional with the **LoRa** hardware option
+```
+stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyUSB2
+```
+##### Test IN3_RXDD on ttyUSB3 :
+```
+stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
+```
+Read Test :
+```
+cat /dev/ttyUSB3
+```
+
+##### Test all the COM ports in reception :
+```
+cat /dev/ttyAMA0 | sed 's/^/[COM0] /' &
+cat /dev/ttyAMA1 | sed 's/^/[COM1] /' &
+cat /dev/ttyAMA2 | sed 's/^/[COM2] /' &
+cat /dev/ttyAMA3 | sed 's/^/[COM3] /' &
+cat /dev/ttyAMA4 | sed 's/^/[COM4] /' &
+cat /dev/ttyUSB0 | sed 's/^/[RXDA] /' &
+cat /dev/ttyUSB1 | sed 's/^/[RXDB] /' &
+cat /dev/ttyUSB2 | sed 's/^/[RXDC] /' &
+cat /dev/ttyUSB3 | sed 's/^/[RXDD] /' &
+wait
+```
+##### Test all the COM ports in transmit :
+```
+while true; do
+  printf "TX COM1 OK\r\n" | tee /dev/ttyAMA1 > /dev/null
+  printf "TX COM2 OK\r\n" | tee /dev/ttyAMA2 > /dev/null
+  printf "TX COM3 OK\r\n" | tee /dev/ttyAMA3 > /dev/null
+  printf "TX COM4 OK\r\n" | tee /dev/ttyAMA4 > /dev/null
+  sleep 1
+done
+```
+
+#### Check I2C :
+https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/#:~:text=%E2%80%9Ci2c%2Dtools%E2%80%9D-,i2cdetect,connected%20to%20a%20specific%20interface.
+https://wiki.seeedstudio.com/check_Encryption_Chip/
+
+Enable I2C (raspi-config -> Interface options -> I2C -> Enable):
+```
+sudo raspi-config
+```
+If needed valid also the I2C in config.txt :
+```
+echo "dtparam=i2c_arm=on" | sudo tee -a /boot/firmware/config.txt
+sudo reboot
+```
+> [!NOTE] In the Raspberry Pi documentation, the raspi-config I2C enable has the same effect as enabling I2C in config.txt and reboot. Experimentally, you need to do raspi-config to list I2C devices. 
+
+and:
+```
+sudo apt-get install i2c-tools
+```
+List I2C & TPM devices and I2C pilot :
+```
+sudo i2cdetect -l|sort && i2cdetect -y -r 13 && ls -l /dev/tpm* && lsmod | grep i2c
+```
+Shows this:
+```
+i2c-13	i2c       	i2c-gpio@1                      	I2C adapter
+i2c-14	i2c       	107d508200.i2c                  	I2C adapter
+i2c-15	i2c       	107d508280.i2c                  	I2C adapter
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- UU -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: 60 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                         
+crw-rw---- 1 tss root  10,   224 Jan 12 15:41 /dev/tpm0
+crw-rw---- 1 tss tss  510, 65536 Jan 12 15:41 /dev/tpmrm0
+tpm_tis_i2c            49152  0
+crc_ccitt              49152  1 tpm_tis_i2c
+tpm_tis_core           65536  1 tpm_tis_i2c
+tpm                    98304  4 tpm_tis_i2c,tpm_tis_core
+i2c_brcmstb            49152  0
+i2c_gpio               49152  0
+i2c_algo_bit           49152  1 i2c_gpio
+i2c_dev                49152  0
+```
+
+TPM2.0 with the SLB9673AU20FW2610XTMA1 : Adr 2E -> 0x2E or UU
+Option CryptoAuthentication with the ATECC608A-MAHDA : Adr 0x60 -> 0x60 or UU
+
+#### TPM2.0 with 51K NVM :
+SLB9673AU20FW2610XTMA1
+https://www.infineon.com/assets/row/public/documents/30/49/infineon-slb9673-tpm20-i2c-fw26xx-ds-rev1-4-2024-11-13-datasheet-en.pdf?
+fileId=8ac78c8c93dda25b01944055dd2c5d11
+
+https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf
+
+https://www.infineon.com/assets/row/public/documents/30/49/infineon-optiga-tpm-slb-9673-rpi-datasheet-en.pdf?fileId=8ac78c8c8779172a0187ed7465fa19e8
+https://wiki.seeedstudio.com/recomputer_r/#encryption-chip-tpm-20
+https://www.infineon.com/assets/row/public/documents/30/49/infineon-optiga-tpm-slb-9673-rpi-datasheet-en.pdf?fileId=8ac78c8c8779172a0187ed7465fa19e8
+https://www.infineon.com/gated/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en_a3d6e6e3-6da2-4321-816d-8c6bcddc55ee
+https://ohyaan.github.io/tips/hardware_security_module__tpm__setup_with_dm-verity_and_encrypted_storage/#installing-tpm-hardware
+
+If needed, add this line in config.txt and reboot
+```
+sudo nano /boot/firmware/config.txt
+```
+Verify this settings:
+```
+dtoverlay=tpm-slb9673
+```
+Then check the driver :
+```
+ls -l /dev/tpm*
+```
+shows:
+```
+crw------- 1 root root  10,   224 Aug  4 15:02 /dev/tpm0
+crw------- 1 root root 509, 65536 Aug  4 15:02 /dev/tpmrm0
+```
+If needed, install the TPM libraries and tools and reboot:
+```
+sudo apt --yes install libtss2-* tpm-udev tpm2-abrmd tpm2-tools
+sudo usermod --append --groups tss $(whoami)
+sudo reboot
+```
+Check the TPM2.0 Interface with :
+```
+tpm2 getcap properties-fixed
+```
+Displays TPM status:
+```
+TPM2_PT_FAMILY_INDICATOR:
+  raw: 0x322E3000
+  value: "2.0"
+TPM2_PT_LEVEL:
+  raw: 0
+...
+```
+And follow this tutorial :
+https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf
+
+#### Option CrytoAuthentication :
+The chip is ATECC608A-MAHDA (16 keys storage, Asymmetric & Symmetric Algorithms, Networking Key Management, Secure boot, 72 bits Unique ID...) 
+https://github.com/wirenboard/atecc-util
+https://gist.github.com/jj1bdx/ad2dedcbacb9198bd4e1667008e9dbe5
+https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/Atmel-8983-CryptoAuth-ATECC508A-Node-Example-Asymmetric-PKI-ApplicationNote.pdf
+https://forums.raspberrypi.com/viewtopic.php?t=353718
+
+https://github.com/wirenboard/atec
+```
+sudo apt-get install git debhelper
+git clone https://github.com/contactless/atecc-util
+cd atecc-util
+git submodule init
+git submodule update
+make
+dpkg-buildpackage
+```
+Check the CrytoAutentification interface getting the unique ID on /dev/i2c-13 
+```
+~/atecc-util/atecc -b 13 -c 'serial'
+```
+Displays a Unique ID:
+```
+0123ceb0b0dbc3d2ee
+```
+
+#### DAQ :
+The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0.  
+It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
+
+https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r
+https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz
+https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html
+https://www.youtube.com/watch?v=jSnT0_RSBUk
+https://github.com/SpazzTech/AD5592_Snack_Board
+https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html
+https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
+### 💪🏻 Benchmark
+Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
+https://pimylifeup.com/raspberry-pi-5-benchmark/
+
+#### Get the boot time
+```
+$ systemd-analyze
+Startup finished in 1.342s (kernel) + 4.842s (userspace) = 6.184s 
+graphical.target reached after 4.830s in userspace.
+```
+#### Pi Benchmark script
+```
+$ sudo curl https://raw.githubusercontent.com/TheRemote/PiBenchmarks/master/     Category                  Test                      Result     
+HDParm                    Disk Read                 308.40 MB/sec            
+HDParm                    Cached Disk Read          212.31 MB/sec            
+DD                        Disk Write                110 MB/s                 
+FIO                       4k random read            23621 IOPS (94486 KB/s)  
+FIO                       4k random write           25252 IOPS (101011 KB/s) 
+IOZone                    4k read                   44281 KB/s               
+IOZone                    4k write                  67744 KB/s               
+IOZone                    4k random read            44411 KB/s               
+IOZone                    4k random write           55907 KB/s               
+
+                          Score: 13083                                       
+```
+#### GeekBench6
+```
+cd ~/Downloads
+wget https://cdn.geekbench.com/Geekbench-6.4.0-LinuxARMPreview.tar.gz
+tar xf Geekbench-6.4.0-LinuxARMPreview.tar.gz
+rm Geekbench-6.4.0-LinuxARMPreview.tar.gz
+cd Geekbench-6.4.0-LinuxARMPreview
+./geekbench6
+```
+```
+890 Single core
+1936 Multi-core
+```
+#### sysbench
+```
+sudo apt -y install sysbench
+sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
+```
+```
+CPU speed:
+    events per second:  4036.34
+```
+
+### 💾  Memories
+
+### PCIe M.2 Modules
+The 'lspci' command must discover the ASM1184e chip and equiped M.2 modules (below with one SSDs and one Hailo AI module).
+```
+lspci
+0001:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
+0001:01:00.0 PCI bridge: ASMedia Technology Inc. ASM1184e 4-Port PCIe x1 Gen2 Packet Switch
+0001:02:01.0 PCI bridge: ASMedia Technology Inc. ASM1184e 4-Port PCIe x1 Gen2 Packet Switch
+0001:02:03.0 PCI bridge: ASMedia Technology Inc. ASM1184e 4-Port PCIe x1 Gen2 Packet Switch
+0001:02:05.0 PCI bridge: ASMedia Technology Inc. ASM1184e 4-Port PCIe x1 Gen2 Packet Switch
+0001:02:07.0 PCI bridge: ASMedia Technology Inc. ASM1184e 4-Port PCIe x1 Gen2 Packet Switch
+0001:03:00.0 Non-Volatile memory controller: KIOXIA Corporation NVMe SSD Controller BG4
+0001:06:00.0 Co-processor: Hailo Technologies Ltd. Hailo-8 AI Processor (rev 01)
+0002:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
+0002:01:00.0 Ethernet controller: Raspberry Pi Ltd RP1 PCIe 2.0 South Bridge
+
+lspci -vvv
+
+```
+
+
+### USB M.2 Modules
+The 'lsusb' command must discover the FT4232H chip, equiped M.2 type B modules (below a 4G/LTE Qualcomm M.2 module) and external USB-C device.
+```
+lsusb
+Bus 001 Device 002: ID 1e0e:9001 Qualcomm / Option SimTech, Incorporated
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 005 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 004 Device 002: ID 0403:6011 Future Technology Devices International, Ltd FT4232H Quad HS USB-UART/FIFO IC
+Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+```
+
+### USB-C peripherals
+
+#### USB-C Drive
+Test with a Samsung MUF-64DA/PAC key (64GB, USB3.1, <300MB/S read speed, reversible ports, formated in FAT)
+https://www.samsung.com/uk/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/
+
+https://pimylifeup.com/raspberry-pi-mount-usb-drive/
+https://www.jeffgeerling.com/blog/2020/raspberry-pi-usb-boot-uasp-trim-and-performance
+
+
+```
+$ lsusb
+...
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 005 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 004 Device 002: ID 0403:6011 Future Technology Devices International, Ltd FT4232H Quad HS USB-UART/FIFO IC
+Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 04e8:6300 Samsung Electronics Co., Ltd Type-C
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+...
+```
+⚠️ You must see Linux "Linux Foundation 3.0" for USB 3.0 peripherals
+```
+$ lsusb -t | grep xhci
+/:  Bus 05.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+/:  Bus 04.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/2p, 480M
+/:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/2p, 480M
+```
+⚠️ Idem, you must see "5000M" for USB3.0 Peripherals
+
+To check USB version of your disk:
+```
+$ sudo lsusb -v 2>/dev/null | grep -e "^Bus\|bcdUSB"
+...
+Bus 003 Device 002: ID 04e8:6300 Samsung Electronics Co., Ltd Type-C
+  bcdUSB               3.10
+...
+```
+Disk size and name :
+```
+$ lsblk -D
+NAME         DISC-ALN DISC-GRAN DISC-MAX DISC-ZERO
+sda                 0      512B       0B         0
+└─sda1              0      512B       0B         0
+mmcblk0             0        4M     2.2G         0
+├─mmcblk0p1         0        4M     2.2G         0
+└─mmcblk0p2         0        4M     2.2G         0
+mmcblk0boot0        0        4M     2.2G         0
+
+
+$ sudo cat /proc/mounts
+...
+/dev/sda1 /media/praude/Samsung\ USB vfat rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,showexec,utf8,flush,errors=remount-ro 0 0
+...
+
+$ cd /media/praude/Samsung\ USB/
+$ ls -l
+
+$ ls -l /dev/disk/by-uuid
+total 0
+lrwxrwxrwx 1 root root 10 Aug  1 14:20 3FFA-6704 -> ../../sda1
+lrwxrwxrwx 1 root root 15 Jul 26 16:17 d6ecfcd5-2703-41bf-9301-10c403b6fb0c -> ../../mmcblk0p2
+lrwxrwxrwx 1 root root 15 Jul 26 16:17 F737-8E10 -> ../../mmcblk0p1
+
+$ df -h
+...
+/dev/sda1        60G  3.5M   60G   1% /media/xxxxx/Samsung USB
+...
+
+$ sudo fdisk -l
+...
+Disk /dev/sda: 59.75 GiB, 64160400896 bytes, 125313283 sectors
+Disk model: Type-C          
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x00000000
+
+Device     Boot Start       End   Sectors  Size Id Type
+
+$ sudo blkid /dev/sda1
+/dev/sda1: LABEL="Samsung USB" UUID="3FFA-6704" BLOCK_SIZE="512" TYPE="vfat"
+```
+
+USB-C disk read speed:
+https://admantium.medium.com/raspberry-pi-comparing-hdd-disk-read-and-write-performance-for-external-usb-and-sata-drives-4d9f5e06e274
+
+```
+sudo apt-get install hdparm
+sudo hdparm -tT --direct /dev/sda1
+```
+```
+/dev/sda1:
+ Timing O_DIRECT cached reads:   494 MB in  2.01 seconds = 246.22 MB/sec
+ Timing O_DIRECT disk reads: 546 MB in  3.00 seconds = 181.89 MB/sec
+```
+```
+sudo dd bs=10M count=500 if=/dev/sda1 of=/home/praude/test.bin
+```
+```
+...
+5242880000 bytes (5.2 GB, 4.9 GiB) copied, 42.4844 s, 123 MB/s
+```
+USB-C disk write speed:
+```
+sudo dd bs=2M count=500 if=/dev/sda1 of=/media/praude/Samsung\ USB/test.bin
+```
+```
+...
+1048576000 bytes (1.0 GB, 1000 MiB) copied, 34.7954 s, 30.1 MB/s
+```
+
+### Test NVMe SSD(s)
+The main SSD is a 2232 Key M, M.2 module installed on the J15 slot (CM5 side).
+To make a Raid 0 or 1 NAS, another 2232/2242 Key M, M.2 SSD can be installed on the J4 slot (Bottom plate side). A third 2232/2242 Key B, M.2 SSD can also be used if needed.
+
+To list all the drives :
+```
+lsblk
+```
+```
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0          7:0    0     2G  0 loop 
+mmcblk0      179:0    0  29.1G  0 disk 
+├─mmcblk0p1  179:1    0   512M  0 part /boot/firmware
+└─mmcblk0p2  179:2    0  28.6G  0 part /
+mmcblk0boot0 179:32   0     4M  1 disk 
+mmcblk0boot1 179:64   0     4M  1 disk 
+zram0        254:0    0     2G  0 disk [SWAP]
+nvme0n1      259:0    0 238.5G  0 disk        <---- Main SSD here
+nvme1n1      259:1    0 931.5G  0 disk        <---- secondary SSD here
+```
+Benchmark the main SSD, here a Samsung P991a 256GB SSD :
+```
+sudo apt-get install hdparm
+sudo hdparm -tT --direct /dev/nvme0n1
+```
+```
+/dev/nvme0n1:
+ Timing O_DIRECT cached reads:   822 MB in  2.00 seconds = 410.07 MB/sec
+ Timing O_DIRECT disk reads: 1254 MB in  3.00 seconds = 417.77 MB/sec
+```
+```
+sudo dd bs=10M count=500 if=/dev/nvme0n1 of=/home/xplr/test.bin
+```
+```
+500+0 records in
+500+0 records out
+5242880000 bytes (5.2 GB, 4.9 GiB) copied, 35.8162 s, 146 MB/s
+```
+Benchmark the secondary SSD, here a Crucial P310 1TB SSD :
+```
+sudo hdparm -tT --direct /dev/nvme1n1
+```
+```
+/dev/nvme1n1:
+ Timing O_DIRECT cached reads:   838 MB in  2.00 seconds = 418.61 MB/sec
+ Timing O_DIRECT disk reads: 1250 MB in  3.00 seconds = 416.10 MB/sec
+```
+```
+sudo dd bs=10M count=500 if=/dev/nvme1n1 of=/home/xplr/test.bin
+```
+```
+500+0 records in
+500+0 records out
+5242880000 bytes (5.2 GB, 4.9 GiB) copied, 47.4714 s, 110 MB/s
+```
+### Test the micro SD card 
+The internal micro SD card is connected to GPIO22 to GPIO27.
+To physically access to the holder, you must remove the cap on the right side of the enclosure.
+Insertion/Removal can be done during operation, but this is not recommended.
+The side of the SD with the contacts must be on the side of the bottom plate (printed side facing the front).
+Mounting/dismounting is automatic.
+To access it in software, you must have in config.txt :
+```
+dtoverlay=sdio
+```
+To list the drives :
+```
+$ lsblk
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+mmcblk0      179:0    0  29.1G  0 disk 
+├─mmcblk0p1  179:1    0   512M  0 part /boot/firmware
+└─mmcblk0p2  179:2    0  28.6G  0 part /
+mmcblk0boot0 179:32   0     4M  1 disk 
+mmcblk0boot1 179:64   0     4M  1 disk 
+mmcblk2      179:96   0  29.7G  0 disk 
+├─mmcblk2p1  179:97   0   256M  0 part /media/xxxx/boot
+└─mmcblk2p2  179:98   0  29.5G  0 part /media/xxxx/rootfs
+nvme0n1      259:0    0 119.2G  0 disk 
+```
+**mmcblk0** is the eMMC, here with 2 partitions
+**mmcblk2** is the uSD, here with 2 partitions
+**nvme0n1** is the NVMe SSD
+
+To backup the eMMC on SD:
+```
+sudo dd if=/dev/mmcblk0 of=/dev/mmcblk2 bs=4M status=progress
+```
+To clone the SD to the main SSD:
+```
+sudo dd if=/dev/mmcblk2 of=/dev/nvme0n1 bs=4M status=progress
+```
+
+### Test the CAN-FD buses
+```
+$ dmesg | grep -i -E "(mcp|spi)"
+...
+[    5.936984] mcp251xfd spi1.2 can0: MCP2518FD rev0.0 (-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:40.00MHz c:40.00MHz m:20.00MHz rs:17.00MHz es:16.66MHz rf:17.00MHz ef:16.66MHz) successfully initialized.
+[    5.946398] mcp251xfd spi1.1 can1: MCP2518FD rev0.0 (-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:40.00MHz c:40.00MHz m:20.00MHz rs:17.00MHz es:16.66MHz rf:17.00MHz ef:16.66MHz) successfully initialized.
+...
+```
+You must see can0 and can1 usign MCP2518FD chipset on SPI1
+```
+$ ifconfig -a
+can0: flags=128<NOARP>  mtu 16
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 10  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 197  
+
+can1: flags=128<NOARP>  mtu 16
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 10  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 198 
+... 
+```
+You must see **can0** and **can1**
+
+Test the main CANBus 'can1' on CAN1/PWR connector (NMEA2000 compatible):
+```
+$ sudo apt-get install can-utils
+$ sudo ip link set can1 up type can bitrate 250000
+$ candump can1
+$ cansend can1 7DF#0201050000000000
+```
+Test the secondary CANbus 'can0' on DAQ/CAN2 connector:
+```        
+$ sudo ip link set can0 up type can bitrate 250000
+$ candump can0
+$ cansend can0 7DF#0201050000000000
+```
+
+### 4G/LTE with the Quectel EM60K-GL M.2 module
+
+### 5G RedCap with the SIMCOM SIM8230G M.2 module
+
+# 🚨 FAQ
+
+## Shrink a pi image :
+
+https://github.com/Drewsif/PiShrink
+## Manage Energy
+
+https://forums.raspberrypi.com/viewtopic.php?t=361542
+https://forums.raspberrypi.com/viewtopic.php?t=360658
+
+Disable Wireless :
+```
+dtoverlay=disable-wifi
+dtoverlay=disable-bt
+```
+
+Disable HDMI :
+https://lowendbox.com/blog/how-to-turn-off-the-hdmi-monitor-on-your-raspberry-pi-5-its-not-as-easy-as-you-might-think/
+https://forums.raspberrypi.com/viewtopic.php?t=374678
+https://www.raspberrypi.com/documentation/computers/os.html#vcgencmd
+```
+vcgencmd display_power 0 7
+```
+Disable Audio :
+https://retropie.org.uk/forum/topic/34761/solved-raspberrypi-5-on-board-audio-disabled-or-not-present
+
+
+Halt mode and RTC wakeup :
+https://raspberrypi.stackexchange.com/questions/147353/can-i-use-raspberry-pi-5-into-low-power-mode-programmatically
+
+
+## Fail to contact RP1 firmware error :
+```
+dmesg
+...
+[    3.042998] rp1-pio 1f00178000.pio: failed to contact RP1 firmware
+[    3.043005] rp1-pio 1f00178000.pio: probe with driver rp1-pio failed with error -2
+```
+Update the system.
+
+# Thermal Stress Test
+If your installation does not follow the recommendations (bare boards, flat mounting…), you must do a thermal test under load.
+```
+sudo apt install stress-ng btop
+```
+Stress test at 75% CPU :
+```
+echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
+stress-ng --cpu 0 --cpu-method fft
+```
+Open 4 others consoles and verify the CPUs load, temperature, the current cores clocks speed (1500Mhz) and the throttle:
+```
+btop
+```
+```
+watch -n 1 vcgencmd measure_temp
+```
+```
+watch -n 1 vcgencmd measure_clock arm
+```
+```
+watch -n 1 vcgencmd get_throttled
+```
+
+Throttle Status :
+
+0: under-voltage
+1: arm frequency capped
+2: currently throttled 
+16: under-voltage has occurred
+17: arm frequency capped has occurred
+18: throttling has occurred
+
+https://forums.raspberrypi.com/viewtopic.php?t=377392
+
+
+# Turn off 1 or 2 CPU to test 50% and 75% CPU
+
+```
+echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
+```
+```
+echo 0 | sudo tee /sys/devices/system/cpu/cpu2/online
+```
+
+# View cpu-freq governors statistics
+https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
+```
+cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state
+```
+
+# RTC 
+
+
+For ML2032 rechargeable battery, add this line to config.txt and reboot :
+```
+dtparam=rtc_bbat_vchg=3000000
+```
+Verify charging voltage :
+```
+cat /sys/class/rtc/rtc0/charging_voltage
+cat /sys/class/rtc/rtc0/charging_voltage_max
+cat /sys/class/rtc/rtc0/charging_voltage_min
+```
+Read vbat voltage on the PMIC
+```
+watch -n 1 vcgencmd pmic_read_adc
+```
+
+## Desactivate wifi / BT
+
+echo "dtoverlay=disable-wifi" | sudo tee -a /boot/firmware/config.txt
+echo "dtoverlay=disable-bt" | sudo tee -a /boot/firmware/config.txt
+sudo systemctl disable hciuart
+sudo reboot
+
+## Desactivate ETH LED
+echo "dtparam=eth_led0=14" | sudo tee -a /boot/firmware/config.txt
+echo "dtparam=eth_led1=14" | sudo tee -a /boot/firmware/config.txt
+sudo reboot
+
+https://www.jeffgeerling.com/blogs/jeff-geerling/controlling-pwr-act-leds-raspberry-pi
+
+## Command Blue LED :
+https://forums.raspberrypi.com/viewtopic.php?p=2235437&hilit=Power+led#p2235140
+
+sudo -i
+cd /sys/class/leds/
+echo 1 > PWR/brightness   // ON (72mW)
+
+echo 0 > PWR/brightness  // OFF
+
+## Disable audio
+#dtparam=audio=on
+
+## ETH 100 MB
+https://raspberrypi.stackexchange.com/questions/116677/force-wired-ethernet-speed-to-100-full
+ethtool eth0
+sudo ethtool -s eth0 advertise 0x008
+
+Lower CPU freq (100% CPU : 8.4W@1.5Ghz, 5W@600Mhz, 4.6W@300Mhz)
+sudo nano /boot/firmware/config.txt
+arm_freq=1500
+arm_freq_min=600
+
+### RTC Wake Up
+https://www.jeffgeerling.com/blog/2023/reducing-raspberry-pi-5s-power-consumption-140x
+```
+sudo rpi-eeprom-config -e
+```
+```
+[all]
+BOOT_UART=1
+WAKE_ON_GPIO=0
+POWER_OFF_ON_HALT=1
+
+# Default BOOT_ORDER for provisioning
+# SD -> NVMe -> USB -> Network
+BOOT_ORDER=0xf2461
+```
+278mW in shutdown :
+```
+sudo shutdown now
+```
+
+### Underclocking
+https://www.jeffgeerling.com/blog/2023/overclocking-and-underclocking-raspberry-pi-5
+```
+vcgencmd measure_clock arm
+echo "arm_freq=1200" | sudo tee -a /boot/firmware/config.txt
+echo "gpu_freq=400" | sudo tee -a /boot/firmware/config.txt
+sudo reboot
+```
+
+https://ohyaan.github.io/tips/power_saving_on_raspberry_pi_os__complete_optimization_guide/#display-and-interface-optimizations
+
+
+### Watchdog
+
+https://diode.io/blog/running-forever-with-the-raspberry-pi-hardware-watchdog
+
+Enable the hardware watchdog and reboot:
+```
+sudo su
+echo 'dtparam=watchdog=on' >> /boot/config.txt
+reboot
+```
+Install the watchdog system service:
+```
+sudo su
+echo 'watchdog-device = /dev/watchdog' >> /etc/watchdog.conf
+echo 'watchdog-timeout = 15' >> /etc/watchdog.conf
+echo 'max-load-1 = 24' >> /etc/watchdog.conf
+```
+Enable the service:
+```
+sudo systemctl enable watchdog
+sudo systemctl start watchdog
+sudo systemctl status watchdog
+```
+Now next time your Xplorer freezes, the hardware watchdog will restart it automatically after 15 seconds.
+
+If you want to test this you can try running a fork bomb on your shell:
+```
+sudo bash -c ':(){ :|:& };:'
+```
+### NAS Setup
+The Xplorer can be setup with 2 NVMe SSD to make an embedded RAID NAS.
+https://ohyaan.github.io/tips/network_attached_storage__nas__setup_guide/
+
+### Reduce boot time
+https://ohyaan.github.io/tips/raspberry_pi_boot_time_optimization__complete_performance_guide/#understanding-the-boot-process
+
+### CPU Isolation and Task Affinity for Multicore Optimization
+https://ohyaan.github.io/tips/cpu_isolation_and_task_affinity_for_multicore_optimization/
+
+### Security Hardening
+
+https://ohyaan.github.io/tips/raspberry_pi_security_hardening_complete_guide/#network-security
+
+### Vitual Network over USB
+
+It's possible to have a SSH console or a Remote Desktop via USB-C.
+https://ohyaan.github.io/tips/usb_ethernet_gadget_setup/#summary
+
+### GPIO and config.txt troubleshoot
+```
+pinctrl
+```
+```
+ 0: a2    pn | hi // ID_SDA/GPIO0 = TXD1
+ 1: a2    pu | hi // ID_SCL/GPIO1 = RXD1
+ 2: ip    pu | hi // GPIO2 = input
+ 3: ip    pu | hi // GPIO3 = input
+ 4: a2    pn | hi // GPIO4 = TXD2
+ 5: a2    pu | hi // GPIO5 = RXD2
+ 6: no    pu | -- // GPIO6 = none
+ 7: ip    pu | hi // GPIO7 = input
+ 8: a2    pn | hi // GPIO8 = TXD3
+ 9: a2    pu | hi // GPIO9 = RXD3
+10: ip    pd | hi // GPIO10 = input
+11: op dl pd | lo // GPIO11 = output
+12: a2    pn | hi // GPIO12 = TXD4
+13: a2    pu | hi // GPIO13 = RXD4
+14: a4    pn | hi // GPIO14 = TXD0
+15: a4    pu | hi // GPIO15 = RXD0
+16: op dh pd | hi // GPIO16 = output
+17: op dh pd | hi // GPIO17 = output
+18: op dh pd | hi // GPIO18 = output
+19: a0    pd | lo // GPIO19 = SPI1_MISO
+20: a0    pd | lo // GPIO20 = SPI1_MOSI
+21: a0    pd | lo // GPIO21 = SPI1_SCLK
+22: a0    pn | lo // GPIO22 = SD0_CLK
+23: a0    pu | lo // GPIO23 = SD0_CMD
+24: a0    pu | lo // GPIO24 = SD0_DAT0
+25: a0    pu | lo // GPIO25 = SD0_DAT1
+26: a0    pu | lo // GPIO26 = SD0_DAT2
+27: a0    pu | lo // GPIO27 = SD0_DAT3
+28: op dh pd | hi // PCIE_PWR_EN/GPIO28 = output
+29: no    pu | hi // FAN_TACH/GPIO29 = none
+30: no    pu | -- // HOST_SDA/GPIO30 = none
+31: no    pu | -- // HOST_SCL/GPIO31 = none
+32: op dh pd | hi // ETH_RST_N/GPIO32 = output
+33: ip    pu | hi // PCIE_DET_WAKE/GPIO33 = input
+34: op dl pd | lo // CD0_IO0_MICCLK/GPIO34 = output
+35: ip    pn | hi // CD0_IO0_MICDAT0/GPIO35 = input
+36: no    pd | lo // RP1_PCIE_CLKREQ_N/GPIO36 = none
+37: ip    pu | hi // ETH_IRQ_N/GPIO37 = input
+38: no    pd | hi // SDA0/GPIO38 = none
+39: op dh pd | hi // SCL0/GPIO39 = output
+40: no    pd | lo // GPIO40 = none
+41: no    pd | lo // GPIO41 = none
+42: a2    pd | hi // USB_VBUS_EN/GPIO42 = VBUS_EN1
+43: a2    pu | hi // GPIO43 = VBUS_OC1
+44: op dl pd | lo // RP1_STAT_LED/GPIO44 = output
+45: op dh pd | hi // FAN_PWM/GPIO45 = output
+46: op dh pd | hi // GPIO46 = output
+47: no    pd | lo // 2712_WAKE/GPIO47 = none
+48: op dh pd | hi // GPIO48 = output
+49: op dh pd | hi // GPIO49 = output
+50: no    pd | -- // GPIO50 = none
+51: no    pd | -- // GPIO51 = none
+52: no    pu | -- // GPIO52 = none
+53: no    pu | hi // GPIO53 = none
+101: op dh pu | hi // 2712_BOOT_CS_N/GPIO1 = output
+102: a7    pn | hi // 2712_BOOT_MISO/GPIO2 = VC_SPI0_MISO
+103: a6    pn | hi // 2712_BOOT_MOSI/GPIO3 = VC_SPI0_MOSI
+104: a6    pn | lo // 2712_BOOT_SCLK/GPIO4 = VC_SPI0_SCLK
+110: ip    pd | lo // GPIO10 = input
+111: ip    pd | lo // GPIO11 = input
+112: ip    pd | lo // GPIO12 = input
+113: ip    pd | lo // GPIO13 = input
+114: a1    pd | lo // GPIO14 = SPI_S_MOSI_OR_BSC_S_SDA
+115: a1    pd | lo // GPIO15 = SPI_S_SCK_OR_BSC_S_SCL
+118: ip    pd | lo // GPIO18 = input
+119: ip    pd | lo // GPIO19 = input
+120: ip    pu | hi // PWR_GPIO/GPIO20 = input
+121: ip    pd | lo // 2712_G21_FS/GPIO21 = input
+122: ip    pu | hi // GPIO22 = input
+123: ip    pd | lo // GPIO23 = input
+124: a4    pn | lo // BT_RTS/GPIO24 = UART_RTS_0
+125: a4    pu | lo // BT_CTS/GPIO25 = UART_CTS_0
+126: a4    pn | hi // BT_TXD/GPIO26 = UART_TXD_0
+127: a4    pu | hi // BT_RXD/GPIO27 = UART_RXD_0
+128: op dh pd | hi // WL_ON/GPIO28 = output
+129: op dh pd | hi // BT_ON/GPIO29 = output
+130: a1    pn | hi // WIFI_SDIO_CLK/GPIO30 = SD2_CLK
+131: a1    pu | hi // WIFI_SDIO_CMD/GPIO31 = SD2_CMD
+132: a1    pu | hi // WIFI_SDIO_D0/GPIO32 = SD2_DAT0
+133: a1    pu | hi // WIFI_SDIO_D1/GPIO33 = SD2_DAT1
+134: a1    pu | hi // WIFI_SDIO_D2/GPIO34 = SD2_DAT2
+135: a1    pu | hi // WIFI_SDIO_D3/GPIO35 = SD2_DAT3
+200: a6    pd | hi // RP1_SDA/AON_GPIO0 = VC_SDA0
+201: a7    pd | hi // RP1_SCL/AON_GPIO1 = VC_SCL0
+202: op dh pd | hi // RP1_RUN/AON_GPIO2 = output
+203: op dl pd | lo // SD_IOVDD_SEL/AON_GPIO3 = output
+204: op dh pd | hi // SD_PWR_ON/AON_GPIO4 = output
+205: op dl pd | lo // ANT1/AON_GPIO5 = output
+206: op dh pd | hi // ANT2/AON_GPIO6 = output
+208: ip    pd | lo // 2712_WAKE/AON_GPIO8 = input
+209: op dl pd | lo // 2712_STAT_LED/AON_GPIO9 = output
+212: ip    pd | lo // PMIC_INT/AON_GPIO12 = input
+213: a2    pu | hi // UART_TX_FS/AON_GPIO13 = VC_TXD0
+214: a3    pu | hi // UART_RX_FS/AON_GPIO14 = VC_RXD0
+232: a1    -- | hi // HDMI0_SCL/AON_SGPIO0 = HDMI_TX0_BSC_SCL
+233: a1    -- | hi // HDMI0_SDA/AON_SGPIO1 = HDMI_TX0_BSC_SDA
+234: a1    -- | hi // HDMI1_SCL/AON_SGPIO2 = HDMI_TX1_BSC_SCL
+235: a1    -- | hi // HDMI1_SDA/AON_SGPIO3 = HDMI_TX1_BSC_SDA
+236: a2    -- | hi // PMIC_SCL/AON_SGPIO4 = BSC_M2_SCL
+237: a2    -- | hi // PMIC_SDA/AON_SGPIO5 = BSC_M2_SDA
+```
+
+---
+### Xplorer CM5 Functional self-test
+
+##### 1 & 2 - Peripherals detection and COM & CANbus in reception:
+
+```
+stty -F /dev/ttyAMA2 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyAMA3 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyAMA4 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
+sudo ip link set can0 up type can bitrate 250000
+sudo ip link set can1 up type can bitrate 250000
+
+echo -e "\n1️⃣  Peripherals self-test"
+uname -a | grep -q "Debian 1:6.12.47-1+rpt1~bookworm (2025-09-16) aarch64" && echo "✅ Bookworm Headless Detected" || echo "⚠️ Bookworm Headless NOT Detected"
+uname -a | grep -q "Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64" && echo "✅ Trixie Headless Detected" || echo "⚠️ Trixie Headless NOT Detected"
+ethtool eth0 | grep -q "Speed: 1000Mb/s" && echo "✅ Ethernet GbE OK" || echo "❌ Ethernet NOT GbE"
+sudo i2cdetect -l | grep -q "i2c-13" && echo "✅ I2C OK" || echo "❌ I2C not detected"
+ls -l /dev/tpm* | grep -q "/dev/tpm0" && echo "✅ TPM Driver OK" || echo "❌ TPM driver not detected"
+tpm2 getcap properties-fixed | grep -q "TPM2_PT_FAMILY_INDICATOR:" && echo "✅ TPM Chip OK" || echo "❌ TPM Chip KO"
+dmesg | grep -i -E "(mcp|spi)" | grep -q "mcp251xfd spi1.2 can0: MCP2518FD" && dmesg | grep -i -E "(mcp|spi)" | grep -q "mcp251xfd spi1.1 can1: MCP2518FD" && echo "✅ can0 and can1 detected" || echo "❌ can0 and/or can1 missing"
+ifconfig -a | grep -q can0 && ifconfig -a | grep -q can1 && echo "✅ Interfaces can0 and can1 are present" || echo "❌Interfaces can0 and/or can1 are missing"
+lsusb | grep -q "FT4232H" && echo "✅ FT4232H detected" || echo "❌ FT4232H NOT detected"
+ls /dev/ttyAMA1 | grep -q "/dev/ttyAMA1" && echo "✅ COM1 detected" || echo "❌ COM1 NOT detected"
+ls /dev/ttyAMA2 | grep -q "/dev/ttyAMA2" && echo "✅ COM2 detected" || echo "❌ COM2 NOT detected"
+ls /dev/ttyAMA3 | grep -q "/dev/ttyAMA3" && echo "✅ COM3 detected" || echo "❌ COM1 NOT detected"
+ls /dev/ttyAMA4 | grep -q "/dev/ttyAMA4" && echo "✅ COM4 detected" || echo "❌ COM2 NOT detected"
+ls /dev/ttyUSB0 | grep -q "/dev/ttyUSB0" && echo "✅ RXDA detected" || echo "❌ RXDA NOT detected"
+ls /dev/ttyUSB1 | grep -q "/dev/ttyUSB1" && echo "✅ RXDB detected" || echo "❌ RXDA NOT detected"
+ls /dev/ttyUSB2 | grep -q "/dev/ttyUSB2" && echo "✅ RXDC detected" || echo "❌ RXDA NOT detected"
+ls /dev/ttyUSB3 | grep -q "/dev/ttyUSB3" && echo "✅ RXDD detected" || echo "❌ RXDA NOT detected"
+lspci | grep -q "ASM1184e" && echo "✅ ASM1184e detected" || echo "❌  ASM1184e  NOT detected"
+lspci | grep -q "Samsung" && echo "✅ Samsung SSD module detected" || echo "⚠️  Samsung SSD module NOT detected"
+lsblk| grep -q "nvme0n1" && echo "✅ Main SSD mounted" || echo "⚠️  Main SSD NOT mounted"
+lsusb | grep -q "EM060K-GL" && echo "✅ 4G LTE module detected" || echo "⚠️  4G LTE module NOT detected"
+lsusb | grep -q "Qualcomm / Option SDXBAAGHA-IDP" && echo "✅ 5G RedCap module detected" || echo "⚠️  5G RedCap module NOT detected"
+ifconfig | grep -q "usb0:" && echo "✅ Cellular network Detected" || echo "⚠️  Cellular network not Detected"
+ping -q -c1 -I usb0 google.com &>/dev/null && echo "✅ Ping Cellular OK" || echo "⚠️  Ping Cellular NOT Working"
+lsblk| grep -q "mmcblk2" && echo "✅ uSD mounted" || echo "⚠️  uSD NOT mounted"
+lsusb | grep -q "Flash Drive" && echo "✅ External Flash drive detected on USB-C" || echo "⚠️  External Flash drive NOT detected on USB-C"
+printf "💾 eMMC: " && lsblk -dn -o SIZE /dev/mmcblk0
+printf  "💾 SDRAM: " && grep MemTotal /proc/meminfo
+printf  "💾 SSD: " && lsblk -dn -o SIZE /dev/nvme0n1
+
+echo -e "\nPress a key..."
+read -n 1 -s
+echo -e "\n2️⃣  Test COM ports in Reception at 115200 Bauds and CANbuses in Reception at 250KB, CTRL-C to exit"
+cat /dev/ttyAMA1 | sed 's/^/[COM1] /' &
+cat /dev/ttyAMA2 | sed 's/^/[COM2] /' &
+cat /dev/ttyAMA3 | sed 's/^/[COM3] /' &
+cat /dev/ttyAMA4 | sed 's/^/[COM4] /' &
+cat /dev/ttyUSB0 | sed 's/^/[RXDA] /' &
+cat /dev/ttyUSB1 | sed 's/^/[RXDB] /' &
+cat /dev/ttyUSB2 | sed 's/^/[RXDC] /' &
+cat /dev/ttyUSB3 | sed 's/^/[RXDD] /' &
+candump can1 | sed 's/^/[CAN1] /' &
+candump can0 | sed 's/^/[CAN2] /' &
+wait
+```
+##### 3 - Test all the COMs and CANbuses ports in transmit :
+Note: COM1 is tested with the RS232 Console
+```
+echo -e "\n3️⃣  Test COM ports in Transmit at 115200 Bauds and CANbuses Transmit at 250KB"
+stty -F /dev/ttyAMA0 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyAMA2 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyAMA3 speed 115200 cs8 -cstopb -parenb
+stty -F /dev/ttyAMA4 speed 115200 cs8 -cstopb -parenb
+sudo ip link set can1 up type can bitrate 250000
+sudo ip link set can0 up type can bitrate 250000
+while true; do
+  printf "TX COM2 OK\r\n" | tee /dev/ttyAMA2 > /dev/null
+  printf "TX COM3 OK\r\n" | tee /dev/ttyAMA3 > /dev/null
+  printf "TX COM4 OK\r\n" | tee /dev/ttyAMA4 > /dev/null
+  cansend can1 7DF#0201050000000000
+  cansend can0 7DF#0201050000000000 
+  sleep 1
+done
+```
+
+# Option : Multi-Protocol Wireless Network co-processor (NCP)
+This option gives automation and IoT connectivity with Matter-Over-Thread, Zigbee, BLE Mesh and Open Thread. It's the perfect interface for Home Assistant or Mesh communication.
+It add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna. Note that this option removes an RS232 RX only input. 
+This module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24) , [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html), or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
+
+For more information about the EFR32MG24 :
+[EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html)
+[EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf)
+[EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
+
+Th"e Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded serial bootloader. Your Linux application can manage the update of the MG24 firmware.
+For the software development you can use a dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html) or the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf).
+The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins. See page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) datasheet for the Network Co-Processor (NCP) Application with UART.
+
+|EFR32 Pin|EFR32 I/O|Connected to|GPIO Name| Name         | Description|                                                                        
+|------|-------|-------|-------|-------|-----------------------------|
+| 4    | PB02  | CM5 Pin 19        | FAN_PWM | **NBOOT_MP_RAD** | EFR32 Bootload Mode
+| 12   | PA05  | FT432H-56Q Pin 23 | BDBUS1  | **RXD_B**        | EFR32 USART1.TX   
+| 13   | PA06  | FT432H-56Q Pin 21 | BDBUS0  | **TXD_B**        | EFR32 USART1.RX
+| 16   | PA07  | FT432H-56Q Pin 25 | BDBUS3  | **CTS_B**        | EFR32 Output
+| 17   | PA08  | FT432H-56Q Pin 24 | BDBUS2  | **RTS_B**        | EFR32 Input 
+| 31   | #RESET| CM5 Pin 80        | CM5 SCL0|**NRST_MP_RAD**   | EFR32 Reset
+
+config.txt must contain :
+```
+# Xplorer CM5 with option MGM240PA32 : MGM240PA32 NRST
+gpio=39=op,dh
+```
+NRST to 0V :
+```
+pinctrl set 39 op pn dl
+```
+NRST to 3V3:
+```
+pinctrl set 39 op pn dh
+```
+Blink:
+```
+while true; do
+    pinctrl set 39 op pn dl
+    pinctrl set 45 op pn dl
+    sleep 0.5
+    pinctrl set 39 op pn dh
+    pinctrl set 45 op pn dh
+    sleep 0.5
+done
+```
+```
+while true; do
+    pinctrl set 45 op pn dl
+    sleep 0.5
+    pinctrl set 45 op pn dh
+    sleep 0.5
+done
+```
+```
+echo 0 > /sys/class/pwm/pwmchip0/export
+echo 1000000 > /sys/class/pwm/pwmchip0/pwm0/period
+echo 500000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
+echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
+```
+
+
+More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf)
+
+View the ttyUSB2 (RXD_B) reception at 115Kbps with :
+```
+stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
+cat /dev/ttyUSB2
+```
+
+Put The EFR32 in bootload mode with the sequence :
+ - NBOOT=0 -> FAN_PWM=0
+ - NRST=0  -> GPIO39=0
+ - NRST=1  -> GPIO39=1
+ - NBOOT=1 -> FAN_PWM=1
+
+You can make this boot sequence with :
+```
+pinctrl set 39 op pn dl
+pinctrl set 39 op pn dh
+```
+After this sequence, the MG24 send the message:
+```Gecko Bootloader vX.Y``` or ```BL >```
+
+### Firmware Builds for dongles
+https://github.com/NabuCasa/silabs-firmware-builder
+https://github.com/darkxst/silabs-firmware-builder/tree/main
+https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
+https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
+
+### Firmware examples
+https://github.com/NabuCasa/silabs-firmware
+
+### Flash the MG24 with Silicon Labs Commander
+https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
+https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
+
+Install :
+```
+wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.tar.bz2
+tar -xvf SimplicityCommander-Linux.tar.bz2
+cd SimplicityCommander*
+sudo ./install.sh
+```
+Verify:
+```
+commander --version
+```
+Enter in boot mode :
+```
+pinctrl set 39 op pn dl
+pinctrl set 39 op pn dh
+```
+Check if the communication with the bootloader
+```
+commander device info --serialport /dev/ttyUSB2 --baudrate 115200
+```
+You should see:
+```
+Connecting to bootloader...
+Device: EFR32MG24
+Bootloader version: x.y.z
+```
+Flash an Hex file:
+```
+commander flash firmware.hex --serialport /dev/ttyUSB2 --baudrate 115200
+```
+Flash a bin file:
+```
+commander flash firmware.bin --serialport /dev/ttyUSB2 --baudrate 115200 --address 0x08000000
+```
+Reset and Run the MG24 Firmware:
+```
+commander reset --serialport /dev/ttyUSB2
+```
+
+### Flash the MG24 with the NabuCasa Universal Silicon Labs Flasher 
+https://github.com/NabuCasa/universal-silabs-flasher
+
+Install :
+```
+$ pip install universal-silabs-flasher
+```
+Enter in boot mode :
+```
+pinctrl set 39 op pn dl
+pinctrl set 39 op pn dh
+```
+Flash the MG24 :
+```
+universal-silabs-flasher --device /dev/ttyUSB2 flash --firmware xxxxx-115200.gbl
+```
+
+Usefull Links :
+https://www.silabs.com/support/training/developing-with-matter-on-the-mg24
+https://wiki.seeedstudio.com/xiao_mg24_matter/
+https://tutoduino.fr/en/tutorials/matter-xiao-mg24/
+https://wiki.seeedstudio.com/xiao_mg24_getting_started/
+https://community.silabs.com/s/question/0D5Vm00000vUohmKAC/flashing-the-xiao-mg24-sense?language=fr
+https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
+https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
 

@@ -1,5 +1,7 @@
 # <code style="color : BLACK">XPLORER CM5 FLEX - Datasheet - 🅰🆄🆂🆃🆁🅰🅻 Electronics</code>
 
+www.austral-eng.com - Intelligent Technologies for Marine, Industrial IoT and Unmanned Vehicles
+
 **Xplorer CM5 – Waterproof Rugged Industrial Edge IoT/AIoT Controller & Embedded Mission Computer – Raspberry PI CM5 & Hailo AI Ecosystems**
 
 Xplorer CM5 are a familly of products. They can be used when reliability is not an option for IIoT, AIoT & Edge Gateways or Controllers for Smart, Connected Automation and Supervision but also as Embedded Mission Computers for Sea, Air & Land Intelligent Mobility in harsh environment.
@@ -354,7 +356,7 @@ This model is low power and compatible with the n25 and n26 bands that will be u
 | Max DL Speed | 220 Mbps
 | Max UL Speed | 100 Mbps
 | Temperature | -30 - +70 °C
-| 5G Bands | n1, n2, n3, n5, n7, n8, n12, n13, n14, n18, n2à, n25, n26, n28, n30, n38, n40, n41, n48, n66, n70, n71, n77, n78, n79 
+| 5G Bands | n1, n2, n3, n5, n7, n8, n12, n13, n14, n18, n20, n25, n26, n28, n30, n38, n40, n41, n48, n66, n70, n71, n77, n78, n79 
 | LTE Bands | B1, B2, B3, B4, B5, B7, B8, B12, B13, B14, B17, B18, B19, B20, B25, B26, B28, B30, B34, B38, B39, B40, B41, B42, B43, B48, B66, B71
 | GNSS | GPS, Galileo, GLONASS, BeiDou
 | Chipset | Qualcomm SDX35
