@@ -65,18 +65,20 @@ Folow this tutorial to install **rpiboot** and **Raspberry Pi Imager** on your c
 
 ## 2.2 Flash procedure <a name="2.2"></a>
 
-> [!CAUTION] Please note that with the Xplorer CM5 :
->  - the J2 jumper of the Officiel I/O board is replace with a switch under the right cap.
->  - This switch must be flip for the entire duration of the download.
->  - The Xplorer CM5 is not powered via USB-C; it must be powered via CAN1-PWR during the entire flashing process.
->  - If your PC prompts you to format disks via pop-up windows during the flashing process, ignore and close the windows.
+> [!CAUTION]
+>  Please note that with the Xplorer CM5 :
+>  - the J2 jumper of the Officiel I/O board is replace with a **bootload switch under the left cap**.
+>  - **This switch must be flip for the entire duration of the download**.
+>  - The Xplorer CM5 is not powered via USB-C; it **must be powered via CAN1-PWR during the entire flashing process**.
+>  - If your computer prompts you to format disks via pop-up windows during the flashing process, ignore and close them.
 
 The flashing procedure is:
-- Disconnect USB-C and CAN1-PWR cables
-- Remove the cap on the right side of the enclosure
-- Flip the switch under this cap toward the SMA connectors
+- Disconnect the USB-C cable
+- Turn off the power via CAN1-PWR
+- Remove the cap on the left side of the enclosure
+- Flip the bootload switch under this cap toward the SMA connectors
 - Power up via CAN1-PWR
-- Launch **rpiboot** on your PC
+- Launch **rpiboot** on your computer
 ```
 RPIBOOT: build-date 2025/05/19 pkg-version local 402baf02
 
@@ -85,6 +87,7 @@ If the device fails to connect then please see https://rpltd.co/rpiboot for debu
 Waiting for BCM2835/6/7/2711/2712...
 ```
 - Connect the USB-C cable
+- In Windows, you should hear the USB driver notification sound
 - **rpiboot** should detect Xplorer CM5 and read several files
 ```
 Directory not specified - trying default /usr/share/rpiboot/mass-storage-gadget64/
@@ -124,11 +127,11 @@ File read: boot.img
     - User : **xplr**
     - Password : **changeme**
     - Wifi : yes
-    - SSID : Austral_4g (put your WIFI hotspot name)
-    - Password : m******123 (put your WIFI password)
+    - SSID : ************ (put your WIFI hotspot name)
+    - Password : ************ (put your WIFI password)
     - ssh : yes
 - Start flashing, it can last for several minutes ☕
-- At the end of programming
+- At the end of programming and verification
   - Disconnect the USB-C
   - Turn off the power via CAN1-PWR
   - Switch the switch back to the M12 connector direction
@@ -140,7 +143,7 @@ File read: boot.img
 # 3 - GETTING STARTED 🏁 <a name="3"></a>
 
 ## 3.1 - Launch a SSH console 🔐 <a name="3.1"></a>
-Connect the Xplorer to your ethernet network, and verify the switch (1GbE).
+Connect the Xplorer to your ethernet network, and verify the LEDs on your switch (Must indicate 1GbE).  
 To get a DHCP defined IP address, you have multiples solutions :
 
 **Solution 1 :** With a ping
@@ -192,24 +195,21 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 > ```
 > and try to open a ssh console again.
 
+> [!CAUTION]
+> If you have an unconfigured Cellular M.2 module in place, you may have to wait one minute to have access to the ssh console via ethernet. In the worst case scenario, you may be blocked, retry a power-up or use ssh over WiFi, or a serial console on COM1, or a HDMI monitor and a keyboard in order to understand the problem and configure ModemManager.
+
 ## 3.2 - Update the linux and eeprom 🗓️ <a name="3.2"></a>
-If you have an unconfigured 4G LTE or 5G module, you may have to disable usb0 or ppp0 to have access to internet :
-```
-sudo ip link set dev usb0 down
-```
-or 
-```
-sudo ip link set dev ppp0 down
-```
 Update the package list, distribution, eeprom:
 ```
 sudo apt --yes update && sudo apt --yes full-upgrade
 sudo rpi-eeprom-update -a
 ```
-Reboot:
+And reboot:
 ```
 sudo reboot
 ```
+> [!CAUTION]
+> If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet and make this update: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
 ## 3.3 - Patch the configuration file <a name="3.2"></a>
 
