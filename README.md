@@ -21,6 +21,21 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [3.6 - Option : Static IP configuration](#3.6)
     - [3.7 - Change Password](#3.7)
     - [3.8 - Installation of usefull tools](#3.8)
+- **[4 - TEST THE PERIPHERALS](#4)**
+    - [4.1 - Check the Linux configuration](#4.1)
+    - [4.2 - Check Ethernet Speed](#4.2)
+    - [4.3 - Check WiFi](#4.3)
+    - [4.4 - Check Serials](#4.4)
+        - [4.4.1 - Test UART0 on ttyAMA0](#4.4.1)
+        - [4.4.2 - Test COM1 on ttyAMA1](#4.4.2)
+        - [4.4.3 - Test COM2 on ttyAMA2](#4.4.3)
+        - [4.4.4 - Test COM3 on ttyAMA3 in RS232 Mode](#4.4.4)
+        - [4.4.5 - Test COM3 on ttyAMA3 in RS485 Mode](#4.4.5)
+        - [4.4.6 - Test COM4 on ttyAMA4](#4.4.6)
+        - [4.4.7 - Test IN2_RXDA on ttyUSB0](#4.4.7)
+        - [4.4.8 - Test IN1_RXDB on ttyUSB1](#4.4.8)
+        - [4.4.9 - Test IN4_RXDC on ttyUSB2](#4.4.9)
+        - [4.4.10 - Test IN3_RXDD on ttyUSB3](#4.4.10)
 
 
 ---
@@ -218,10 +233,6 @@ sudo reboot
 > If you have flashed a new image, you must configure the Xplorer CM5 peripherals.
 > **This step is not necessary with the factory image**.
 
-https://www.raspberrypi.com/documentation/computers/config_txt.html
-https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/overlays/README
-https://raspberrypi.stackexchange.com/questions/69674/are-there-other-act-led-trigger-options-besides-mmc-and-heartbeat
-
 Edit config.txt :
 ```
 sudo nano /boot/firmware/config.txt
@@ -352,8 +363,13 @@ gpio=45=op,dh
 #dtparam=pciex1=off
 
 ```
+Usefull documentations to configure config.txt:
+- [Config.txt](https://www.raspberrypi.com/documentation/computers/config_txt.html)
+- [Device Tree Overlays](https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/overlays/README)
+- [Configure the Activity LED](https://raspberrypi.stackexchange.com/questions/69674/are-there-other-act-led-trigger-options-besides-mmc-and-heartbeat)
+
 ## 3.4 - Enable I2C <a name="3.4"></a>
-Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config. 
+Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config.
 ```
 sudo raspi-config nonint do_i2c 0
 ```
@@ -405,32 +421,33 @@ sudo reboot
 > If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
 ---
-# 🎓 TEST THE PERIPHERALS
-## Get the system configuration
-### 💻 Linux
-#### Linux version :
+# 4 - TEST THE PERIPHERALS 🎓 <a name="4"></a>
+## 4.1 - Check the Linux configuration 💻 <a name="4.1"></a>
+### Linux version :
 ```
-$ uname -a
+uname -a
+```
+```
 Linux xplorercm5 6.12.47+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.47-1+rpt1 (2025-09-16) aarch64 GNU/Linux
 ```
-#### OS version :
+### OS version :
 ```
-$ cat /etc/os-release
+cat /etc/os-release
+```
+```
 PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
 ...
 ```
-#### Debian version :
+### Debian version :
 ```
-$ cat /etc/debian_version
+cat /etc/debian_version
+```
+```
 13.2
 ```
-
-#### Check ETHERNET Speed:
-
+## 4.2 - Check Ethernet Speed <a name="4.2"></a>
 ```
 sudo apt install ethtool
-```
-```
 ethtool eth0
 ```
 You should see:
@@ -440,9 +457,7 @@ Speed: 1000Mb/s
 Duplex: Full
 ...
 ```
-
-#### Check WIFI:
-
+## 4.3 - Check WiFi <a name="4.3"></a>
 External antenna , config.txt
 ```
 # Switch to external antenna.
@@ -452,8 +467,7 @@ Params:
 - ant1 : Select antenna 1 = internal (default)
 - ant2 : Select antenna 2 = external
 - noant: Disable both antennas
-
-#### Check SERIALS :
+##  4.4 - Check Serials <a name="4.4"></a>
 List all the ports:
 ```
 ls /dev/ttyA*
@@ -473,8 +487,7 @@ You should see at least 4 ports:
 ```
 ttyUSB0 to ttyUSB4 correspond to RXD_A to RXD_D
 Note: You can see more ttyUSB depending of M.2 modules options (Cellular, GNSS...)
-
-##### Test UART0 on ttyAMA0 :
+### 4.4.1 - Test UART0 on ttyAMA0 <a name="4.4.1"></a>
 This UART is used internaly by the options : LoRa/Sigfox xor IMU
 
 ⚠️ By default this port is in linux console mode, to deactivate the console and use as an UART, config.txt must contain :
@@ -494,8 +507,7 @@ Write Test :
 ```
 echo -e "TX UART0 is Working\x0D\x0A" > /dev/ttyAMA0
 ```
-##### Test COM1 on ttyAMA1 :
-
+### 4.4.2 - Test COM1 on ttyAMA1 <a name="4.4.2"></a>
 Configure Baudrate:
 ```
 stty -F /dev/ttyAMA1 speed 115200 cs8 -cstopb -parenb
@@ -508,8 +520,7 @@ Write Test :
 ```
 echo -e "TX COM1 Working \x0D\x0A" > /dev/ttyAMA1
 ```
-##### Test COM2 on ttyAMA2 :
-
+### 4.4.3 - Test COM2 on ttyAMA2 <a name="4.4.3"></a>
 Configure Baudrate:
 ```
 stty -F /dev/ttyAMA2 speed 115200 cs8 -cstopb -parenb
@@ -522,11 +533,10 @@ Write Test :
 ```
 echo -e "TX COM2 Working \x0D\x0A" > /dev/ttyAMA2
 ```
-
-##### Test COM3 on ttyAMA3 in RS232 Mode :
-This port is an isolated dual-mode RS232 or RS485 port. By default, this port is in 3 wires RS232 mode (TXD, RXD, RTS).
-The power LED is used to select the mode RS232 or RS485.
-RTS/GPIO11 is used for the RS485 low impedance
+### 4.4.4 - Test COM3 on ttyAMA3 in RS232 Mode <a name="4.4.4"></a>
+This port is an isolated dual-mode RS232 or RS485 port. By default, this port is in 3 wires RS232 mode (TXD, RXD, RTS).  
+The power LED is used to select the mode RS232 or RS485.  
+RTS/GPIO11 is used for the RS485 low impedance.  
 
 In RS232 mode the config.txt must contain :
 ```
@@ -547,8 +557,7 @@ Write Test :
 ```
 echo -e "TX COM3 is Working in RS232\x0D\x0A" > /dev/ttyAMA3
 ```
-
-##### Test COM3 on ttyAMA3 in RS485 Mode :
+### 4.4.5 - Test COM3 on ttyAMA3 in RS485 Mode <a name="4.4.5"></a>
 In RS485 mode config.txt must contain :
 ```
 dtoverlay=uart3,rts
@@ -570,9 +579,7 @@ ser.rs485_mode = RS485Settings(
 ser.write(b'TX COM3 is Working in RS485\x0D\x0A')
 ser.flush()
 ```
-
-##### Test COM4 on ttyAMA4 :
-
+### 4.4.6 - Test COM4 on ttyAMA4 <a name="4.4.6"></a>
 COM4 is an half duplex RS485 port with AutoDirection Control (No DE via RTS to command Transmit low impedance). Configure Baudrate:
 ```
 stty -F /dev/ttyAMA4 speed 19200 cs8 -cstopb -parenb
@@ -585,8 +592,7 @@ Write Test :
 ```
 echo -e "TX COM4 Working \x0D\x0A" > /dev/ttyAMA4
 ```
-
-##### Test IN2_RXDA on ttyUSB0 :
+### 4.4.7 - Test IN2_RXDA on ttyUSB0 <a name="4.4.7"></a>
 ```
 stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
 ```
@@ -594,7 +600,7 @@ Read Test :
 ```
 cat /dev/ttyUSB0
 ```
-##### Test IN1_RXDB on ttyUSB1 :
+### 4.4.8 - Test IN1_RXDB on ttyUSB1 <a name="4.4.8"></a>
 ⚠️ IN1_RXDB is not functional with the **Matter** hardware option
 ```
 stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
@@ -603,8 +609,7 @@ Read Test :
 ```
 cat /dev/ttyUSB1
 ```
-##### Test IN4_RXDC on ttyUSB2 :
-⚠️ IN4_RXDC is not functional with the **LoRa** hardware option
+### 4.4.9 - Test IN4_RXDC on ttyUSB2 <a name="4.4.9"></a>
 ```
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 ```
@@ -612,37 +617,13 @@ Read Test :
 ```
 cat /dev/ttyUSB2
 ```
-##### Test IN3_RXDD on ttyUSB3 :
+### 4.4.10 - Test IN3_RXDD on ttyUSB3 <a name="4.4.10"></a>
 ```
 stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
 ```
 Read Test :
 ```
 cat /dev/ttyUSB3
-```
-
-##### Test all the COM ports in reception :
-```
-cat /dev/ttyAMA0 | sed 's/^/[COM0] /' &
-cat /dev/ttyAMA1 | sed 's/^/[COM1] /' &
-cat /dev/ttyAMA2 | sed 's/^/[COM2] /' &
-cat /dev/ttyAMA3 | sed 's/^/[COM3] /' &
-cat /dev/ttyAMA4 | sed 's/^/[COM4] /' &
-cat /dev/ttyUSB0 | sed 's/^/[RXDA] /' &
-cat /dev/ttyUSB1 | sed 's/^/[RXDB] /' &
-cat /dev/ttyUSB2 | sed 's/^/[RXDC] /' &
-cat /dev/ttyUSB3 | sed 's/^/[RXDD] /' &
-wait
-```
-##### Test all the COM ports in transmit :
-```
-while true; do
-  printf "TX COM1 OK\r\n" | tee /dev/ttyAMA1 > /dev/null
-  printf "TX COM2 OK\r\n" | tee /dev/ttyAMA2 > /dev/null
-  printf "TX COM3 OK\r\n" | tee /dev/ttyAMA3 > /dev/null
-  printf "TX COM4 OK\r\n" | tee /dev/ttyAMA4 > /dev/null
-  sleep 1
-done
 ```
 
 #### Check I2C :
