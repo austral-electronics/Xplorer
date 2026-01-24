@@ -19,7 +19,8 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [3.4 - Enable I2C](#3.4)
     - [3.5 - Option : Activate a RS232 console](#3.5)
     - [3.6 - Option : Static IP configuration](#3.6)
-    - [3.7 - Installation of usefull tools](#3.7)
+    - [3.7 - Change Password](#3.7)
+    - [3.8 - Installation of usefull tools](#3.8)
 
 
 ---
@@ -58,10 +59,10 @@ Whether you're integrating Xplorer CM5 into industrial systems, vehicle, marine 
 
 To change the factory version or OS, you must first install the required tools on your computer.
 
-The Official Raspberry Pi CM5 flashing documentation on the [Compute Module CM5 IO Board is 👉 [here](https://www.raspberrypi.com/documentation/computers/compute-module.html#flash-compute-module-emmc)
+The Official Raspberry Pi CM5 flashing documentation on the Compute Module CM5 IO Board is 👉 [here](https://www.raspberrypi.com/documentation/computers/compute-module.html#flash-compute-module-emmc)
 with a tutorial video 👉 [here](https://www.youtube.com/watch?v=SWv-WYlHJWQ&t=44s)
 
-Folow this tutorial to install **rpiboot** and **Raspberry Pi Imager** on your computer.
+Folow these tutorials to install **rpiboot** and **Raspberry Pi Imager** on your computer.
 
 ## 2.2 Flash procedure <a name="2.2"></a>
 
@@ -388,7 +389,12 @@ Verify the Static IP:
 ```
 ip addr show eth0
 ```
-## 3.7 - Installation of usefull tools <a name="3.7"></a>
+## 3.7 - Change Password <a name="3.7"></a>
+The default password is **"changeme"**, to change it :
+```
+sudo passwd xplr
+```
+## 3.8 - Installation of usefull tools <a name="3.8"></a>
 Install usefull tools to follow this tutorial and reboot :
 ```
 sudo apt --yes install ethtool i2c-tools libtss2-* tpm-udev tpm2-abrmd tpm2-tools can-utils minicom
