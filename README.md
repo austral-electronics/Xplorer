@@ -25,7 +25,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.1 - Check the Linux configuration](#4.1)
     - [4.2 - Check Ethernet Speed](#4.2)
     - [4.3 - Check WiFi](#4.3)
-    - [4.4 - Check Serials](#4.4)
+    - [4.4 - Test Serials](#4.4)
         - [4.4.1 - Test UART0 on ttyAMA0](#4.4.1)
         - [4.4.2 - Test COM1 on ttyAMA1](#4.4.2)
         - [4.4.3 - Test COM2 on ttyAMA2](#4.4.3)
@@ -36,7 +36,14 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.4.8 - Test IN1_RXDB on ttyUSB1](#4.4.8)
         - [4.4.9 - Test IN4_RXDC on ttyUSB2](#4.4.9)
         - [4.4.10 - Test IN3_RXDD on ttyUSB3](#4.4.10)
-
+    - [4.5 - Test CAN-FD buses](#4.5)
+        - [4.5.1 - Check the driver](#4.5.1)
+        - [4.5.2 - Test CAN1](#4.5.2)
+        - [4.5.3 - Test CAN2](#4.5.3)
+    - [4.6 - Test CyberSecurity Chips](#4.6)
+        - [4.6.1 - Check I2C bus](#4.6.1)
+        - [4.6.2 - Check TPM2.0 Chip](#4.6.2)
+        - [4.6.3 - Check the optional CrytoAuthentication Co-Processor](#4.6.3)
 
 ---
 # 1 - INTRODUCTION <a name="1"></a>
@@ -467,7 +474,7 @@ Params:
 - ant1 : Select antenna 1 = internal (default)
 - ant2 : Select antenna 2 = external
 - noant: Disable both antennas
-##  4.4 - Check Serials <a name="4.4"></a>
+##  4.4 - Test Serials <a name="4.4"></a>
 List all the ports:
 ```
 ls /dev/ttyA*
@@ -625,10 +632,73 @@ Read Test :
 ```
 cat /dev/ttyUSB3
 ```
+## 4.5 - Test CAN-FD buses <a name="4.5"></a>
+### 4.5.1 - Check the driver <a name="4.5.1"></a>
+```
+dmesg | grep -i -E "(mcp|spi)"
+```
+```
+...
+[    5.936984] mcp251xfd spi1.2 can0: MCP2518FD rev0.0 (-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:40.00MHz c:40.00MHz m:20.00MHz rs:17.00MHz es:16.66MHz rf:17.00MHz ef:16.66MHz) successfully initialized.
+[    5.946398] mcp251xfd spi1.1 can1: MCP2518FD rev0.0 (-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:40.00MHz c:40.00MHz m:20.00MHz rs:17.00MHz es:16.66MHz rf:17.00MHz ef:16.66MHz) successfully initialized.
+...
+```
+You must see can0 and can1 usign MCP2518FD chipset on SPI1
+```
+ifconfig -a
+```
+```
+can0: flags=128<NOARP>  mtu 16
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 10  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 197  
 
-#### Check I2C :
-https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/#:~:text=%E2%80%9Ci2c%2Dtools%E2%80%9D-,i2cdetect,connected%20to%20a%20specific%20interface.
-https://wiki.seeedstudio.com/check_Encryption_Chip/
+can1: flags=128<NOARP>  mtu 16
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 10  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 198 
+... 
+```
+You must see **can0** and **can1**
+### 4.5.2 - Test CAN1 <a name="4.5.2"></a>
+To configure the main CANBus 'can1' on CAN1/PWR connector (NMEA2000 compatible):
+```
+sudo apt-get install can-utils
+sudo ip link set can1 up type can bitrate 250000
+```
+Test the reception with : 
+```
+candump can1
+```
+Send a sentence with :
+```
+cansend can1 7DF#0201050000000000
+```
+### 4.5.3 - Test CAN2 <a name="4.5.3"></a>
+To configure the secondary CANbus 'can0' on DAQ/CAN2 connector:
+```
+sudo apt-get install can-utils
+sudo ip link set can0 up type can bitrate 250000
+```
+Test the reception with : 
+```
+candump can0
+```
+Send a sentence with :
+```
+cansend can0 7DF#0201050000000000
+```
+
+## 4.6 - Test CyberSecurity Chips <a name="4.6"></a>
+### 4.6.1 - Check I2C bus <a name="4.6.1"></a>
+[I2C Tools Tutorial](https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/)
+[Check ATECC608A Chip](https://wiki.seeedstudio.com/check_Encryption_Chip/)
 
 Enable I2C (raspi-config -> Interface options -> I2C -> Enable):
 ```
@@ -639,12 +709,14 @@ If needed valid also the I2C in config.txt :
 echo "dtparam=i2c_arm=on" | sudo tee -a /boot/firmware/config.txt
 sudo reboot
 ```
-> [!NOTE] In the Raspberry Pi documentation, the raspi-config I2C enable has the same effect as enabling I2C in config.txt and reboot. Experimentally, you need to do raspi-config to list I2C devices. 
+> [!NOTE]
+> In the Raspberry Pi documentation, the raspi-config I2C enable has the same effect as enabling I2C in config.txt and reboot. Experimentally, you need to do raspi-config to list I2C devices. 
 
 and:
 ```
 sudo apt-get install i2c-tools
 ```
+[I2C Tools Tutorial](https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/)
 List I2C & TPM devices and I2C pilot :
 ```
 sudo i2cdetect -l|sort && i2cdetect -y -r 13 && ls -l /dev/tpm* && lsmod | grep i2c
@@ -678,18 +750,13 @@ i2c_dev                49152  0
 TPM2.0 with the SLB9673AU20FW2610XTMA1 : Adr 2E -> 0x2E or UU
 Option CryptoAuthentication with the ATECC608A-MAHDA : Adr 0x60 -> 0x60 or UU
 
-#### TPM2.0 with 51K NVM :
-SLB9673AU20FW2610XTMA1
-https://www.infineon.com/assets/row/public/documents/30/49/infineon-slb9673-tpm20-i2c-fw26xx-ds-rev1-4-2024-11-13-datasheet-en.pdf?
-fileId=8ac78c8c93dda25b01944055dd2c5d11
+### 4.6.2 - Check TPM2.0 Chip <a name="4.6.2"></a>
 
-https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf
+This feature uses the [Infineon OPTIGA SLB9673AU20FW2610XTMA1](https://www.infineon.com/assets/row/public/documents/30/49/infineon-slb9673-tpm20-i2c-fw26xx-ds-rev1-4-2024-11-13-datasheet-en.pdf) TPM2.0 I2C Chip with 51KB of NV memory.
 
-https://www.infineon.com/assets/row/public/documents/30/49/infineon-optiga-tpm-slb-9673-rpi-datasheet-en.pdf?fileId=8ac78c8c8779172a0187ed7465fa19e8
-https://wiki.seeedstudio.com/recomputer_r/#encryption-chip-tpm-20
-https://www.infineon.com/assets/row/public/documents/30/49/infineon-optiga-tpm-slb-9673-rpi-datasheet-en.pdf?fileId=8ac78c8c8779172a0187ed7465fa19e8
-https://www.infineon.com/gated/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en_a3d6e6e3-6da2-4321-816d-8c6bcddc55ee
-https://ohyaan.github.io/tips/hardware_security_module__tpm__setup_with_dm-verity_and_encrypted_storage/#installing-tpm-hardware
+Documentation : 
+- [OPTIGA TPM RPi Quickstarter User Guide](https://www.infineon.com/gated/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en_a3d6e6e3-6da2-4321-816d-8c6bcddc55ee)
+- [Hardware Security Module (TPM) Setup with dm-verity and Encrypted Storage ](https://ohyaan.github.io/tips/hardware_security_module__tpm__setup_with_dm-verity_and_encrypted_storage/#installing-tpm-hardware)
 
 If needed, add this line in config.txt and reboot
 ```
@@ -727,17 +794,17 @@ TPM2_PT_LEVEL:
   raw: 0
 ...
 ```
-And follow this tutorial :
-https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf
+And follow this [infineon tutorial for more informations](https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf)
 
-#### Option CrytoAuthentication :
-The chip is ATECC608A-MAHDA (16 keys storage, Asymmetric & Symmetric Algorithms, Networking Key Management, Secure boot, 72 bits Unique ID...) 
-https://github.com/wirenboard/atecc-util
-https://gist.github.com/jj1bdx/ad2dedcbacb9198bd4e1667008e9dbe5
-https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/Atmel-8983-CryptoAuth-ATECC508A-Node-Example-Asymmetric-PKI-ApplicationNote.pdf
-https://forums.raspberrypi.com/viewtopic.php?t=353718
+### 4.6.3 - Check the optional CrytoAuthentication Co-Processor <a name="4.6.3"></a>
+This option uses the [Microchip ATECC608A-MAHDA](https://ww1.microchip.com/downloads/aemDocuments/documents/SCBU/ProductDocuments/DataSheets/ATECC608A-CryptoAuthentication-Device-Summary-Data-Sheet-DS40001977B.pdf) I2C Chip with 16 keys storage, Asymmetric & Symmetric Algorithms, Networking Key Management, Secure boot, 72 bits Unique ID...
 
-https://github.com/wirenboard/atec
+Documentations :
+- [Githgub atecc-util](https://github.com/wirenboard/atecc-util)
+- [ATECC608A I2C Notes](https://gist.github.com/jj1bdx/ad2dedcbacb9198bd4e1667008e9dbe5)
+- [Application note](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/Atmel-8983-CryptoAuth-ATECC508A-Node-Example-Asymmetric-PKI-ApplicationNote.pdf)
+- [Secure boot using ATECC608A](https://forums.raspberrypi.com/viewtopic.php?t=353718)
+
 ```
 sudo apt-get install git debhelper
 git clone https://github.com/contactless/atecc-util
@@ -1057,49 +1124,6 @@ To clone the SD to the main SSD:
 sudo dd if=/dev/mmcblk2 of=/dev/nvme0n1 bs=4M status=progress
 ```
 
-### Test the CAN-FD buses
-```
-$ dmesg | grep -i -E "(mcp|spi)"
-...
-[    5.936984] mcp251xfd spi1.2 can0: MCP2518FD rev0.0 (-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:40.00MHz c:40.00MHz m:20.00MHz rs:17.00MHz es:16.66MHz rf:17.00MHz ef:16.66MHz) successfully initialized.
-[    5.946398] mcp251xfd spi1.1 can1: MCP2518FD rev0.0 (-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:40.00MHz c:40.00MHz m:20.00MHz rs:17.00MHz es:16.66MHz rf:17.00MHz ef:16.66MHz) successfully initialized.
-...
-```
-You must see can0 and can1 usign MCP2518FD chipset on SPI1
-```
-$ ifconfig -a
-can0: flags=128<NOARP>  mtu 16
-        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 10  (UNSPEC)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-        device interrupt 197  
-
-can1: flags=128<NOARP>  mtu 16
-        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 10  (UNSPEC)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-        device interrupt 198 
-... 
-```
-You must see **can0** and **can1**
-
-Test the main CANBus 'can1' on CAN1/PWR connector (NMEA2000 compatible):
-```
-$ sudo apt-get install can-utils
-$ sudo ip link set can1 up type can bitrate 250000
-$ candump can1
-$ cansend can1 7DF#0201050000000000
-```
-Test the secondary CANbus 'can0' on DAQ/CAN2 connector:
-```        
-$ sudo ip link set can0 up type can bitrate 250000
-$ candump can0
-$ cansend can0 7DF#0201050000000000
-```
 
 ### 4G/LTE with the Quectel EM60K-GL M.2 module
 
