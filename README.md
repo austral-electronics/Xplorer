@@ -11,7 +11,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
 - **[1 - INTRODUCTION](#1)**
 - **[2 - FLASH AN IMAGE](#2)**
   - [2.1 Install the flashing tools on your computer](#2.1)
-        - [2.1.1 Use RPIBOOT on Mac](#2.1.1)
+    - [2.1.1 Use RPIBOOT on Mac](#2.1.1)
   - [2.2 Flash procedure](#2.2)
 - **[3 - GETTING STARTED](#3)**
     - [3.1 - Launch a SSH console](#3.1)
