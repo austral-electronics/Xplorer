@@ -24,6 +24,8 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
 - **[4 - TEST THE PERIPHERALS](#4)**
     - [4.1 - Linux configuration](#4.1)
     - [4.2 - Ethernet](#4.2)
+        - [4.2.1 - GbE over M12](#4.2.1)
+        - [4.2.2 - 5 GbE over USB-C](#4.2.1)
     - [4.3 - WiFi](#4.3)
     - [4.4 - Serials](#4.4)
         - [4.4.1 - UART0](#4.4.1)
@@ -52,6 +54,11 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.7.5 - Internal NVMe SSD(s)](#4.7.5)
         - [4.7.6 - Micro SD Card](#4.7.6)
     - [4.8 - DAQ](#4.8)
+    - [4.9 - Cellular and Direct-To-Cell](#4.9)
+        - [4.9.1 - Nano SIM](#4.9.1)
+        - [4.9.2 - 4FF eSIM](#4.9.2)
+        - [4.9.3 - 4G LTE-A](#4.9.3)
+        - [4.9.4 - 5G RedCap](#4.9.4)
 ---
 # 1 - INTRODUCTION <a name="1"></a>
 Welcome to the **software guide for the Xplorer CM5**, a ruggedized industrial edge IoT / AIoT controller and mission computer designed for harsh environments based on the [Raspberry Pi CM5](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032) 🍓🥧 module. The Xplorer CM5 series is engineered for reliability where failure is not an option—ideal for smart automation, connected infrastructure, unmanned systems, and embedded intelligence projects.
@@ -460,6 +467,7 @@ cat /etc/debian_version
 13.2
 ```
 ## 4.2 - Ethernet <a name="4.2"></a>
+### 4.2.1 - GbE over M12 <a name="4.2.1"></a>
 ```
 sudo apt install ethtool
 ethtool eth0
@@ -471,6 +479,15 @@ Speed: 1000Mb/s
 Duplex: Full
 ...
 ```
+### 4.2.2 - 5 GbE over USB-C <a name="4.2.2"></a>
+You can have an additional 5 GbE port with an external USB-C to 5Gbps Ethernet adapter.  
+But you can have also a very high speed Vitual Network over USB-C with only a USB-C Cable, if you need only a P2P use :
+- SSH console
+- Remote Desktop like [Raspberry PI Connect](https://www.raspberrypi.com/software/connect/)
+- Rapid retrieval of large data logs
+
+Follow this [USB Ethernet Gadget Setup tutorial](https://ohyaan.github.io/tips/usb_ethernet_gadget_setup/#summary) to set up a USB Ethernet Gadget.
+
 ## 4.3 - WiFi <a name="4.3"></a>
 External antenna , config.txt
 ```
@@ -481,6 +498,9 @@ Params:
 - ant1 : Select antenna 1 = internal (default)
 - ant2 : Select antenna 2 = external
 - noant: Disable both antennas
+
+# <code style="color : RED">TBC</code>
+
 ##  4.4 - Serials <a name="4.4"></a>
 List all the ports:
 ```
@@ -1099,6 +1119,8 @@ mmcblk2      179:96   0  29.7G  0 disk
 The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0  
 It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
 
+# <code style="color : RED">TBC</code>
+
 Usefull documentation:
 - [Analog Device AD5592R IIO DAC/ADC Linux Driver](https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r)
 - [Analog Device EVAL-AD5592R-PMDZ Overview](https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz)
@@ -1109,6 +1131,13 @@ Usefull documentation:
 - [Video: Add Analog IO to #RPi with SpazzTech AD5592 Snack Board](https://www.youtube.com/watch?v=jSnT0_RSBUk)
 - [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
 - [AD5592R ROS2 Integration](https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html)
+
+## 4.9 - Cellular and Direct-To-Cell](#4.9)
+        - [4.9.1 - Nano SIM](#4.9.1)
+        - [4.9.2 - 4FF eSIM](#4.9.2)
+        - [4.9.3 - 4G LTE-A](#4.9.3)
+        - [4.9.4 - 5G RedCap](#4.9.4)
+
 
 ### 💪🏻 Benchmark
 Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
@@ -1383,10 +1412,6 @@ https://ohyaan.github.io/tips/cpu_isolation_and_task_affinity_for_multicore_opti
 
 https://ohyaan.github.io/tips/raspberry_pi_security_hardening_complete_guide/#network-security
 
-### Vitual Network over USB
-
-It's possible to have a SSH console or a Remote Desktop via USB-C.
-https://ohyaan.github.io/tips/usb_ethernet_gadget_setup/#summary
 
 ### GPIO and config.txt troubleshoot
 ```
