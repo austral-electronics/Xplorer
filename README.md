@@ -51,7 +51,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.7.4 - Type-C External Flash Drive](#4.7.4)
         - [4.7.5 - Internal NVMe SSD(s)](#4.7.5)
         - [4.7.6 - Micro SD Card](#4.7.6)
-        
+    - [4.8 - DAQ](#4.8)
 ---
 # 1 - INTRODUCTION <a name="1"></a>
 Welcome to the **software guide for the Xplorer CM5**, a ruggedized industrial edge IoT / AIoT controller and mission computer designed for harsh environments based on the [Raspberry Pi CM5](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032) 🍓🥧 module. The Xplorer CM5 series is engineered for reliability where failure is not an option—ideal for smart automation, connected infrastructure, unmanned systems, and embedded intelligence projects.
@@ -1064,8 +1064,8 @@ sudo dd bs=10M count=500 if=/dev/nvme1n1 of=/home/xplr/test.bin
 5242880000 bytes (5.2 GB, 4.9 GiB) copied, 47.4714 s, 110 MB/s
 ```
 ### 4.7.6 - Micro SD Card  <a name="4.7.6"></a>
-An optional internal micro SD card holder is connected to GPIO22 to GPIO27.
-It may be use for storage or but it is rather intended for cybersecurity (Secure Acces Key, Hidden partition, Write Once Read Many).
+An internal micro SD card holder is connected to GPIO22 to GPIO27.
+An optional SD card may be use for non-critical storage or but it is rather intended for cybersecurity (Secure Acces Key, Hidden partition, Write Once Read Many).
 To physically access to the push pull holder, you must remove the cap on the left side of the enclosure.
 The side of the SD with the electrical contacts must be on the side of the PCB, here it's the side of the bottom plate, so the printed side of the SD is facing the front.
 > [!CAUTION]
@@ -1095,17 +1095,21 @@ mmcblk2      179:96   0  29.7G  0 disk
 > ```
 > sudo dd if=/dev/mmcblk2 of=/dev/nvme0n1 bs=4M status=progress
 > ```
-#### DAQ :
-The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0.  
+## 4.8 - DAQ <a name="4.8"></a>
+The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0  
 It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
 
-https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r
-https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz
-https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html
-https://www.youtube.com/watch?v=jSnT0_RSBUk
-https://github.com/SpazzTech/AD5592_Snack_Board
-https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html
-https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c
+Usefull documentation:
+- [Analog Device AD5592R IIO DAC/ADC Linux Driver](https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r)
+- [Analog Device EVAL-AD5592R-PMDZ Overview](https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz)
+- [Analog Device AD5592R Driver doxygen doc](https://analogdevicesinc.github.io/no-OS/doxygen/dir_aa577ad46a7e19fba00f09ae0610f4c0.html)
+- [Analog Device pyadi-iio](https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html)
+- [ADALM2000/AD5592R Device tree](https://github.com/adisuciu/m2kirl/blob/main/dt/rpi-ad5592r-m2kirl.dts)
+- [AD5592R Linux driver](https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c)
+- [Video: Add Analog IO to #RPi with SpazzTech AD5592 Snack Board](https://www.youtube.com/watch?v=jSnT0_RSBUk)
+- [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
+- [AD5592R ROS2 Integration](https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html)
+
 ### 💪🏻 Benchmark
 Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
 https://pimylifeup.com/raspberry-pi-5-benchmark/
