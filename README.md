@@ -11,6 +11,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
 - **[1 - INTRODUCTION](#1)**
 - **[2 - FLASH AN IMAGE](#2)**
   - [2.1 Install the flashing tools on your computer](#2.1)
+        - [2.1.1 Use RPIBOOT on Mac](#2.1.1)
   - [2.2 Flash procedure](#2.2)
 - **[3 - GETTING STARTED](#3)**
     - [3.1 - Launch a SSH console](#3.1)
@@ -26,7 +27,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.2 - Ethernet](#4.2)
         - [4.2.1 - GbE over M12](#4.2.1)
         - [4.2.2 - 5 GbE over USB-C](#4.2.1)
-    - [4.3 - WiFi](#4.3)
+    - [4.3 - WiFi/BT](#4.3)
     - [4.4 - Serials](#4.4)
         - [4.4.1 - UART0](#4.4.1)
         - [4.4.2 - COM1](#4.4.2)
@@ -59,6 +60,21 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.9.2 - 4FF eSIM](#4.9.2)
         - [4.9.3 - 4G LTE-A](#4.9.3)
         - [4.9.4 - 5G RedCap](#4.9.4)
+        - [4.9.5 - Speed Test](#4.9.5)
+    - [4.10 - Multi-Protocol Wireless Network co-processor](#4.10)
+    - [4.11 - LoRa/Sifox](#4.11)
+    - [4.12 - RTC](#4.12)
+- **[5 - TIPS](#5)**
+        - [5.1 - Benchmark](#5.1)
+        - [5.2 - Shrink a pi image](#5.2)
+        - [5.3 - Manage Energy](#5.3)
+        - [5.4 - Watchdog](#5.4)
+        - [5.5 - NAS Setup](#5.5)
+        - [5.6 - Reduce boot time](#5.6)
+        - [5.7 - CPU Isolation and Task Affinity for Multicore Optimization](#5.7)
+        - [5.8 - Security Hardening](#5.8)
+- **[6 - GPIO CONFIGURATION](#6)**
+- **[7 - SELF-TEST](#7)**
 ---
 # 1 - INTRODUCTION <a name="1"></a>
 Welcome to the **software guide for the Xplorer CM5**, a ruggedized industrial edge IoT / AIoT controller and mission computer designed for harsh environments based on the [Raspberry Pi CM5](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032) 🍓🥧 module. The Xplorer CM5 series is engineered for reliability where failure is not an option—ideal for smart automation, connected infrastructure, unmanned systems, and embedded intelligence projects.
@@ -100,6 +116,32 @@ with a tutorial video 👉 [here](https://www.youtube.com/watch?v=SWv-WYlHJWQ&t=
 
 Folow these tutorials to install **rpiboot** and **Raspberry Pi Imager** on your computer.
 
+### 2.1.1 Use RPIBOOT on Mac <a name="2.1.1"></a>
+```
+brew install libusb pkg-config
+```
+check pkg-config
+```
+pkg-config --version
+```
+check libusb is well installed
+```
+ls /opt/homebrew/include/libusb-1.0/libusb.h
+```
+```
+git clone https://github.com/raspberrypi/usbboot
+```
+```
+cd usbboot
+```
+From inside the usbboot folder, run:
+```
+make CFLAGS="-I/opt/homebrew/include/libusb-1.0"
+
+```
+```
+sudo ./rpiboot
+```
 ## 2.2 Flash procedure <a name="2.2"></a>
 
 > [!CAUTION]
@@ -488,7 +530,7 @@ But you can have also a very high speed Vitual Network over USB-C with only a US
 
 Follow this [USB Ethernet Gadget Setup tutorial](https://ohyaan.github.io/tips/usb_ethernet_gadget_setup/#summary) to set up a USB Ethernet Gadget.
 
-## 4.3 - WiFi <a name="4.3"></a>
+## 4.3 - WiFi/BT <a name="4.3"></a>
 External antenna , config.txt
 ```
 # Switch to external antenna.
@@ -1133,25 +1175,222 @@ Usefull documentation:
 - [AD5592R ROS2 Integration](https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html)
 
 ## 4.9 - Cellular and Direct-To-Cell](#4.9)
-        - [4.9.1 - Nano SIM](#4.9.1)
-        - [4.9.2 - 4FF eSIM](#4.9.2)
-        - [4.9.3 - 4G LTE-A](#4.9.3)
-        - [4.9.4 - 5G RedCap](#4.9.4)
+### 4.9.1 - Nano SIM <a name="4.9.1"></a>
+### 4.9.2 - 4FF eSIM <a name="4.9.2"></a>
+### 4.9.3 - 4G LTE-A <a name="4.9.3"></a>
+### 4.9.4 - 5G RedCap <a name="4.9.4"></a>
+### 4.9.5 - Speed Test <a name="4.9.5"></a>
+Install the [OOKLA speed test](https://www.speedtest.net/apps/cli) tool with :
+```
+sudo apt update
+sudo apt install -y curl gnupg
+curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/ookla.gpg
+echo "deb [signed-by=/usr/share/keyrings/ookla.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ trixie main" | sudo tee /etc/apt/sources.list.d/ookla.list
+sudo apt install -y speedtest
+```
+And launch:
+```
+speedtest --interface usb0
+```
+We get with a 4G plan SIM card:
+```
+Server:          ORANGE FRANCE - Paris (id: 62493)
+ISP:             Bouygues Telecom
+Idle Latency:    39.99 ms   (jitter: 7.99ms, low: 32.02ms, high: 47.98ms)
+Download:        17.45 Mbps (data used: 29.6 MB)                                                   
+                 247.88 ms  (jitter: 67.64ms, low: 51.55ms, high: 1166.13ms)
+Upload:          8.77 Mbps  (data used: 14.7 MB)                                                   
+                 861.83 ms  (jitter: 91.22ms, low: 49.22ms, high: 1839.04ms)
+Packet Loss:     0.0%
+```
+## 4.10 - Multi-Protocol Wireless Network co-processor <a name="4.10"></a>
+This option gives automation and IoT connectivity with Matter-Over-Thread, Zigbee, BLE Mesh and Open Thread. It's the perfect interface for Home Assistant or Mesh communication.
+It add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna. Note that this option removes an RS232 RX only input. 
+This module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24) , [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html), or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
 
+For more information about the EFR32MG24 :
+[EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html)
+[EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf)
+[EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
 
-### 💪🏻 Benchmark
+Th"e Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded serial bootloader. Your Linux application can manage the update of the MG24 firmware.
+For the software development you can use a dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html) or the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf).
+The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins. See page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) datasheet for the Network Co-Processor (NCP) Application with UART.
+
+|EFR32 Pin|EFR32 I/O|Connected to|GPIO Name| Name         | Description|                                                                        
+|------|-------|-------|-------|-------|-----------------------------|
+| 4    | PB02  | CM5 Pin 19        | FAN_PWM | **NBOOT_MP_RAD** | EFR32 Bootload Mode
+| 12   | PA05  | FT432H-56Q Pin 23 | BDBUS1  | **RXD_B**        | EFR32 USART1.TX   
+| 13   | PA06  | FT432H-56Q Pin 21 | BDBUS0  | **TXD_B**        | EFR32 USART1.RX
+| 16   | PA07  | FT432H-56Q Pin 25 | BDBUS3  | **CTS_B**        | EFR32 Output
+| 17   | PA08  | FT432H-56Q Pin 24 | BDBUS2  | **RTS_B**        | EFR32 Input 
+| 31   | #RESET| CM5 Pin 80        | CM5 SCL0|**NRST_MP_RAD**   | EFR32 Reset
+
+config.txt must contain :
+```
+# Xplorer CM5 with option MGM240PA32 : MGM240PA32 NRST
+gpio=39=op,dh
+```
+NRST to 0V :
+```
+pinctrl set 39 op pn dl
+```
+NRST to 3V3:
+```
+pinctrl set 39 op pn dh
+```
+Blink:
+```
+while true; do
+    pinctrl set 39 op pn dl
+    pinctrl set 45 op pn dl
+    sleep 0.5
+    pinctrl set 39 op pn dh
+    pinctrl set 45 op pn dh
+    sleep 0.5
+done
+```
+```
+while true; do
+    pinctrl set 45 op pn dl
+    sleep 0.5
+    pinctrl set 45 op pn dh
+    sleep 0.5
+done
+```
+```
+echo 0 > /sys/class/pwm/pwmchip0/export
+echo 1000000 > /sys/class/pwm/pwmchip0/pwm0/period
+echo 500000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
+echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
+```
+More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf)
+
+View the ttyUSB2 (RXD_B) reception at 115Kbps with :
+```
+stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
+cat /dev/ttyUSB2
+```
+Put The EFR32 in bootload mode with the sequence :
+ - NBOOT=0 -> FAN_PWM=0
+ - NRST=0  -> GPIO39=0
+ - NRST=1  -> GPIO39=1
+ - NBOOT=1 -> FAN_PWM=1
+
+You can make this boot sequence with :
+```
+pinctrl set 39 op pn dl
+pinctrl set 39 op pn dh
+```
+After this sequence, the MG24 send the message:
+```Gecko Bootloader vX.Y``` or ```BL >```
+
+#### Firmware Builds for dongles
+https://github.com/NabuCasa/silabs-firmware-builder
+https://github.com/darkxst/silabs-firmware-builder/tree/main
+https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
+https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
+
+#### Firmware examples
+https://github.com/NabuCasa/silabs-firmware
+
+#### Flash the MG24 with Silicon Labs Commander
+https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
+https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
+
+Install :
+```
+wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.tar.bz2
+tar -xvf SimplicityCommander-Linux.tar.bz2
+cd SimplicityCommander*
+sudo ./install.sh
+```
+Verify:
+```
+commander --version
+```
+Enter in boot mode :
+```
+pinctrl set 39 op pn dl
+pinctrl set 39 op pn dh
+```
+Check if the communication with the bootloader
+```
+commander device info --serialport /dev/ttyUSB2 --baudrate 115200
+```
+You should see:
+```
+Connecting to bootloader...
+Device: EFR32MG24
+Bootloader version: x.y.z
+```
+Flash an Hex file:
+```
+commander flash firmware.hex --serialport /dev/ttyUSB2 --baudrate 115200
+```
+Flash a bin file:
+```
+commander flash firmware.bin --serialport /dev/ttyUSB2 --baudrate 115200 --address 0x08000000
+```
+Reset and Run the MG24 Firmware:
+```
+commander reset --serialport /dev/ttyUSB2
+```
+#### Flash the MG24 with the NabuCasa Universal Silicon Labs Flasher 
+https://github.com/NabuCasa/universal-silabs-flasher
+
+Install :
+```
+$ pip install universal-silabs-flasher
+```
+Enter in boot mode :
+```
+pinctrl set 39 op pn dl
+pinctrl set 39 op pn dh
+```
+Flash the MG24 :
+```
+universal-silabs-flasher --device /dev/ttyUSB2 flash --firmware xxxxx-115200.gbl
+```
+Usefull Links :
+https://www.silabs.com/support/training/developing-with-matter-on-the-mg24
+https://wiki.seeedstudio.com/xiao_mg24_matter/
+https://tutoduino.fr/en/tutorials/matter-xiao-mg24/
+https://wiki.seeedstudio.com/xiao_mg24_getting_started/
+https://community.silabs.com/s/question/0D5Vm00000vUohmKAC/flashing-the-xiao-mg24-sense?language=fr
+https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
+https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
+
+## 4.11 - LoRa/Sifox <a name="4.11"></a>
+TBC
+
+## 4.12 - RTC <a name="4.12"></a>
+
+For ML2032 rechargeable battery, add this line to config.txt and reboot :
+```
+dtparam=rtc_bbat_vchg=3000000
+```
+Verify charging voltage :
+```
+cat /sys/class/rtc/rtc0/charging_voltage
+cat /sys/class/rtc/rtc0/charging_voltage_max
+cat /sys/class/rtc/rtc0/charging_voltage_min
+```
+Read vbat voltage on the PMIC
+```
+watch -n 1 vcgencmd pmic_read_adc
+```
+---
+# 5 - TIPS <a name="5"></a>
+## 5.1 - Benchmark 💪🏻 <a name="5.1"></a>
 Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
-https://pimylifeup.com/raspberry-pi-5-benchmark/
 
-#### Get the boot time
-```
-$ systemd-analyze
-Startup finished in 1.342s (kernel) + 4.842s (userspace) = 6.184s 
-graphical.target reached after 4.830s in userspace.
-```
 #### Pi Benchmark script
 ```
-$ sudo curl https://raw.githubusercontent.com/TheRemote/PiBenchmarks/master/     Category                  Test                      Result     
+sudo curl https://raw.githubusercontent.com/TheRemote/PiBenchmarks/master/     
+```
+```
+Category                  Test                      Result     
 HDParm                    Disk Read                 308.40 MB/sec            
 HDParm                    Cached Disk Read          212.31 MB/sec            
 DD                        Disk Write                110 MB/s                 
@@ -1161,7 +1400,6 @@ IOZone                    4k read                   44281 KB/s
 IOZone                    4k write                  67744 KB/s               
 IOZone                    4k random read            44411 KB/s               
 IOZone                    4k random write           55907 KB/s               
-
                           Score: 13083                                       
 ```
 #### GeekBench6
@@ -1186,158 +1424,62 @@ sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
 CPU speed:
     events per second:  4036.34
 ```
-
-
-### 4G/LTE with the Quectel EM60K-GL M.2 module
-
-### 5G RedCap with the SIMCOM SIM8230G M.2 module
-
-# 🚨 FAQ
-
-## Shrink a pi image :
-
+## 5.2 - Shrink a pi image  <a name="5.2"></a>
 https://github.com/Drewsif/PiShrink
-## Manage Energy
-
+## 5.3 - Manage Energy <a name="5.3"></a>
 https://forums.raspberrypi.com/viewtopic.php?t=361542
 https://forums.raspberrypi.com/viewtopic.php?t=360658
-
-Disable Wireless :
+### Underclocking
+100% CPU : 10.4W@2.4Ghz, 8.4W@1.5Ghz, 5W@600Mhz, 4.6W@300Mhz
+sudo nano /boot/firmware/config.txt
+```
+arm_freq=1500
+arm_freq_min=600
+gpu_freq=400
+```
+To get the actual clock :
+```
+vcgencmd measure_clock arm
+```
+Links :
+https://www.jeffgeerling.com/blog/2023/overclocking-and-underclocking-raspberry-pi-5
+https://ohyaan.github.io/tips/power_saving_on_raspberry_pi_os__complete_optimization_guide/#display-and-interface-optimizations
+### Disable PCIE switch
+You can gain more than 1W if you don't need any SSD or TPU M.2 PCIe Module (Cellular used USB).
+In Config.txt
+```
+#--- No PCIe M.2 modules -> Desactivate the PCIe switch (-1.3W)
+dtparam=pciex1=off
+```
+### Reduce Ethernet to 100 MB
+https://raspberrypi.stackexchange.com/questions/116677/force-wired-ethernet-speed-to-100-full
+ethtool eth0
+sudo ethtool -s eth0 advertise 0x008
+### Disable Wireless
+In config.txt :
 ```
 dtoverlay=disable-wifi
 dtoverlay=disable-bt
 ```
-
-Disable HDMI :
+### Disable HDMI
 https://lowendbox.com/blog/how-to-turn-off-the-hdmi-monitor-on-your-raspberry-pi-5-its-not-as-easy-as-you-might-think/
 https://forums.raspberrypi.com/viewtopic.php?t=374678
 https://www.raspberrypi.com/documentation/computers/os.html#vcgencmd
 ```
 vcgencmd display_power 0 7
 ```
-Disable Audio :
-https://retropie.org.uk/forum/topic/34761/solved-raspberrypi-5-on-board-audio-disabled-or-not-present
-
-
-Halt mode and RTC wakeup :
-https://raspberrypi.stackexchange.com/questions/147353/can-i-use-raspberry-pi-5-into-low-power-mode-programmatically
-
-
-## Fail to contact RP1 firmware error :
+###  Disable audio
+In config.txt :
 ```
-dmesg
-...
-[    3.042998] rp1-pio 1f00178000.pio: failed to contact RP1 firmware
-[    3.043005] rp1-pio 1f00178000.pio: probe with driver rp1-pio failed with error -2
+#dtparam=audio=on
 ```
-Update the system.
-
-# Thermal Stress Test
-If your installation does not follow the recommendations (bare boards, flat mounting…), you must do a thermal test under load.
-```
-sudo apt install stress-ng btop
-```
-Stress test at 75% CPU :
-```
-echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
-stress-ng --cpu 0 --cpu-method fft
-```
-Open 4 others consoles and verify the CPUs load, temperature, the current cores clocks speed (1500Mhz) and the throttle:
-```
-btop
-```
-```
-watch -n 1 vcgencmd measure_temp
-```
-```
-watch -n 1 vcgencmd measure_clock arm
-```
-```
-watch -n 1 vcgencmd get_throttled
-```
-
-Throttle Status :
-
-0: under-voltage
-1: arm frequency capped
-2: currently throttled 
-16: under-voltage has occurred
-17: arm frequency capped has occurred
-18: throttling has occurred
-
-https://forums.raspberrypi.com/viewtopic.php?t=377392
-
-
-# Turn off 1 or 2 CPU to test 50% and 75% CPU
-
-```
-echo 0 | sudo tee /sys/devices/system/cpu/cpu3/online
-```
-```
-echo 0 | sudo tee /sys/devices/system/cpu/cpu2/online
-```
-
-# View cpu-freq governors statistics
+### View cpu-freq governors statistics
 https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
 ```
 cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state
 ```
-
-# RTC 
-
-
-For ML2032 rechargeable battery, add this line to config.txt and reboot :
-```
-dtparam=rtc_bbat_vchg=3000000
-```
-Verify charging voltage :
-```
-cat /sys/class/rtc/rtc0/charging_voltage
-cat /sys/class/rtc/rtc0/charging_voltage_max
-cat /sys/class/rtc/rtc0/charging_voltage_min
-```
-Read vbat voltage on the PMIC
-```
-watch -n 1 vcgencmd pmic_read_adc
-```
-
-## Desactivate wifi / BT
-
-echo "dtoverlay=disable-wifi" | sudo tee -a /boot/firmware/config.txt
-echo "dtoverlay=disable-bt" | sudo tee -a /boot/firmware/config.txt
-sudo systemctl disable hciuart
-sudo reboot
-
-## Desactivate ETH LED
-echo "dtparam=eth_led0=14" | sudo tee -a /boot/firmware/config.txt
-echo "dtparam=eth_led1=14" | sudo tee -a /boot/firmware/config.txt
-sudo reboot
-
-https://www.jeffgeerling.com/blogs/jeff-geerling/controlling-pwr-act-leds-raspberry-pi
-
-## Command Blue LED :
-https://forums.raspberrypi.com/viewtopic.php?p=2235437&hilit=Power+led#p2235140
-
-sudo -i
-cd /sys/class/leds/
-echo 1 > PWR/brightness   // ON (72mW)
-
-echo 0 > PWR/brightness  // OFF
-
-## Disable audio
-#dtparam=audio=on
-
-## ETH 100 MB
-https://raspberrypi.stackexchange.com/questions/116677/force-wired-ethernet-speed-to-100-full
-ethtool eth0
-sudo ethtool -s eth0 advertise 0x008
-
-Lower CPU freq (100% CPU : 8.4W@1.5Ghz, 5W@600Mhz, 4.6W@300Mhz)
-sudo nano /boot/firmware/config.txt
-arm_freq=1500
-arm_freq_min=600
-
-### RTC Wake Up
+### Halt mode with periodic RTC Wake Up
+https://raspberrypi.stackexchange.com/questions/147353/can-i-use-raspberry-pi-5-into-low-power-mode-programmatically
 https://www.jeffgeerling.com/blog/2023/reducing-raspberry-pi-5s-power-consumption-140x
 ```
 sudo rpi-eeprom-config -e
@@ -1352,25 +1494,11 @@ POWER_OFF_ON_HALT=1
 # SD -> NVMe -> USB -> Network
 BOOT_ORDER=0xf2461
 ```
-278mW in shutdown :
+The Halt mode power is 278mW, you can test it with the shutdown command:
 ```
 sudo shutdown now
 ```
-
-### Underclocking
-https://www.jeffgeerling.com/blog/2023/overclocking-and-underclocking-raspberry-pi-5
-```
-vcgencmd measure_clock arm
-echo "arm_freq=1200" | sudo tee -a /boot/firmware/config.txt
-echo "gpu_freq=400" | sudo tee -a /boot/firmware/config.txt
-sudo reboot
-```
-
-https://ohyaan.github.io/tips/power_saving_on_raspberry_pi_os__complete_optimization_guide/#display-and-interface-optimizations
-
-
-### Watchdog
-
+## 5.4 - Watchdog <a name="5.4"></a>
 https://diode.io/blog/running-forever-with-the-raspberry-pi-hardware-watchdog
 
 Enable the hardware watchdog and reboot:
@@ -1398,22 +1526,27 @@ If you want to test this you can try running a fork bomb on your shell:
 ```
 sudo bash -c ':(){ :|:& };:'
 ```
-### NAS Setup
+## 5.5 - NAS Setup <a name="5.5"></a>
 The Xplorer can be setup with 2 NVMe SSD to make an embedded RAID NAS.
 https://ohyaan.github.io/tips/network_attached_storage__nas__setup_guide/
 
-### Reduce boot time
+## 5.6 - Reduce boot time <a name="5.6"></a>
+#### Get the boot time
+```
+$ systemd-analyze
+Startup finished in 1.342s (kernel) + 4.842s (userspace) = 6.184s 
+graphical.target reached after 4.830s in userspace.
+```
+#### To reduce boot time
 https://ohyaan.github.io/tips/raspberry_pi_boot_time_optimization__complete_performance_guide/#understanding-the-boot-process
-
-### CPU Isolation and Task Affinity for Multicore Optimization
+## 5.7 - CPU Isolation and Task Affinity for Multicore Optimization <a name="5.7"></a>
 https://ohyaan.github.io/tips/cpu_isolation_and_task_affinity_for_multicore_optimization/
 
-### Security Hardening
-
+## 5.8 - Security Hardening <a name="5.8"></a>
 https://ohyaan.github.io/tips/raspberry_pi_security_hardening_complete_guide/#network-security
 
-
-### GPIO and config.txt troubleshoot
+---
+# 6 - GPIO CONFIGURATION <a name="6"></a>
 ```
 pinctrl
 ```
@@ -1521,9 +1654,8 @@ pinctrl
 ```
 
 ---
-### Xplorer CM5 Functional self-test
-
-##### 1 & 2 - Peripherals detection and COM & CANbus in reception:
+# 7 - SELF-TEST <a name="7"></a>
+#### 1 & 2 - Peripherals detection and COM & CANbus in reception:
 
 ```
 stty -F /dev/ttyAMA2 speed 115200 cs8 -cstopb -parenb
@@ -1582,7 +1714,7 @@ candump can1 | sed 's/^/[CAN1] /' &
 candump can0 | sed 's/^/[CAN2] /' &
 wait
 ```
-##### 3 - Test all the COMs and CANbuses ports in transmit :
+#### 3 - Test all the COMs and CANbuses ports in transmit :
 Note: COM1 is tested with the RS232 Console
 ```
 echo -e "\n3️⃣  Test COM ports in Transmit at 115200 Bauds and CANbuses Transmit at 250KB"
@@ -1601,167 +1733,4 @@ while true; do
   sleep 1
 done
 ```
-
-# Option : Multi-Protocol Wireless Network co-processor (NCP)
-This option gives automation and IoT connectivity with Matter-Over-Thread, Zigbee, BLE Mesh and Open Thread. It's the perfect interface for Home Assistant or Mesh communication.
-It add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna. Note that this option removes an RS232 RX only input. 
-This module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24) , [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html), or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
-
-For more information about the EFR32MG24 :
-[EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html)
-[EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf)
-[EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
-
-Th"e Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded serial bootloader. Your Linux application can manage the update of the MG24 firmware.
-For the software development you can use a dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html) or the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf).
-The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins. See page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) datasheet for the Network Co-Processor (NCP) Application with UART.
-
-|EFR32 Pin|EFR32 I/O|Connected to|GPIO Name| Name         | Description|                                                                        
-|------|-------|-------|-------|-------|-----------------------------|
-| 4    | PB02  | CM5 Pin 19        | FAN_PWM | **NBOOT_MP_RAD** | EFR32 Bootload Mode
-| 12   | PA05  | FT432H-56Q Pin 23 | BDBUS1  | **RXD_B**        | EFR32 USART1.TX   
-| 13   | PA06  | FT432H-56Q Pin 21 | BDBUS0  | **TXD_B**        | EFR32 USART1.RX
-| 16   | PA07  | FT432H-56Q Pin 25 | BDBUS3  | **CTS_B**        | EFR32 Output
-| 17   | PA08  | FT432H-56Q Pin 24 | BDBUS2  | **RTS_B**        | EFR32 Input 
-| 31   | #RESET| CM5 Pin 80        | CM5 SCL0|**NRST_MP_RAD**   | EFR32 Reset
-
-config.txt must contain :
-```
-# Xplorer CM5 with option MGM240PA32 : MGM240PA32 NRST
-gpio=39=op,dh
-```
-NRST to 0V :
-```
-pinctrl set 39 op pn dl
-```
-NRST to 3V3:
-```
-pinctrl set 39 op pn dh
-```
-Blink:
-```
-while true; do
-    pinctrl set 39 op pn dl
-    pinctrl set 45 op pn dl
-    sleep 0.5
-    pinctrl set 39 op pn dh
-    pinctrl set 45 op pn dh
-    sleep 0.5
-done
-```
-```
-while true; do
-    pinctrl set 45 op pn dl
-    sleep 0.5
-    pinctrl set 45 op pn dh
-    sleep 0.5
-done
-```
-```
-echo 0 > /sys/class/pwm/pwmchip0/export
-echo 1000000 > /sys/class/pwm/pwmchip0/pwm0/period
-echo 500000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
-echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
-```
-
-
-More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf)
-
-View the ttyUSB2 (RXD_B) reception at 115Kbps with :
-```
-stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
-cat /dev/ttyUSB2
-```
-
-Put The EFR32 in bootload mode with the sequence :
- - NBOOT=0 -> FAN_PWM=0
- - NRST=0  -> GPIO39=0
- - NRST=1  -> GPIO39=1
- - NBOOT=1 -> FAN_PWM=1
-
-You can make this boot sequence with :
-```
-pinctrl set 39 op pn dl
-pinctrl set 39 op pn dh
-```
-After this sequence, the MG24 send the message:
-```Gecko Bootloader vX.Y``` or ```BL >```
-
-### Firmware Builds for dongles
-https://github.com/NabuCasa/silabs-firmware-builder
-https://github.com/darkxst/silabs-firmware-builder/tree/main
-https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
-https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
-
-### Firmware examples
-https://github.com/NabuCasa/silabs-firmware
-
-### Flash the MG24 with Silicon Labs Commander
-https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
-https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
-
-Install :
-```
-wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.tar.bz2
-tar -xvf SimplicityCommander-Linux.tar.bz2
-cd SimplicityCommander*
-sudo ./install.sh
-```
-Verify:
-```
-commander --version
-```
-Enter in boot mode :
-```
-pinctrl set 39 op pn dl
-pinctrl set 39 op pn dh
-```
-Check if the communication with the bootloader
-```
-commander device info --serialport /dev/ttyUSB2 --baudrate 115200
-```
-You should see:
-```
-Connecting to bootloader...
-Device: EFR32MG24
-Bootloader version: x.y.z
-```
-Flash an Hex file:
-```
-commander flash firmware.hex --serialport /dev/ttyUSB2 --baudrate 115200
-```
-Flash a bin file:
-```
-commander flash firmware.bin --serialport /dev/ttyUSB2 --baudrate 115200 --address 0x08000000
-```
-Reset and Run the MG24 Firmware:
-```
-commander reset --serialport /dev/ttyUSB2
-```
-
-### Flash the MG24 with the NabuCasa Universal Silicon Labs Flasher 
-https://github.com/NabuCasa/universal-silabs-flasher
-
-Install :
-```
-$ pip install universal-silabs-flasher
-```
-Enter in boot mode :
-```
-pinctrl set 39 op pn dl
-pinctrl set 39 op pn dh
-```
-Flash the MG24 :
-```
-universal-silabs-flasher --device /dev/ttyUSB2 flash --firmware xxxxx-115200.gbl
-```
-
-Usefull Links :
-https://www.silabs.com/support/training/developing-with-matter-on-the-mg24
-https://wiki.seeedstudio.com/xiao_mg24_matter/
-https://tutoduino.fr/en/tutorials/matter-xiao-mg24/
-https://wiki.seeedstudio.com/xiao_mg24_getting_started/
-https://community.silabs.com/s/question/0D5Vm00000vUohmKAC/flashing-the-xiao-mg24-sense?language=fr
-https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
-https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
 
