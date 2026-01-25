@@ -335,33 +335,3 @@ sudo nmcli c add type gsm ifname "*" con-name simcom apn auchan
 nmcli c up simcom
 ```
 
-# USE RPIBOOT ON MAC
-
-```
-brew install libusb pkg-config
-```
-check pkg-config
-```
-pkg-config --version
-```
-check libusb is well installed
-```
-ls /opt/homebrew/include/libusb-1.0/libusb.h
-```
-```
-git clone https://github.com/raspberrypi/usbboot
-```
-```
-cd usbboot
-```
-From inside the usbboot folder, run:
-```
-make CFLAGS="-I/opt/homebrew/include/libusb-1.0"
-
-```
-
-```
-sudo ./rpiboot
-```
-
-
