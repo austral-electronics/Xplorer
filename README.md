@@ -65,14 +65,14 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.11 - LoRa/Sifox](#4.11)
     - [4.12 - RTC](#4.12)
 - **[5 - TIPS](#5)**
-        - [5.1 - Benchmark](#5.1)
-        - [5.2 - Shrink a pi image](#5.2)
-        - [5.3 - Manage Energy](#5.3)
-        - [5.4 - Watchdog](#5.4)
-        - [5.5 - NAS Setup](#5.5)
-        - [5.6 - Reduce boot time](#5.6)
-        - [5.7 - CPU Isolation and Task Affinity for Multicore Optimization](#5.7)
-        - [5.8 - Security Hardening](#5.8)
+    - [5.1 - Benchmark](#5.1)
+    - [5.2 - Shrink a pi image](#5.2)
+    - [5.3 - Manage Energy](#5.3)
+    - [5.4 - Watchdog](#5.4)
+    - [5.5 - NAS Setup](#5.5)
+    - [5.6 - Reduce boot time](#5.6)
+    - [5.7 - CPU Isolation and Task Affinity for Multicore Optimization](#5.7)
+    - [5.8 - Security Hardening](#5.8)
 - **[6 - GPIO CONFIGURATION](#6)**
 - **[7 - SELF-TEST](#7)**
 ---
