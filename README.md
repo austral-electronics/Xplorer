@@ -1174,11 +1174,22 @@ Usefull documentation:
 - [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
 - [AD5592R ROS2 Integration](https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html)
 
-## 4.9 - Cellular and Direct-To-Cell](#4.9)
+## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a>
 ### 4.9.1 - Nano SIM <a name="4.9.1"></a>
+The right cap provides access to a Push Pull holder for a nano SIM card or a 4FF Plastic eSIM card.
+> [!CAUTION]
+> It is possible to insert the SIM card next to the holder and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
+> The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
 ### 4.9.2 - 4FF eSIM <a name="4.9.2"></a>
+An eSIM card can be integrated into production, and plugs can be removed for mass-produced products.  
+[Kigen SGP.22+ Tri-cut eUICC eSIM](https://techship.com/product/kigen-sgp-22-tri-cut-e-uicc-e-sim/?variant=001)
+[How to use an eSIM in Linux?](https://techship.com/blog/how-to-use-an-esim-in-linux-7/)
 ### 4.9.3 - 4G LTE-A <a name="4.9.3"></a>
+[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)
+[Configure the QUECTEL EM060K-GL 4G LTE-A modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_EM060K-GL_Without_ModemManager.md)
 ### 4.9.4 - 5G RedCap <a name="4.9.4"></a>
+[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)
+[Configure the SIM8230G 5G RedCap Modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_SIM8230G_Without_ModemManager.md)
 ### 4.9.5 - Speed Test <a name="4.9.5"></a>
 Install the [OOKLA speed test](https://www.speedtest.net/apps/cli) tool with :
 ```
@@ -1362,7 +1373,7 @@ https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
 
 ## 4.11 - LoRa/Sifox <a name="4.11"></a>
-TBC
+# <code style="color : RED">TBC</code>
 
 ## 4.12 - RTC <a name="4.12"></a>
 
