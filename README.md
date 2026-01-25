@@ -1182,13 +1182,13 @@ The right cap provides access to a Push Pull holder for a nano SIM card or a 4FF
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
 ### 4.9.2 - 4FF eSIM <a name="4.9.2"></a>
 An eSIM card can be integrated into production, and plugs can be removed for mass-produced products.  
-[Kigen SGP.22+ Tri-cut eUICC eSIM](https://techship.com/product/kigen-sgp-22-tri-cut-e-uicc-e-sim/?variant=001)
+[Kigen SGP.22+ Tri-cut eUICC eSIM](https://techship.com/product/kigen-sgp-22-tri-cut-e-uicc-e-sim/?variant=001)  
 [How to use an eSIM in Linux?](https://techship.com/blog/how-to-use-an-esim-in-linux-7/)
 ### 4.9.3 - 4G LTE-A <a name="4.9.3"></a>
-[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)
+[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
 [Configure the QUECTEL EM060K-GL 4G LTE-A modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_EM060K-GL_Without_ModemManager.md)
 ### 4.9.4 - 5G RedCap <a name="4.9.4"></a>
-[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)
+[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
 [Configure the SIM8230G 5G RedCap Modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_SIM8230G_Without_ModemManager.md)
 ### 4.9.5 - Speed Test <a name="4.9.5"></a>
 Install the [OOKLA speed test](https://www.speedtest.net/apps/cli) tool with :
