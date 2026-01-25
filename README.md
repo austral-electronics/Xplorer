@@ -22,29 +22,36 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [3.7 - Change Password](#3.7)
     - [3.8 - Installation of usefull tools](#3.8)
 - **[4 - TEST THE PERIPHERALS](#4)**
-    - [4.1 - Check the Linux configuration](#4.1)
-    - [4.2 - Check Ethernet Speed](#4.2)
-    - [4.3 - Check WiFi](#4.3)
-    - [4.4 - Test Serials](#4.4)
-        - [4.4.1 - Test UART0 on ttyAMA0](#4.4.1)
-        - [4.4.2 - Test COM1 on ttyAMA1](#4.4.2)
-        - [4.4.3 - Test COM2 on ttyAMA2](#4.4.3)
-        - [4.4.4 - Test COM3 on ttyAMA3 in RS232 Mode](#4.4.4)
-        - [4.4.5 - Test COM3 on ttyAMA3 in RS485 Mode](#4.4.5)
-        - [4.4.6 - Test COM4 on ttyAMA4](#4.4.6)
-        - [4.4.7 - Test IN2_RXDA on ttyUSB0](#4.4.7)
-        - [4.4.8 - Test IN1_RXDB on ttyUSB1](#4.4.8)
-        - [4.4.9 - Test IN4_RXDC on ttyUSB2](#4.4.9)
-        - [4.4.10 - Test IN3_RXDD on ttyUSB3](#4.4.10)
-    - [4.5 - Test CAN-FD buses](#4.5)
-        - [4.5.1 - Check the SPI driver](#4.5.1)
-        - [4.5.2 - Test CAN1](#4.5.2)
-        - [4.5.3 - Test CAN2](#4.5.3)
-    - [4.6 - Test CyberSecurity Chips](#4.6)
-        - [4.6.1 - Check I2C bus](#4.6.1)
-        - [4.6.2 - Check TPM2.0 Chip](#4.6.2)
-        - [4.6.3 - Check the optional CrytoAuthentication Co-Processor](#4.6.3)
-
+    - [4.1 - Linux configuration](#4.1)
+    - [4.2 - Ethernet](#4.2)
+    - [4.3 - WiFi](#4.3)
+    - [4.4 - Serials](#4.4)
+        - [4.4.1 - UART0](#4.4.1)
+        - [4.4.2 - COM1](#4.4.2)
+        - [4.4.3 - COM2](#4.4.3)
+        - [4.4.4 - COM3 in RS232 Mode](#4.4.4)
+        - [4.4.5 - COM3 in RS485 Mode](#4.4.5)
+        - [4.4.6 - COM4](#4.4.6)
+        - [4.4.7 - RXDA](#4.4.7)
+        - [4.4.8 - RXDB](#4.4.8)
+        - [4.4.9 - RXDC](#4.4.9)
+        - [4.4.10 - RXDD](#4.4.10)
+    - [4.5 - CAN-FD](#4.5)
+        - [4.5.1 - SPI](#4.5.1)
+        - [4.5.2 - CAN1](#4.5.2)
+        - [4.5.3 - CAN2](#4.5.3)
+    - [4.6 - CyberSecurity](#4.6)
+        - [4.6.1 - I2C](#4.6.1)
+        - [4.6.2 - TPM2.0 Chip](#4.6.2)
+        - [4.6.3 - CrytoAuthentication Co-Processor](#4.6.3)
+    - [4.7 - Storages](#4.7)
+        - [4.7.1 - PCIe peripherals](#4.7.1)
+        - [4.7.2 - USB peripherals](#4.7.2)
+        - [4.7.3 - Drives](#4.7.3)
+        - [4.7.4 - Type-C External Flash Drive](#4.7.4)
+        - [4.7.5 - Internal NVMe SSD(s)](#4.7.5)
+        - [4.7.6 - Micro SD Card](#4.7.6)
+        
 ---
 # 1 - INTRODUCTION <a name="1"></a>
 Welcome to the **software guide for the Xplorer CM5**, a ruggedized industrial edge IoT / AIoT controller and mission computer designed for harsh environments based on the [Raspberry Pi CM5](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032) 🍓🥧 module. The Xplorer CM5 series is engineered for reliability where failure is not an option—ideal for smart automation, connected infrastructure, unmanned systems, and embedded intelligence projects.
@@ -429,7 +436,7 @@ sudo reboot
 
 ---
 # 4 - TEST THE PERIPHERALS 🎓 <a name="4"></a>
-## 4.1 - Check the Linux configuration 💻 <a name="4.1"></a>
+## 4.1 - Linux configuration 💻 <a name="4.1"></a>
 ### Linux version :
 ```
 uname -a
@@ -452,7 +459,7 @@ cat /etc/debian_version
 ```
 13.2
 ```
-## 4.2 - Check Ethernet Speed <a name="4.2"></a>
+## 4.2 - Ethernet <a name="4.2"></a>
 ```
 sudo apt install ethtool
 ethtool eth0
@@ -464,7 +471,7 @@ Speed: 1000Mb/s
 Duplex: Full
 ...
 ```
-## 4.3 - Check WiFi <a name="4.3"></a>
+## 4.3 - WiFi <a name="4.3"></a>
 External antenna , config.txt
 ```
 # Switch to external antenna.
@@ -474,7 +481,7 @@ Params:
 - ant1 : Select antenna 1 = internal (default)
 - ant2 : Select antenna 2 = external
 - noant: Disable both antennas
-##  4.4 - Test Serials <a name="4.4"></a>
+##  4.4 - Serials <a name="4.4"></a>
 List all the ports:
 ```
 ls /dev/ttyA*
@@ -494,7 +501,7 @@ You should see at least 4 ports:
 ```
 ttyUSB0 to ttyUSB4 correspond to RXD_A to RXD_D
 Note: You can see more ttyUSB depending of M.2 modules options (Cellular, GNSS...)
-### 4.4.1 - Test UART0 on ttyAMA0 <a name="4.4.1"></a>
+### 4.4.1 - UART0 <a name="4.4.1"></a>
 This UART is used internaly by the options : LoRa/Sigfox xor IMU
 
 ⚠️ By default this port is in linux console mode, to deactivate the console and use as an UART, config.txt must contain :
@@ -514,7 +521,7 @@ Write Test :
 ```
 echo -e "TX UART0 is Working\x0D\x0A" > /dev/ttyAMA0
 ```
-### 4.4.2 - Test COM1 on ttyAMA1 <a name="4.4.2"></a>
+### 4.4.2 - COM1 <a name="4.4.2"></a>
 Configure Baudrate:
 ```
 stty -F /dev/ttyAMA1 speed 115200 cs8 -cstopb -parenb
@@ -527,7 +534,7 @@ Write Test :
 ```
 echo -e "TX COM1 Working \x0D\x0A" > /dev/ttyAMA1
 ```
-### 4.4.3 - Test COM2 on ttyAMA2 <a name="4.4.3"></a>
+### 4.4.3 - COM2 <a name="4.4.3"></a>
 Configure Baudrate:
 ```
 stty -F /dev/ttyAMA2 speed 115200 cs8 -cstopb -parenb
@@ -540,7 +547,7 @@ Write Test :
 ```
 echo -e "TX COM2 Working \x0D\x0A" > /dev/ttyAMA2
 ```
-### 4.4.4 - Test COM3 on ttyAMA3 in RS232 Mode <a name="4.4.4"></a>
+### 4.4.4 - COM3 in RS232 Mode <a name="4.4.4"></a>
 This port is an isolated dual-mode RS232 or RS485 port. By default, this port is in 3 wires RS232 mode (TXD, RXD, RTS).  
 The power LED is used to select the mode RS232 or RS485.  
 RTS/GPIO11 is used for the RS485 low impedance.  
@@ -564,7 +571,7 @@ Write Test :
 ```
 echo -e "TX COM3 is Working in RS232\x0D\x0A" > /dev/ttyAMA3
 ```
-### 4.4.5 - Test COM3 on ttyAMA3 in RS485 Mode <a name="4.4.5"></a>
+### 4.4.5 - COM3 in RS485 Mode <a name="4.4.5"></a>
 In RS485 mode config.txt must contain :
 ```
 dtoverlay=uart3,rts
@@ -586,7 +593,7 @@ ser.rs485_mode = RS485Settings(
 ser.write(b'TX COM3 is Working in RS485\x0D\x0A')
 ser.flush()
 ```
-### 4.4.6 - Test COM4 on ttyAMA4 <a name="4.4.6"></a>
+### 4.4.6 - COM4 <a name="4.4.6"></a>
 COM4 is an half duplex RS485 port with AutoDirection Control (No DE via RTS to command Transmit low impedance). Configure Baudrate:
 ```
 stty -F /dev/ttyAMA4 speed 19200 cs8 -cstopb -parenb
@@ -599,7 +606,7 @@ Write Test :
 ```
 echo -e "TX COM4 Working \x0D\x0A" > /dev/ttyAMA4
 ```
-### 4.4.7 - Test IN2_RXDA on ttyUSB0 <a name="4.4.7"></a>
+### 4.4.7 - RXDA <a name="4.4.7"></a>
 ```
 stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
 ```
@@ -607,7 +614,7 @@ Read Test :
 ```
 cat /dev/ttyUSB0
 ```
-### 4.4.8 - Test IN1_RXDB on ttyUSB1 <a name="4.4.8"></a>
+### 4.4.8 - RXDB <a name="4.4.8"></a>
 ⚠️ IN1_RXDB is not functional with the **Matter** hardware option
 ```
 stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
@@ -616,7 +623,7 @@ Read Test :
 ```
 cat /dev/ttyUSB1
 ```
-### 4.4.9 - Test IN4_RXDC on ttyUSB2 <a name="4.4.9"></a>
+### 4.4.9 - RXDC <a name="4.4.9"></a>
 ```
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 ```
@@ -624,7 +631,7 @@ Read Test :
 ```
 cat /dev/ttyUSB2
 ```
-### 4.4.10 - Test IN3_RXDD on ttyUSB3 <a name="4.4.10"></a>
+### 4.4.10 - RXDD <a name="4.4.10"></a>
 ```
 stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
 ```
@@ -632,8 +639,8 @@ Read Test :
 ```
 cat /dev/ttyUSB3
 ```
-## 4.5 - Test CAN-FD buses <a name="4.5"></a>
-### 4.5.1 - Check the SPI driver <a name="4.5.1"></a>
+## 4.5 - CAN-FD <a name="4.5"></a>
+### 4.5.1 - SPI <a name="4.5.1"></a>
 ```
 dmesg | grep -i -E "(mcp|spi)"
 ```
@@ -666,7 +673,7 @@ can1: flags=128<NOARP>  mtu 16
 ... 
 ```
 You must see **can0** and **can1**
-### 4.5.2 - Test CAN1 <a name="4.5.2"></a>
+### 4.5.2 - CAN1 <a name="4.5.2"></a>
 To configure the main CANBus 'can1' on CAN1/PWR connector (NMEA2000 compatible):
 ```
 sudo apt-get install can-utils
@@ -680,7 +687,7 @@ Send a sentence with :
 ```
 cansend can1 7DF#0201050000000000
 ```
-### 4.5.3 - Test CAN2 <a name="4.5.3"></a>
+### 4.5.3 - CAN2 <a name="4.5.3"></a>
 To configure the secondary CANbus 'can0' on DAQ/CAN2 connector:
 ```
 sudo apt-get install can-utils
@@ -695,8 +702,8 @@ Send a sentence with :
 cansend can0 7DF#0201050000000000
 ```
 
-## 4.6 - Test CyberSecurity Chips <a name="4.6"></a>
-### 4.6.1 - Check I2C bus <a name="4.6.1"></a>
+## 4.6 - CyberSecurity <a name="4.6"></a>
+### 4.6.1 - I2C <a name="4.6.1"></a>
 Enable I2C (raspi-config -> Interface options -> I2C -> Enable):
 ```
 sudo raspi-config
@@ -747,7 +754,7 @@ Option CryptoAuthentication with the ATECC608A-MAHDA : Adr 0x60 -> 0x60 or UU
 
 [I2C Tools Tutorial](https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/)
 
-### 4.6.2 - Check TPM2.0 Chip <a name="4.6.2"></a>
+### 4.6.2 - TPM2.0 <a name="4.6.2"></a>
 
 This feature uses the [Infineon OPTIGA SLB9673AU20FW2610XTMA1](https://www.infineon.com/assets/row/public/documents/30/49/infineon-slb9673-tpm20-i2c-fw26xx-ds-rev1-4-2024-11-13-datasheet-en.pdf) TPM2.0 I2C Chip with 51KB of NV memory.
 
@@ -793,11 +800,11 @@ TPM2_PT_LEVEL:
 ```
 And follow this [infineon tutorial for more informations](https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf)
 
-### 4.6.3 - Check the optional CrytoAuthentication Co-Processor <a name="4.6.3"></a>
+### 4.6.3 - CrytoAuthentication Co-Processor <a name="4.6.3"></a>
 This option uses the [Microchip ATECC608A-MAHDA](https://ww1.microchip.com/downloads/aemDocuments/documents/SCBU/ProductDocuments/DataSheets/ATECC608A-CryptoAuthentication-Device-Summary-Data-Sheet-DS40001977B.pdf) I2C Chip with 16 keys storage, Asymmetric & Symmetric Algorithms, Networking Key Management, Secure boot, 72 bits Unique ID...
 
 Documentations :
-- [Githgub atecc-util](https://github.com/wirenboard/atecc-util)
+- [Github atecc-util](https://github.com/wirenboard/atecc-util)
 - [ATECC608A I2C Notes](https://gist.github.com/jj1bdx/ad2dedcbacb9198bd4e1667008e9dbe5)
 - [Application note](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/Atmel-8983-CryptoAuth-ATECC508A-Node-Example-Asymmetric-PKI-ApplicationNote.pdf)
 - [Secure boot using ATECC608A](https://forums.raspberrypi.com/viewtopic.php?t=353718)
@@ -819,8 +826,8 @@ Displays a Unique ID:
 ```
 0123ceb0b0dbc3d2ee
 ```
-## 4.7 - Test the storages <a name="4.7"></a>
-### 4.7.1 - List PCIe peripherals <a name="4.7.1"></a>
+## 4.7 - Storages <a name="4.7"></a>
+### 4.7.1 - PCIe peripherals <a name="4.7.1"></a>
 The 'lspci' command must discover the ASM1184e PCIe switch and equiped M.2 modules (below with one KIOXIA SSDs and one Hailo-8 AI module).
 ```
 lspci
@@ -837,8 +844,8 @@ lspci
 0002:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
 0002:01:00.0 Ethernet controller: Raspberry Pi Ltd RP1 PCIe 2.0 South Bridge
 ```
-### 4.7.2 - List USB peripherals <a name="4.7.2"></a>
-The 'lsusb' command must discover the FT4232H USB2 to 4 serials chip, equiped M.2 type B modules (below a 4G/LTE Qualcomm M.2 module) and external USB-C device if connected.
+### 4.7.2 - USB peripherals <a name="4.7.2"></a>
+The 'lsusb' command must discover the FT4232H (USB2<->4x UART chip), equiped M.2 type B modules (below a 5G Qualcomm M.2 module) and external USB-C device if connected.
 ```
 lsusb
 ```
@@ -851,8 +858,29 @@ Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
-### 4.7.3 - Test a Type-C External Flash Drive  <a name="4.7.2"></a>
-
+### 4.7.3 - Drives <a name="4.7.3"></a>
+```
+lsblk
+```
+```
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+mmcblk0      179:0    0  29.1G  0 disk 
+├─mmcblk0p1  179:1    0   512M  0 part /boot/firmware
+└─mmcblk0p2  179:2    0  28.6G  0 part /
+mmcblk0boot0 179:32   0     4M  1 disk 
+mmcblk0boot1 179:64   0     4M  1 disk 
+mmcblk2      179:96   0  29.7G  0 disk 
+├─mmcblk2p1  179:97   0   256M  0 part /media/xxxx/boot
+└─mmcblk2p2  179:98   0  29.5G  0 part /media/xxxx/rootfs
+nvme0n1      259:0    0 119.2G  0 disk
+nvme1n1      259:1    0 931.5G  0 disk
+```
+- **mmcblk0** is the CM5 eMMC, here with 2 partitions
+- **mmcblk2** is the optional uSD card, here with 2 partitions
+- **nvme0n1** is the optional main NVMe SSD
+- **nvme1n1** is the optional secondary NVMe SSD
+- **sda1** would have been an optional USB-C flash drive
+### 4.7.4 - Type-C External Flash Drive  <a name="4.7.4"></a>
 This test show you how to test a USB3 peripheral, it is made with a small USB-C key connected to the USB-C, it uses the [Samsung MUF-64DA/PAC](https://www.samsung.com/uk/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/) (64GB, USB3.1, <300MB/S read speed, reversible ports, formated in FAT, Waterproof)
 ```
 lsusb
@@ -878,9 +906,9 @@ lsusb -t | grep xhci
 /:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M
 /:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/2p, 480M
 ```
-⚠️ Idem, you must see "5000M" for USB3.0 Peripherals
+⚠️ Idem, you must see "5000M" for USB3.0 Peripherals.  
 
-To check USB version of your disk:
+To check USB version of your disk, here 3.10 :
 ```
 sudo lsusb -v 2>/dev/null | grep -e "^Bus\|bcdUSB"
 ```
@@ -890,7 +918,7 @@ Bus 003 Device 002: ID 04e8:6300 Samsung Electronics Co., Ltd Type-C
   bcdUSB               3.10
 ...
 ```
-Disk size and name :
+Get disk size and name :
 ```
 lsblk -D
 ```
@@ -904,6 +932,7 @@ mmcblk0             0        4M     2.2G         0
 mmcblk0boot0        0        4M     2.2G         0
 
 ```
+Get mounting status:
 ```
 sudo cat /proc/mounts
 ```
@@ -912,12 +941,10 @@ sudo cat /proc/mounts
 /dev/sda1 /media/xplr/Samsung\ USB vfat rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,showexec,utf8,flush,errors=remount-ro 0 0
 ...
 ```
-
 ```
 cd /media/xplr/Samsung\ USB/
 ls -l
 ```
-
 ```
 ls -l /dev/disk/by-uuid
 ```
@@ -947,7 +974,6 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x00000000
-
 Device     Boot Start       End   Sectors  Size Id Type
 ```
 ```
@@ -981,9 +1007,10 @@ sudo dd bs=2M count=500 if=/dev/sda1 of=/media/xplr/Samsung\ USB/test.bin
 ...
 1048576000 bytes (1.0 GB, 1000 MiB) copied, 34.7954 s, 30.1 MB/s
 ```
-### Test NVMe SSD(s)
-The main SSD is a 2232 Key M, M.2 module installed on the J15 slot (CM5 side).
-To make a Raid 0 or 1 NAS, another 2232/2242 Key M, M.2 SSD can be installed on the J4 slot (Bottom plate side). A third 2232/2242 Key B, M.2 SSD can also be used if needed.
+### 4.7.5 - Internal NVMe SSD(s) <a name="4.7.5"></a>
+- The main SSD is a 2232 Key M, M.2 module installed on the J15 slot (CM5 / Front side).
+- To make a Raid 0 or 1 NAS, another 2232/2242 Key M, M.2 SSD can be installed on the J4 slot (Bottom plate side).
+- A third 2232/2242 Key B, M.2 SSD can also be used if needed.
 
 To list all the drives :
 ```
@@ -1036,12 +1063,15 @@ sudo dd bs=10M count=500 if=/dev/nvme1n1 of=/home/xplr/test.bin
 500+0 records out
 5242880000 bytes (5.2 GB, 4.9 GiB) copied, 47.4714 s, 110 MB/s
 ```
-### Test the micro SD card 
-The internal micro SD card is connected to GPIO22 to GPIO27.
-To physically access to the holder, you must remove the cap on the right side of the enclosure.
-Insertion/Removal can be done during operation, but this is not recommended.
-The side of the SD with the contacts must be on the side of the bottom plate (printed side facing the front).
-Mounting/dismounting is automatic.
+### 4.7.6 - Micro SD Card  <a name="4.7.6"></a>
+An optional internal micro SD card holder is connected to GPIO22 to GPIO27.
+It may be use for storage or but it is rather intended for cybersecurity (Secure Acces Key, Hidden partition, Write Once Read Many).
+To physically access to the push pull holder, you must remove the cap on the left side of the enclosure.
+The side of the SD with the electrical contacts must be on the side of the PCB, here it's the side of the bottom plate, so the printed side of the SD is facing the front.
+> [!CAUTION]
+> It is possible to insert the SD card next to the holder and lose it inside the enclosure. The card must be inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
+> The cap must be lightly greased with vaseline after each opening to ensure a good seal.  
+
 To access it in software, you must have in config.txt :
 ```
 dtoverlay=sdio
@@ -1049,29 +1079,22 @@ dtoverlay=sdio
 To list the drives :
 ```
 $ lsblk
-NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-mmcblk0      179:0    0  29.1G  0 disk 
-├─mmcblk0p1  179:1    0   512M  0 part /boot/firmware
-└─mmcblk0p2  179:2    0  28.6G  0 part /
-mmcblk0boot0 179:32   0     4M  1 disk 
-mmcblk0boot1 179:64   0     4M  1 disk 
+...
 mmcblk2      179:96   0  29.7G  0 disk 
-├─mmcblk2p1  179:97   0   256M  0 part /media/xxxx/boot
-└─mmcblk2p2  179:98   0  29.5G  0 part /media/xxxx/rootfs
-nvme0n1      259:0    0 119.2G  0 disk 
+├─mmcblk2p1  179:97   0   256M  0 part /media/xplr/boot
+└─mmcblk2p2  179:98   0  29.5G  0 part /media/xplr/rootfs
+...
 ```
-**mmcblk0** is the eMMC, here with 2 partitions
 **mmcblk2** is the uSD, here with 2 partitions
-**nvme0n1** is the NVMe SSD
-
-To backup the eMMC on SD:
-```
-sudo dd if=/dev/mmcblk0 of=/dev/mmcblk2 bs=4M status=progress
-```
-To clone the SD to the main SSD:
-```
-sudo dd if=/dev/mmcblk2 of=/dev/nvme0n1 bs=4M status=progress
-```
+> [!TIP]
+> To backup the eMMC on SD:
+> ```
+> sudo dd if=/dev/mmcblk0 of=/dev/mmcblk2 bs=4M status=progress
+> ```
+> To clone the SD to the main SSD:
+> ```
+> sudo dd if=/dev/mmcblk2 of=/dev/nvme0n1 bs=4M status=progress
+> ```
 #### DAQ :
 The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0.  
 It has a total throughput rate of 400 kSPS and an integrated temperature indicator.

@@ -278,7 +278,7 @@ Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.t
 - Provides access to a boot switch to launch the bootloader via USB-C. The board is in bootloader mode when it is switched toward the SMA connectors.  
 - Also allows you to insert a micro SD card for storage or cybersecurity (Push Pull connector). 
 > [!CAUTION]
-> It is possible to insert the SD card next to the connector and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
+> It is possible to insert the SD card next to the holder and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal.  
 ### 7.11 - Right cap : Micro HDMI & nano SIM card <a name="7.11"></a>
 - Provides access to a Micro HDMI for debug purpose
