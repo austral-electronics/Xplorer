@@ -1311,9 +1311,11 @@ commander device info --serialport /dev/ttyUSB1 --baudrate 115200
 ```
 You should see:
 ```
-Connecting to bootloader...
-Device: EFR32MG24
-Bootloader version: x.y.z
+BL > 
+Gecko Bootloader v2.00.00
+1. upload gbl
+2. run
+3. ebl info
 ```
 Flash an Hex file:
 ```
