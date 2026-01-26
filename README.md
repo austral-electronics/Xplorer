@@ -1224,76 +1224,52 @@ For more information about the EFR32MG24 :
 [EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf)
 [EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
 
-Th"e Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded serial bootloader. Your Linux application can manage the update of the MG24 firmware.
-For the software development you can use a dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html) or the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf).
-The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins. See page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) datasheet for the Network Co-Processor (NCP) Application with UART.
+The Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded serial bootloader.  
+Your Linux application can manage the update of the MG24 firmware.  
+For the software development you can use a dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html) or the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf).  
+The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins.  
+See page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) datasheet for the Network Co-Processor (NCP) Application with UART.  
 
-|EFR32 Pin|EFR32 I/O|Connected to|GPIO Name| Name         | Description|                                                                        
-|------|-------|-------|-------|-------|-----------------------------|
-| 4    | PB02  | CM5 Pin 19        | FAN_PWM | **NBOOT_MP_RAD** | EFR32 Bootload Mode
-| 12   | PA05  | FT432H-56Q Pin 23 | BDBUS1  | **RXD_B**        | EFR32 USART1.TX   
-| 13   | PA06  | FT432H-56Q Pin 21 | BDBUS0  | **TXD_B**        | EFR32 USART1.RX
-| 16   | PA07  | FT432H-56Q Pin 25 | BDBUS3  | **CTS_B**        | EFR32 Output
-| 17   | PA08  | FT432H-56Q Pin 24 | BDBUS2  | **RTS_B**        | EFR32 Input 
-| 31   | #RESET| CM5 Pin 80        | CM5 SCL0|**NRST_MP_RAD**   | EFR32 Reset
+|MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
+|----------|--------|-------------------|-----------------|------------------|------------|
+| 4        | PB02   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | EFR32 Bootload Mode
+| 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | EFR32 USART1.TX   
+| 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | EFR32 USART1.RX
+| 16       | PA07   | FT432H-56Q Pin 25 | BDBUS3          | **CTS_B**        | EFR32 Output
+| 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | EFR32 Input 
+| 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | EFR32 Reset
 
-config.txt must contain :
+To control NRST and NBOOT, config.txt must contain :
 ```
-# Xplorer CM5 with option MGM240PA32 : MGM240PA32 NRST
+# Xplorer CM5 with option MGM240PA32 : GPIO39 Control NRST, GPIO45=FAN_PWM Control NBOOT
 gpio=39=op,dh
+gpio=45=op,dh
 ```
-NRST to 0V :
-```
-pinctrl set 39 op pn dl
-```
-NRST to 3V3:
-```
-pinctrl set 39 op pn dh
-```
-Blink:
-```
-while true; do
-    pinctrl set 39 op pn dl
-    pinctrl set 45 op pn dl
-    sleep 0.5
-    pinctrl set 39 op pn dh
-    pinctrl set 45 op pn dh
-    sleep 0.5
-done
-```
-```
-while true; do
-    pinctrl set 45 op pn dl
-    sleep 0.5
-    pinctrl set 45 op pn dh
-    sleep 0.5
-done
-```
-```
-echo 0 > /sys/class/pwm/pwmchip0/export
-echo 1000000 > /sys/class/pwm/pwmchip0/pwm0/period
-echo 500000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
-echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
-```
-More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf)
+More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf).  
 
 View the ttyUSB2 (RXD_B) reception at 115Kbps with :
 ```
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 cat /dev/ttyUSB2
 ```
-Put The EFR32 in bootload mode with the sequence :
- - NBOOT=0 -> FAN_PWM=0
- - NRST=0  -> GPIO39=0
- - NRST=1  -> GPIO39=1
- - NBOOT=1 -> FAN_PWM=1
+You cant put the EFR32MG24 in bootload mode with the sequence :
+ - NBOOT=0
+ - NRST=0
+ - Wait 100ms to reset the EFR32MG24
+ - NRST=1
+ - Wait 300ms to enter in bootload mode
+ - NBOOT=1
 
-You can make this boot sequence with :
+This sequence can be made in command line with :
 ```
+pinctrl set 45 op pn dl
 pinctrl set 39 op pn dl
+sleep .1
 pinctrl set 39 op pn dh
+sleep .3
+pinctrl set 45 op pn dh
 ```
-After this sequence, the MG24 send the message:
+After this sequence, the EFR32MG24 bootloader must send the message:
 ```Gecko Bootloader vX.Y``` or ```BL >```
 
 #### Firmware Builds for dongles
