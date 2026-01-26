@@ -1247,10 +1247,13 @@ gpio=45=op,dh
 ```
 More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf).  
 
-View the ttyUSB1 (RXD_B) reception at 115Kbps with :
+Install and minicom :
 ```
-stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
-cat /dev/ttyUSB1
+sudo apt-get install minicom
+```
+Open a console on ttyUSB1 (RXD_B) at 115Kbps with :
+```
+sudo minicom -D /dev/ttyUSB1
 ```
 You cant put the EFR32MG24 in bootload mode with the sequence :
  - NBOOT=0
@@ -1269,8 +1272,14 @@ pinctrl set 39 op pn dh
 sleep .3
 pinctrl set 45 op pn dh
 ```
-After this sequence, the EFR32MG24 bootloader must send the message:
-```Gecko Bootloader vX.Y``` or ```BL >```
+After this sequence, the EFR32MG24 bootloader must send the message on the ttyUSB1 console:
+```
+Gecko Bootloader v2.00.00
+1. upload gbl
+2. run
+3. ebl info
+BL >
+```
 
 #### Firmware Builds for dongles
 https://github.com/NabuCasa/silabs-firmware-builder
