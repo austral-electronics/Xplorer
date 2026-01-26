@@ -1311,11 +1311,11 @@ commander device info --serialport /dev/ttyUSB1 --baudrate 115200
 ```
 You should see:
 ```
-BL > 
 Gecko Bootloader v2.00.00
 1. upload gbl
 2. run
 3. ebl info
+BL > 
 ```
 Flash an Hex file:
 ```
