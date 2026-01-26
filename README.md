@@ -1249,8 +1249,8 @@ More information on the Serial Bootload in the [AN958](https://www.silabs.com/do
 
 View the ttyUSB1 (RXD_B) reception at 115Kbps with :
 ```
-stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
-cat /dev/ttyUSB2
+stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
+cat /dev/ttyUSB1
 ```
 You cant put the EFR32MG24 in bootload mode with the sequence :
  - NBOOT=0
