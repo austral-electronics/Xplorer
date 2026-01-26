@@ -1247,7 +1247,7 @@ gpio=45=op,dh
 ```
 More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf).  
 
-View the ttyUSB2 (RXD_B) reception at 115Kbps with :
+View the ttyUSB1 (RXD_B) reception at 115Kbps with :
 ```
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 cat /dev/ttyUSB2
@@ -1298,8 +1298,12 @@ commander --version
 ```
 Enter in boot mode :
 ```
+pinctrl set 45 op pn dl
 pinctrl set 39 op pn dl
+sleep .1
 pinctrl set 39 op pn dh
+sleep .3
+pinctrl set 45 op pn dh
 ```
 Check if the communication with the bootloader
 ```
@@ -1332,8 +1336,12 @@ $ pip install universal-silabs-flasher
 ```
 Enter in boot mode :
 ```
+pinctrl set 45 op pn dl
 pinctrl set 39 op pn dl
+sleep .1
 pinctrl set 39 op pn dh
+sleep .3
+pinctrl set 45 op pn dh
 ```
 Flash the MG24 :
 ```
