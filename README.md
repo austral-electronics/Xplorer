@@ -1303,7 +1303,7 @@ pinctrl set 39 op pn dh
 ```
 Check if the communication with the bootloader
 ```
-commander device info --serialport /dev/ttyUSB2 --baudrate 115200
+commander device info --serialport /dev/ttyUSB1 --baudrate 115200
 ```
 You should see:
 ```
@@ -1313,15 +1313,15 @@ Bootloader version: x.y.z
 ```
 Flash an Hex file:
 ```
-commander flash firmware.hex --serialport /dev/ttyUSB2 --baudrate 115200
+commander flash firmware.hex --serialport /dev/ttyUSB1 --baudrate 115200
 ```
 Flash a bin file:
 ```
-commander flash firmware.bin --serialport /dev/ttyUSB2 --baudrate 115200 --address 0x08000000
+commander flash firmware.bin --serialport /dev/ttyUSB1 --baudrate 115200 --address 0x08000000
 ```
 Reset and Run the MG24 Firmware:
 ```
-commander reset --serialport /dev/ttyUSB2
+commander reset --serialport /dev/ttyUSB1
 ```
 #### Flash the MG24 with the NabuCasa Universal Silicon Labs Flasher 
 https://github.com/NabuCasa/universal-silabs-flasher
@@ -1337,7 +1337,7 @@ pinctrl set 39 op pn dh
 ```
 Flash the MG24 :
 ```
-universal-silabs-flasher --device /dev/ttyUSB2 flash --firmware xxxxx-115200.gbl
+universal-silabs-flasher --device /dev/ttyUSB1 flash --firmware xxxxx-115200.gbl
 ```
 Usefull Links :
 https://www.silabs.com/support/training/developing-with-matter-on-the-mg24
