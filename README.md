@@ -1296,14 +1296,17 @@ https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-w
 
 Install :
 ```
-wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.tar.bz2
-tar -xvf SimplicityCommander-Linux.tar.bz2
-cd SimplicityCommander*
-sudo ./install.sh
+wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip
+unzip SimplicityCommander-Linux.zip
+cd SimplicityCommander-Linux/
+tar -xvf Commander_linux_aarch64_1v22p1b1957.tar.bz
+cd commander./
 ```
+Simplicity Commander requires that the SEGGER J-Link software pack is installed
+
 Verify:
 ```
-commander --version
+./commander --version
 ```
 Enter in boot mode :
 ```
@@ -1316,7 +1319,7 @@ pinctrl set 45 op pn dh
 ```
 Check if the communication with the bootloader
 ```
-commander device info --serialport /dev/ttyUSB1 --baudrate 115200
+./commander device info --serialport /dev/ttyUSB1 --baudrate 115200
 ```
 You should see:
 ```
@@ -1328,15 +1331,15 @@ BL >
 ```
 Flash an Hex file:
 ```
-commander flash firmware.hex --serialport /dev/ttyUSB1 --baudrate 115200
+./commander flash firmware.hex --serialport /dev/ttyUSB1 --baudrate 115200
 ```
 Flash a bin file:
 ```
-commander flash firmware.bin --serialport /dev/ttyUSB1 --baudrate 115200 --address 0x08000000
+./commander flash firmware.bin --serialport /dev/ttyUSB1 --baudrate 115200 --address 0x08000000
 ```
 Reset and Run the MG24 Firmware:
 ```
-commander reset --serialport /dev/ttyUSB1
+./commander reset --serialport /dev/ttyUSB1
 ```
 #### Flash the MG24 with the NabuCasa Universal Silicon Labs Flasher 
 https://github.com/NabuCasa/universal-silabs-flasher
