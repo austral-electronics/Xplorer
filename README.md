@@ -70,6 +70,8 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
             - [4.10.3.3 - Flash manually using Minicom](#4.10.3.3)
             - [4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher](#4.10.3.4)
             - [4.10.3.5 - Firmware update with Silicon Labs Commander](#4.10.3.5)
+        - [4.10.4 - Usefull Links](#4.10.4)
+    - [4.11 - LoRa/Sigfox](#4.11)
     - [4.12 - RTC](#4.12)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
@@ -1257,14 +1259,14 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 
 |MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
 |----------|--------|-------------------|-----------------|------------------|------------|
-| 4        | PB02   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | EFR32 Bootload Mode
-| 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | EFR32 Bootload Mode
-| 11       | PA04   | TP21              | TP21            | **TP21**         | Test Point (Reserved for a future LED) 
-| 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | EFR32 USART1.TX (Xmodem & NCP Compliant)  
-| 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | EFR32 USART1.RX (Xmodem & NCP Compliant)
-| 16       | PA07   | FT432H-56Q Pin 25 | BDBUS3          | **CTS_B**        | EFR32 (NCP Compliant)
-| 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | EFR32 (NCP Compliant)
-| 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | EFR32 Reset
+| 4        | PB02   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Bootload pin
+| 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Bootload pin
+| 11       | PA04   | TP21              | TP21            | **TP21**         | Test Point (Reserved for a LED activated at low level in future PCB Revision) 
+| 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | MG24 USART1.TX (Xmodem & NCP Compliant)  
+| 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | MG24 USART1.RX (Xmodem & NCP Compliant)
+| 16       | PA07   | FT432H-56Q Pin 25 | BDBUS3          | **CTS_B**        | MG24 (NCP Compliant)
+| 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | MG24 (NCP Compliant)
+| 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset
 
 #### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a>
 
@@ -1290,7 +1292,7 @@ Active when : LOW
 Pull        : Pull-up
 ```
 
-Simplicity Studio auto-generates something like (You don't need to write this manually):
+Simplicity Studio auto-generates this (You don't need to write this manually):
 ```
 #define BTL_BUTTON_PORT gpioPortB
 #define BTL_BUTTON_PIN  0
@@ -1444,7 +1446,7 @@ https://community.silabs.com/s/question/0D5Vm00000vUohmKAC/flashing-the-xiao-mg2
 https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
 
-## 4.11 - LoRa/Sifox <a name="4.11"></a>
+## 4.11 - LoRa/Sigfox <a name="4.11"></a>
 # <code style="color : RED">TBC</code>
 
 ## 4.12 - RTC <a name="4.12"></a>
