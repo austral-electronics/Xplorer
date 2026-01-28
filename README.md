@@ -1454,7 +1454,8 @@ https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
 
 ## 4.11 - LoRa/Sigfox <a name="4.11"></a> [📚](#0) 
-# <code style="color : RED">TBC</code>
+[LSM100A Datasheet](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/LoRa_Sigfox)  
+[LSM100A Tutorial](https://www.framboise314.fr/deux-cartes-lorawan-sigfox-lsm100a-pour-raspberry-pi-et-pico-chez-snoc/#Activer_le_port_serie_du_Raspberry_Pi_5) (In French)  
 
 ## 4.12 - RTC <a name="4.12"></a> [📚](#0) 
 
