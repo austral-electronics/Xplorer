@@ -1322,8 +1322,8 @@ Press Ctrl + A an then S to select the minicom upload mode :
 | ascii     |                                      
 +-----------+ 
 ```
-Select 'xmodem'.
-Select your .tgl image to flash.
+Select 'xmodem'.  
+Select your .gbl firmware to flash with the arrows, space and enter.
 
 #### 4.10.3.2 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.2"></a>
 
