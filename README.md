@@ -1215,20 +1215,38 @@ Upload:          8.77 Mbps  (data used: 14.7 MB)
 Packet Loss:     0.0%
 ```
 ## 4.10 - Multi-Protocol Wireless Network co-processor <a name="4.10"></a>
-This option gives automation and IoT connectivity with Matter-Over-Thread, Zigbee, BLE Mesh and Open Thread. It's the perfect interface for Home Assistant or Mesh communication.
-It add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna. Note that this option removes an RS232 RX only input. 
-This module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24) , [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html), or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
+This option gives automation and IoT 2.4Ghz connectivity with Matter-Over-Thread, Zigbee, BLE Mesh and Open Thread.  
+It's the perfect interface to make a Home Assistant Matter/Zibee Hub/Device or for custom Mesh communication.  
+This option add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna.  
+Note that this option removes one RS232 input. 
+The MGM240PA32VNN3 module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24), or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
 
+### 4.10.1 - Software development <a name="4.10.1"></a>
 For more information about the EFR32MG24 :
 [EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html)
 [EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf)
 [EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
 
-The Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded serial bootloader.  
-Your Linux application can manage the update of the MG24 firmware.  
-For the software development you can use a dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html) or the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf).  
+The Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded UART Xmodem bootloader.
+To debug your software you can use a external dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html), the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf), or the [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html).
+Only the name of the USB port will be changed for production.
+
+### 4.10.2 - Pre-build Firmware <a name="4.10.2"></a>
+
+#### Firmware Builds for dongles
+https://github.com/NabuCasa/silabs-firmware-builder
+https://github.com/darkxst/silabs-firmware-builder/tree/main
+https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
+https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
+
+#### Firmware examples
+https://github.com/NabuCasa/silabs-firmware
+
+### 4.10.3 - UART Xmodem Bootload <a name="4.10.3"></a>
+
+Your Linux application can manage the update of the MG24 firmware using an embedded UART Xmodem bootloader.  
 The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins.  
-See page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) datasheet for the Network Co-Processor (NCP) Application with UART.  
+The pinout is compliant with the Network Co-Processor (NCP) Application with UART in order to make a Matter or Zigbee Hub, see page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf).  
 
 |MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
 |----------|--------|-------------------|-----------------|------------------|------------|
@@ -1245,34 +1263,37 @@ To control NRST and NBOOT, config.txt must contain :
 gpio=39=op,dh
 gpio=45=op,dh
 ```
-More information on the Serial Bootload in the [AN958](https://www.silabs.com/documents/public/application-notes/an958-mcu-stk-wstk-guide.pdf).  
-
-Install and minicom :
-```
-sudo apt-get install minicom
-```
-Open a console on ttyUSB1 (RXD_B) at 115Kbps with :
-```
-sudo minicom -D /dev/ttyUSB1
-```
 You cant put the EFR32MG24 in bootload mode with the sequence :
  - NBOOT=0
  - NRST=0
  - Wait 100ms to reset the EFR32MG24
  - NRST=1
- - Wait 300ms to enter in bootload mode
+ - Wait 200ms to enter in bootload mode
  - NBOOT=1
 
-This sequence can be made in command line with :
+This boot sequence can be made in command line with :
 ```
 pinctrl set 45 op pn dl
 pinctrl set 39 op pn dl
 sleep .1
 pinctrl set 39 op pn dh
-sleep .3
+sleep .2
 pinctrl set 45 op pn dh
 ```
-After this sequence, the EFR32MG24 bootloader must send the message on the ttyUSB1 console:
+#### 4.10.3.1 - Flash manually usign Minicom <a name="4.10.3.1"></a>
+Install and minicom :
+```
+sudo apt-get install minicom
+```
+Get a gbl file to flash in the current directory
+```
+```
+Open a console on ttyUSB1 (RXD_B) at 115Kbps with :
+```
+sudo minicom -D /dev/ttyUSB1 -b 115200
+```
+Send the boot sequence above.
+After this sequence, the EFR32MG24 bootloader must send the message to the minicom terminal :
 ```
 Gecko Bootloader v2.00.00
 1. upload gbl
@@ -1280,17 +1301,40 @@ Gecko Bootloader v2.00.00
 3. ebl info
 BL >
 ```
+Press 1 to begin the upload
+```
+begin upload                                                                    
+CCCC
+```
+Press Ctrl + A an then S to select the minicom upload mode :
+```
++-[Upload]--+                                      
+| zmodem    |                                      
+| ymodem    |                                      
+| xmodem    |                                      
+| kermit    |                                      
+| ascii     |                                      
++-----------+ 
+```
+Select 'xmodem'.
+Select your .tgl image to flash.
 
-#### Firmware Builds for dongles
-https://github.com/NabuCasa/silabs-firmware-builder
-https://github.com/darkxst/silabs-firmware-builder/tree/main
-https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
-https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
+#### 4.10.3.2 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.2"></a>
 
-#### Firmware examples
-https://github.com/NabuCasa/silabs-firmware
+Universal Silicon Labs Flasher     https://github.com/NabuCasa/universal-silabs-flasher
 
-#### Flash the MG24 with Silicon Labs Commander
+Install :
+```
+$ pip install universal-silabs-flasher
+```
+Get a .gbl firmware.
+Send the boot sequence above.
+Flash the MG24 :
+```
+universal-silabs-flasher --device /dev/ttyUSB1 flash --firmware xxxxx-115200.gbl
+```
+
+#### 4.10.3.3 - Firmware update with Silicon Labs Commander <a name="4.10.3.3"></a>
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
 https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
 
@@ -1308,27 +1352,12 @@ Verify:
 ```
 ./commander --version
 ```
-Enter in boot mode :
-```
-pinctrl set 45 op pn dl
-pinctrl set 39 op pn dl
-sleep .1
-pinctrl set 39 op pn dh
-sleep .3
-pinctrl set 45 op pn dh
-```
+Send the boot sequence above.
 Check if the communication with the bootloader
 ```
 ./commander device info --serialport /dev/ttyUSB1 --baudrate 115200
 ```
-You should see:
-```
-Gecko Bootloader v2.00.00
-1. upload gbl
-2. run
-3. ebl info
-BL > 
-```
+Send the boot sequence above.
 Flash an Hex file:
 ```
 ./commander flash firmware.hex --serialport /dev/ttyUSB1 --baudrate 115200
@@ -1341,27 +1370,7 @@ Reset and Run the MG24 Firmware:
 ```
 ./commander reset --serialport /dev/ttyUSB1
 ```
-#### Flash the MG24 with the NabuCasa Universal Silicon Labs Flasher 
-https://github.com/NabuCasa/universal-silabs-flasher
-
-Install :
-```
-$ pip install universal-silabs-flasher
-```
-Enter in boot mode :
-```
-pinctrl set 45 op pn dl
-pinctrl set 39 op pn dl
-sleep .1
-pinctrl set 39 op pn dh
-sleep .3
-pinctrl set 45 op pn dh
-```
-Flash the MG24 :
-```
-universal-silabs-flasher --device /dev/ttyUSB1 flash --firmware xxxxx-115200.gbl
-```
-Usefull Links :
+### 4.10.4 - Usefull Links <a name="4.10.4"></a>
 https://www.silabs.com/support/training/developing-with-matter-on-the-mg24
 https://wiki.seeedstudio.com/xiao_mg24_matter/
 https://tutoduino.fr/en/tutorials/matter-xiao-mg24/
