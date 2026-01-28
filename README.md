@@ -1376,7 +1376,7 @@ Open a console on ttyUSB1 (RXD_B) at 115Kbps with :
 sudo minicom -D /dev/ttyUSB1 -b 115200
 ```
 Send the boot sequence above.
-After this sequence, the EFR32MG24 bootloader must send the message to the minicom terminal :
+After this sequence, the EFR32MG24 bootloader must send this menu to the minicom terminal :
 ```
 Gecko Bootloader v2.00.00
 1. upload gbl
@@ -1409,7 +1409,7 @@ You will see a pop up window :
 |Xmodem sectors/kbytes sent: 808/101k                                  |
 +----------------------------------------------------------------------+   
 ```
-And aftert few seconds
+And after few seconds
 ```
 |Transfert completed                                                   |
 ```
