@@ -230,7 +230,7 @@ File read: boot.img
 
 # 3 - GETTING STARTED 🏁 <a name="3"></a> [📚](#0) 
 
-## 3.1 - Launch a SSH console 🔐 <a name="3.1"></a>
+## 3.1 - Launch a SSH console 🔐 <a name="3.1"></a> [📚](#0)
 Connect the Xplorer to your ethernet network, and verify the LEDs on your switch (Must indicate 1GbE).  
 To get a DHCP defined IP address, you have multiples solutions :
 
@@ -286,7 +286,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 > [!CAUTION]
 > If you have an unconfigured Cellular M.2 module in place, you may have to wait one minute to have access to the ssh console via ethernet. In the worst case scenario, you may be blocked, retry a power-up or use ssh over WiFi, or a serial console on COM1, or a HDMI monitor and a keyboard in order to understand the problem and configure ModemManager.
 
-## 3.2 - Update the linux and eeprom 🗓️ <a name="3.2"></a>
+## 3.2 - Update the linux and eeprom 🗓️ <a name="3.2"></a> [📚](#0)
 Update the package list, distribution, eeprom:
 ```
 sudo apt --yes update && sudo apt --yes full-upgrade
@@ -299,7 +299,7 @@ sudo reboot
 > [!CAUTION]
 > If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet and make this update: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
-## 3.3 - Patch the configuration file <a name="3.2"></a>
+## 3.3 - Patch the configuration file <a name="3.2"></a> [📚](#0)
 
 > [!NOTE]  
 > If you have flashed a new image, you must configure the Xplorer CM5 peripherals.
@@ -440,12 +440,12 @@ Usefull documentations to configure config.txt:
 - [Device Tree Overlays](https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/overlays/README)
 - [Configure the Activity LED](https://raspberrypi.stackexchange.com/questions/69674/are-there-other-act-led-trigger-options-besides-mmc-and-heartbeat)
 
-## 3.4 - Enable I2C <a name="3.4"></a>
+## 3.4 - Enable I2C <a name="3.4"></a> [📚](#0)
 Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config.
 ```
 sudo raspi-config nonint do_i2c 0
 ```
-## 3.5 - Option : Activate a RS232 console <a name="3.5"></a>
+## 3.5 - Option : Activate a RS232 console <a name="3.5"></a> [📚](#0)
 To activate a console on the COM1 port to view the boot sequence and debug the network configuration. You need to replace ```console=serial0,115200``` with ```console=ttyAMA1,115200``` in ```/boot/firmware/cmdline.txt```. Note that ```console=tty1``` is for HDMI.
 
 You can do it with :
@@ -456,7 +456,7 @@ And reboot if needed to apply now.
 > [!TIP]
 > To follow the log trace with date and time on a console, wired COM1 to a RS232 to USB Cable, open a putty terminal at 115200 Bauds on your computer, log and launch ```dmesg -Tw```
 
-## 3.6 - Option : Static IP configuration <a name="3.6"></a>
+## 3.6 - Option : Static IP configuration <a name="3.6"></a> [📚](#0)
 Open the NetworkManager Configuration :
 ```
 sudo nmcli connection show
@@ -477,12 +477,12 @@ Verify the Static IP:
 ```
 ip addr show eth0
 ```
-## 3.7 - Change Password <a name="3.7"></a>
+## 3.7 - Change Password <a name="3.7"></a> [📚](#0)
 The default password is **"changeme"**, to change it :
 ```
 sudo passwd xplr
 ```
-## 3.8 - Installation of usefull tools <a name="3.8"></a>
+## 3.8 - Installation of usefull tools <a name="3.8"></a> [📚](#0)
 Install usefull tools to follow this tutorial and reboot :
 ```
 sudo apt --yes install ethtool i2c-tools libtss2-* tpm-udev tpm2-abrmd tpm2-tools can-utils minicom
@@ -572,7 +572,7 @@ You should see at least 4 ports:
 ```
 ttyUSB0 to ttyUSB4 correspond to RXD_A to RXD_D
 Note: You can see more ttyUSB depending of M.2 modules options (Cellular, GNSS...)
-### 4.4.1 - UART0 <a name="4.4.1"></a>
+### 4.4.1 - UART0 <a name="4.4.1"></a> [📚](#0)
 This UART is used internaly by the options : LoRa/Sigfox xor IMU
 
 ⚠️ By default this port is in linux console mode, to deactivate the console and use as an UART, config.txt must contain :
@@ -951,7 +951,7 @@ nvme1n1      259:1    0 931.5G  0 disk
 - **nvme0n1** is the optional main NVMe SSD
 - **nvme1n1** is the optional secondary NVMe SSD
 - **sda1** would have been an optional USB-C flash drive
-### 4.7.4 - Type-C External Flash Drive  <a name="4.7.4"></a>
+### 4.7.4 - Type-C External Flash Drive  <a name="4.7.4"></a> [📚](#0)
 This test show you how to test a USB3 peripheral, it is made with a small USB-C key connected to the USB-C, it uses the [Samsung MUF-64DA/PAC](https://www.samsung.com/uk/memory-storage/usb-flash-drive/usb-flash-drivetype-c-64gb-muf-64da-apc/) (64GB, USB3.1, <300MB/S read speed, reversible ports, formated in FAT, Waterproof)
 ```
 lsusb
@@ -1166,7 +1166,7 @@ mmcblk2      179:96   0  29.7G  0 disk
 > ```
 > sudo dd if=/dev/mmcblk2 of=/dev/nvme0n1 bs=4M status=progress
 > ```
-## 4.8 - DAQ <a name="4.8"></a>
+## 4.8 - DAQ <a name="4.8"></a> [📚](#0)
 The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0  
 It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
 
@@ -1441,7 +1441,7 @@ Reset and Run the MG24 Firmware:
 ```
 ./commander reset --serialport /dev/ttyUSB1
 ```
-### 4.10.4 - Usefull Links <a name="4.10.4"></a>
+### 4.10.4 - Usefull Links <a name="4.10.4"></a> [📚](#0)
 https://www.silabs.com/support/training/developing-with-matter-on-the-mg24
 https://wiki.seeedstudio.com/xiao_mg24_matter/
 https://tutoduino.fr/en/tutorials/matter-xiao-mg24/
@@ -1587,7 +1587,7 @@ The Halt mode power is 278mW, you can test it with the shutdown command:
 ```
 sudo shutdown now
 ```
-## 5.4 - Watchdog <a name="5.4"></a>
+## 5.4 - Watchdog <a name="5.4"></a> [📚](#0)
 https://diode.io/blog/running-forever-with-the-raspberry-pi-hardware-watchdog
 
 Enable the hardware watchdog and reboot:
