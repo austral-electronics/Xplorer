@@ -62,7 +62,14 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.9.4 - 5G RedCap](#4.9.4)
         - [4.9.5 - Speed Test](#4.9.5)
     - [4.10 - Multi-Protocol Wireless Network co-processor](#4.10)
-    - [4.11 - LoRa/Sifox](#4.11)
+        - [4.10.1 - Software development](#4.10.1)
+        - [4.10.2 - Pre-build Firmware](#4.10.2)
+        - [4.10.3 - UART Xmodem Bootload](#4.10.3)
+            - [4.10.3.1 - Define the bootloader activation pin](#4.10.3.1)
+            - [4.10.3.2 - Command NRST and NBOOT](#4.10.3.2)
+            - [4.10.3.3 - Flash manually using Minicom](#4.10.3.3)
+            - [4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher](#4.10.3.4)
+            - [4.10.3.5 - Firmware update with Silicon Labs Commander](#4.10.3.5)
     - [4.12 - RTC](#4.12)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
@@ -1251,11 +1258,51 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 |MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
 |----------|--------|-------------------|-----------------|------------------|------------|
 | 4        | PB02   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | EFR32 Bootload Mode
-| 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | EFR32 USART1.TX   
-| 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | EFR32 USART1.RX
-| 16       | PA07   | FT432H-56Q Pin 25 | BDBUS3          | **CTS_B**        | EFR32 Output
-| 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | EFR32 Input 
+| 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | EFR32 Bootload Mode
+| 11       | PA04   | TP21              | TP21            | **TP21**         | Test Point (Reserved for a future LED) 
+| 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | EFR32 USART1.TX (Xmodem & NCP Compliant)  
+| 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | EFR32 USART1.RX (Xmodem & NCP Compliant)
+| 16       | PA07   | FT432H-56Q Pin 25 | BDBUS3          | **CTS_B**        | EFR32 (NCP Compliant)
+| 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | EFR32 (NCP Compliant)
 | 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | EFR32 Reset
+
+#### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a>
+
+The bootloader entry pin is user-defined and configured inside the Gecko Bootloader project.  
+This must be done in the Gecko bootloader project, not in the application.  
+
+In Simplicity Studio:  
+Software Components  
+→ Bootloader Core  
+→ GPIO Activation (or Bootloader Button)  
+
+Configure the NBOOT GPIO to PB00 or PB02 :  
+- Port (gpioPortA, gpioPortB, …)
+- Pin number
+- Active level (HIGH or LOW)
+- Pull configuration
+
+Example:
+```
+Port        : gpioPortB
+Pin         : 0
+Active when : LOW
+Pull        : Pull-up
+```
+
+Simplicity Studio auto-generates something like (You don't need to write this manually):
+```
+#define BTL_BUTTON_PORT gpioPortB
+#define BTL_BUTTON_PIN  0
+#define BTL_BUTTON_PRESSED 0  // active low
+
+if (GPIO_PinInGet(BTL_BUTTON_PORT, BTL_BUTTON_PIN)
+    == BTL_BUTTON_PRESSED) {
+    enterBootloader();
+}
+```
+
+#### 4.10.3.2 - Command NRST and NBOOT <a name="4.10.3.2"></a>
 
 To control NRST and NBOOT, config.txt must contain :
 ```
@@ -1286,7 +1333,7 @@ pinctrl set 39 op pn dh
 sleep .2
 pinctrl set 45 op pn dh
 ```
-#### 4.10.3.1 - Flash manually usign Minicom <a name="4.10.3.1"></a>
+#### 4.10.3.3 - Flash manually using Minicom <a name="4.10.3.3"></a>
 Install and minicom :
 ```
 sudo apt-get install minicom
@@ -1337,7 +1384,7 @@ And aftert few seconds
 ```
 |Transfert completed                                                   |
 ```
-#### 4.10.3.2 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.2"></a>
+#### 4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.4"></a>
 
 Universal Silicon Labs Flasher     https://github.com/NabuCasa/universal-silabs-flasher
 
@@ -1352,7 +1399,7 @@ Flash the MG24 :
 universal-silabs-flasher --device /dev/ttyUSB1 flash --firmware xxxxx-115200.gbl
 ```
 
-#### 4.10.3.3 - Firmware update with Silicon Labs Commander <a name="4.10.3.3"></a>
+#### 4.10.3.5 - Firmware update with Silicon Labs Commander <a name="4.10.3.5"></a>
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
 https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
 
