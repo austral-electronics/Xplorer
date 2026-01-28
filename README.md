@@ -84,6 +84,9 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [5.8 - Security Hardening](#5.8)
 - **[6 - GPIO CONFIGURATION](#6)**
 - **[7 - SELF-TEST](#7)**
+
+> [!TIPS] 
+>  Click on the [📚](#0) Table Of Contents Logo to go back here
 ---
 # 1 - INTRODUCTION <a name="1"></a> [📚](#0)  
 Welcome to the **software guide for the Xplorer CM5**, a ruggedized industrial edge IoT / AIoT controller and mission computer designed for harsh environments based on the [Raspberry Pi CM5](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-104032) 🍓🥧 module. The Xplorer CM5 series is engineered for reliability where failure is not an option—ideal for smart automation, connected infrastructure, unmanned systems, and embedded intelligence projects.
