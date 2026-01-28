@@ -111,7 +111,7 @@ How to get support :
 Whether you're integrating Xplorer CM5 into industrial systems, vehicle, marine or unmanned platforms, or deploying AI at the edge, this tutorial walks you step-by-step through the essential software setup and usage. Let’s get started! 🏁
 
 ---
-# 2 - FLASH AN IMAGE <a name="2"></a>
+# 2 - FLASH AN IMAGE <a name="2"></a> [📚](#0) 
 
 > [!NOTE] 
 >  An image with Raspberry PI OS Trixie Lite (64-bit) with default settings is pre-installed in the product. To test it first for the first time, go directly to the [chapter 3](#3).
@@ -125,7 +125,7 @@ with a tutorial video 👉 [here](https://www.youtube.com/watch?v=SWv-WYlHJWQ&t=
 
 Folow these tutorials to install **rpiboot** and **Raspberry Pi Imager** on your computer.
 
-### 2.1.1 Use RPIBOOT on Mac <a name="2.1.1"></a>
+### 2.1.1 Use RPIBOOT on Mac <a name="2.1.1"></a> [📚](#0) 
 ```
 brew install libusb pkg-config
 ```
@@ -151,7 +151,7 @@ make CFLAGS="-I/opt/homebrew/include/libusb-1.0"
 ```
 sudo ./rpiboot
 ```
-## 2.2 Flash procedure <a name="2.2"></a>
+## 2.2 Flash procedure <a name="2.2"></a> [📚](#0) 
 
 > [!CAUTION]
 >  Please note that with the Xplorer CM5 :
@@ -228,7 +228,7 @@ File read: boot.img
 
 ---
 
-# 3 - GETTING STARTED 🏁 <a name="3"></a>
+# 3 - GETTING STARTED 🏁 <a name="3"></a> [📚](#0) 
 
 ## 3.1 - Launch a SSH console 🔐 <a name="3.1"></a>
 Connect the Xplorer to your ethernet network, and verify the LEDs on your switch (Must indicate 1GbE).  
@@ -493,8 +493,8 @@ sudo reboot
 > If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
 ---
-# 4 - TEST THE PERIPHERALS 🎓 <a name="4"></a>
-## 4.1 - Linux configuration 💻 <a name="4.1"></a>
+# 4 - TEST THE PERIPHERALS 🎓 <a name="4"></a> [📚](#0) 
+## 4.1 - Linux configuration 💻 <a name="4.1"></a> [📚](#0) 
 ### Linux version :
 ```
 uname -a
@@ -517,8 +517,8 @@ cat /etc/debian_version
 ```
 13.2
 ```
-## 4.2 - Ethernet <a name="4.2"></a>
-### 4.2.1 - GbE over M12 <a name="4.2.1"></a>
+## 4.2 - Ethernet <a name="4.2"></a> [📚](#0) 
+### 4.2.1 - GbE over M12 <a name="4.2.1"></a> [📚](#0) 
 ```
 sudo apt install ethtool
 ethtool eth0
@@ -530,7 +530,7 @@ Speed: 1000Mb/s
 Duplex: Full
 ...
 ```
-### 4.2.2 - 5 GbE over USB-C <a name="4.2.2"></a>
+### 4.2.2 - 5 GbE over USB-C <a name="4.2.2"></a> [📚](#0) 
 You can have an additional 5 GbE port with an external USB-C to 5Gbps Ethernet adapter.  
 But you can have also a very high speed Vitual Network over USB-C with only a USB-C Cable, if you need only a P2P use :
 - SSH console
@@ -539,7 +539,7 @@ But you can have also a very high speed Vitual Network over USB-C with only a US
 
 Follow this [USB Ethernet Gadget Setup tutorial](https://ohyaan.github.io/tips/usb_ethernet_gadget_setup/#summary) to set up a USB Ethernet Gadget.
 
-## 4.3 - WiFi/BT <a name="4.3"></a>
+## 4.3 - WiFi/BT <a name="4.3"></a> [📚](#0) 
 External antenna , config.txt
 ```
 # Switch to external antenna.
@@ -552,7 +552,7 @@ Params:
 
 # <code style="color : RED">TBC</code>
 
-##  4.4 - Serials <a name="4.4"></a>
+##  4.4 - Serials <a name="4.4"></a> [📚](#0) 
 List all the ports:
 ```
 ls /dev/ttyA*
@@ -592,7 +592,7 @@ Write Test :
 ```
 echo -e "TX UART0 is Working\x0D\x0A" > /dev/ttyAMA0
 ```
-### 4.4.2 - COM1 <a name="4.4.2"></a>
+### 4.4.2 - COM1 <a name="4.4.2"></a> [📚](#0) 
 Configure Baudrate:
 ```
 stty -F /dev/ttyAMA1 speed 115200 cs8 -cstopb -parenb
@@ -605,7 +605,7 @@ Write Test :
 ```
 echo -e "TX COM1 Working \x0D\x0A" > /dev/ttyAMA1
 ```
-### 4.4.3 - COM2 <a name="4.4.3"></a>
+### 4.4.3 - COM2 <a name="4.4.3"></a> [📚](#0) 
 Configure Baudrate:
 ```
 stty -F /dev/ttyAMA2 speed 115200 cs8 -cstopb -parenb
@@ -618,7 +618,7 @@ Write Test :
 ```
 echo -e "TX COM2 Working \x0D\x0A" > /dev/ttyAMA2
 ```
-### 4.4.4 - COM3 in RS232 Mode <a name="4.4.4"></a>
+### 4.4.4 - COM3 in RS232 Mode <a name="4.4.4"></a> [📚](#0) 
 This port is an isolated dual-mode RS232 or RS485 port. By default, this port is in 3 wires RS232 mode (TXD, RXD, RTS).  
 The power LED is used to select the mode RS232 or RS485.  
 RTS/GPIO11 is used for the RS485 low impedance.  
@@ -642,7 +642,7 @@ Write Test :
 ```
 echo -e "TX COM3 is Working in RS232\x0D\x0A" > /dev/ttyAMA3
 ```
-### 4.4.5 - COM3 in RS485 Mode <a name="4.4.5"></a>
+### 4.4.5 - COM3 in RS485 Mode <a name="4.4.5"></a> [📚](#0) 
 In RS485 mode config.txt must contain :
 ```
 dtoverlay=uart3,rts
@@ -664,7 +664,7 @@ ser.rs485_mode = RS485Settings(
 ser.write(b'TX COM3 is Working in RS485\x0D\x0A')
 ser.flush()
 ```
-### 4.4.6 - COM4 <a name="4.4.6"></a>
+### 4.4.6 - COM4 <a name="4.4.6"></a> [📚](#0) 
 COM4 is an half duplex RS485 port with AutoDirection Control (No DE via RTS to command Transmit low impedance). Configure Baudrate:
 ```
 stty -F /dev/ttyAMA4 speed 19200 cs8 -cstopb -parenb
@@ -677,7 +677,7 @@ Write Test :
 ```
 echo -e "TX COM4 Working \x0D\x0A" > /dev/ttyAMA4
 ```
-### 4.4.7 - RXDA <a name="4.4.7"></a>
+### 4.4.7 - RXDA <a name="4.4.7"></a> [📚](#0) 
 ```
 stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
 ```
@@ -685,7 +685,7 @@ Read Test :
 ```
 cat /dev/ttyUSB0
 ```
-### 4.4.8 - RXDB <a name="4.4.8"></a>
+### 4.4.8 - RXDB <a name="4.4.8"></a> [📚](#0) 
 ⚠️ IN1_RXDB is not functional with the **Matter** hardware option
 ```
 stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
@@ -694,7 +694,7 @@ Read Test :
 ```
 cat /dev/ttyUSB1
 ```
-### 4.4.9 - RXDC <a name="4.4.9"></a>
+### 4.4.9 - RXDC <a name="4.4.9"></a> [📚](#0) 
 ```
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 ```
@@ -702,7 +702,7 @@ Read Test :
 ```
 cat /dev/ttyUSB2
 ```
-### 4.4.10 - RXDD <a name="4.4.10"></a>
+### 4.4.10 - RXDD <a name="4.4.10"></a> [📚](#0) 
 ```
 stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
 ```
@@ -710,8 +710,8 @@ Read Test :
 ```
 cat /dev/ttyUSB3
 ```
-## 4.5 - CAN-FD <a name="4.5"></a>
-### 4.5.1 - SPI <a name="4.5.1"></a>
+## 4.5 - CAN-FD <a name="4.5"></a> [📚](#0) 
+### 4.5.1 - SPI <a name="4.5.1"></a> [📚](#0) 
 ```
 dmesg | grep -i -E "(mcp|spi)"
 ```
@@ -744,7 +744,7 @@ can1: flags=128<NOARP>  mtu 16
 ... 
 ```
 You must see **can0** and **can1**
-### 4.5.2 - CAN1 <a name="4.5.2"></a>
+### 4.5.2 - CAN1 <a name="4.5.2"></a> [📚](#0) 
 To configure the main CANBus 'can1' on CAN1/PWR connector (NMEA2000 compatible):
 ```
 sudo apt-get install can-utils
@@ -758,7 +758,7 @@ Send a sentence with :
 ```
 cansend can1 7DF#0201050000000000
 ```
-### 4.5.3 - CAN2 <a name="4.5.3"></a>
+### 4.5.3 - CAN2 <a name="4.5.3"></a> [📚](#0) 
 To configure the secondary CANbus 'can0' on DAQ/CAN2 connector:
 ```
 sudo apt-get install can-utils
@@ -773,8 +773,8 @@ Send a sentence with :
 cansend can0 7DF#0201050000000000
 ```
 
-## 4.6 - CyberSecurity <a name="4.6"></a>
-### 4.6.1 - I2C <a name="4.6.1"></a>
+## 4.6 - CyberSecurity <a name="4.6"></a> [📚](#0) 
+### 4.6.1 - I2C <a name="4.6.1"></a> [📚](#0) 
 Enable I2C (raspi-config -> Interface options -> I2C -> Enable):
 ```
 sudo raspi-config
@@ -825,7 +825,7 @@ Option CryptoAuthentication with the ATECC608A-MAHDA : Adr 0x60 -> 0x60 or UU
 
 [I2C Tools Tutorial](https://emlogic.no/2025/06/accessing-i2c-devices-from-userspace-in-linux/)
 
-### 4.6.2 - TPM2.0 <a name="4.6.2"></a>
+### 4.6.2 - TPM2.0 <a name="4.6.2"></a> [📚](#0) 
 
 This feature uses the [Infineon OPTIGA SLB9673AU20FW2610XTMA1](https://www.infineon.com/assets/row/public/documents/30/49/infineon-slb9673-tpm20-i2c-fw26xx-ds-rev1-4-2024-11-13-datasheet-en.pdf) TPM2.0 I2C Chip with 51KB of NV memory.
 
@@ -871,7 +871,7 @@ TPM2_PT_LEVEL:
 ```
 And follow this [infineon tutorial for more informations](https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf)
 
-### 4.6.3 - CrytoAuthentication Co-Processor <a name="4.6.3"></a>
+### 4.6.3 - CrytoAuthentication Co-Processor <a name="4.6.3"></a> [📚](#0) 
 This option uses the [Microchip ATECC608A-MAHDA](https://ww1.microchip.com/downloads/aemDocuments/documents/SCBU/ProductDocuments/DataSheets/ATECC608A-CryptoAuthentication-Device-Summary-Data-Sheet-DS40001977B.pdf) I2C Chip with 16 keys storage, Asymmetric & Symmetric Algorithms, Networking Key Management, Secure boot, 72 bits Unique ID...
 
 Documentations :
@@ -897,8 +897,8 @@ Displays a Unique ID:
 ```
 0123ceb0b0dbc3d2ee
 ```
-## 4.7 - Storages <a name="4.7"></a>
-### 4.7.1 - PCIe peripherals <a name="4.7.1"></a>
+## 4.7 - Storages <a name="4.7"></a> [📚](#0) 
+### 4.7.1 - PCIe peripherals <a name="4.7.1"></a> [📚](#0) 
 The 'lspci' command must discover the ASM1184e PCIe switch and equiped M.2 modules (below with one KIOXIA SSDs and one Hailo-8 AI module).
 ```
 lspci
@@ -915,7 +915,7 @@ lspci
 0002:00:00.0 PCI bridge: Broadcom Inc. and subsidiaries BCM2712 PCIe Bridge (rev 30)
 0002:01:00.0 Ethernet controller: Raspberry Pi Ltd RP1 PCIe 2.0 South Bridge
 ```
-### 4.7.2 - USB peripherals <a name="4.7.2"></a>
+### 4.7.2 - USB peripherals <a name="4.7.2"></a> [📚](#0) 
 The 'lsusb' command must discover the FT4232H (USB2<->4x UART chip), equiped M.2 type B modules (below a 5G Qualcomm M.2 module) and external USB-C device if connected.
 ```
 lsusb
@@ -929,7 +929,7 @@ Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
-### 4.7.3 - Drives <a name="4.7.3"></a>
+### 4.7.3 - Drives <a name="4.7.3"></a> [📚](#0) 
 ```
 lsblk
 ```
@@ -1078,7 +1078,7 @@ sudo dd bs=2M count=500 if=/dev/sda1 of=/media/xplr/Samsung\ USB/test.bin
 ...
 1048576000 bytes (1.0 GB, 1000 MiB) copied, 34.7954 s, 30.1 MB/s
 ```
-### 4.7.5 - Internal NVMe SSD(s) <a name="4.7.5"></a>
+### 4.7.5 - Internal NVMe SSD(s) <a name="4.7.5"></a> [📚](#0) 
 - The main SSD is a 2232 Key M, M.2 module installed on the J15 slot (CM5 / Front side).
 - To make a Raid 0 or 1 NAS, another 2232/2242 Key M, M.2 SSD can be installed on the J4 slot (Bottom plate side).
 - A third 2232/2242 Key B, M.2 SSD can also be used if needed.
@@ -1134,7 +1134,7 @@ sudo dd bs=10M count=500 if=/dev/nvme1n1 of=/home/xplr/test.bin
 500+0 records out
 5242880000 bytes (5.2 GB, 4.9 GiB) copied, 47.4714 s, 110 MB/s
 ```
-### 4.7.6 - Micro SD Card  <a name="4.7.6"></a>
+### 4.7.6 - Micro SD Card  <a name="4.7.6"></a> [📚](#0) 
 An internal micro SD card holder is connected to GPIO22 to GPIO27.
 An optional SD card may be use for non-critical storage or but it is rather intended for cybersecurity (Secure Acces Key, Hidden partition, Write Once Read Many).
 To physically access to the push pull holder, you must remove the cap on the left side of the enclosure.
@@ -1183,23 +1183,23 @@ Usefull documentation:
 - [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
 - [AD5592R ROS2 Integration](https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html)
 
-## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a>
-### 4.9.1 - Nano SIM <a name="4.9.1"></a>
+## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a> [📚](#0) 
+### 4.9.1 - Nano SIM <a name="4.9.1"></a> [📚](#0) 
 The right cap provides access to a Push Pull holder for a nano SIM card or a 4FF Plastic eSIM card.
 > [!CAUTION]
 > It is possible to insert the SIM card next to the holder and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
-### 4.9.2 - 4FF eSIM <a name="4.9.2"></a>
+### 4.9.2 - 4FF eSIM <a name="4.9.2"></a> [📚](#0) 
 An eSIM card can be integrated into production, and plugs can be removed for mass-produced products.  
 [Kigen SGP.22+ Tri-cut eUICC eSIM](https://techship.com/product/kigen-sgp-22-tri-cut-e-uicc-e-sim/?variant=001)  
 [How to use an eSIM in Linux?](https://techship.com/blog/how-to-use-an-esim-in-linux-7/)
-### 4.9.3 - 4G LTE-A <a name="4.9.3"></a>
+### 4.9.3 - 4G LTE-A <a name="4.9.3"></a> [📚](#0) 
 [Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
 [Configure the QUECTEL EM060K-GL 4G LTE-A modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_EM060K-GL_Without_ModemManager.md)
-### 4.9.4 - 5G RedCap <a name="4.9.4"></a>
+### 4.9.4 - 5G RedCap <a name="4.9.4"></a> [📚](#0) 
 [Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
 [Configure the SIM8230G 5G RedCap Modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_SIM8230G_Without_ModemManager.md)
-### 4.9.5 - Speed Test <a name="4.9.5"></a>
+### 4.9.5 - Speed Test <a name="4.9.5"></a> [📚](#0) 
 Install the [OOKLA speed test](https://www.speedtest.net/apps/cli) tool with :
 ```
 sudo apt update
@@ -1223,21 +1223,21 @@ Upload:          8.77 Mbps  (data used: 14.7 MB)
                  861.83 ms  (jitter: 91.22ms, low: 49.22ms, high: 1839.04ms)
 Packet Loss:     0.0%
 ```
-## 4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor<a name="4.10"></a>
+## 4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor<a name="4.10"></a> [📚](#0) 
 This Multi-Protocol Wireless Network co-processor (NCP) option gives automation and IoT connectivity with various protocols (Matter-Over-Thread, Zigbee, BLE Mesh, Open Thread...).  
 It's the perfect interface to make a Home Assistant Matter/Zibee Hub/Device or for custom Mesh communication.  
 This option add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna.  
 Note that this option removes one RS232 input. 
 The MGM240PA32VNN3 module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24), or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
 
-### 4.10.1 - Software development <a name="4.10.1"></a>
+### 4.10.1 - Software development <a name="4.10.1"></a> [📚](#0) 
 For more information about the EFR32MG24 : [EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html), [EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf), [EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
 
 The Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded UART Xmodem bootloader.  
 To debug your software you can use a external dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html), the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf), or the [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html).
 We recommend the Sparkfun solution, which has a very similar nomenclature. Only the name of the USB port will be changed for production.  
 
-### 4.10.2 - Pre-build Firmware <a name="4.10.2"></a>
+### 4.10.2 - Pre-build Firmware <a name="4.10.2"></a> [📚](#0) 
 
 - **EmberZNet** : It's the Silicon Labs **Zigbee** implementation, It contains firmware which provide the EmberZNet NCP (Network Co-Processor) firmware.
 - **OpenThread RCP** : Implement the **OpenThread Radio Co-Processor (RCP) protocol** through Spinel. The firmwares are compatible with upstream OpenThread Border Router.  
@@ -1255,7 +1255,7 @@ We recommend the Sparkfun solution, which has a very similar nomenclature. Only 
 - https://github.com/NabuCasa/silabs-firmware
 - https://github.com/Nerivec/ember-zli/blob/main/firmware-links-v3.json
 
-### 4.10.3 - UART Xmodem Bootload <a name="4.10.3"></a>
+### 4.10.3 - UART Xmodem Bootload <a name="4.10.3"></a> [📚](#0) 
 
 Your Linux application can manage the update of the MG24 firmware using an embedded UART Xmodem bootloader.  
 The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins.  
@@ -1272,7 +1272,7 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 | 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | MG24 (NCP Compliant)
 | 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset
 
-#### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a>
+#### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a> [📚](#0) 
 
 The bootloader entry pin is user-defined and configured inside the Gecko Bootloader project.  
 This must be done in the Gecko bootloader project, not in the application.  
@@ -1308,7 +1308,7 @@ if (GPIO_PinInGet(BTL_BUTTON_PORT, BTL_BUTTON_PIN)
 }
 ```
 
-#### 4.10.3.2 - Command NRST and NBOOT <a name="4.10.3.2"></a>
+#### 4.10.3.2 - Command NRST and NBOOT <a name="4.10.3.2"></a> [📚](#0) 
 
 To control NRST and NBOOT, config.txt must contain :
 ```
@@ -1339,7 +1339,7 @@ pinctrl set 39 op pn dh
 sleep .2
 pinctrl set 45 op pn dh
 ```
-#### 4.10.3.3 - Flash manually using Minicom <a name="4.10.3.3"></a>
+#### 4.10.3.3 - Flash manually using Minicom <a name="4.10.3.3"></a> [📚](#0) 
 Install and minicom :
 ```
 sudo apt-get install minicom
@@ -1390,7 +1390,7 @@ And aftert few seconds
 ```
 |Transfert completed                                                   |
 ```
-#### 4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.4"></a>
+#### 4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.4"></a> [📚](#0) 
 
 Universal Silicon Labs Flasher     https://github.com/NabuCasa/universal-silabs-flasher
 
@@ -1405,7 +1405,7 @@ Flash the MG24 :
 universal-silabs-flasher --device /dev/ttyUSB1 flash --firmware xxxxx-115200.gbl
 ```
 
-#### 4.10.3.5 - Firmware update with Silicon Labs Commander <a name="4.10.3.5"></a>
+#### 4.10.3.5 - Firmware update with Silicon Labs Commander <a name="4.10.3.5"></a> [📚](#0) 
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
 https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
 
@@ -1450,10 +1450,10 @@ https://community.silabs.com/s/question/0D5Vm00000vUohmKAC/flashing-the-xiao-mg2
 https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
 
-## 4.11 - LoRa/Sigfox <a name="4.11"></a>
+## 4.11 - LoRa/Sigfox <a name="4.11"></a> [📚](#0) 
 # <code style="color : RED">TBC</code>
 
-## 4.12 - RTC <a name="4.12"></a>
+## 4.12 - RTC <a name="4.12"></a> [📚](#0) 
 
 For ML2032 rechargeable battery, add this line to config.txt and reboot :
 ```
@@ -1470,8 +1470,8 @@ Read vbat voltage on the PMIC
 watch -n 1 vcgencmd pmic_read_adc
 ```
 ---
-# 5 - TIPS <a name="5"></a>
-## 5.1 - Benchmark 💪🏻 <a name="5.1"></a>
+# 5 - TIPS <a name="5"></a> [📚](#0) 
+## 5.1 - Benchmark 💪🏻 <a name="5.1"></a> [📚](#0) 
 Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
 
 #### Pi Benchmark script
@@ -1513,9 +1513,9 @@ sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
 CPU speed:
     events per second:  4036.34
 ```
-## 5.2 - Shrink a pi image  <a name="5.2"></a>
+## 5.2 - Shrink a pi image  <a name="5.2"></a> [📚](#0) 
 https://github.com/Drewsif/PiShrink
-## 5.3 - Manage Energy <a name="5.3"></a>
+## 5.3 - Manage Energy <a name="5.3"></a> [📚](#0) 
 https://forums.raspberrypi.com/viewtopic.php?t=361542
 https://forums.raspberrypi.com/viewtopic.php?t=360658
 ### Underclocking
@@ -1615,11 +1615,11 @@ If you want to test this you can try running a fork bomb on your shell:
 ```
 sudo bash -c ':(){ :|:& };:'
 ```
-## 5.5 - NAS Setup <a name="5.5"></a>
+## 5.5 - NAS Setup <a name="5.5"></a> [📚](#0) 
 The Xplorer can be setup with 2 NVMe SSD to make an embedded RAID NAS.
 https://ohyaan.github.io/tips/network_attached_storage__nas__setup_guide/
 
-## 5.6 - Reduce boot time <a name="5.6"></a>
+## 5.6 - Reduce boot time <a name="5.6"></a> [📚](#0) 
 #### Get the boot time
 ```
 $ systemd-analyze
@@ -1628,14 +1628,14 @@ graphical.target reached after 4.830s in userspace.
 ```
 #### To reduce boot time
 https://ohyaan.github.io/tips/raspberry_pi_boot_time_optimization__complete_performance_guide/#understanding-the-boot-process
-## 5.7 - CPU Isolation and Task Affinity for Multicore Optimization <a name="5.7"></a>
+## 5.7 - CPU Isolation and Task Affinity for Multicore Optimization <a name="5.7"></a> [📚](#0) 
 https://ohyaan.github.io/tips/cpu_isolation_and_task_affinity_for_multicore_optimization/
 
-## 5.8 - Security Hardening <a name="5.8"></a>
+## 5.8 - Security Hardening <a name="5.8"></a> [📚](#0) 
 https://ohyaan.github.io/tips/raspberry_pi_security_hardening_complete_guide/#network-security
 
 ---
-# 6 - GPIO CONFIGURATION <a name="6"></a>
+# 6 - GPIO CONFIGURATION <a name="6"></a> [📚](#0) 
 ```
 pinctrl
 ```
@@ -1743,7 +1743,7 @@ pinctrl
 ```
 
 ---
-# 7 - SELF-TEST <a name="7"></a>
+# 7 - SELF-TEST <a name="7"></a> [📚](#0) 
 #### 1 & 2 - Peripherals detection and COM & CANbus in reception:
 
 ```
