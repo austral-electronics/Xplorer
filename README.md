@@ -1291,8 +1291,9 @@ Install and minicom :
 ```
 sudo apt-get install minicom
 ```
-Get a gbl file to flash in the current directory
+Put a gbl file to flash in the current directory (here a Zigbee NCP for Sparkfun)
 ```
+wget https://github.com/darkxst/silabs-firmware-builder/releases/download/20250220/mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
 ```
 Open a console on ttyUSB1 (RXD_B) at 115Kbps with :
 ```
@@ -1312,7 +1313,7 @@ Press 1 to begin the upload
 begin upload                                                                    
 CCCC
 ```
-Press Ctrl + A an then S to select the minicom upload mode :
+Press Ctrl + A an then S to select the minicom upload mode in the pop up menu :
 ```
 +-[Upload]--+                                      
 | zmodem    |                                      
@@ -1324,7 +1325,18 @@ Press Ctrl + A an then S to select the minicom upload mode :
 ```
 Select 'xmodem'.  
 Select your .gbl firmware to flash with the arrows, space and enter.
-
+You will see a pop up window :
+```
++----------------[xmodem upload - Press CTRL-C to quit]----------------+    
+|Sending mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl, 2117 blocks: Gi|    
+|ve your local XMODEM receive command now.                             |    
+|Xmodem sectors/kbytes sent: 808/101k                                  |
++----------------------------------------------------------------------+   
+```
+And aftert few seconds
+```
+|Transfert completed                                                   |
+```
 #### 4.10.3.2 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.2"></a>
 
 Universal Silicon Labs Flasher     https://github.com/NabuCasa/universal-silabs-flasher
