@@ -61,7 +61,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.9.3 - 4G LTE-A](#4.9.3)
         - [4.9.4 - 5G RedCap](#4.9.4)
         - [4.9.5 - Speed Test](#4.9.5)
-    - [4.10 - Multi-Protocol Wireless Network co-processor](#4.10)
+    - [4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor](#4.10)
         - [4.10.1 - Software development](#4.10.1)
         - [4.10.2 - Pre-build Firmware](#4.10.2)
         - [4.10.3 - UART Xmodem Bootload](#4.10.3)
@@ -1223,8 +1223,8 @@ Upload:          8.77 Mbps  (data used: 14.7 MB)
                  861.83 ms  (jitter: 91.22ms, low: 49.22ms, high: 1839.04ms)
 Packet Loss:     0.0%
 ```
-## 4.10 - Multi-Protocol Wireless Network co-processor <a name="4.10"></a>
-This option gives automation and IoT 2.4Ghz connectivity with Matter-Over-Thread, Zigbee, BLE Mesh and Open Thread.  
+## 4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor<a name="4.10"></a>
+This Multi-Protocol Wireless Network co-processor (NCP) option gives automation and IoT connectivity with various protocols (Matter-Over-Thread, Zigbee, BLE Mesh, Open Thread...).  
 It's the perfect interface to make a Home Assistant Matter/Zibee Hub/Device or for custom Mesh communication.  
 This option add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna.  
 Note that this option removes one RS232 input. 
@@ -1235,7 +1235,7 @@ For more information about the EFR32MG24 : [EFR32MG24 Website](https://docs.zeph
 
 The Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded UART Xmodem bootloader.  
 To debug your software you can use a external dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html), the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf), or the [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html).
-Only the name of the USB port will be changed for production.
+We recommend the Sparkfun solution, which has a very similar nomenclature. Only the name of the USB port will be changed for production.  
 
 ### 4.10.2 - Pre-build Firmware <a name="4.10.2"></a>
 
