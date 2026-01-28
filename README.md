@@ -1248,7 +1248,7 @@ We recommend the Sparkfun solution, which has a very similar nomenclature. Only 
 - **OpenThread RCP** : Implement the **OpenThread Radio Co-Processor (RCP) protocol** through Spinel. The firmwares are compatible with upstream OpenThread Border Router.  
   For more details see Silicon Labs [AN1256: Using the Silicon Labs RCP with the OpenThread Border Router](https://www.silabs.com/documents/public/application-notes/an1256-using-sl-rcp-with-openthread-border-router.pdf).
 - **RCP Multi-PAN** : Silicon Labs **multiprotcol stack** (rcp-uart-802154). The Silicon Labs EFR32 chip acts as the RCP (Radio Co-Processor) and offers support for multiple protocols (multiple 802.15.4 PANs).  
-  For more details, see Silicon Labs [AN1333: **Running Zigbee, OpenThread, and Bluetooth Concurrently** on a Linux Host with a Multiprotocol RCP](https://www.silabs.com/documents/public/application-notes/an1333-concurrent-protocols-with-802-15-4-rcp.pdf).
+  For more details, see Silicon Labs [AN1333: **Running Zigbee, OpenThread, and Bluetooth Concurrently** on a Linux Host with a Multiprotocol RCP](https://docs.silabs.com/multiprotocol/latest/multiprotocol-solution-linux/).
 
 #### Firmware Builds for dongles
 - https://github.com/NabuCasa/silabs-firmware-builder
