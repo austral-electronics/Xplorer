@@ -1251,19 +1251,19 @@ We recommend the Sparkfun solution, which has a very similar nomenclature. Only 
   For more details, see Silicon Labs [AN1333: **Running Zigbee, OpenThread, and Bluetooth Concurrently** on a Linux Host with a Multiprotocol RCP](https://docs.silabs.com/multiprotocol/latest/multiprotocol-solution-linux/).
 
 The EFR32 Multiprotocol image comes in four flavors:  
-- Multi-PAN 802-15.4 RCP (Radio Co-Processor):  
+- **Multi-PAN 802-15.4 RCP (Radio Co-Processor)**    
     Protocols Run: Openthread + Zigbee  
     Project Name: rcp-uart-802154.slcp and rcp-spi-802154.slcp  
     Description: The multipan RCP is based on the OpenThread 802.15.4 RCP with added multi-PAN and CPC support. It has a small flash footprint (~150K) and uses the Spinel protocol to serialize commands. The Spinel messages are further encapsulated by the CPC protocol before being sent over the physical link. Both UART and SPI links are supported. This is illustrated in system-architecture for the Multiprotocol RCP (ignoring the Bluetooth components).
-- Multiprotocol RCP  
+- **Multiprotocol RCP**   
     Protocols Run: Openthread + Zigbee + Bluetooth  
     Project Name: rcp-uart-802154-blehci.slcp and rcp-spi-802154-blehci.slcp  
     Description: The multiprotocol RCP adds the Bluetooth Controller and FreeRTOS to the above 802.15.4 RCP. It has a larger flash footprint (~250k). HCI is used to serialize Bluetooth commands over CPC. Both UART and SPI links are supported. See system-architecture for the Multiprotocol RCP.
-- Zigbee NCP (Network Co-Processor) with OpenThread RCP  
+- **Zigbee NCP (Network Co-Processor) with OpenThread RCP**  
     Protocols Run: Zigbee + Openthread  
     Project Name: zigbee_ncp-ot_rcp-uart.slcp and zigbee_ncp-ot_rcp-spi.slcp  
     Description: This configuration runs the Zigbee Networking stack on the EFR32 alongside the OpenThread RCP. The Zigbee application still runs on the host and uses EZSP to send commands to the Zigbee NCP over CPC. Note that this solution does not make use of Zigbeed, because the Zigbee networking stack is running on the EFR32, not on the host. OpenThread runs on the host as in the other cases and uses Spinel over CPC to communicate with the OpenThread RCP. Both UART and SPI links are supported. See system-architecture for the Zigbee NCP + OpenThread RCP. Due to a larger application footprint, it is recommended to choose parts with sufficient RAM (>64kB).
-- Zigbee NCP with BLE NCP  
+- **Zigbee NCP with BLE NCP**  
     Protocols Run: Zigbee + BLE  
     Project Name: zigbee_ncp-ble_ncp-uart.slcp zigbee_ncp-ble_ncp-spi.slcp  
     Description: The Zigbee application (Z3GatewayCPC) runs on the Linux host and communicates with the NCP using EZSP over CPC (SPI and UART are both available options). The Bluetooth host app bt_host_empty is compiled with CPC=1 option to enable communication with the DMP NCP over CPC. See system-architecture for the Zigbee NCP + BLE NCP. Due to a larger application footprint, it is recommended to choose parts with sufficient RAM (>64kB).
