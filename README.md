@@ -1263,6 +1263,12 @@ To control NRST and NBOOT, config.txt must contain :
 gpio=39=op,dh
 gpio=45=op,dh
 ```
+You can Reset the MG24 with :
+```
+pinctrl set 39 op pn dl
+sleep .1
+pinctrl set 39 op pn dh
+```
 You cant put the EFR32MG24 in bootload mode with the sequence :
  - NBOOT=0
  - NRST=0
@@ -1271,7 +1277,7 @@ You cant put the EFR32MG24 in bootload mode with the sequence :
  - Wait 200ms to enter in bootload mode
  - NBOOT=1
 
-This boot sequence can be made in command line with :
+The MG24 boot sequence can be made in command line with :
 ```
 pinctrl set 45 op pn dl
 pinctrl set 39 op pn dl
