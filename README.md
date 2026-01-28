@@ -85,7 +85,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
 - **[6 - GPIO CONFIGURATION](#6)**
 - **[7 - SELF-TEST](#7)**
 
-> [!TIPS] 
+> [!TIP] 
 >  Click on the [📚](#0) Table Of Contents Logo to go back here
 ---
 # 1 - INTRODUCTION <a name="1"></a> [📚](#0)  
