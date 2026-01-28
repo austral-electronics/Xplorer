@@ -1231,25 +1231,23 @@ Note that this option removes one RS232 input.
 The MGM240PA32VNN3 module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24), or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
 
 ### 4.10.1 - Software development <a name="4.10.1"></a>
-For more information about the EFR32MG24 :
-[EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html)
-[EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf)
-[EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
+For more information about the EFR32MG24 : [EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html), [EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf), [EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
 
-The Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded UART Xmodem bootloader.
+The Xplorer CM5 hardware as no embbeded J-LINK OB Debugger but as an embedded UART Xmodem bootloader.  
 To debug your software you can use a external dev kit connected to the USB-C, like the [Sparkfun Thing Plus Matter Kit](https://www.sparkfun.com/sparkfun-thing-plus-matter-mgm240p.html), the [EFR32xG24 Explorer Kit](https://www.silabs.com/documents/public/user-guides/ug533-xg24-ek2703a.pdf), or the [XIAO MG24](https://www.seeedstudio.com/Seeed-Studio-XIAO-MG24-p-6247.html).
 Only the name of the USB port will be changed for production.
 
 ### 4.10.2 - Pre-build Firmware <a name="4.10.2"></a>
 
 #### Firmware Builds for dongles
-https://github.com/NabuCasa/silabs-firmware-builder
-https://github.com/darkxst/silabs-firmware-builder/tree/main
-https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
-https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
+- https://github.com/NabuCasa/silabs-firmware-builder
+- https://github.com/darkxst/silabs-firmware-builder/tree/main
+- https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
+- https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
 
 #### Firmware examples
-https://github.com/NabuCasa/silabs-firmware
+- https://github.com/NabuCasa/silabs-firmware
+- https://github.com/Nerivec/ember-zli/blob/main/firmware-links-v3.json
 
 ### 4.10.3 - UART Xmodem Bootload <a name="4.10.3"></a>
 
