@@ -492,7 +492,7 @@ sudo apt --yes install ethtool i2c-tools libtss2-* tpm-udev tpm2-abrmd tpm2-tool
 sudo usermod --append --groups tss $(whoami)
 sudo reboot
 ```
-> [!CAUTION]
+> [!WARNING]
 > If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
 ---
