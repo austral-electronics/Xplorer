@@ -221,7 +221,7 @@ File read: boot.img
     - SSID : ************ (put your WIFI hotspot name)
     - Password : ************ (put your WIFI password)
     - ssh : yes
-- Start flashing, it can last for several minutes ☕
+- Start flashing, it can last for several minutes 🥐☕
 - At the end of programming and verification
   - Hot disconnect the USB-C
   - Turn off the power via CAN1-PWR
@@ -1418,7 +1418,7 @@ You will see a blue pop up window :
 |Xmodem sectors/kbytes sent: 808/101k                                  |
 +----------------------------------------------------------------------+   
 ```
-And after flashing, the end of this blue pop up window with:
+And after flashing 🥐☕, this blue pop up window ends with:
 ```
 ...
 |Transfert completed                                                   |
