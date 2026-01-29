@@ -1425,7 +1425,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCl
 3. ebl info                                                                     
 BL > 
 ```
-Press 2 to run
+Press 2 or launch a Reset sequence to run this firmware
 
 #### 4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.4"></a> [📚](#0) 
 
