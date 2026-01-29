@@ -1295,6 +1295,8 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 | 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | MG24 (NCP Compliant)
 | 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset
 
+Note: We have chosen two very common bootload pins in order to be compatible with existing solutions.
+
 #### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a> [📚](#0) 
 
 The bootloader entry pin is user-defined and configured inside the Gecko Bootloader project.  
@@ -1367,7 +1369,7 @@ Install and minicom :
 ```
 sudo apt-get install minicom
 ```
-Put a gbl file to flash in the current directory (here a Zigbee NCP for Sparkfun)
+Get a compatible .gbl file to flash in the current directory (here a Zigbee NCP for Sparkfun Things Matter MGM240P compatible with the default 115KB bootloader)
 ```
 wget https://github.com/darkxst/silabs-firmware-builder/releases/download/20250220/mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
 ```
