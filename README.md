@@ -1344,8 +1344,8 @@ gpio=39=op,dh
 gpio=45=op,dl
 ```
 > [!WARNING] 
-> Something is currently putting FAN_PWM into bootload state at power-up regardless of the GPIO45 configuration in config.txt.
-> You need to reset and run the MG24 Firmware at Linux starts up.  
+> Something is currently putting FAN_PWM into bootload state at power-up regardless of the GPIO45 configuration in config.txt.  
+> You currently need to reset and run the MG24 Firmware at Linux starts up.  
 
 You can Reset and Run the MG24 Firmware with :
 ```
