@@ -25,8 +25,8 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
   - [7.7 - LPWAN/LTE2/SAT2](#7.7)
   - [7.8 - GNSS](#7.8)
   - [7.9 - LTE1/SAT1](#7.9)
-  - [7.10 - Left cap : BOOT @ uSD-CARD](#7.10)
-  - [7.11 - Right cap : Micro HDMI & nano SIM card](#7.11)
+  - [7.10 - Right cap : BOOT @ uSD-CARD](#7.10)
+  - [7.11 - Left cap : Micro HDMI & nano SIM card](#7.11)
 - **[8 - OPTIONAL MODULES](#8)**
   - [8.1 - SSD](#8.1)
   - [8.2 - 4G LTE-A](#8.2)
@@ -274,13 +274,13 @@ For SMA(M) Antennas or cable.
 Antenna included with the antennas starter kit: [Pulse/Yaego W1696-M](https://yageogroup.com/content/datasheet/asset/file/DATASHEET_W1696_W1697_W1696-M_W1696-MW) (617MHz ~ 960MHz, 1.71GHz ~ 2.69GHz, 3.4GHz ~ 3.8GHz, IP65 , Gain : -0.5dBi, 1dBi, 0dBi).  
 Recommanded All-in-One antenna : [Poynting A-PUCK-0005-V2-01](https://poynting.tech/fr/antennas/puck-5/)
 
-### 7.10 - Left cap : BOOT @ uSD-CARD <a name="7.10"></a>
+### 7.10 - Right cap : BOOT @ uSD-CARD <a name="7.10"></a>
 - Provides access to a boot switch to launch the bootloader via USB-C. The board is in bootloader mode when it is switched toward the SMA connectors.  
 - Also allows you to insert a micro SD card for storage or cybersecurity (Push Pull connector). 
 > [!CAUTION]
 > It is possible to insert the SD card next to the holder and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal.  
-### 7.11 - Right cap : Micro HDMI & nano SIM card <a name="7.11"></a>
+### 7.11 - Left cap : Micro HDMI & nano SIM card <a name="7.11"></a>
 - Provides access to a Micro HDMI for debug purpose
 - Also allows you to insert a nano SIM card or a 4FF Plastic eSIM card (Push Pull connector)
 > [!CAUTION]
@@ -424,5 +424,6 @@ Austral electronics is a design office, we can support you on your specific need
 Espace Teknica, 4 Rue Galilée  
 Parc Technologique de Soye  
 56270 Ploemeur – FRANCE  
+
 **Mail :** contact@austral-eng.com  
 **Website :** http://austral-eng.com/en
