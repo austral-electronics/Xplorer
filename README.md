@@ -787,8 +787,8 @@ If needed valid also the I2C in config.txt :
 echo "dtparam=i2c_arm=on" | sudo tee -a /boot/firmware/config.txt
 sudo reboot
 ```
-> [!NOTE]
-> In the Raspberry Pi documentation, the raspi-config I2C enable has the same effect as enabling I2C in config.txt and reboot. Experimentally, you need to do raspi-config to list I2C devices. 
+> [!WARNING]
+> In the Raspberry Pi documentation, the raspi-config I2C enable has the same effect as enabling I2C in config.txt and reboot. Experimentally, you need to enbale I2C with raspi-config to list I2C devices. 
 
 and:
 ```
