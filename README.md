@@ -836,7 +836,6 @@ Documentation :
 - [OPTIGA TPM RPi Quickstarter User Guide](https://www.infineon.com/gated/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en_a3d6e6e3-6da2-4321-816d-8c6bcddc55ee)
 - [Hardware Security Module (TPM) Setup with dm-verity and Encrypted Storage ](https://ohyaan.github.io/tips/hardware_security_module__tpm__setup_with_dm-verity_and_encrypted_storage/#installing-tpm-hardware)
 - [Infineon tutorial](https://www.infineon.com/assets/row/public/documents/30/44/infineon-optiga-tpm-rpi-quickstarter-user-guide-usermanual-en.pdf)
-- [Setup with dm-verity and Encrypted Storage](https://ohyaan.github.io/tips/hardware_security_module__tpm__setup_with_dm-verity_and_encrypted_storage/#dm-verity-setup)
 
 If needed, add this line in config.txt and reboot
 ```
