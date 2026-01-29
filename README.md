@@ -158,7 +158,7 @@ sudo ./rpiboot
 
 > [!CAUTION]
 >  Please note that with the Xplorer CM5 :
->  - the J2 jumper of the Officiel I/O board is replace with a **bootload switch under the left cap**.
+>  - the J2 jumper of the Officiel I/O board is replace with a **bootload switch under the right cap**.
 >  - **This switch must be flip for the entire duration of the download**.
 >  - The Xplorer CM5 is not powered via USB-C; it **must be powered via CAN1-PWR during the entire flashing process**.
 >  - If your computer prompts you to format disks via pop-up windows during the flashing process, ignore and close them.
