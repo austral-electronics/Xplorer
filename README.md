@@ -45,7 +45,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.5.3 - CAN2](#4.5.3)
     - [4.6 - CyberSecurity](#4.6)
         - [4.6.1 - I2C](#4.6.1)
-        - [4.6.2 - TPM2.0 Chip](#4.6.2)
+        - [4.6.2 - TPM2.0](#4.6.2)
         - [4.6.3 - CrytoAuthentication Co-Processor](#4.6.3)
     - [4.7 - Storages](#4.7)
         - [4.7.1 - PCIe peripherals](#4.7.1)
