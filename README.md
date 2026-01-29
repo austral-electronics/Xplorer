@@ -1429,7 +1429,10 @@ Press 2 or launch a Reset sequence to run this firmware
 
 #### 4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.4"></a> [📚](#0) 
 
-Universal Silicon Labs Flasher     https://github.com/NabuCasa/universal-silabs-flasher
+Universal Silicon Labs Flasher Links :  
+- https://github.com/NabuCasa/universal-silabs-flasher
+- https://pypi.org/project/universal-silabs-flasher/
+- https://www.reddit.com/r/homeassistant/comments/1jcyrl6/how_to_flash_sonoff_zbdonglee_zigbee_router/
 
 Install :
 ```
