@@ -59,7 +59,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.9.1 - Nano SIM](#4.9.1)
         - [4.9.2 - 4FF eSIM](#4.9.2)
         - [4.9.3 - 4G LTE-A](#4.9.3)
-        - [4.9.4 - 5G RedCap](#4.9.4)
+        - [4.9.4 - 5G RedCap/Direct-To-Cell](#4.9.4)
         - [4.9.5 - Speed Test](#4.9.5)
     - [4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor](#4.10)
         - [4.10.1 - Software development](#4.10.1)
@@ -114,7 +114,7 @@ How to get support :
 Whether you're integrating Xplorer CM5 into industrial systems, vehicle, marine or unmanned platforms, or deploying AI at the edge, this tutorial walks you step-by-step through the essential software setup and usage. Let’s get started! 🏁
 
 ---
-# 2 - FLASH AN IMAGE <a name="2"></a> [📚](#0) 
+# 2 - 💾 FLASH AN IMAGE <a name="2"></a> [📚](#0) 
 
 > [!NOTE] 
 >  An image with Raspberry PI OS Trixie Lite (64-bit) with default settings is pre-installed in the product. To test it first for the first time, go directly to the [chapter 3](#3).
@@ -154,7 +154,7 @@ make CFLAGS="-I/opt/homebrew/include/libusb-1.0"
 ```
 sudo ./rpiboot
 ```
-## 2.2 - Flash procedure <a name="2.2"></a> [📚](#0) 
+## 2.2 - 💾 Flash procedure <a name="2.2"></a> [📚](#0) 
 
 > [!WARNING]
 >  Please note that with the Xplorer CM5 :
@@ -231,9 +231,9 @@ File read: boot.img
 
 ---
 
-# 3 - GETTING STARTED 🏁 <a name="3"></a> [📚](#0) 
+# 3 - 🏁 GETTING STARTED <a name="3"></a> [📚](#0) 
 
-## 3.1 - Launch a SSH console 🔐 <a name="3.1"></a> [📚](#0)
+## 3.1 - 🔐 Launch a SSH console <a name="3.1"></a> [📚](#0)
 Connect the Xplorer to your ethernet network, and verify the LEDs on your switch (Must indicate 1GbE).  
 To get a DHCP defined IP address, you have multiples solutions :
 
@@ -289,7 +289,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 > [!WARNING]
 > If you have an unconfigured Cellular M.2 module in place, you may have to wait one minute to have access to the ssh console via ethernet. In the worst case scenario, you may be blocked, retry a power-up or use ssh over WiFi, or a serial console on COM1, or a HDMI monitor and a keyboard in order to understand the problem and configure ModemManager.
 
-## 3.2 - Update the linux and eeprom 🗓️ <a name="3.2"></a> [📚](#0)
+## 3.2 - 🗓️ Update the linux and eeprom <a name="3.2"></a> [📚](#0)
 Update the package list, distribution, eeprom:
 ```
 sudo apt --yes update && sudo apt --yes full-upgrade
@@ -302,7 +302,7 @@ sudo reboot
 > [!WARNING]
 > If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet and make this update: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
-## 3.3 - Patch the configuration file <a name="3.3"></a> [📚](#0)
+## 3.3 - ✏️ Patch the configuration file <a name="3.3"></a> [📚](#0)
 
 > [!NOTE]  
 > If you have flashed a new image, you must configure the Xplorer CM5 peripherals.
@@ -448,7 +448,7 @@ Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working witho
 ```
 sudo raspi-config nonint do_i2c 0
 ```
-## 3.5 - Option : Activate a RS232 console <a name="3.5"></a> [📚](#0)
+## 3.5 - 💻 Option : Activate a RS232 console <a name="3.5"></a> [📚](#0)
 To activate a console on the COM1 port to view the boot sequence and debug the network configuration. You need to replace ```console=serial0,115200``` with ```console=ttyAMA1,115200``` in ```/boot/firmware/cmdline.txt```. Note that ```console=tty1``` is for HDMI.
 
 You can do it with :
@@ -485,7 +485,7 @@ The default password is **"changeme"**, to change it :
 ```
 sudo passwd xplr
 ```
-## 3.8 - Installation of usefull tools <a name="3.8"></a> [📚](#0)
+## 3.8 - 🛠️ Installation of usefull tools <a name="3.8"></a> [📚](#0)
 Install usefull tools to follow this tutorial and reboot :
 ```
 sudo apt --yes install ethtool i2c-tools libtss2-* tpm-udev tpm2-abrmd tpm2-tools can-utils minicom
@@ -496,8 +496,8 @@ sudo reboot
 > If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
 ---
-# 4 - TEST THE PERIPHERALS 🎓 <a name="4"></a> [📚](#0) 
-## 4.1 - Linux configuration 💻 <a name="4.1"></a> [📚](#0) 
+# 4 - 🎓 TEST THE PERIPHERALS <a name="4"></a> [📚](#0) 
+## 4.1 - 💻 Linux configuration <a name="4.1"></a> [📚](#0) 
 ### Linux version :
 ```
 uname -a
@@ -1200,7 +1200,7 @@ An eSIM card can be integrated into production, and plugs can be removed for mas
 [QUECTEL EM060K-GL Documentation](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/EM060K)  
 [Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
 [Configure the QUECTEL EM060K-GL 4G LTE-A modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_EM060K-GL_Without_ModemManager.md)
-### 4.9.4 - 5G RedCap <a name="4.9.4"></a> [📚](#0) 
+### 4.9.4 - 🛰 5G RedCap/Direct-To-Cell <a name="4.9.4"></a> [📚](#0) 
 [SIM8230G Documentation](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/SIM8230G-M2)  
 [Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
 [Configure the SIM8230G 5G RedCap Modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_SIM8230G_Without_ModemManager.md)
