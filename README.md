@@ -1286,8 +1286,7 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 
 |MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
 |----------|--------|-------------------|-----------------|------------------|------------|
-| 4        | PB02   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Bootload pin
-| 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Bootload pin
+| 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Factory-programmed bootload pin
 | 11       | PA04   | TP21              | TP21            | **TP21**         | Test Point (Reserved for a LED activated at low level in future PCB Revision) 
 | 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | MG24 USART1.TX (Xmodem & NCP Compliant)  
 | 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | MG24 USART1.RX (Xmodem & NCP Compliant)
@@ -1295,25 +1294,27 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 | 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | MG24 (NCP Compliant)
 | 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset
 
-Note: We have chosen two very common bootload pins in order to be compatible with existing solutions.
+#### 4.10.3.1 - New Bootloader <a name="4.10.3.1"></a> [📚](#0) 
 
-#### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a> [📚](#0) 
+The bootloader entry pin is user-defined and configured inside the Gecko Bootloader project.
 
-The bootloader entry pin is user-defined and configured inside the Gecko Bootloader project.  
-This must be done in the Gecko bootloader project, not in the application.  
+> [!CAUTION] 
+> If you flash another bootloader, verify that PB00 is the bootload pin.  
+> Otherwise, booting will be impossible and repair will be very complicated.  
+  
+If you flash another bootloader, verify :  
 
 In Simplicity Studio:  
 Software Components  
 → Bootloader Core  
 → GPIO Activation (or Bootloader Button)  
 
-Configure the NBOOT GPIO to PB00 or PB02 :  
+Configure the NBOOT GPIO to PB00 :  
 - Port (gpioPortA, gpioPortB, …)
 - Pin number
 - Active level (HIGH or LOW)
 - Pull configuration
 
-Example:
 ```
 Port        : gpioPortB
 Pin         : 0
