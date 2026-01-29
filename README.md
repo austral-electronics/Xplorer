@@ -225,7 +225,7 @@ File read: boot.img
 - At the end of programming and verification
   - Disconnect the USB-C
   - Turn off the power via CAN1-PWR
-  - Switch the switch back to the M12 connector direction
+  - Flip the switch back to the M12 connector direction
   - Put the cap back on
   - Power up via CAN1-PWR
 
