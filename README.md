@@ -1346,21 +1346,21 @@ sleep .1
 pinctrl set 39 op pn dh
 ```
 You cant put the EFR32MG24 in bootload mode with the sequence :
- - NBOOT=0
- - NRST=0
+ - NBOOT=0 -> GPIO45=1
+ - NRST=0 -> GPIO39=0
  - Wait 100ms to reset the EFR32MG24
- - NRST=1
+ - NRST=1 -> GPIO39=1
  - Wait 200ms to enter in bootload mode
- - NBOOT=1
+ - NBOOT=1-> GPIO45=0
 
 The MG24 boot sequence can be made in command line with :
 ```
-pinctrl set 45 op pn dl
+pinctrl set 45 op pn dh
 pinctrl set 39 op pn dl
 sleep .1
 pinctrl set 39 op pn dh
 sleep .2
-pinctrl set 45 op pn dh
+pinctrl set 45 op pn dl
 ```
 #### 4.10.3.3 - Flash manually using Minicom <a name="4.10.3.3"></a> [📚](#0) 
 Install and minicom :
