@@ -177,7 +177,7 @@ Please fit the EMMC_DISABLE / RPIBOOT jumper before connecting the power and USB
 If the device fails to connect then please see https://rpltd.co/rpiboot for debugging tips.
 Waiting for BCM2835/6/7/2711/2712...
 ```
-- Connect the USB-C cable
+- Hot plug the USB-C cable
 - In Windows, you should hear the USB driver notification sound
 - **rpiboot** should detect Xplorer CM5 and read several files
 ```
@@ -223,7 +223,7 @@ File read: boot.img
     - ssh : yes
 - Start flashing, it can last for several minutes ☕
 - At the end of programming and verification
-  - Disconnect the USB-C
+  - Hot disconnect the USB-C
   - Turn off the power via CAN1-PWR
   - Flip the switch back to the M12 connector direction
   - Put the cap back on
@@ -286,7 +286,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 > ```
 > and try to open a ssh console again.
 
-> [!CAUTION]
+> [!WARNING]
 > If you have an unconfigured Cellular M.2 module in place, you may have to wait one minute to have access to the ssh console via ethernet. In the worst case scenario, you may be blocked, retry a power-up or use ssh over WiFi, or a serial console on COM1, or a HDMI monitor and a keyboard in order to understand the problem and configure ModemManager.
 
 ## 3.2 - Update the linux and eeprom 🗓️ <a name="3.2"></a> [📚](#0)
@@ -299,7 +299,7 @@ And reboot:
 ```
 sudo reboot
 ```
-> [!CAUTION]
+> [!WARNING]
 > If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet and make this update: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
 
 ## 3.3 - Patch the configuration file <a name="3.2"></a> [📚](#0)
