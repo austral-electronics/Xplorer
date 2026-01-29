@@ -10,9 +10,9 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
 # 📚 TABLE OF CONTENTS <a name="0"></a>
 - **[1 - INTRODUCTION](#1)**
 - **[2 - FLASH AN IMAGE](#2)**
-  - [2.1 Install the flashing tools on your computer](#2.1)
-    - [2.1.1 Use RPIBOOT on Mac](#2.1.1)
-  - [2.2 Flash procedure](#2.2)
+  - [2.1 - Install the flashing tools on your computer](#2.1)
+    - [2.1.1 - Use RPIBOOT on Mac](#2.1.1)
+  - [2.2 - Flash procedure](#2.2)
 - **[3 - GETTING STARTED](#3)**
     - [3.1 - Launch a SSH console](#3.1)
     - [3.2 - Update the linux and eeprom](#3.2)
@@ -119,7 +119,7 @@ Whether you're integrating Xplorer CM5 into industrial systems, vehicle, marine 
 > [!NOTE] 
 >  An image with Raspberry PI OS Trixie Lite (64-bit) with default settings is pre-installed in the product. To test it first for the first time, go directly to the [chapter 3](#3).
 
-## 2.1 Install the flashing tools on your computer <a name="2.1"></a>
+## 2.1 - Install the flashing tools on your computer <a name="2.1"></a>
 
 To change the factory version or OS, you must first install the required tools on your computer.
 
@@ -128,7 +128,7 @@ with a tutorial video 👉 [here](https://www.youtube.com/watch?v=SWv-WYlHJWQ&t=
 
 Folow these tutorials to install **rpiboot** and **Raspberry Pi Imager** on your computer.
 
-### 2.1.1 Use RPIBOOT on Mac <a name="2.1.1"></a> [📚](#0) 
+### 2.1.1 - Use RPIBOOT on Mac <a name="2.1.1"></a> [📚](#0) 
 ```
 brew install libusb pkg-config
 ```
@@ -154,7 +154,7 @@ make CFLAGS="-I/opt/homebrew/include/libusb-1.0"
 ```
 sudo ./rpiboot
 ```
-## 2.2 Flash procedure <a name="2.2"></a> [📚](#0) 
+## 2.2 - Flash procedure <a name="2.2"></a> [📚](#0) 
 
 > [!WARNING]
 >  Please note that with the Xplorer CM5 :
