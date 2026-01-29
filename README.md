@@ -1140,7 +1140,7 @@ sudo dd bs=10M count=500 if=/dev/nvme1n1 of=/home/xplr/test.bin
 ### 4.7.6 - Micro SD Card  <a name="4.7.6"></a> [📚](#0) 
 An internal micro SD card holder is connected to GPIO22 to GPIO27.
 An optional SD card may be use for non-critical storage or but it is rather intended for cybersecurity (Secure Acces Key, Hidden partition, Write Once Read Many).
-To physically access to the push pull holder, you must remove the cap on the left side of the enclosure.
+To physically access to the push pull holder, you must remove the cap on the right side of the enclosure (the bootload switch side).
 The side of the SD with the electrical contacts must be on the side of the PCB, here it's the side of the bottom plate, so the printed side of the SD is facing the front.
 > [!CAUTION]
 > It is possible to insert the SD card next to the holder and lose it inside the enclosure. The card must be inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
