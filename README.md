@@ -381,9 +381,9 @@ dtparam=act_led_activelow=off
 # Xplorer CM5 : Enable the watchdog
 #dtparam=watchdog=on
 
-# Xplorer CM5 with option MGM240PA32 : GPIO39 Control NRST, GPIO45 Control NBOOT
+# Xplorer CM5 with option MGM240PA32 : GPIO39 Control NRST, GPIO45 Control NBOOT (0->NBOOT=1)
 gpio=39=op,dh
-gpio=45=op,dh
+gpio=45=op,dl
 
 #========================================================
 # Xplorer CM5 : Reduce the power consumption down to 2.8W
@@ -1337,9 +1337,9 @@ if (GPIO_PinInGet(BTL_BUTTON_PORT, BTL_BUTTON_PIN)
 
 To control NRST and NBOOT, config.txt must contain :
 ```
-# Xplorer CM5 with option MGM240PA32 : GPIO39 Control NRST, GPIO45=FAN_PWM Control NBOOT
+# Xplorer CM5 with option MGM240PA32 : GPIO39 Control NRST, GPIO45 Control NBOOT (0->NBOOT=1)
 gpio=39=op,dh
-gpio=45=op,dh
+gpio=45=op,dl
 ```
 You can Reset the MG24 with :
 ```
