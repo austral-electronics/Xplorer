@@ -1294,12 +1294,13 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 | 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | MG24 (NCP Compliant)
 | 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset
 
-#### 4.10.3.1 - New Bootloader <a name="4.10.3.1"></a> [📚](#0) 
+#### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a> [📚](#0) 
 
+A bootloader is already installed at the factory, you can download another bootloader.
 The bootloader entry pin is user-defined and configured inside the Gecko Bootloader project.
 
 > [!CAUTION] 
-> If you flash another bootloader, verify that PB00 is the bootload pin.  
+> If you flash another bootloader, verify that PB00 is the bootload pin and Active at Low level.  
 > Otherwise, booting will be impossible and repair will be very complicated.  
   
 If you flash another bootloader, verify :  
