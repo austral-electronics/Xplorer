@@ -1433,16 +1433,17 @@ Universal Silicon Labs Flasher     https://github.com/NabuCasa/universal-silabs-
 
 Install :
 ```
-$ pip install universal-silabs-flasher
+sudo apt install python3 python3-pip
+sudo pip install universal-silabs-flasher
 ```
-Get a .gbl firmware.
+Get a compatible .gbl firmware.
 Send the boot sequence above.
 Flash the MG24 :
 ```
 universal-silabs-flasher --device /dev/ttyUSB1 flash --firmware xxxxx-115200.gbl
 ```
 
-#### 4.10.3.5 - Firmware update with Silicon Labs Commander <a name="4.10.3.5"></a> [📚](#0) 
+#### 4.10.3.5 - Firmware/Bootloader update with Silicon Labs Commander <a name="4.10.3.5"></a> [📚](#0) 
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
 https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
 
