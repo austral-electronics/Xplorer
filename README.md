@@ -166,7 +166,7 @@ sudo ./rpiboot
 The flashing procedure is:
 - Disconnect the USB-C cable
 - Turn off the power via CAN1-PWR
-- Remove the cap on the left side of the enclosure
+- Remove the cap on the right side of the enclosure
 - Flip the bootload switch under this cap toward the SMA connectors
 - Power up via CAN1-PWR
 - Launch **rpiboot** on your computer
