@@ -86,7 +86,7 @@ All cables and antennas are standard and available for purchase off the shelf fo
 
 The Xplorer CM5 is thermally designed to be installed vertically with the M12 connectors facing downwards and the SMA connectors facing upwards.  
 By default, the mounting is wall-mounted, but DIN rail mounting is available as an option.  
-If you do not wish to drill holes, you can attach the product using two strips of 3M Dual Lock after thoroughly degreasing the surfaces.  
+If you do not wish to drill holes, you can attach the product using two strips of 3M Dual Lock SJ3550 after thoroughly degreasing the surfaces.  
 We can also supply carbon supports with inserts to be bonded with epoxy glue.  
 
 ⚠️ In an exposed environment, put caps on unused connectors.
@@ -427,3 +427,4 @@ Parc Technologique de Soye
 
 **Mail :** contact@austral-eng.com  
 **Website :** http://austral-eng.com/en
+
