@@ -1343,8 +1343,9 @@ To control NRST and NBOOT, config.txt must contain :
 gpio=39=op,dh
 gpio=45=op,dl
 ```
-You can Reset the MG24 with :
+You can Reset and Run the MG24 Firmware with :
 ```
+pinctrl set 45 op pn dl
 pinctrl set 39 op pn dl
 sleep .1
 pinctrl set 39 op pn dh
