@@ -1188,7 +1188,7 @@ Usefull documentation:
 
 ## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a> [📚](#0) 
 ### 4.9.1 - Nano SIM <a name="4.9.1"></a> [📚](#0) 
-The right cap provides access to a Push Pull holder for a nano SIM card or a 4FF Plastic eSIM card.
+The left cap provides access to a Push Pull holder for a nano SIM card or a 4FF Plastic eSIM card.
 > [!CAUTION]
 > It is possible to insert the SIM card next to the holder and lose it inside the enclosure. The card is inserted using small pliers, with the power turned off and easy access so you can see what you are doing.
 > The cap must be lightly greased with vaseline after each opening to ensure a good seal. 
