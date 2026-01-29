@@ -1401,7 +1401,7 @@ Press Ctrl + A an then S to select the minicom upload mode in the pop up menu :
 ```
 Select 'xmodem'.  
 Select your .gbl firmware to flash with the arrows, space and enter.
-You will see a pop up window :
+You will see a blue pop up window :
 ```
 +----------------[xmodem upload - Press CTRL-C to quit]----------------+    
 |Sending mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl, 2117 blocks: Gi|    
@@ -1409,10 +1409,22 @@ You will see a pop up window :
 |Xmodem sectors/kbytes sent: 808/101k                                  |
 +----------------------------------------------------------------------+   
 ```
-And after few seconds
+And after flashing, the end of this blue pop up window with:
 ```
+...
 |Transfert completed                                                   |
++----------------------------------------------------------------------+ 
 ```
+and :
+```
+begin upload                                                                    
+CCCCCCCCCCCCCCCCCCCCCCCCCCCl                                                    
+2. run                                                                          
+3. ebl info                                                                     
+BL > 
+```
+Press 2 to run
+
 #### 4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.4"></a> [📚](#0) 
 
 Universal Silicon Labs Flasher     https://github.com/NabuCasa/universal-silabs-flasher
