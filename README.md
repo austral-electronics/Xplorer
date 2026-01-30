@@ -1287,15 +1287,24 @@ Your Linux application can manage the update of the MG24 firmware using an embed
 The interface with the CM5 is achieved via a USB to UART converter and 2 pins on the CM5 to control the reset and bootload pins.  
 The pinout is compliant with the Network Co-Processor (NCP) Application with UART in order to make a Matter or Zigbee Hub, see page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf).  
 
+**SMLIGHT SLZB-07MG24 pinout :**
+Chip: [EFR32MG24A020F1024IM40](https://www.silabs.com/wireless/zigbee/efr32mg24-series-2-socs/device.efr32mg24a020f1024im40?tab=specs)
+USB-UART: CP2102N
+UART Pins: USART0 (TX: PA6, RX: PA5, CTS: PB1, RTS: PB0)
+
+**Xplorer CM5 Rev3.1 Pinout :** 
+Chip: [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf)
+USB-UART: FT432H-56Q
 |MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
 |----------|--------|-------------------|-----------------|------------------|------------|
-| 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Factory-programmed bootload pin
+| 5        | PB01   | TP22              | TP22            | **TP22**         | Test Point (Reserved for CTS in future PCB Revision) 
+| 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Factory-programmed bootload pin (Will be connected to RTS in future PCB Revision)
 | 11       | PA04   | TP21              | TP21            | **TP21**         | Test Point (Reserved for a LED activated at low level in future PCB Revision) 
 | 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | MG24 USART1.TX (Xmodem & NCP Compliant)  
 | 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | MG24 USART1.RX (Xmodem & NCP Compliant)
 | 16       | PA07   | FT432H-56Q Pin 25 | BDBUS3          | **CTS_B**        | MG24 (NCP Compliant)
 | 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | MG24 (NCP Compliant)
-| 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset
+| 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset (Will be connected to DTR in future PCB Revision)
 
 #### 4.10.3.1 - Define the bootloader activation pin <a name="4.10.3.1"></a> [📚](#0) 
 
