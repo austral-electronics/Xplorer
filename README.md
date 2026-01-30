@@ -1385,7 +1385,7 @@ wget https://github.com/darkxst/silabs-firmware-builder/releases/download/202502
 ```
 or
 ```
-wget https://github.com/darkxst/silabs-firmware-builder/releases/download/20250627/slzb06Mg24_zigbee_router_8.0.3.0_115200.gbl
+wget https://github.com/darkxst/silabs-firmware-builder/releases/download/20250627/slzb07Mg24_zigbee_router_8.0.3.0_115200.gbl
 ```
 Open a console on ttyUSB1 (RXD_B) at 115Kbps with :
 ```
