@@ -83,7 +83,7 @@ You must focre the PID/VID USB of the modem to a Linux compatible MBIM/QMI profi
 ```
 at+cusbcfg=usbid,1e0e,9078
 ```
-Wait one minute 🥐☕ for the module to restart until the SIM status display:
+Wait one minute ☕ for the module to restart until the SIM status display:
 ```
 ....
 +CPIN: SIM PIN
@@ -134,7 +134,7 @@ OK
 SMS DONE
 PB DONE
 ```
-Wait 30 seconds to 1 minute to get the operator :
+Wait 30 seconds to 1 minute 🥐 to get the operator :
 ```
 AT+COPS?
 
