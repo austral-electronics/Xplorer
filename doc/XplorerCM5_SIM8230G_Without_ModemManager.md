@@ -83,6 +83,13 @@ You must focre the PID/VID USB of the modem to a Linux compatible MBIM/QMI profi
 ```
 at+cusbcfg=usbid,1e0e,9078
 ```
+Note : If you need to return to the factory settings
+```
+AT+CFUN=0
+AT&F
+AT+CFUN=1
+AT+CFUN=1,1
+```
 Wait one minute ☕ for the module to restart until the SIM status display:
 ```
 ....
