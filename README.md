@@ -1268,16 +1268,18 @@ The EFR32 Multiprotocol image comes in four flavors:
     Project Name: zigbee_ncp-ble_ncp-uart.slcp zigbee_ncp-ble_ncp-spi.slcp  
     Description: The Zigbee application (Z3GatewayCPC) runs on the Linux host and communicates with the NCP using EZSP over CPC (SPI and UART are both available options). The Bluetooth host app bt_host_empty is compiled with CPC=1 option to enable communication with the DMP NCP over CPC. See system-architecture for the Zigbee NCP + BLE NCP. Due to a larger application footprint, it is recommended to choose parts with sufficient RAM (>64kB).
 
-#### Firmware Builds for dongles
+#### Firmware Builds for various dongles
 - https://github.com/NabuCasa/silabs-firmware-builder
 - https://github.com/darkxst/silabs-firmware-builder/tree/main
 - https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
 - https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
 - https://github.com/darkxst/silabs-firmware-builder/releases/
-
-#### Firmware examples
 - https://github.com/NabuCasa/silabs-firmware
 - https://github.com/Nerivec/ember-zli/blob/main/firmware-links-v3.json
+
+#### Firmware Builds for MGM240P
+- https://github.com/austral-electronics/Xplorer/tree/main/firmwares/MGM240P
+- Source code : https://github.com/darkxst/silabs-firmware-builder/releases/
 
 ### 4.10.3 - UART Xmodem Bootload <a name="4.10.3"></a> [📚](#0) 
 
