@@ -1273,6 +1273,7 @@ The EFR32 Multiprotocol image comes in four flavors:
 - https://github.com/darkxst/silabs-firmware-builder/tree/main
 - https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds
 - https://github.com/darkxst/silabs-firmware-builder/tree/main/firmware_builds/mgm240p
+- https://github.com/darkxst/silabs-firmware-builder/releases/
 
 #### Firmware examples
 - https://github.com/NabuCasa/silabs-firmware
@@ -1376,9 +1377,13 @@ Install and minicom :
 ```
 sudo apt-get install minicom
 ```
-Get a compatible .gbl file to flash in the current directory (here a Zigbee NCP for Sparkfun Things Matter MGM240P compatible with the default 115KB bootloader)
+Get a compatible .gbl file to flash in the current directory (here a Zigbee NCP for Sparkfun Things Matter MGM240P or SMLIGHT slzb06Mg24/slzb07Mg24 compatible with the default 115KB bootloader)
 ```
 wget https://github.com/darkxst/silabs-firmware-builder/releases/download/20250220/mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
+```
+or
+```
+wget https://github.com/darkxst/silabs-firmware-builder/releases/download/20250627/slzb06Mg24_zigbee_router_8.0.3.0_115200.gbl
 ```
 Open a console on ttyUSB1 (RXD_B) at 115Kbps with :
 ```
