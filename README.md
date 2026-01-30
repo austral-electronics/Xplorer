@@ -1288,13 +1288,13 @@ The interface with the CM5 is achieved via a USB to UART converter and 2 pins on
 The pinout is compliant with the Network Co-Processor (NCP) Application with UART in order to make a Matter or Zigbee Hub, see page 34 of the [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf).  
 
 **SMLIGHT SLZB-07MG24 pinout :**
-Chip: [EFR32MG24A020F1024IM40](https://www.silabs.com/wireless/zigbee/efr32mg24-series-2-socs/device.efr32mg24a020f1024im40?tab=specs)
-USB-UART: CP2102N
-UART Pins: USART0 (TX: PA6, RX: PA5, CTS: PB1, RTS: PB0)
+- Chip: [EFR32MG24A020F1024IM40](https://www.silabs.com/wireless/zigbee/efr32mg24-series-2-socs/device.efr32mg24a020f1024im40?tab=specs)
+- USB-UART: CP2102N
+- UART Pins: USART0 (TX: PA6, RX: PA5, CTS: PB1, RTS: PB0)
 
 **Xplorer CM5 Rev3.1 Pinout :** 
-Chip: [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf)
-USB-UART: FT432H-56Q
+- Chip: [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf)
+- USB-UART: FT432H-56Q
 |MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
 |----------|--------|-------------------|-----------------|------------------|------------|
 | 5        | PB01   | TP22              | TP22            | **TP22**         | Test Point (Reserved for CTS in future PCB Revision) 
