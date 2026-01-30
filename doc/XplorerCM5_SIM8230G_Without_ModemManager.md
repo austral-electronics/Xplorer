@@ -83,7 +83,7 @@ You must focre the PID/VID USB of the modem to a Linux compatible MBIM/QMI profi
 ```
 at+cusbcfg=usbid,1e0e,9078
 ```
-Wait one minute for the module to restart until the SIM status display:
+Wait one minute 🥐☕ for the module to restart until the SIM status display:
 ```
 ....
 +CPIN: SIM PIN
