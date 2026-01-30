@@ -1295,6 +1295,7 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 **Xplorer CM5 Rev3.1 Pinout :** 
 - Chip: [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf)
 - USB-UART: FT432H-56Q
+
 |MGM240 Pin|MG24 I/O| Connected to      | GPIO Name       | Name             | Description|                                                                        
 |----------|--------|-------------------|-----------------|------------------|------------|
 | 5        | PB01   | TP22              | TP22            | **TP22**         | Test Point (Reserved for CTS in future PCB Revision) 
