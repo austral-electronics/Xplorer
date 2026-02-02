@@ -1198,7 +1198,6 @@ An eSIM card can be integrated into production, and plugs can be removed for mas
 [How to use an eSIM in Linux?](https://techship.com/blog/how-to-use-an-esim-in-linux-7/)
 ### 4.9.3 - 4G LTE-A <a name="4.9.3"></a> [📚](#0) 
 [QUECTEL EM060K-GL Documentation](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/EM060K)  
-Xplorer_CM5_Modem.md
 [QUECTEL EM060K-GL Tutorial](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Modem.md)  
 
 ### 4.9.4 - 🛰 5G RedCap/Direct-To-Cell <a name="4.9.4"></a> [📚](#0) 
