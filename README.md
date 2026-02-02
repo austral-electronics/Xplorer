@@ -287,7 +287,8 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 > and try to open a ssh console again.
 
 > [!WARNING]
-> If you have an unconfigured Cellular M.2 module in place, you may have to wait one minute to have access to the ssh console via ethernet. In the worst case scenario, you may be blocked, retry a power-up or use ssh over WiFi, or a serial console on COM1, or a HDMI monitor and a keyboard in order to understand the problem and configure ModemManager.
+> If you use a Cellular M.2 module with a bad netplan the SSH IP address will be 127.0.0.1, you may have to wait one or two minutes to have access to the ssh console via ethernet with the good IP address.    
+> In the worst case scenario, you may be blocked, retry a power-up or use ssh over WiFi, or a serial console on COM1, or a HDMI monitor + keyboard in order to [Reset the Network Interfaces Configuration](https://askubuntu.com/questions/1146196/how-to-reset-network-interfaces-configuration-on-ubuntu-server-18-04).
 
 ## 3.2 - 🗓️ Update the linux and eeprom <a name="3.2"></a> [📚](#0)
 Update the package list, distribution, eeprom:
@@ -300,7 +301,7 @@ And reboot:
 sudo reboot
 ```
 > [!WARNING]
-> If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet and make this update: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
+> If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 or wwan0 to have access to internet and make this update: ```sudo ip link set dev usb0 down```
 
 ## 3.3 - ✏️ Patch the configuration file <a name="3.3"></a> [📚](#0)
 
