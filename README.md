@@ -1198,12 +1198,13 @@ An eSIM card can be integrated into production, and plugs can be removed for mas
 [How to use an eSIM in Linux?](https://techship.com/blog/how-to-use-an-esim-in-linux-7/)
 ### 4.9.3 - 4G LTE-A <a name="4.9.3"></a> [📚](#0) 
 [QUECTEL EM060K-GL Documentation](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/EM060K)  
-[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
-[Configure the QUECTEL EM060K-GL 4G LTE-A modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_EM060K-GL_Without_ModemManager.md)
+Xplorer_CM5_Modem.md
+[QUECTEL EM060K-GL Tutorial](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Modem.md)  
+
 ### 4.9.4 - 🛰 5G RedCap/Direct-To-Cell <a name="4.9.4"></a> [📚](#0) 
 [SIM8230G Documentation](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/SIM8230G-M2)  
-[Configure a Cellular / Direct-To-Cell modem with ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Cellular_Modem_With_ModemManager.md)  
-[Configure the SIM8230G 5G RedCap Modem without ModemManager](https://github.com/austral-electronics/Xplorer/blob/main/doc/XplorerCM5_SIM8230G_Without_ModemManager.md)
+[SIM8230G Tutorial](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Modem.md)  
+
 ### 4.9.5 - Speed Test <a name="4.9.5"></a> [📚](#0) 
 Install the [OOKLA speed test](https://www.speedtest.net/apps/cli) tool with :
 ```
