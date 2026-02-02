@@ -1240,7 +1240,7 @@ It's the perfect interface for :
 
 This option add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna.  
 Note that this option removes one RS232 input (See harwdare datasheet).  
-The MGM240PA32VNN3 module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24), [smlight SLZB-06Mg24](https://smlight.tech/global/slzb06mg24) or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
+The MGM240PA32VNN3 module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24) or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
 
 ### 4.10.1 - Software development <a name="4.10.1"></a> [📚](#0) 
 For more information about the EFR32MG24 : [EFR32MG24 Website](https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html), [EFR32MG24 Datasheet](https://www.silabs.com/documents/public/data-sheets/efr32mg24-datasheet.pdf), [EFR32xG24 Reference Manual](https://www.silabs.com/documents/public/reference-manuals/brd4187c-rm.pdf)
