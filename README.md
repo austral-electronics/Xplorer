@@ -1231,7 +1231,12 @@ Packet Loss:     0.0%
 ```
 ## 4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor<a name="4.10"></a> [📚](#0) 
 This Multi-Protocol Wireless Network co-processor (NCP) option gives automation and IoT connectivity with various protocols (Matter-Over-Thread, Zigbee, BLE Mesh, Open Thread...).  
-It's the perfect interface to make a Home Assistant Matter/Zigbee Hub or Device, or for custom BLE Mesh communication.  
+It's the perfect interface for :
+- Zigbee2MQTT Hub
+- Home Assistant ZHA (Zigbee Home Automation) Hub
+- Open Thread Border Router
+- Matter or Zigbee Custom Device
+- BLE Mesh Custom communication 
 This option add to the BOM a [MGM240PA32VNN3](https://cdn.sparkfun.com/assets/1/4/5/e/5/MGM240P-Datasheet.pdf) module connected the LPWAN SMA connector for a 2.4 Ghz Antenna.  
 Note that this option removes one RS232 input. 
 The MGM240PA32VNN3 module includes a Silicon Lab EFR32MG24 Chip, the same as various USB dongles like [Home Assistant Connect ZBT-2](https://support.nabucasa.com/hc/en-us/articles/31313065259421-About-Home-Assistant-Connect-ZBT-2), [SONOFF Dongle Plus MG24](https://sonoff.tech/products/sonoff-zigbee-thread-usb-dongle-dongle-plus-mg24), [smlight SLZB-06Mg24](https://smlight.tech/global/slzb06mg24) or [smlight SLZB-07Mg24](https://smlight.tech/global/slzb07mg24).
