@@ -214,7 +214,7 @@ File read: boot.img
     - **mmcblk0** for eMMC (recommanded for the OS)
     - **nvme0n1** for the main NVMe SSD storage (you must change the boot order if you choose this drive)
 - Configure the settings, the default factory settings are :
-    - host: **xplorercm5.local**
+    - host: **xplorercm5**
     - User : **xplr**
     - Password : **changeme**
     - Wifi : yes
