@@ -301,7 +301,8 @@ And reboot:
 sudo reboot
 ```
 > [!WARNING]
-> If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 or wwan0 to have access to internet and make this update: ```sudo ip link set dev usb0 down```
+> - If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 or wwan0 to have access to internet and make this update: ```sudo ip link set dev usb0 down```
+> - If you have an error '''Could not get lock /var/lib/apt/lists/lock''' you can remove the lock with '''sudo rm -rf /var/lib/apt/lists/lock'''
 
 ## 3.3 - ✏️ Patch the configuration file <a name="3.3"></a> [📚](#0)
 
