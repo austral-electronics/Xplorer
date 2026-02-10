@@ -1425,9 +1425,10 @@ with
 			};
 		};
 	};
-
+	
+	/* CS on GPIO18 */
 	__overrides__ {
-		cs_pin = <&ad5592r>,"reg:0";
+		cs_pin = <18>,"reg:0";
 	};
 };
 ```
