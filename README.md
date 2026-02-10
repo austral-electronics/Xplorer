@@ -1216,7 +1216,6 @@ Usefull documentation:
 - [Analog Device EVAL-AD5592R-PMDZ Overview](https://wiki.analog.com/resources/eval/user-guides/circuits-from-the-lab/eval-ad5592r-pmdz)
 - [Analog Device AD5592R Driver doxygen doc](https://analogdevicesinc.github.io/no-OS/doxygen/dir_aa577ad46a7e19fba00f09ae0610f4c0.html)
 - [Analog Device pyadi-iio](https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html)
-- [ADALM2000/AD5592R Device tree](https://github.com/adisuciu/m2kirl/blob/main/dt/rpi-ad5592r-m2kirl.dts)
 - [AD5592R Linux driver](https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c)
 - [AD5592R ROS2 Integration](https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html)
 - [Driver : ad5592r.txt](https://www.kernel.org/doc/Documentation/devicetree/bindings/iio/dac/ad5592r.txt)
@@ -1432,6 +1431,8 @@ with
 	};
 };
 ```
+
+Example : [ADALM2000/AD5592R Device tree](https://github.com/adisuciu/m2kirl/blob/main/dt/rpi-ad5592r-m2kirl.dts)  
 
 Channel configuration (adi,mode)  
 
