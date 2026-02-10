@@ -491,7 +491,7 @@ sudo reboot
 ```
 > [!WARNING]
 > - If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
-> - Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config or without adding "i2C-dev" in /etc/modules.
+> - Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config or without adding ```i2c-dev``` in /etc/modules.
 
 ---
 # 4 - 🎓 TEST THE PERIPHERALS <a name="4"></a> [📚](#0) 
