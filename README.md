@@ -1369,7 +1369,7 @@ with
 			ad5592r: ad5592r@0 {
 				compatible = "adi,ad5592r";
 				reg = <0>;
-				spi-max-frequency = <1000000>;
+				spi-max-frequency = <10000000>;
 				spi-cpol;
 				
 				#address-cells = <1>;
