@@ -54,6 +54,8 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.7.5 - Internal NVMe SSD(s)](#4.7.5)
         - [4.7.6 - Micro SD Card](#4.7.6)
     - [4.8 - DAQ](#4.8)
+        - [4.8.1 - Solution 1 : DAQ controlled directly by your application](#4.8.1)
+        - [4.8.2 - Solution 2 : DAQ integrated into the OS](#4.8.2)
     - [4.9 - Cellular and Direct-To-Cell](#4.9)
         - [4.9.1 - Nano SIM](#4.9.1)
         - [4.9.2 - 4FF eSIM](#4.9.2)
@@ -1484,7 +1486,7 @@ Must display channels : in_voltage0_raw, ... out_voltage4_raw, etc.
 
 Read ADC (IO0 to IO3)
 ```
-# Lire la valeur brute (0-4095 pour 12 bits)
+# Read the raw value (0-4095 for 12 bits)
 cat /sys/bus/iio/devices/iio:device0/in_voltage0_raw
 
 # Read the scale (in mV)
