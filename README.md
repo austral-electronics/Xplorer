@@ -17,11 +17,10 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [3.1 - Launch a SSH console](#3.1)
     - [3.2 - Update the linux and eeprom](#3.2)
     - [3.3 - Patch the configuration file](#3.3)
-    - [3.4 - Enable I2C](#3.4)
-    - [3.5 - Option : Activate a RS232 console](#3.5)
-    - [3.6 - Option : Static IP configuration](#3.6)
-    - [3.7 - Change Password](#3.7)
-    - [3.8 - Installation of usefull tools](#3.8)
+    - [3.4 - Option : Activate a RS232 console](#3.4)
+    - [3.5 - Option : Static IP configuration](#3.5)
+    - [3.6 - Change Password](#3.6)
+    - [3.7 - Installation of usefull tools](#3.7)
 - **[4 - TEST THE PERIPHERALS](#4)**
     - [4.1 - Linux configuration](#4.1)
     - [4.2 - Ethernet](#4.2)
@@ -445,12 +444,7 @@ Usefull documentations to configure config.txt:
 - [Device Tree Overlays](https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/overlays/README)
 - [Configure the Activity LED](https://raspberrypi.stackexchange.com/questions/69674/are-there-other-act-led-trigger-options-besides-mmc-and-heartbeat)
 
-## 3.4 - Enable I2C <a name="3.4"></a> [📚](#0)
-Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config.
-```
-sudo raspi-config nonint do_i2c 0
-```
-## 3.5 - 💻 Option : Activate a RS232 console <a name="3.5"></a> [📚](#0)
+## 3.4 - 💻 Option : Activate a RS232 console <a name="3.4"></a> [📚](#0)
 To activate a console on the COM1 port to view the boot sequence and debug the network configuration. You need to replace ```console=serial0,115200``` with ```console=ttyAMA1,115200``` in ```/boot/firmware/cmdline.txt```. Note that ```console=tty1``` is for HDMI.
 
 You can do it with :
@@ -461,7 +455,7 @@ And reboot if needed to apply now.
 > [!TIP]
 > To follow the log trace with date and time on a console, wired COM1 to a RS232 to USB Cable, open a putty terminal at 115200 Bauds on your computer, log and launch ```dmesg -Tw```
 
-## 3.6 - Option : Static IP configuration <a name="3.6"></a> [📚](#0)
+## 3.5 - Option : Static IP configuration <a name="3.5"></a> [📚](#0)
 Open the NetworkManager Configuration :
 ```
 sudo nmcli connection show
@@ -482,20 +476,22 @@ Verify the Static IP:
 ```
 ip addr show eth0
 ```
-## 3.7 - Change Password <a name="3.7"></a> [📚](#0)
+## 3.6 - Change Password <a name="3.6"></a> [📚](#0)
 The default password is **"changeme"**, to change it :
 ```
 sudo passwd xplr
 ```
-## 3.8 - 🛠️ Installation of usefull tools <a name="3.8"></a> [📚](#0)
+## 3.7 - 🛠️ Installation of usefull tools <a name="3.7"></a> [📚](#0)
 Install usefull tools to follow this tutorial and reboot :
 ```
 sudo apt --yes install ethtool i2c-tools libtss2-* tpm-udev tpm2-abrmd tpm2-tools can-utils minicom
 sudo usermod --append --groups tss $(whoami)
+echo "i2c-dev" | sudo tee -a /etc/modules
 sudo reboot
 ```
 > [!WARNING]
-> If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
+> - If you have an unconfigured Cellular M.2 module in place, you may have to disable usb0 or ppp0 to have access to internet: ```sudo ip link set dev usb0 down``` or ```sudo ip link set dev ppp0 down```
+> - Even with I2C enable in config.txt, ```sudo i2cdetect -l``` is not working without activating I2C in raspi-config or without adding "i2C-dev" in /etc/modules.
 
 ---
 # 4 - 🎓 TEST THE PERIPHERALS <a name="4"></a> [📚](#0) 
