@@ -1410,16 +1410,16 @@ with
 					adi,mode = <2>;  /* CH_MODE_DAC */
 				};
 				
-				/* IO6 et IO7: In push-pull output */
+				/* IO6 et IO7: In digital output */
 				channel@6 {
 					reg = <6>;
-					adi,mode = <8>;  /* CH_MODE_GPIO */
+					adi,mode = <6>;  /* CH_MODE_DIGITAL_OUT */
 					adi,off-state = <0>;  /* CH_OFFSTATE_OUT_LOW */
 				};
 				
 				channel@7 {
 					reg = <7>;
-					adi,mode = <8>;  /* CH_MODE_GPIO */
+					adi,mode = <6>;  /* CH_MODE_DIGITAL_OUT */
 					adi,off-state = <0>;  /* CH_OFFSTATE_OUT_LOW */
 				};
 			};
@@ -1431,6 +1431,29 @@ with
 	};
 };
 ```
+
+Channel configuration (adi,mode)  
+
+Possible values for `adi,mode` :
+
+| Value | Name | Description |
+|--------|-----|-------------|
+| 0x01 | CH_MODE_ADC | Analog input only |
+| 0x02 | CH_MODE_DAC | Analog output only |
+| 0x03 | CH_MODE_DAC_AND_ADC | DAC + ADC |
+| 0x05 | CH_MODE_GPI | Digital input |
+| 0x06 | CH_MODE_GPIO | Digital output |
+| 0x08 | CH_MODE_GPIO | GPIO (bidirectional) |
+
+Power-off state (adi,off-state) :
+
+| Value | Description |
+|--------|-------------|
+| 0x00 | CH_OFFSTATE_PULLDOWN (high impedance with pull-down) |
+| 0x01 | CH_OFFSTATE_OUT_LOW (output at 0V) |
+| 0x02 | CH_OFFSTATE_OUT_HIGH (output at Vcc) |
+| 0x03 | CH_OFFSTATE_OUT_TRISTATE (high impedance) |
+
 Compile the device tree
 ```
 sudo dtc -@ -I dts -O dtb -o /boot/firmware/overlays/ad5592r-spi1-0.dtbo /boot/firmware/overlays/ad5592r-spi1-0.dts
@@ -1504,27 +1527,6 @@ Write to Digital output (IO6 or IO7)
 echo 0 > /sys/bus/iio/devices/iio:device0/out_voltage6_raw  # Low
 echo 1 > /sys/bus/iio/devices/iio:device0/out_voltage6_raw  # High
 ```
-Channel configuration (adi,mode)  
-
-Possible values for `adi,mode` :
-
-| Value | Name | Description |
-|--------|-----|-------------|
-| 0x01 | CH_MODE_ADC | Analog input only |
-| 0x02 | CH_MODE_DAC | Analog output only |
-| 0x03 | CH_MODE_DAC_AND_ADC | DAC + ADC |
-| 0x05 | CH_MODE_GPI | Digital input |
-| 0x06 | CH_MODE_GPIO | Digital output |
-| 0x08 | CH_MODE_GPIO | GPIO (bidirectional) |
-
-Power-off state (adi,off-state) :
-
-| Value | Description |
-|--------|-------------|
-| 0x00 | CH_OFFSTATE_PULLDOWN (high impedance with pull-down) |
-| 0x01 | CH_OFFSTATE_OUT_LOW (output at 0V) |
-| 0x02 | CH_OFFSTATE_OUT_HIGH (output at Vcc) |
-| 0x03 | CH_OFFSTATE_OUT_TRISTATE (high impedance) |
 
 ## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a> [📚](#0) 
 ### 4.9.1 - Nano SIM <a name="4.9.1"></a> [📚](#0) 
