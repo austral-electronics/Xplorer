@@ -1178,7 +1178,7 @@ mmcblk2      179:96   0  29.7G  0 disk
 The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0  
 It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
 
-### DAQ controlled directly by your application
+### 4.8.1 - Solution 1 : DAQ controlled directly by your application <a name="4.8.1"></a> [📚](#0)
 
 The ad5592r chip can be addressed directly without the need for a device tree overlay or a driver.
 You only need ```dtoverlay=spi1-3cs``` in config.txt in order to have SPI1.0 valid and using the default GPIO18 as Chip Select.  
@@ -1207,7 +1207,7 @@ Integrate this C library into your application and initialize with :
 - IO4 and IO5 in DAC 0-5V (or 0-2.5V)
 - IO6 and IO7 in push-pull GPIO output (0 = Mosfet in high impedance)
 
-### DAQ integrated into the OS
+### 4.8.2 - Solution 2 : DAQ integrated into the OS <a name="4.8.2"></a> [📚](#0)
 
 Usefull documentation:
 - [Analog Device AD5592R IIO DAC/ADC Linux Driver](https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r)
@@ -1333,7 +1333,196 @@ industrialio          131072  1 ad5592r_base
 
 #### Compile and Install the ad5592r Device Tree Overlay
 
+You will needed to install the 'dtc' (Device Tree Compiler):
+```
+sudo apt update
+sudo apt install device-tree-compiler
+```
+Create the device tree overlay :
+```
+sudo nano /boot/firmware/overlays/ad5592r-spi1-0.dts
+```
+with
+```
+/dts-v1/;
+/plugin/;
 
+/ {
+	compatible = "brcm,bcm2712";
+
+	fragment@0 {
+		target = <&spidev1>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&spi1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			ad5592r: ad5592r@0 {
+				compatible = "adi,ad5592r";
+				reg = <0>;
+				spi-max-frequency = <1000000>;
+				spi-cpol;
+				
+				#address-cells = <1>;
+				#size-cells = <0>;
+				
+				/* Activate internal 2.5V reference */
+				adi,int-vref-2v5;
+				
+				/* IO0 à IO3: ADC 0-5V */
+				channel@0 {
+					reg = <0>;
+					adi,mode = <1>;  /* CH_MODE_ADC */
+				};
+				
+				channel@1 {
+					reg = <1>;
+					adi,mode = <1>;  /* CH_MODE_ADC */
+				};
+				
+				channel@2 {
+					reg = <2>;
+					adi,mode = <1>;  /* CH_MODE_ADC */
+				};
+				
+				channel@3 {
+					reg = <3>;
+					adi,mode = <1>;  /* CH_MODE_ADC */
+				};
+				
+				/* IO4 et IO5: DAC 0-5V */
+				channel@4 {
+					reg = <4>;
+					adi,mode = <2>;  /* CH_MODE_DAC */
+				};
+				
+				channel@5 {
+					reg = <5>;
+					adi,mode = <2>;  /* CH_MODE_DAC */
+				};
+				
+				/* IO6 et IO7: In push-pull output */
+				channel@6 {
+					reg = <6>;
+					adi,mode = <8>;  /* CH_MODE_GPIO */
+					adi,off-state = <0>;  /* CH_OFFSTATE_OUT_LOW */
+				};
+				
+				channel@7 {
+					reg = <7>;
+					adi,mode = <8>;  /* CH_MODE_GPIO */
+					adi,off-state = <0>;  /* CH_OFFSTATE_OUT_LOW */
+				};
+			};
+		};
+	};
+
+	__overrides__ {
+		cs_pin = <&ad5592r>,"reg:0";
+	};
+};
+```
+Compile the device tree
+```
+sudo dtc -@ -I dts -O dtb -o /boot/firmware/overlays/ad5592r-spi1-0.dtbo /boot/firmware/overlays/ad5592r-spi1-0.dts
+```
+#### Configure config.txt
+```
+sudo nano /boot/firmware/config.txt
+```
+Verify this 2 lines:
+```
+...
+dtoverlay=spi1-3cs
+...
+...
+dtoverlay=ad5592r-spi1-0
+...
+```
+and reboot
+
+#### Verify the DAQ integration in the OS
+Verify the SPI communication with the driver
+```
+dmesg | grep -i -E "(mcp|spi|ad5592)"
+```
+```
+[    5.526838] ad5592r_base: loading out-of-tree module taints kernel.
+```
+Verify the overlay loading  
+```
+dtoverlay -l
+```
+Must display : ad5592r-spi1-0  
+Verify the SPI  
+```
+ls -l /dev/spi*
+```
+Must display /dev/spidev1.0  
+Verify the device tree  
+```
+dtc -I fs /sys/firmware/devicetree/base | grep -A 20 ad5592r
+```
+Verifiy IIO channels  
+```
+ls /sys/bus/iio/devices/
+```
+Must display iio:device0 (or device1, etc.)   
+```
+ls /sys/bus/iio/devices/iio:device0/
+```
+Must display channels : in_voltage0_raw, ... out_voltage4_raw, etc.
+
+#### Use the DAQ in command line
+
+Read ADC (IO0 to IO3)
+```
+# Lire la valeur brute (0-4095 pour 12 bits)
+cat /sys/bus/iio/devices/iio:device0/in_voltage0_raw
+
+# Read the scale (in mV)
+cat /sys/bus/iio/devices/iio:device0/in_voltage_scale
+```
+
+Write to the DAC (IO4 or IO5)
+```
+# Value : 0-4095
+echo 2048 > /sys/bus/iio/devices/iio:device0/out_voltage4_raw
+```
+
+Write to Digital output (IO6 or IO7)
+```
+echo 0 > /sys/bus/iio/devices/iio:device0/out_voltage6_raw  # Low
+echo 1 > /sys/bus/iio/devices/iio:device0/out_voltage6_raw  # High
+```
+Channel configuration (adi,mode)  
+
+Possible values for `adi,mode` :
+
+| Value | Name | Description |
+|--------|-----|-------------|
+| 0x01 | CH_MODE_ADC | Analog input only |
+| 0x02 | CH_MODE_DAC | Analog output only |
+| 0x03 | CH_MODE_DAC_AND_ADC | DAC + ADC |
+| 0x05 | CH_MODE_GPI | Digital input |
+| 0x06 | CH_MODE_GPIO | Digital output |
+| 0x08 | CH_MODE_GPIO | GPIO (bidirectional) |
+
+Power-off state (adi,off-state) :
+
+| Value | Description |
+|--------|-------------|
+| 0x00 | CH_OFFSTATE_PULLDOWN (high impedance with pull-down) |
+| 0x01 | CH_OFFSTATE_OUT_LOW (output at 0V) |
+| 0x02 | CH_OFFSTATE_OUT_HIGH (output at Vcc) |
+| 0x03 | CH_OFFSTATE_OUT_TRISTATE (high impedance) |
 
 ## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a> [📚](#0) 
 ### 4.9.1 - Nano SIM <a name="4.9.1"></a> [📚](#0) 
