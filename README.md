@@ -327,10 +327,17 @@ And add at the end after [all] :
 # Xplorer CM5 : TPM 2.0 (/dev/i2c-13)
 dtoverlay=tpm-slb9673
 
-# Xplorer CM5 : SPI DAQ
-#dtoverlay=spi1-3cs
-dtoverlay=spi1-3cs,cs0_spidev=off
-#dtoverlay=mcp251xfd,spi1-0
+# Xplorer CM5 : SPI1
+dtoverlay=spi1-3cs
+
+# Xplorer CM5 : SPI DAQ without device tree overlay or driver
+# Nothing needed
+
+# Xplorer CM5 : SPI DAQ not needed
+#dtoverlay=spi1-3cs,cs0_spidev=off
+
+# Xplorer CM5 : SPI DAQ with device tree overlay and driver
+#dtoverlay=ad5592r-spi1-0
 
 # Xplorer CM5 : SPI CAN1 (can1)
 dtoverlay=mcp251xfd,spi1-1,oscillator=40000000,interrupt=7
@@ -1171,7 +1178,36 @@ mmcblk2      179:96   0  29.7G  0 disk
 The **DAQ** uses the chip Analog Device [AD5592R](https://www.analog.com/media/en/technical-documentation/data-sheets/ad5592r.pdf), a 8-Channel (IO1 to IO7), 12-Bit, configurable ADC/DAC/GPIO with On-Chip 20 ppm/°C reference and a SPI interface connected to the SPI1.0  
 It has a total throughput rate of 400 kSPS and an integrated temperature indicator.
 
-# <code style="color : RED">TBC</code>
+### DAQ controlled directly by your application
+
+The ad5592r chip can be addressed directly without the need for a device tree overlay or a driver.
+You only need ```dtoverlay=spi1-3cs``` in config.txt in order to have SPI1.0 valid and using the default GPIO18 as Chip Select.  
+List SPI devices with :
+```
+ls /dev/spidev*
+```
+It gives :
+```
+/dev/spidev1.0  /dev/spidev10.0
+```
+You must have /dev/spidev1.0 corresponding to the SPI1.0 of the RP1 chip.
+
+C library :  
+- [AD5592R/AD5593R No-OS Software](https://wiki.analog.com/resources/tools-software/uc-drivers/ad5592r)
+- [github link](https://github.com/analogdevicesinc/no-OS/tree/main/drivers/adc-dac/ad5592r)
+- [Video: Add Analog IO to #RPi with SpazzTech AD5592 Snack Board](https://www.youtube.com/watch?v=jSnT0_RSBUk)
+- [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
+
+Integrate this C library into your application and initialize with :
+- Use of /dev/spidev1.0
+- Clock 20Mhz max
+- SPI mode = 2
+- Valid internal 2.5V reference
+- IO0 to IO3 in ADC 0-5V (or 0-2.5V)
+- IO4 and IO5 in DAC 0-5V (or 0-2.5V)
+- IO6 and IO7 in push-pull GPIO output (0 = Mosfet in high impedance)
+
+### DAQ integrated into the OS
 
 Usefull documentation:
 - [Analog Device AD5592R IIO DAC/ADC Linux Driver](https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dac/ad5592r)
@@ -1180,9 +1216,124 @@ Usefull documentation:
 - [Analog Device pyadi-iio](https://analogdevicesinc.github.io/pyadi-iio/devices/adi.ad5592r.html)
 - [ADALM2000/AD5592R Device tree](https://github.com/adisuciu/m2kirl/blob/main/dt/rpi-ad5592r-m2kirl.dts)
 - [AD5592R Linux driver](https://github.com/torvalds/linux/blob/master/drivers/iio/dac/ad5592r.c)
-- [Video: Add Analog IO to #RPi with SpazzTech AD5592 Snack Board](https://www.youtube.com/watch?v=jSnT0_RSBUk)
-- [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
 - [AD5592R ROS2 Integration](https://docs.ros.org/en/rolling/p/adi_iio/doc/Examples/02_example_ad5592r.html)
+- [Driver : ad5592r.txt](https://www.kernel.org/doc/Documentation/devicetree/bindings/iio/dac/ad5592r.txt)
+
+#### Compile and Install the ad5592r Driver
+
+Check if you have already this driver :
+```
+modinfo ad5592r
+```
+```
+modinfo: ERROR: Module ad5592r not found.
+```
+Install kernel headers
+```
+sudo apt update
+sudo apt install linux-headers-$(uname -r)
+sudo apt install build-essential bc bison flex libssl-dev libncurses-dev git
+```
+```
+sudo modprobe industrialio
+sudo modprobe industrialio-configfs
+sudo modprobe iio-trig-sysfs
+```
+
+```
+mkdir -p ~/ad5592r-driver
+cd ~/ad5592r-driver
+```
+Upload ad5592r driver source code
+```
+wget -O ad5592r-base.c "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/iio/dac/ad5592r-base.c?h=v6.12"
+wget -O ad5592r-base.h "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/iio/dac/ad5592r-base.h?h=v6.12"
+wget -O ad5592r.c "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/iio/dac/ad5592r.c?h=v6.12"
+```
+Create the Makefile
+```
+cat > Makefile << 'EOF'
+obj-m += ad5592r-base.o
+obj-m += ad5592r.o
+
+KDIR := /lib/modules/$(shell uname -r)/build
+PWD := $(shell pwd)
+
+all:
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
+
+clean:
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
+
+install:
+	$(MAKE) -C $(KDIR) M=$(PWD) modules_install
+	depmod -a
+EOF
+```
+Compile and install the driver
+```
+make
+sudo make install
+```
+Charge the ad5592r modules
+
+```
+sudo modprobe ad5592r-base
+sudo modprobe ad5592r
+```
+Verify the ad5592r module
+```
+lsmod | grep ad5592
+```
+Must gives :
+```
+ad5592r                49152  0
+ad5592r_base           49152  1 ad5592r
+industrialio          131072  2 iio_trig_sysfs,ad5592r_base
+```
+And
+```
+modinfo ad5592r
+```
+Must gives :
+```
+filename:       /lib/modules/6.12.62+rpt-rpi-2712/updates/ad5592r.ko.xz
+import_ns:      IIO_AD5592R
+license:        GPL v2
+description:    Analog Devices AD5592R multi-channel converters
+author:         Paul Cercueil <paul.cercueil@analog.com>
+srcversion:     FE903F6324006824D01780D
+alias:          spi:ad5592r
+alias:          of:N*T*Cadi,ad5592rC*
+alias:          of:N*T*Cadi,ad5592r
+alias:          acpi*:ADS5592:*
+depends:        ad5592r-base
+name:           ad5592r
+vermagic:       6.12.62+rpt-rpi-2712 SMP preempt mod_unload modversions aarch64
+```
+Charge the module at startup
+```
+echo "ad5592r-base" | sudo tee -a /etc/modules
+echo "ad5592r" | sudo tee -a /etc/modules
+```
+Reboot
+```
+sudo reboot
+```
+Verify the ad5592r after startup
+```
+lsmod | grep ad5592
+```
+gives:
+```
+ad5592r                49152  0
+ad5592r_base           49152  1 ad5592r
+industrialio          131072  1 ad5592r_base
+```
+
+#### Compile and Install the ad5592r Device Tree Overlay
+
+
 
 ## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a> [📚](#0) 
 ### 4.9.1 - Nano SIM <a name="4.9.1"></a> [📚](#0) 
