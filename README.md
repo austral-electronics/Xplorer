@@ -1222,31 +1222,31 @@ Usefull documentation:
 - [Driver : ad5592r.txt](https://www.kernel.org/doc/Documentation/devicetree/bindings/iio/dac/ad5592r.txt)
 
 #### Compile and Install the ad5592r Driver
-
-Check if you have already this driver :
+The driver is not installed by default in Debian Trixie. If you have another distribution, check if you have already this driver :
 ```
 modinfo ad5592r
 ```
 ```
 modinfo: ERROR: Module ad5592r not found.
 ```
-Install kernel headers
+Install kernel headers and building tools
 ```
 sudo apt update
 sudo apt install linux-headers-$(uname -r)
 sudo apt install build-essential bc bison flex libssl-dev libncurses-dev git
 ```
+Install industrial modules
 ```
 sudo modprobe industrialio
 sudo modprobe industrialio-configfs
 sudo modprobe iio-trig-sysfs
 ```
-
+Create the build directory
 ```
 mkdir -p ~/ad5592r-driver
 cd ~/ad5592r-driver
 ```
-Upload ad5592r driver source code
+Upload driver source code for Linux 6.12
 ```
 wget -O ad5592r-base.c "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/iio/dac/ad5592r-base.c?h=v6.12"
 wget -O ad5592r-base.h "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/iio/dac/ad5592r-base.h?h=v6.12"
