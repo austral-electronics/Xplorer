@@ -1194,9 +1194,131 @@ It gives :
 ```
 You must have /dev/spidev1.0 corresponding to the SPI1.0 of the RP1 chip.
 
-C library :  
+#### Command the DAQ in Python without driver
+Edit the test file : 
+```
+sudo nano test_daq.py
+```
+With :
+```
+import spidev
+import time
+
+# ================= INIT SPI =================
+spi = spidev.SpiDev()
+spi.open(1, 0)
+spi.max_speed_hz = 1000000
+spi.mode = 0b10
+
+# ============== REGISTER ==============
+REG_NOP            = 0x00
+REG_DAC_RD         = 0x01
+REG_ADC_SEQ        = 0x02
+REG_GEN_CTRL       = 0x03
+REG_ADC_CONFIG     = 0x04
+REG_DAC_CONFIG     = 0x05
+REG_PD_CONFIG      = 0x06
+REG_CONFIG_RD_LDAC = 0x07
+REG_GPIO_CONFIG    = 0x08
+REG_GPIO_OUTPUT    = 0x09
+REG_GPIO_INPUT     = 0x0A
+REG_PD_REF_CTRL    = 0x0B
+REG_GPIO_OD_CONFIG = 0x0C
+REG_IO_TS_CONFIG   = 0x0D
+REG_SW_RESET       = 0x0E
+
+# ============== MASK ==============
+ADC_MASK  = 0b00001111   # IO0–IO3
+DAC_MASK  = 0b00110000   # IO4–IO5
+GPIO_MASK = 0b11000000   # IO6–IO7
+
+# ================= SPI HELPERS =================
+def write_reg(reg, value):
+    msg = ((reg & 0x0F) << 11) | (value & 0x07FF)
+    spi.xfer2([(msg >> 8) & 0xFF, msg & 0xFF])
+
+def write_dac(channel, value):
+    msg = (1 << 15) | ((channel & 0x07) << 12) | (value & 0x0FFF)
+    spi.xfer2([(msg >> 8) & 0xFF, msg & 0xFF])
+
+def read_adc(channel):
+    write_reg(REG_ADC_SEQ, 1 << channel)
+    reply = spi.xfer2([0x00, 0x00])
+    return ((reply[0] << 8) | reply[1]) & 0x0FFF
+
+# ================= INIT DAQ =================
+def init_ad5592r():
+    print("=== Init AD5592R ===")
+
+    # Software Reset
+    write_reg(REG_SW_RESET, 0x5AC)
+
+    # Activate 2.5V Internal Reference
+    write_reg(REG_PD_REF_CTRL, 0x200)
+
+    # ADC & DAC range 0V to 2xVref (5V)
+    write_reg(REG_GEN_CTRL, 0b110000)
+
+    # IO0–IO3 in ADC
+    write_reg(REG_ADC_CONFIG, ADC_MASK)
+
+    # IO4–IO5 in DAC
+    write_reg(REG_DAC_CONFIG, DAC_MASK)
+
+    # IO6–IO7 in Digital Output
+    write_reg(REG_GPIO_CONFIG, GPIO_MASK)
+
+    print("IO0–3 ADC 0–5V | IO4–5 DAC 0–5V | IO6–7 GPIO push-pull")
+
+# ================= TEST LOOP =================
+try:
+    init_ad5592r()
+    toggle = False
+
+    while True:
+        toggle = not toggle
+
+        # Square on digital outputs
+        gpio_val = GPIO_MASK if toggle else 0x000
+        write_reg(REG_GPIO_OUTPUT, gpio_val)
+
+        # DAC
+        write_dac(4, 0xFFF if toggle else 0x000)  # Square 0V-5V
+        write_dac(5, 0x800 if toggle else 0x000)  # Square 0V-2.5V
+
+        time.sleep(0.5)
+
+        # ADC
+        adc_vals = []
+        for ch in range(4):
+            raw = read_adc(ch)
+            volt = raw * 5.0 / 4095.0
+            adc_vals.append(f"IO{ch}:{volt:4.2f}V")
+
+        print(
+            " | ".join(adc_vals)
+            + f" | DAC4:{'5V' if toggle else '0V'}"
+            + f" | DAC5:{'2.5V' if toggle else '0V'}"
+            + f" | GPIO:{'HIGH' if toggle else 'LOW'}"
+        )
+
+except KeyboardInterrupt:
+    print("\nStop.")
+    write_reg(REG_GPIO_OUT, 0)
+    write_dac(4, 0)
+    write_dac(5, 0)
+finally:
+    spi.close()
+```
+And launch with :
+```
+python test_daq.py
+```
+#### Control the DAQ in C without driver
+C libraries :  
 - [AD5592R/AD5593R No-OS Software](https://wiki.analog.com/resources/tools-software/uc-drivers/ad5592r)
 - [github link](https://github.com/analogdevicesinc/no-OS/tree/main/drivers/adc-dac/ad5592r)
+or
 - [Video: Add Analog IO to #RPi with SpazzTech AD5592 Snack Board](https://www.youtube.com/watch?v=jSnT0_RSBUk)
 - [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
 
