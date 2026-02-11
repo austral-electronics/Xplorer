@@ -1194,7 +1194,7 @@ It gives :
 ```
 You must have /dev/spidev1.0 corresponding to the SPI1.0 of the RP1 chip.
 
-#### Command the DAQ in Python without driver
+#### 4.8.1.1 - Command the DAQ in Python without driver
 Edit the test file : 
 ```
 sudo nano test_daq.py
@@ -1314,7 +1314,7 @@ And launch with :
 ```
 python test_daq.py
 ```
-#### Control the DAQ in C without driver
+#### 4.8.1.2 - Control the DAQ in C without driver
 C libraries :  
 - [AD5592R/AD5593R No-OS Software](https://wiki.analog.com/resources/tools-software/uc-drivers/ad5592r)
 - [github link](https://github.com/analogdevicesinc/no-OS/tree/main/drivers/adc-dac/ad5592r)
