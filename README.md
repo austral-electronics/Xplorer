@@ -1317,7 +1317,7 @@ python test_daq.py
 #### 4.8.1.2 - Control the DAQ in C without driver
 C libraries :  
 - [AD5592R/AD5593R No-OS Software](https://wiki.analog.com/resources/tools-software/uc-drivers/ad5592r)
-- [github link](https://github.com/analogdevicesinc/no-OS/tree/main/drivers/adc-dac/ad5592r)
+- [github link](https://github.com/analogdevicesinc/no-OS/tree/main/drivers/adc-dac/ad5592r)  
 or
 - [Video: Add Analog IO to #RPi with SpazzTech AD5592 Snack Board](https://www.youtube.com/watch?v=jSnT0_RSBUk)
 - [Github AD5592_Snack_Board](https://github.com/SpazzTech/AD5592_Snack_Board)
