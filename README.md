@@ -2325,6 +2325,7 @@ ping -q -c1 -I usb0 google.com &>/dev/null && echo "✅ Ping Cellular OK" || ech
 lsblk| grep -q "mmcblk2" && echo "✅ uSD mounted" || echo "⚠️  uSD NOT mounted"
 lsusb | grep -q "Flash Drive" && echo "✅ External USB2 Corsair Flash drive detected on USB-C" || echo "⚠️  External USB2 Corsair Flash drive NOT detected on USB-C"
 lsusb | grep -q "Samsung Electronics Co., Ltd Type-C" && echo "✅ External USB3 Samsung Flash drive detected on USB-C" || echo "⚠️  External Samsung Flash drive NOT detected on USB-C"
+lsusb -v 2>/dev/null | grep -e "^Bus\|bcdUSB" | grep -q " bcdUSB               3.10" && echo "✅ One USB-C peripheral in 3.1" || echo "⚠️  No USB-C peripheral in 3.1"
 printf "💾 eMMC: " && lsblk -dn -o SIZE /dev/mmcblk0
 printf  "💾 SDRAM: " && grep MemTotal /proc/meminfo
 printf  "💾 SSD: " && lsblk -dn -o SIZE /dev/nvme0n1
