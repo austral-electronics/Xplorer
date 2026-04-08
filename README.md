@@ -2316,12 +2316,13 @@ ls /dev/ttyUSB3 | grep -q "/dev/ttyUSB3" && echo "✅ RXDD detected" || echo "�
 lspci | grep -q "ASM1184e" && echo "✅ ASM1184e detected" || echo "❌  ASM1184e  NOT detected"
 lspci | grep -q "Samsung" && echo "✅ Samsung SSD module detected" || echo "⚠️  Samsung SSD module NOT detected"
 lsblk| grep -q "nvme0n1" && echo "✅ Main SSD mounted" || echo "⚠️  Main SSD NOT mounted"
-lsusb | grep -q "EM060K-GL" && echo "✅ 4G LTE module detected" || echo "⚠️  4G LTE module NOT detected"
-lsusb | grep -q "Qualcomm / Option SDXBAAGHA-IDP" && echo "✅ 5G RedCap module detected" || echo "⚠️  5G RedCap module NOT detected"
+lsusb | grep -q "EM060K-GL" && echo "✅ Quectel EM060K-GL 4G LTE module detected" || echo "⚠️  4Quectel EM060K-GL 4G LTE module NOT detected"
+lsusb | grep -q "Qualcomm / Option SDXBAAGHA-IDP" && echo "✅ SIM8230 5G RedCap module detected" || echo "⚠️  SIM8230 5G RedCap module NOT detected"
 ifconfig | grep -q "usb0:" && echo "✅ Cellular network Detected" || echo "⚠️  Cellular network not Detected"
 ping -q -c1 -I usb0 google.com &>/dev/null && echo "✅ Ping Cellular OK" || echo "⚠️  Ping Cellular NOT Working"
 lsblk| grep -q "mmcblk2" && echo "✅ uSD mounted" || echo "⚠️  uSD NOT mounted"
-lsusb | grep -q "Flash Drive" && echo "✅ External Flash drive detected on USB-C" || echo "⚠️  External Flash drive NOT detected on USB-C"
+lsusb | grep -q "Flash Drive" && echo "✅ External USB2 Corsair Flash drive detected on USB-C" || echo "⚠️  External USB2 Corsair Flash drive NOT detected on USB-C"
+lsusb | grep -q "Samsung Electronics Co., Ltd Type-C" && echo "✅ External USB3 Samsung Flash drive detected on USB-C" || echo "⚠️  External Samsung Flash drive NOT detected on USB-C"
 printf "💾 eMMC: " && lsblk -dn -o SIZE /dev/mmcblk0
 printf  "💾 SDRAM: " && grep MemTotal /proc/meminfo
 printf  "💾 SSD: " && lsblk -dn -o SIZE /dev/nvme0n1
