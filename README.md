@@ -2316,6 +2316,7 @@ ls /dev/ttyUSB3 | grep -q "/dev/ttyUSB3" && echo "✅ RXDD detected" || echo "�
 lspci | grep -q "ASM1184e" && echo "✅ ASM1184e detected" || echo "❌  ASM1184e  NOT detected"
 lspci | grep -q "Samsung" && echo "✅ Samsung SSD module detected" || echo "⚠️  Samsung SSD module NOT detected"
 lsblk| grep -q "nvme0n1" && echo "✅ Main SSD mounted" || echo "⚠️  Main SSD NOT mounted"
+lsblk| grep -q "Hailo-8 AI Processor (rev 01)" && echo "✅ Hailo 8L mounted" || echo "⚠️  Hailo 8L NOT mounted"
 lsusb | grep -q "EM060K-GL" && echo "✅ Quectel EM060K-GL 4G LTE module detected" || echo "⚠️  4Quectel EM060K-GL 4G LTE module NOT detected"
 lsusb | grep -q "Qualcomm / Option SDXBAAGHA-IDP" && echo "✅ SIM8230 5G RedCap module detected" || echo "⚠️  SIM8230 5G RedCap module NOT detected"
 ifconfig | grep -q "usb0:" && echo "✅ Cellular network Detected" || echo "⚠️  Cellular network not Detected"
