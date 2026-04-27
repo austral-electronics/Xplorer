@@ -2018,7 +2018,7 @@ The AI accelerator is an option that frees up CPU resources and reduces overall 
 Many brands offer M.2-format AI accelerators that incorporate TPU and RAM for large language models (LLMs).
 This ensures a low power, small, lightweight and continuous scalability solution for your edge AI.
 
-To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) smart automation server, you can run a small multimodal LLMs such as Gemma 4 or Qwen 3.5 at 5 tokens/s @ 100% CPU without any accelerator, provided you have at least 8GB of RAM (16GB is recommended) and a NVMe SSD.
+To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) edge/mobile smart automation server, you can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5 tokens/s @ 100% CPU without any accelerator, provided you have at least 8GB of RAM (16GB is recommended), a NVMe SSD to store the model and an enclosure with improved passive cooling.
 
 > [!NOTE] 
 > Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
