@@ -2044,7 +2044,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 Announced ⌛ :
 |Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera(NXP)|Europe| <code style="color : Red">214 (INT8)</code>| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera(NXP)|Europe| 214 (INT8)| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
@@ -2061,7 +2061,7 @@ Announced ⌛ :
     - PyTorch, ONNX
     - [Getting Started with Metis](https://support.axelera.ai/hc/en-us/articles/25494427062802-Getting-Started-with-Metis-M-2)
     - [Github Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/HEAD/docs/reference/model_zoo.md)
-- **Espressif/Axera** :
+- **Espressif / Axera** :
 	- LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)
 ---
 # 5 - TIPS <a name="5"></a> [📚](#0) 
