@@ -2015,9 +2015,10 @@ watch -n 1 vcgencmd pmic_read_adc
 ## 4.13 - AI Accelerator <a name="4.13"></a> [📚](#0) 
 
 The AI accelerator is an option that frees up CPU resources and reduces overall power consumption, but you can still run a edge LLMs such as Gemma 4 at 5-7 tokens/s at 100% CPU without an accelerator, provided you have at least 8GB of RAM.
-[!WARNING]
-Using an AI accelerator requires an enclosure with an aluminium base that acts as a heat sink for the M.2 AI Accelerator module.
-The carbon fibre baseplate version will not be thermally suitable.
+
+> [!NOTE] 
+> Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
+> The carbon fiber baseplate version will not be thermally suitable.
 
 ### 4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules) <a name="4.13.1"></a> [📚](#0) 
 
