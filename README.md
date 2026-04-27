@@ -76,7 +76,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.12 - RTC](#4.12)
     - [4.13 - AI Accelerator](#4.13)
   		- [4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)](#4.13.1)
-    	- [4.13.2 - 🚧 Require a custom development 🚧 : For your information, AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
+    	- [4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
      	- [4.13.3 - AI Frameworks, SDK, Model Zoo](#4.13.3)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
@@ -2029,9 +2029,9 @@ Coming Soon ⌛ in small M.2 form factor :
 |[Ara-240](https://www.rbz.es/en/products/#tab1)|NXP|Europe| 40 (INT8)| 8 GB LPDDR4 | 4-6W, <9W | [VLMs, LLMs, MultiModal](y)| 
 |[Hailo-10H](https://hailo.ai/hailo-files/hailo-8l-product-brief-en/)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
 
-### 4.13.2 - 🚧 Require a custom development 🚧 : For your information, AI Accelerator in M.2 2280 Key M form factor <a name="4.13.2"></a> [📚](#0) 
+### 4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor <a name="4.13.2"></a> [📚](#0) 
 
-Require an enlarged enclosure and enlarged PCB.
+Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
@@ -2044,7 +2044,7 @@ Require an enlarged enclosure and enlarged PCB.
 Announced ⌛ :
 |Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera(NXP)|Europe| 214 (INT8)| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera(NXP)|Europe| <code style="color : Red">214 (INT8)</code>| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
