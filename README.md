@@ -2014,7 +2014,11 @@ watch -n 1 vcgencmd pmic_read_adc
 
 ## 4.13 - AI Accelerator <a name="4.13"></a> [📚](#0) 
 
-The AI accelerator is an option that frees up CPU resources and reduces overall power consumption, but you can still run a edge LLMs such as Gemma 4 at 5-7 tokens/s at 100% CPU without an accelerator, provided you have at least 8GB of RAM.
+The AI accelerator is an option that frees up CPU resources and reduces overall power consumption and and heat stress.
+Many brands offer M.2-format AI accelerators that incorporate TPU and RAM for large language models (LLMs).
+This ensures a low power, small, lightweight and continuous scalability solution for your edge AI.
+
+To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) smart automation server, you can run a small multimodal LLMs such as Gemma 4 or Qwen 3.5 at 5 tokens/s @ 100% CPU without any accelerator, provided you have at least 8GB of RAM (16GB is recommended) and a NVMe SSD.
 
 > [!NOTE] 
 > Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
