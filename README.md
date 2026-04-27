@@ -75,6 +75,9 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.11 - LoRa/Sigfox](#4.11)
     - [4.12 - RTC](#4.12)
     - [4.13 - AI Accelerator](#4.13)
+  		- [4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)](#4.13.1)
+    	- [4.13.2 - 🚧 Require a custom development 🚧 : For your information, AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
+     	- [4.13.3 - AI Frameworks, SDK, Model Zoo](#4.13.3)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
     - [5.2 - Shrink a pi image](#5.2)
