@@ -2011,7 +2011,7 @@ watch -n 1 vcgencmd pmic_read_adc
 
 ## 4.13 - AI Accelerator <a name="4.13"></a> [📚](#0) 
 
-### Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)
+### 4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules) <a name="4.13.1"></a> [📚](#0) 
 
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                            
 |---------|-----|--------|----|----|-----------|---|-| 
@@ -2025,6 +2025,35 @@ Coming Soon ⌛ in small M.2 form factor :
 |---------|-----|--------|----|----|-----------|---|-| 
 |[Ara-240](https://www.rbz.es/en/products/#tab1)|NXP|Europe| 40 (INT8)| 8 GB LPDDR4 | 4-6W, <9W | [VLMs, LLMs, MultiModal](y)| 
 |[Hailo-10H](https://hailo.ai/hailo-files/hailo-8l-product-brief-en/)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
+
+### 4.13.2 - Compatible AI Accelerator for custom enlarged enclosure & PCB and a M.2 2280 Key M module <a name="4.13.2"></a> [📚](#0) 
+
+|Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
+|---------|-----|--------|----|----|-----------|---|-| 
+|[Metis M.2](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera(NXP)|Europe| 214| 1GB LPDDR4| 3.9-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[SAKURA-II](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|EdgeCortix|Japan| 60 (INT8), 30 (BF16)| 16GB, LPDDR4, 68GB/s | 10W typ | [VLMs, LLMs, MultiModal](y)| 
+|[Ara-240](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|NXP|Europe| 40 (INT8)| 8 or 16GB LPDDR4 | 3-8W, <12W | [VLMs, LLMs, MultiModal](y)| Llama2-7B (12T/s)
+|[DX-M1](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7201/DX_M1BNM5604.pdf)|DeepX|South Korea| 25 (INT8)| 4GB LPDDR5 | 2-5W | [VLMs](https://developer.deepx.ai/modelzoo/)| YOLO8
+|[Hailo-10H](https://hailo.ai/hailo-files/hailo-10h-m-2-et-product-brief-en/)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
+
+Coming Soon ⌛ in M.2 2280 form factor :
+|Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
+|---------|-----|--------|----|----|-----------|---|-| 
+|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera(NXP)|Europe| 214 (INT8)| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
+|[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
+
+### 4.13.3 - AI Frameworks, SDK, Model Zoo <a name="4.13.3"></a> [📚](#0) 
+- **Hailo** :
+    - TensorFlow, TensorFlow Lite, Keras, PyTorch & ONNX
+- **Deepx** :
+    - TensorFlow, TensorFlow Lite, ONNX, Keras, PyTorch by Dataflow complier converted
+    - [DXNN SDK](https://developer.deepx.ai/article/get-started/)
+    - [VLMs Model Zoo](https://developer.deepx.ai/modelzoo/)
+- **Axelera(NXP)** : 
+    - PyTorch, ONNX
+    - [Getting Started with Metis](https://support.axelera.ai/hc/en-us/articles/25494427062802-Getting-Started-with-Metis-M-2)
+    - [Github Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/HEAD/docs/reference/model_zoo.md)
 
 ---
 # 5 - TIPS <a name="5"></a> [📚](#0) 
