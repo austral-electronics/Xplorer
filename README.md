@@ -2023,11 +2023,11 @@ watch -n 1 vcgencmd pmic_read_adc
 |[AX8850](https://www.axera-tech.com/en/product/2896.html)|Espressif/Axera |China | 24 (INT8)| 8MB LPDDR4X | 7W| LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)| **MM:** Qwen3-VL-4B-Instruct-GPTQ-Int4, **LLM:** Qwen3-1.7B, DeepSeek-R1-Distill-Qwen-1.5B, **VLM:** YOLO11, Depth-Anything-V2 **Audio:** Whisper, MeloTTS **Video Codec:** H.264/H.265 8K
 |[Hailo-8L](https://hailo.ai/hailo-files/hailo-8l-product-brief-en/)|Hailo| Israel | 13 (INT8)| 0 | 1.5W Typ| [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/)| YOLO8/11
 
-Coming Soon ⌛ in small M.2 form factor :
+Announced ⌛  :
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
 |[Ara-240](https://www.rbz.es/en/products/#tab1)|NXP|Europe| 40 (INT8)| 8 GB LPDDR4 | 4-6W, <9W | [VLMs, LLMs, MultiModal](y)| 
-|[Hailo-10H](https://hailo.ai/hailo-files/hailo-8l-product-brief-en/)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
+|[Hailo-10H](https://hailo.ai/products/ai-accelerators/hailo-10h-m-2-ai-acceleration-module/#hailo10m2-features)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
 
 ### 4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor <a name="4.13.2"></a> [📚](#0) 
 
