@@ -2020,7 +2020,7 @@ This ensures a low power, small, lightweight and continuous scalability solution
 
 To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) edge/mobile smart automation server, you can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.
 
-As of late April 2026, Gemma 4 is not yet available in the Model Zoo of the M.2 accelerators with at least 8GB of RAM. This will likely be the case in a few weeks?
+As of late April 2026, Gemma 4 is not yet available in the Model Zoo of the M.2 accelerators with at least 8GB of DRAM. This will likely be the case in a few weeks?
 
 > [!NOTE] 
 > Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
@@ -2032,7 +2032,7 @@ As of late April 2026, Gemma 4 is not yet available in the Model Zoo of the M.2 
 |---------|-----|--------|----|----|-----------|---|-| 
 |[Hailo-8](https://hailo.ai/hailo-files/hailo-8-m-2-et-product-brief-en/)|Hailo|Israel | 26 (INT8)| 0 | 2-4W, < 8.25W| [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/)| YOLO8/11
 |[DX-M1M](https://d3cq9fuihrmma1.cloudfront.net/wp-content/uploads/2026/03/18175136/DEEPX-DX-M1M-M.2-AI-Accelerator-E-Brochure.pdf)|DeepX|South Korea| 25 (INT8)| 0 | 3W Typ| [VLMs](https://developer.deepx.ai/modelzoo/)| YOLO8
-|[AX8850](https://www.axera-tech.com/en/product/2896.html)|Espressif/Axera |China | 24 (INT8)| 8MB LPDDR4X | 7W| LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)| **MM:** Qwen3-VL-4B-Instruct-GPTQ-Int4, **LLM:** Qwen3-1.7B, DeepSeek-R1-Distill-Qwen-1.5B, **VLM:** YOLO11, Depth-Anything-V2 **Audio:** Whisper, MeloTTS **Video Codec:** H.264/H.265 8K
+|[AX8850](https://www.axera-tech.com/en/product/2896.html)|Espressif/Axera |China | 24 (INT8)| 8GB LPDDR4X | 7W| LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)| **MM:** Qwen3-VL-4B-Instruct-GPTQ-Int4, **LLM:** Qwen3-1.7B, DeepSeek-R1-Distill-Qwen-1.5B, **VLM:** YOLO11, Depth-Anything-V2 **Audio:** Whisper, MeloTTS **Video Codec:** H.264/H.265 8K
 |[Hailo-8L](https://hailo.ai/hailo-files/hailo-8l-product-brief-en/)|Hailo| Israel | 13 (INT8)| 0 | 1.5W Typ| [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/)| YOLO8/11
 
 Announced ⌛  :
