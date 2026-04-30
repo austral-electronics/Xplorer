@@ -2020,7 +2020,7 @@ This ensures a low power, small, lightweight and continuous scalability solution
 
 To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) edge/mobile smart automation server, you can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.
 
-As of late April 2026, Gemma 4 is not yet available in the Model Zoo of the M.2 accelerators with at least 8GB of DRAM. This will likely be the case in a few weeks?
+As of late April 2026, **Gemma4 E2B / E4B / 26B A4B MoE**run on Xplorer CM5 CPU. Folow this [tutorial](https://patloeber.com/gemma-4-pi-agent/) to test it. But is not yet available in the Model Zoo of the M.2 accelerators (require at least 8GB of DRAM). This will likely be the case in a few weeks?
 
 > [!NOTE] 
 > Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
