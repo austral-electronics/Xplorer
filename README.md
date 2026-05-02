@@ -2030,8 +2030,8 @@ Comparison of energy efficiency for edge AI between M.2 modules and Nvidia :
 
 **Can i run a smart multimodal LLM on M.2 Modules ?** 
 
-You can currently use an LLM on some modules (Hailo-10H, AX8850), but in april 26, the models available are not very sophisticated and their applications are limited to video and speech recognition and basic automation like home assistant.  
-With the arrival of new multimodal models such as Gemma 4 or Qwen 3.6, your application will be able to make truly relevant decisions based on video and audio streams, such as for a drone : recognising obstacles unlearned, sort them by level of danger, choose the best evasion trajectory and decide, prepare and submit a warning messages to humans or other drones.  
+You can currently use an LLM on some modules (Hailo-10H, AX8850), but in april 26, the models available are not very smart and their applications are limited to video and speech recognition and basic automation like home assistant. If your application is connected, you can always call on cloud-based AI as and when needed.   
+With the arrival of new multimodal models such as **Gemma 4 or Qwen 3.6**, your application will be able to make truly relevant decisions based on video and audio streams, such as for a drone : recognising obstacles unlearned, sort them by level of danger, choose the best evasion trajectory and decide, prepare and submit a warning messages to humans or other drones. This level of IA knows the appeal procedures for air and sea transport. 
 
 **Do I really need an AI accelerator to run a multimodal LLM ?** 
 
