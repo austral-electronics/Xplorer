@@ -2019,7 +2019,7 @@ watch -n 1 vcgencmd pmic_read_adc
 The M.2 AI accelerator is an option that frees up CPU resources for your realtime application and reduces overall power consumption and and heat stress.  
 They are now ideal for embedded image recognition, Stereo Depth and AI audio processing.  
 Many brands offer M.2-format AI accelerators that incorporate also DRAM to run a large language models (LLMs).  
-This ensures a low power, small, lightweight, more sovereign and continuous scalability solution for your edge AI.  
+This ensures a low power, small, lightweight, passively cooled, if necessary more sovereign and offer a continuous scalability solution for your edge AI.  
 
 Comparison of energy efficiency for edge AI between M.2 modules and Nvidia :
 - Axelera Metis : 214 TOPS (INT8) @ 15 TOPS/W
@@ -2032,9 +2032,10 @@ Comparison of energy efficiency for edge AI between M.2 modules and Nvidia :
 
 You can currently use an LLM on some modules (Hailo-10H, AX8850), but in april 26, the models available are not very smart and their applications are limited to video and speech recognition and basic automation like home assistant. If your application is connected, you can always call on cloud-based AI as and when needed.   
 With the arrival of new very compact and smart multimodal models such as **Gemma 4 or Qwen 3.6**, your application will be able to make truly relevant decisions based on video and audio streams, and all the embedded and web knowledge.  
-**Application** :
-- **Edge/mobile smart automation server** : [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/)
-- **Drone autonomy** : recognising obstacles unlearned, sort them by level of danger, choose the best evasion trajectory and decide, prepare and submit a warning messages to humans or other drones. This level of IA knows all the rules of priority and call procedures for air and maritime traffic. 
+
+**Applications** :
+- **Edge/mobile smart automation server** : [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/), [Hermes-agent](https://hermes-agent.nousresearch.com/)...
+- **Drone autonomy / Smart Autopilot** : combines data from different sensors, recognising unpredictable obstacles, sort them by level of danger, makes decisions, choose the best evasion speed and trajectory and prepare and submit a warning messages to humans or other drones. This level of IA knows the their model all the rules of priority and call procedures for air, road and maritime traffic. 
 
 **Do I really need an AI accelerator to run a multimodal LLM ?** 
 
