@@ -74,7 +74,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.10.4 - Usefull Links](#4.10.4)
     - [4.11 - LoRa/Sigfox](#4.11)
     - [4.12 - RTC](#4.12)
-    - [4.13 - AI Accelerator](#4.13)
+    - [4.13 - M.2 AI Accelerators](#4.13)
   		- [4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)](#4.13.1)
     	- [4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
      	- [4.13.3 - AI Frameworks, SDK, Model Zoo](#4.13.3)
@@ -2012,7 +2012,7 @@ Read vbat voltage on the PMIC
 watch -n 1 vcgencmd pmic_read_adc
 ```
 
-## 4.13 - AI Accelerator <a name="4.13"></a> [📚](#0) 
+## 4.13 - M.2 AI Accelerators <a name="4.13"></a> [📚](#0) 
 
 The AI accelerator is an option that frees up CPU resources and reduces overall power consumption and and heat stress.
 Many brands offer M.2-format AI accelerators that incorporate TPU and DRAM for large language models (LLMs).
