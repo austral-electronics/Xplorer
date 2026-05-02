@@ -2042,7 +2042,7 @@ With the arrival of new very compact and smart multimodal models such as **Gemma
 It can be done without. You can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5/3.6](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.  
 
 As of late April 2026, The multimodal edge AI model **Gemma4 E2B / E4B / 26B A4B MoE** can run on Xplorer CM5 CPU, folow this [tutorial](https://patloeber.com/gemma-4-pi-agent/) to test it. But is not yet available in the Model Zoo of the M.2 accelerators manufacturer (they must also include at least 8GB of DRAM).
-**NXP/Axelera** with the [Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf) will likely be the first to offer an M.2 module compatible with a multimodal LLMs really fast and smart and is positioning itself as a serious competitor to Nvidia in the edge AI market.
+**Axelera** with the [Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf) will be the best offer for a fast and smart multimodal LLMs on M.2 format and is positioning as a suitable solution for those seeking European sovereignty.
 
 > [!NOTE] 
 > Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
@@ -2060,7 +2060,7 @@ As of late April 2026, The multimodal edge AI model **Gemma4 E2B / E4B / 26B A4B
 Announced ⌛  :
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Ara-240](https://www.rbz.es/en/products/#tab1)|NXP|Europe| 40 (INT8)| 8 GB LPDDR4 | 4-6W, <9W | [VLMs, LLMs, MultiModal](y)| 
+|[Ara-240](https://www.rbz.es/en/products/#tab1)|NXP/Kinara|Europe| 40 (INT8)| 8 GB LPDDR4 | 4-6W, <9W | [VLMs, LLMs, MultiModal](y)| 
 |[Hailo-10H](https://hailo.ai/products/ai-accelerators/hailo-10h-m-2-ai-acceleration-module/#hailo10m2-features)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
 
 ### 4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor <a name="4.13.2"></a> [📚](#0) 
@@ -2069,9 +2069,9 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis M.2](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera(NXP)|Europe| 214 (INT8)| 1GB LPDDR4| 3.9-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Metis M.2](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera|Europe| 214 (INT8)| 1GB LPDDR4| 3.9-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[SAKURA-II](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|EdgeCortix|Japan| 60 (INT8), 30 (BF16)| 16GB, LPDDR4, 68GB/s | 10W typ | [VLMs, LLMs, MultiModal](y)| 
-|[Ara-240](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|NXP|Europe| 40 (INT8)| 8 or 16GB LPDDR4 | 3-8W, <12W | [VLMs, LLMs, MultiModal](y)| Llama2-7B (12T/s)
+|[Ara-240](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|NXP/Kinara|Europe| 40 (INT8)| 8 or 16GB LPDDR4 | 3-8W, <12W | [VLMs, LLMs, MultiModal](y)| Llama2-7B (12T/s)
 |[DX-M1](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7201/DX_M1BNM5604.pdf)|DeepX|South Korea| 25 (INT8)| 4GB LPDDR5 | 2-5W | [VLMs](https://developer.deepx.ai/modelzoo/)| YOLO8
 |[MemryX M.2](https://memryx.com/products/)|MemryX|Taiwan| 24 (INT8)| 42M Weight | 10W, <14W | [VLMs](https://developer.memryx.com/model_explorer/models.html)| Yolo11/26
 |[Hailo-10H](https://hailo.ai/hailo-files/hailo-10h-m-2-et-product-brief-en/)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
@@ -2079,7 +2079,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 Announced ⌛ :
 |Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera(NXP)|Europe| 214 (INT8)| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera|Europe| 214 (INT8)| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
@@ -2092,7 +2092,7 @@ Announced ⌛ :
     - TensorFlow, TensorFlow Lite, ONNX, Keras, PyTorch by Dataflow complier converted
     - [DXNN SDK](https://developer.deepx.ai/article/get-started/)
     - [VLMs Model Zoo](https://developer.deepx.ai/modelzoo/)
-- **NXP / Axelera** : 
+- **Axelera** : 
     - PyTorch, ONNX
     - [Getting Started with Metis](https://support.axelera.ai/hc/en-us/articles/25494427062802-Getting-Started-with-Metis-M-2)
     - [Github Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/HEAD/docs/reference/model_zoo.md)
