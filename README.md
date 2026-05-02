@@ -2014,13 +2014,28 @@ watch -n 1 vcgencmd pmic_read_adc
 
 ## 4.13 - M.2 AI Accelerators <a name="4.13"></a> [📚](#0) 
 
-The AI accelerator is an option that frees up CPU resources and reduces overall power consumption and and heat stress.
-Many brands offer M.2-format AI accelerators that incorporate TPU and DRAM for large language models (LLMs).
-This ensures a low power, small, lightweight and continuous scalability solution for your edge AI.
+**Do I really need an AI accelerator to run a multimodal LLM ?** 
+The M.2 AI accelerator is an option that frees up CPU resources for your realtime application and reduces overall power consumption and and heat stress.
+They are now ideal for embedded image recognition, Stereo Depth and AI audio processing.
+Many brands offer M.2-format AI accelerators that incorporate also DRAM to run a large language models (LLMs).
+This ensures a low power, small, lightweight, more sovereign and continuous scalability solution for your edge AI.
 
-To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) edge/mobile smart automation server, you can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.
+Comparison of energy efficiency for edge AI between M.2 modules and Nvidia :
+- Axelera Metis : 214 TOPS (INT8) @ 15 TOPS/W
+- Nvidia Jetson Orin NX : 100 TOPS (INT8) @ 4 TO 10 TOPS/W
+- Nvidia Jetson Orin Nano : 40 TOPS (INT8) @ 2,5 TO 6 TOPS/W
+- Hailo 8 : 26 TOPS (INT8) @ 8.7 TOPS/W
+- Hailo 10-H : 40 TOPS (INT4) @ 11 TOPS/W
 
-As of late April 2026, The multimodal edge AI model **Gemma4 E2B / E4B / 26B A4B MoE** can run on Xplorer CM5 CPU, folow this [tutorial](https://patloeber.com/gemma-4-pi-agent/) to test it. But is not yet available in the Model Zoo of the M.2 accelerators including at least 8GB of DRAM. This will likely be the case in a few weeks?
+**Do I really need an AI accelerator to run an LLM ?** 
+You can currently use an LLM on some modules (Hailo-10H, AX8850), but the models available are not very sophisticated and their applications are limited to video and speech recognition and basic automation like home assistant.
+With the arrival of new multimodal models such as Gemma 4 or Qwen 3.6, your application will be able to make truly relevant decisions based on video and audio streams, such as for a drone : recognising obstacles unlearned, sort them by level of danger, choose the best evasion trajectory and decide, prepare and submit a warning messages to humans or other drones.
+
+**Do I really need an AI accelerator to run a multimodal LLM ?** 
+It can be done without. To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) edge/mobile smart automation server, you can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5/3.6](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.
+
+As of late April 2026, The multimodal edge AI model **Gemma4 E2B / E4B / 26B A4B MoE** can run on Xplorer CM5 CPU, folow this [tutorial](https://patloeber.com/gemma-4-pi-agent/) to test it. But is not yet available in the Model Zoo of the M.2 accelerators (they must also include at least 8GB of DRAM).
+NXP/Axelera and Axera will likely be the first to offer an M.2 module compatible with multimodal LLMs really smart.
 
 > [!NOTE] 
 > Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
