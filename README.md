@@ -2047,11 +2047,11 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis M.2](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera(NXP)|Europe| 214| 1GB LPDDR4| 3.9-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Metis M.2](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera(NXP)|Europe| 214 (INT8)| 1GB LPDDR4| 3.9-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[SAKURA-II](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|EdgeCortix|Japan| 60 (INT8), 30 (BF16)| 16GB, LPDDR4, 68GB/s | 10W typ | [VLMs, LLMs, MultiModal](y)| 
 |[Ara-240](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|NXP|Europe| 40 (INT8)| 8 or 16GB LPDDR4 | 3-8W, <12W | [VLMs, LLMs, MultiModal](y)| Llama2-7B (12T/s)
 |[DX-M1](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7201/DX_M1BNM5604.pdf)|DeepX|South Korea| 25 (INT8)| 4GB LPDDR5 | 2-5W | [VLMs](https://developer.deepx.ai/modelzoo/)| YOLO8
-|[MemryX M.2](https://memryx.com/products/)|MemryX|Taiwan| 25 (INT8)| 42M Weight | 10W, <14W | [VLMs](https://developer.memryx.com/model_explorer/models.html)| Yolo11/26
+|[MemryX M.2](https://memryx.com/products/)|MemryX|Taiwan| 24 (INT8)| 42M Weight | 10W, <14W | [VLMs](https://developer.memryx.com/model_explorer/models.html)| Yolo11/26
 |[Hailo-10H](https://hailo.ai/hailo-files/hailo-10h-m-2-et-product-brief-en/)|Hailo| Israel | 40(INT4) / 20(INT8)| 8GB LPDDR4/4X| 2.5W Typ| [LLMs, MMs, Audio](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/), [VLMs](https://hailo.ai/products/hailo-software/model-explorer-vision/), Stable Diffusion | **MM:** Qwen3-VL-2B-Instruct, **LLM:** Qwen3-1.7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B, **Audio:** Whisper 
 
 Announced ⌛ :
