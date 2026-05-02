@@ -2031,11 +2031,14 @@ Comparison of energy efficiency for edge AI between M.2 modules and Nvidia :
 **Can i run a smart multimodal LLM on M.2 Modules ? for what kind of applications?** 
 
 You can currently use an LLM on some modules (Hailo-10H, AX8850), but in april 26, the models available are not very smart and their applications are limited to video and speech recognition and basic automation like home assistant. If your application is connected, you can always call on cloud-based AI as and when needed.   
-With the arrival of new very compact and smart multimodal models such as **Gemma 4 or Qwen 3.6**, your application will be able to make truly relevant decisions based on video and audio streams, such as for a drone : recognising obstacles unlearned, sort them by level of danger, choose the best evasion trajectory and decide, prepare and submit a warning messages to humans or other drones. This level of IA knows the rules of priority and call procedures for air and maritime traffic. 
+With the arrival of new very compact and smart multimodal models such as **Gemma 4 or Qwen 3.6**, your application will be able to make truly relevant decisions based on video and audio streams, and all the embedded and web knowledge.  
+**Application** :
+- **Edge/mobile smart automation server** : [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/)
+- **Drone autonomy** : recognising obstacles unlearned, sort them by level of danger, choose the best evasion trajectory and decide, prepare and submit a warning messages to humans or other drones. This level of IA knows all the rules of priority and call procedures for air and maritime traffic. 
 
 **Do I really need an AI accelerator to run a multimodal LLM ?** 
 
-It can be done without. To make a [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/) or [Hermes-agent](https://hermes-agent.nousresearch.com/) edge/mobile smart automation server, you can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5/3.6](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.  
+It can be done without. You can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5/3.6](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.  
 
 As of late April 2026, The multimodal edge AI model **Gemma4 E2B / E4B / 26B A4B MoE** can run on Xplorer CM5 CPU, folow this [tutorial](https://patloeber.com/gemma-4-pi-agent/) to test it. But is not yet available in the Model Zoo of the M.2 accelerators (they must also include at least 8GB of DRAM).
 NXP/Axelera and Axera will likely be the first to offer an M.2 module compatible with multimodal LLMs really smart.
