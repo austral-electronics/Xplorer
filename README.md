@@ -2035,7 +2035,7 @@ With the arrival of new very compact and smart multimodal models such as **Gemma
 
 **Applications** :
 - **Edge/mobile smart automation server** : [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/), [Hermes-agent](https://hermes-agent.nousresearch.com/)...
-- **Drone autonomy / Smart Autopilot** : combines data from different sensors, recognising unpredictable obstacles, sort them by level of danger, makes decisions, choose the best evasion speed and trajectory and prepare and submit a warning messages to humans or other drones. This level of IA knows the their model all the rules of priority and call procedures for air, road and maritime traffic. 
+- **Drone autonomy / Smart Autopilot** : combines data from different sensors, recognising unpredictable obstacles, estimates the positions and velocity vectors of the obstacles, sort them by level of danger, makes decisions, choose the best evasion speed and trajectory and prepare and submit a warning messages to humans or other drones. This level of IA knows the their model all the rules of priority and call procedures for air, road and maritime traffic. 
 
 **Do I really need an AI accelerator to run a multimodal LLM ?** 
 
