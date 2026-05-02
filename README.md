@@ -2041,8 +2041,8 @@ With the arrival of new very compact and smart multimodal models such as **Gemma
 
 It can be done without. You can run a small multimodal LLMs such as [Gemma 4 or Qwen 3.5/3.6](https://www.reddit.com/r/ollama/comments/1sg63jk/gemma_4_e2b_and_qwen_35_2b_on_a_raspberry_pi_5) up to 5.5 tokens/s at full CPU speed without any accelerator, provided you have at least 8GB of DRAM (16GB recommended), at least 8GB of available eMMC/SSD to store the model and an enclosure with improved passive cooling.  
 
-As of late April 2026, The multimodal edge AI model **Gemma4 E2B / E4B / 26B A4B MoE** can run on Xplorer CM5 CPU, folow this [tutorial](https://patloeber.com/gemma-4-pi-agent/) to test it. But is not yet available in the Model Zoo of the M.2 accelerators (they must also include at least 8GB of DRAM).
-NXP/Axelera and Axera will likely be the first to offer an M.2 module compatible with multimodal LLMs really smart.
+As of late April 2026, The multimodal edge AI model **Gemma4 E2B / E4B / 26B A4B MoE** can run on Xplorer CM5 CPU, folow this [tutorial](https://patloeber.com/gemma-4-pi-agent/) to test it. But is not yet available in the Model Zoo of the M.2 accelerators manufacturer (they must also include at least 8GB of DRAM).
+**NXP/Axelera** with the [Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf) will likely be the first to offer an M.2 module compatible with a multimodal LLMs really fast and smart and is positioning itself as a serious competitor to Nvidia in the edge AI market.
 
 > [!NOTE] 
 > Using an AI accelerator requires an enclosure with an aluminium base that acts as a passive heat sink for the M.2 AI Accelerator module.
