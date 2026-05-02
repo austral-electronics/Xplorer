@@ -2079,7 +2079,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 Announced ⌛ :
 |Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera|Europe| 214 (INT8)| 16GB | TBD W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Metis M.2 MAX](https://axelera.ai/hubfs/Axelera%20AI%20M.2%20Max%20AI%20Edge%20accelerator%20Card.pdf)|Axelera|Europe| 214 (INT8)| 16GB | 15 TOPS/W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
