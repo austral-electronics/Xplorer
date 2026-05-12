@@ -399,15 +399,15 @@ dtparam=act_led_activelow=off
 gpio=39=op,dh
 gpio=45=op,dl
 
-# Xplorer CM5 : Required for derating temperature >50°C/122°F
+# Xplorer CM5 with enclosure V3 : Required for derating temperature >50°C/122°F
 #arm_freq=2200
 #over_voltage=-2
 
-# Xplorer CM5 : Required for derating temperature >55°C/131°F
+# Xplorer CM5 with enclosure V3 : Required for derating temperature >55°C/131°F
 #arm_freq=1800
 #over_voltage=-4
 
-# Xplorer CM5 : Required for derating temperature >60°C/140°F
+# Xplorer CM5 with enclosure V3 : Required for derating temperature >60°C/140°F
 #arm_freq=1400
 #over_voltage=-4
 #dtparam=eth_max_speed=100
@@ -445,18 +445,6 @@ gpio=45=op,dl
 
 #--- Disable SD card
 #dtoverlay=disable-sdcard
-
-#--- Underclocking & small undervolting (<=1.2Ghz)
-#arm_freq=1200
-#arm_freq_min=600
-#gpu_freq=250
-#over_voltage=-2
-
-#--- Aggressive Underclocking & undervolting (<=1Ghz)
-#arm_freq=1000
-#arm_freq_min=400
-#gpu_freq=200
-#over_voltage=-5
 
 #--- For low power SSD -> activate ASPM L0s/L1/L1.2
 #pcie_aspm=force
