@@ -399,9 +399,18 @@ dtparam=act_led_activelow=off
 gpio=39=op,dh
 gpio=45=op,dl
 
-# Xplorer CM5 : Required if the ambiant temperature exceeds 48°C and you do not want throttling
-arm_freq=1800
-over_voltage=-4
+# Xplorer CM5 : Required for derating temperature >50°C/122°F
+#arm_freq=2200
+#over_voltage=-2
+
+# Xplorer CM5 : Required for derating temperature >55°C/131°F
+#arm_freq=1800
+#over_voltage=-4
+
+# Xplorer CM5 : Required for derating temperature >60°C/140°F
+#arm_freq=1400
+#over_voltage=-4
+#dtparam=eth_max_speed=100
 
 #========================================================
 # Xplorer CM5 : Reduce the power consumption down to 2.8W
