@@ -2131,7 +2131,7 @@ sudo powertop --auto-tune
 ```
 Once optimised, power consumption at 100% CPU load and 1.5GHz can drop to 5.0W; without optimisation, at 2.5GHz and 100% CPU load, it would be 10.5W. This represents a 30% improvement in energy efficiency.
 
-To optimise passive cooling, please refer to the datasheet for guidance on the orientation of the housing. 
+To optimise passive cooling, please refer to the datasheet for information on the model of enclosure required for the M.2 modules, the thermal specifications, and the orientation of the enclosure during installation. 
 
 # 5 - TIPS <a name="5"></a> [📚](#0) 
 ## 5.1 - Benchmark 💪🏻 <a name="5.1"></a> [📚](#0) 
