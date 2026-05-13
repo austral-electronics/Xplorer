@@ -399,27 +399,46 @@ dtparam=act_led_activelow=off
 gpio=39=op,dh
 gpio=45=op,dl
 
-# Xplorer CM5 with enclosure V3 : Required for derating temperature >50°C/122°F
+# Xplorer CM5 : Required for derating temperature >50°C/122°F (Enclosure V3, CM5 16G/64G/WIFI, PCIe Switch ON, SSD 256G)
 #arm_freq=2200
 #over_voltage=-2
 
-# Xplorer CM5 with enclosure V3 : Required for derating temperature >55°C/131°F
+# Xplorer CM5 : Required for derating temperature >55°C/131°F (Enclosure V3, CM5 16G/64G/WIFI, PCIe Switch ON, SSD 256G)
 #arm_freq=1800
 #over_voltage=-4
 
-# Xplorer CM5 with enclosure V3 : Required for derating temperature >60°C/140°F
-#arm_freq=1400
+# Xplorer CM5 : Required for derating temperature >60°C/140°F (Enclosure V3, CM5 16G/64G/WIFI, PCIe Switch ON, SSD 256G)
+#arm_freq=1500
 #over_voltage=-4
 #dtparam=eth_max_speed=100
+# !!!! Note : You must run also "powertop --auto-tune" !!!!
 
-#========================================================
-# Xplorer CM5 : Reduce the power consumption down to 2.8W
-#========================================================
+#==========================================================================
+# Xplorer CM5 : For system that runs on battery/solar power or can operates
+over >50°C/122°F : Reduce IDLE power consumption down to 2.2W
+#==========================================================================
 
-#--- No fan
+#--- Significant gain (-1.22W) : No PCIe M.2 modules (SSD, AI) -> Desactivate the PCIe switch
+#--- Note : The Cellular/DTC M.2 Key B modules selected don't use PCIe (USB2)
+#dtparam=pciex1=off
+
+#--- Moderate gain (-0.25W) : Reduce Ethernet speed from GbE to 100MB
+#dtparam=eth_max_speed=100
+
+#--- Moderate gain (-0.3W) : The RP1 I2C ports don't manage Energy -> see the chapter "Energy & thermal optimization" (powertop --auto-tune)
+
+#--- Marginal gain (<0.1W) : Disable unused Wireless
+#dtoverlay=disable-wifi
+#dtoverlay=disable-bt
+
+#--- Marginal gain (<0.05W) : Disable Activity LEDs
+#dtparam=act_led_trigger=none
+#dtparam=act_led_activelow=off
+
+#--- Marginal gain : No fan
 #dtparam=cooling_fan=off
 
-#--- Headless: Disable video outputs, reduce GPU RAM, Disable HDMI audio, GPU freq to mini
+#--- Marginal gain : Headless: Disable video outputs, reduce GPU RAM, Disable HDMI audio, GPU freq to mini
 #hdmi_blanking=2
 #display_default_lcd=0
 #gpu_mem=4
@@ -429,28 +448,14 @@ gpio=45=op,dl
 #dtoverlay=vc4-kms-v3d,nohdmi
 #dtparam=hdmi=off
 
-#--- Reduce Ethernet speed to 100MB (-0.25W)
-#dtparam=eth_max_speed=100
-
-#--- Disable unused RTC
+#--- Marginal gain : Disable unused RTC
 #dtparam=rtc=off
 
-#--- Disable unused Wireless
-#dtoverlay=disable-wifi
-#dtoverlay=disable-bt
-
-#--- Disable Activity LEDs
-#dtparam=act_led_trigger=none
-#dtparam=act_led_activelow=off
-
-#--- Disable SD card
+#--- Marginal gain : Disable SD card
 #dtoverlay=disable-sdcard
 
-#--- For low power SSD -> activate ASPM L0s/L1/L1.2
+#--- Marginal gain : For low power SSD -> activate ASPM L0s/L1/L1.2 (not required for the selected SSDs)
 #pcie_aspm=force
-
-#--- No PCIe M.2 modules -> Desactivate the PCIe switch (-1.3W)
-#dtparam=pciex1=off
 
 ```
 Usefull documentations to configure config.txt:
