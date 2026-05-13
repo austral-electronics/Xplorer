@@ -78,6 +78,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
   		- [4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)](#4.13.1)
     	- [4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
      	- [4.13.3 - AI Frameworks, SDK, Model Zoo](#4.13.3)
+        - [4.13.4 - Improving energy efficiency and thermal performance](#4.13.4)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
     - [5.2 - Shrink a pi image](#5.2)
@@ -2105,6 +2106,31 @@ Announced ⌛ :
 - **Espressif / Axera** :
 	- LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)
 ---
+
+## 4.14 - Improving energy efficiency and thermal performance  <a name="4.14"></a> [📚](#0) 
+
+When working with a battery- or solar-powered system, or in very high-temperature environments without forced convection, every tenth of a watt counts. Typical power consumption in IDLE mode is between **4.0 and 4.3W**, depending on the configuration of the M.2 modules, you can reduce power consumption in idle mode to as low as **2.2W** using in order of effectiveness :
+- Underlocking + reduce the associated CPU voltage (0W at IDLE but up to -6W @ 100% CPU)
+- Putting the PCIe switch into standby mode (-1.2W)
+- Managing the standby mode of I2C buses (-0.3W)
+- Reducing the Ethernet bandwidth (-0.2W)
+- Disabling other unused features (Wifi/BLE, LED, RTC...)
+
+The "config.txt" file describes the settings that need to be uncommented depending on your configuration and the derating temperature specified in your specifications.    
+You can reduce the consumption down to 2.5W after rebooting; to go any lower, you’ll need to delve into more detailed optimisation.  
+To optimise the CPU governor and manage the low-power mode for the I2C buses and, if necessary, a USB-C peripheral, the simplest approach is to use the ‘powertop’ utility designed for Linux servers.  
+To see exactly what it would do — without making any changes to the system.  
+```
+sudo apt-get install powertop
+sudo powertop --html=rapport.html
+```
+See "Tuning suggestions" of rapport.html.  
+To apply automatic optimisation (CPU at 1.5 GHz):
+```
+sudo powertop --auto-tune
+```
+Once optimised, power consumption at 100% CPU load and 1.5GHz can drop to 5.0W; without optimisation, at 2.5GHz and 100% CPU load, it would be 10.5W. This represents a 30% improvement in energy efficiency.
+
 # 5 - TIPS <a name="5"></a> [📚](#0) 
 ## 5.1 - Benchmark 💪🏻 <a name="5.1"></a> [📚](#0) 
 Config : Raspberry PI OS Desktop on EMMc + Samsung 64GB USB-C Drive
