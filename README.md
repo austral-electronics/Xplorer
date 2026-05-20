@@ -416,7 +416,7 @@ gpio=45=op,dl
 
 #==========================================================================
 # Xplorer CM5 : For system that runs on battery/solar power or can operates
-over >50°C/122°F : Reduce IDLE power consumption down to 2.2W
+# over >50°C/122°F : Reduce IDLE power consumption down to 2.2W
 #==========================================================================
 
 #--- Significant gain (-1.22W) : No PCIe M.2 modules (SSD, AI) -> Desactivate the PCIe switch
