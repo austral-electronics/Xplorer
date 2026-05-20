@@ -400,7 +400,7 @@ dtparam=act_led_activelow=off
 gpio=39=op,dh
 gpio=45=op,dl
 
-# Xplorer CM5 : Required for derating temperature >50°C/122°F (Enclosure V3, CM5 16G/64G/WIFI, PCIe Switch ON, SSD 256G)
+# Xplorer CM5 : Required for derating temperature >48°C/122°F (Enclosure V3, CM5 16G/64G/WIFI, PCIe Switch ON, SSD 256G)
 #arm_freq=2200
 #over_voltage=-2
 
