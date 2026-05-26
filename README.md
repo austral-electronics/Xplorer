@@ -45,24 +45,24 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.6 - CyberSecurity](#4.6)
         - [4.6.1 - I2C](#4.6.1)
         - [4.6.2 - TPM2.0](#4.6.2)
-        - [4.6.3 - CrytoAuthentication Co-Processor](#4.6.3)
+        - [4.6.3 - Optional CrytoAuthentication Co-Processor](#4.6.3)
     - [4.7 - Storages](#4.7)
         - [4.7.1 - PCIe peripherals](#4.7.1)
         - [4.7.2 - USB peripherals](#4.7.2)
         - [4.7.3 - Drives](#4.7.3)
         - [4.7.4 - Type-C External Flash Drive](#4.7.4)
-        - [4.7.5 - Internal NVMe SSD(s)](#4.7.5)
+        - [4.7.5 - Optional Internal NVMe SSD(s)](#4.7.5)
         - [4.7.6 - Micro SD Card](#4.7.6)
     - [4.8 - DAQ](#4.8)
         - [4.8.1 - Solution 1 : DAQ controlled directly by your application](#4.8.1)
         - [4.8.2 - Solution 2 : DAQ integrated into the OS](#4.8.2)
-    - [4.9 - Cellular and Direct-To-Cell](#4.9)
+    - [4.9 - Optional Cellular and Direct-To-Cell](#4.9)
         - [4.9.1 - Nano SIM](#4.9.1)
         - [4.9.2 - 4FF eSIM](#4.9.2)
-        - [4.9.3 - 4G LTE CAT6 3GPP Rel12](#4.9.3)
+        - [4.9.3 - 4G LTE Category 6 adopting 3GPP Release 12](#4.9.3)
         - [4.9.4 - 5G RedCap/Direct-To-Cell](#4.9.4)
         - [4.9.5 - Speed Test](#4.9.5)
-    - [4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor](#4.10)
+    - [4.10 - Optional Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor](#4.10)
         - [4.10.1 - Software development](#4.10.1)
         - [4.10.2 - Pre-build Firmware](#4.10.2)
         - [4.10.3 - UART Xmodem Bootload](#4.10.3)
@@ -72,9 +72,9 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
             - [4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher](#4.10.3.4)
             - [4.10.3.5 - Firmware update with Silicon Labs Commander](#4.10.3.5)
         - [4.10.4 - Usefull Links](#4.10.4)
-    - [4.11 - LoRa/Sigfox](#4.11)
+    - [4.11 - Optional LoRa/Sigfox](#4.11)
     - [4.12 - RTC](#4.12)
-    - [4.13 - M.2 AI Accelerators](#4.13)
+    - [4.13 - Optional AI Accelerators](#4.13)
   		- [4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)](#4.13.1)
     	- [4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
      	- [4.13.3 - AI Frameworks, SDK, Model Zoo](#4.13.3)
@@ -892,7 +892,7 @@ TPM2_PT_LEVEL:
 ...
 ```
 
-### 4.6.3 - CrytoAuthentication Co-Processor <a name="4.6.3"></a> [📚](#0) 
+### 4.6.3 - Optional CrytoAuthentication Co-Processor <a name="4.6.3"></a> [📚](#0) 
 This option uses the [Microchip ATECC608A-MAHDA](https://ww1.microchip.com/downloads/aemDocuments/documents/SCBU/ProductDocuments/DataSheets/ATECC608A-CryptoAuthentication-Device-Summary-Data-Sheet-DS40001977B.pdf) I2C Chip with 16 keys storage, Asymmetric & Symmetric Algorithms, Networking Key Management, Secure boot, 72 bits Unique ID...
 
 Documentations :
@@ -1099,7 +1099,7 @@ sudo dd bs=2M count=500 if=/dev/sda1 of=/media/xplr/Samsung\ USB/test.bin
 ...
 1048576000 bytes (1.0 GB, 1000 MiB) copied, 34.7954 s, 30.1 MB/s
 ```
-### 4.7.5 - Internal NVMe SSD(s) <a name="4.7.5"></a> [📚](#0) 
+### 4.7.5 - Optional Internal NVMe SSD(s) <a name="4.7.5"></a> [📚](#0) 
 - The main SSD is a 2232 Key M, M.2 module installed on the J15 slot (CM5 / Front side).
 - To make a Raid 0 or 1 NAS, another 2232/2242 Key M, M.2 SSD can be installed on the J4 slot (Bottom plate side).
 - A third 2232/2242 Key B, M.2 SSD can also be used if needed.
@@ -1663,7 +1663,7 @@ echo 0 > /sys/bus/iio/devices/iio:device0/out_voltage6_raw  # Low
 echo 1 > /sys/bus/iio/devices/iio:device0/out_voltage6_raw  # High
 ```
 
-## 4.9 - Cellular and Direct-To-Cell <a name="4.9"></a> [📚](#0) 
+## 4.9 - Optional Cellular and Direct-To-Cell <a name="4.9"></a> [📚](#0) 
 ### 4.9.1 - Nano SIM <a name="4.9.1"></a> [📚](#0) 
 The left cap provides access to a Push Pull holder for a nano SIM card or a 4FF Plastic eSIM card.
 > [!CAUTION]
@@ -1673,7 +1673,7 @@ The left cap provides access to a Push Pull holder for a nano SIM card or a 4FF 
 An eSIM card can be integrated into production, and plugs can be removed for mass-produced products.  
 [Kigen SGP.22+ Tri-cut eUICC eSIM](https://techship.com/product/kigen-sgp-22-tri-cut-e-uicc-e-sim/?variant=001)  
 [How to use an eSIM in Linux?](https://techship.com/blog/how-to-use-an-esim-in-linux-7/)
-### 4.9.3 - 4G LTE CAT6 3GPP Rel12 <a name="4.9.3"></a> [📚](#0) 
+### 4.9.3 - 4G LTE Category 6 adopting 3GPP Release 12 <a name="4.9.3"></a> [📚](#0) 
 [QUECTEL EM060K-GL Documentation](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/EM060K)  
 [QUECTEL EM060K-GL Tutorial](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Modem.md)  
 
@@ -1705,7 +1705,7 @@ Upload:          8.77 Mbps  (data used: 14.7 MB)
                  861.83 ms  (jitter: 91.22ms, low: 49.22ms, high: 1839.04ms)
 Packet Loss:     0.0%
 ```
-## 4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor<a name="4.10"></a> [📚](#0) 
+## 4.10 - Optional Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor<a name="4.10"></a> [📚](#0) 
 This Multi-Protocol Wireless Network co-processor (NCP) option gives automation and IoT connectivity with various protocols (Matter-Over-Thread, Zigbee, BLE Mesh, Open Thread...).  
 It's the perfect interface for :
 - Zigbee2MQTT Hub
@@ -1998,7 +1998,7 @@ https://community.silabs.com/s/question/0D5Vm00000vUohmKAC/flashing-the-xiao-mg2
 https://docs.zephyrproject.org/latest/boards/seeed/xiao_mg24/doc/index.html
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/OVERVIEW.html
 
-## 4.11 - LoRa/Sigfox <a name="4.11"></a> [📚](#0) 
+## 4.11 - Optional LoRa/Sigfox <a name="4.11"></a> [📚](#0) 
 [LSM100A Datasheet](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/LoRa_Sigfox)  
 [LSM100A Tutorial](https://www.framboise314.fr/deux-cartes-lorawan-sigfox-lsm100a-pour-raspberry-pi-et-pico-chez-snoc/#Activer_le_port_serie_du_Raspberry_Pi_5) (In French)  
 
@@ -2019,7 +2019,7 @@ Read vbat voltage on the PMIC
 watch -n 1 vcgencmd pmic_read_adc
 ```
 
-## 4.13 - M.2 AI Accelerators <a name="4.13"></a> [📚](#0) 
+## 4.13 - Optional AI Accelerators <a name="4.13"></a> [📚](#0) 
 
 **Why choose an AI solution in M.2 format?** 
 
