@@ -21,7 +21,7 @@ you should see:
 
 this reply give you that the modem on slot: **0**
 
-then settings:
+to see the Status:
 ```
 mmcli -m 0
 ```
