@@ -661,7 +661,7 @@ AT+CGDCONT=5
 AT+CGDCONT=5
 ```
 
-# 4 - SIM8230G - 5G RedCap Modem with MM<a name="1"></a>
+# 4 - SIM8230G - 5G RedCap Modem with MM<a name="4"></a>
 ```
 mmcli -L
 ```
