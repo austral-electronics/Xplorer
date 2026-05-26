@@ -2,7 +2,7 @@
 - **[1 - Create connection for a Quectel EM060K-GL 4G Modem](#1)**
 - **[2 - Switch a Quectel EM060K-GL modem to QMI mode](#2)**
 - **[3 - Switch a Quectel EM060K-GL modem to ECM mode](#3)**
-- **[4 - SIM8230G - 5G RedCap Modem on ECM mode](#4)**
+- **[4 - SIM8230G - 5G RedCap Modem with MM](#4)**
 ---
 
 # 1 - Create connection for a Quectel EM060K-GL 4G Modem<a name="1"></a>
