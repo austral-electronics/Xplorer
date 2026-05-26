@@ -1,7 +1,8 @@
 # 📚 TABLE OF CONTENTS
 - **[1 - Create connection for a Quectel EM060K-GL 4G Modem](#1)**
 - **[2 - Switch a Quectel EM060K-GL modem to QMI mode](#2)**
-- **[3 - SIM8230G - 5G RedCap Modem on ECM mode](#1)**
+- **[3 - Switch a Quectel EM060K-GL modem to ECM mode](#3)**
+- **[4 - SIM8230G - 5G RedCap Modem on ECM mode](#4)**
 ---
 
 # 1 - Create connection for a Quectel EM060K-GL 4G Modem<a name="1"></a>
@@ -101,7 +102,7 @@ ping -I wwan0 google.com
 ```
 
 
-# 2 - Switch a Quectel EM060K-GL modem to ECM mode<a name="2"></a>
+# 3 - Switch a Quectel EM060K-GL modem to ECM mode<a name="3"></a>
 
 If you only want ECM data and don’t need MM’s SIM/AT management:
 ```
@@ -660,7 +661,7 @@ AT+CGDCONT=5
 AT+CGDCONT=5
 ```
 
-# 2 - SIM8230G - 5G RedCap Modem with MM<a name="1"></a>
+# 4 - SIM8230G - 5G RedCap Modem with MM<a name="1"></a>
 ```
 mmcli -L
 ```
