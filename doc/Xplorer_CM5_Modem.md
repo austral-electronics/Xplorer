@@ -6,9 +6,10 @@
 
 # 1 - Create connection for a Quectel EM060K-GL 4G Modem<a name="1"></a>
 
-### If needed install Modem Manager
+### Install Modem Manager and reboot
 ```
 sudo apt-get install modemmanager
+sudo reboot
 ```
 ### 1️⃣ Unlock the SIM card
 With ModemManager you ask:
