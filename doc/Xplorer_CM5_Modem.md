@@ -6,7 +6,7 @@
 
 # 1 - Create connection for a Quectel EM060K-GL 4G Modem<a name="1"></a>
 
-### If needed install modem Manager
+### If needed install Modem Manager
 ```
 sudo apt-get install modemmanager
 ```
