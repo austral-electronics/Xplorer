@@ -43,7 +43,9 @@ You should now see:
 sudo mmcli -m 0 --enable
 ```
 
-you must check as well that you ports cdc-wdm0 and wwan0, that means the module is in QMI mode which is good, otherwise go to paragraph **[2 - Switch a Quectel EM060K-GL modem to QMI mode](#2)**:
+you must check as well that you ports cdc-wdm0 and wwan0, that means the module is in QMI mode which is good, otherwise go to paragraph
+
+# 2 - Switch a Quectel EM060K-GL modem to QMI mode](#2)**:
 >ports: cdc-wdm0 (qmi), wwan0 (net)
 
 Check bearer:
