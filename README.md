@@ -59,7 +59,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.9 - Cellular and Direct-To-Cell](#4.9)
         - [4.9.1 - Nano SIM](#4.9.1)
         - [4.9.2 - 4FF eSIM](#4.9.2)
-        - [4.9.3 - 4G LTE-A](#4.9.3)
+        - [4.9.3 - 4G LTE CAT6 3GPP Rel12](#4.9.3)
         - [4.9.4 - 5G RedCap/Direct-To-Cell](#4.9.4)
         - [4.9.5 - Speed Test](#4.9.5)
     - [4.10 - Matter-Over-Thead/Zigbee/BLE Mesh Co-Processor](#4.10)
@@ -1673,7 +1673,7 @@ The left cap provides access to a Push Pull holder for a nano SIM card or a 4FF 
 An eSIM card can be integrated into production, and plugs can be removed for mass-produced products.  
 [Kigen SGP.22+ Tri-cut eUICC eSIM](https://techship.com/product/kigen-sgp-22-tri-cut-e-uicc-e-sim/?variant=001)  
 [How to use an eSIM in Linux?](https://techship.com/blog/how-to-use-an-esim-in-linux-7/)
-### 4.9.3 - 4G LTE-A <a name="4.9.3"></a> [📚](#0) 
+### 4.9.3 - 4G LTE CAT6 3GPP Rel12 <a name="4.9.3"></a> [📚](#0) 
 [QUECTEL EM060K-GL Documentation](https://github.com/austral-electronics/Xplorer/tree/main/datasheets/Cellular_DTC/EM060K)  
 [QUECTEL EM060K-GL Tutorial](https://github.com/austral-electronics/Xplorer/blob/main/doc/Xplorer_CM5_Modem.md)  
 
