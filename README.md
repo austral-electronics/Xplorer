@@ -2440,6 +2440,7 @@ ls /dev/ttyUSB2 | grep -q "/dev/ttyUSB2" && echo "✅ RXDC detected" || echo "�
 ls /dev/ttyUSB3 | grep -q "/dev/ttyUSB3" && echo "✅ RXDD detected" || echo "❌ RXDA NOT detected"
 lspci | grep -q "ASM1184e" && echo "✅ ASM1184e detected" || echo "❌  ASM1184e  NOT detected"
 lspci | grep -q "Samsung" && echo "✅ Samsung SSD module detected" || echo "⚠️  Samsung SSD module NOT detected"
+lspci | grep -q "Micron Technology Inc 2450" && echo "✅ Micron 2450 SSD module detected" || echo "⚠️  Samsung SSD module NOT detected"
 lsblk| grep -q "nvme0n1" && echo "✅ Main SSD mounted" || echo "⚠️  Main SSD NOT mounted"
 lspci| grep -q "Hailo-8 AI Processor (rev 01)" && echo "✅ Hailo 8/8L AI Accelerator detected" || echo "⚠️  Hailo 8/8L AI Accelerator NOT detected"
 lspci| grep -q "Axera Semiconductor Co., Ltd Device 0650 (rev 01)" && echo "✅ LLM8850 AI Accelerator detected" || echo "⚠️  LLM8850 AI Accelerator NOT detected"
