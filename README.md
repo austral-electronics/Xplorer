@@ -2422,7 +2422,7 @@ sudo ip link set can1 up type can bitrate 250000
 
 echo -e "\n1️⃣  Peripherals self-test"
 uname -a | grep -q "Debian 1:6.12.47-1+rpt1~bookworm (2025-09-16) aarch64" && echo "✅ Bookworm Headless Detected" || echo "⚠️ Bookworm Headless NOT Detected"
-uname -a | grep -q "Debian 1:6.18.29-1+rpt1 (2026-05-12) aarch64" && echo "✅ Trixie Headless Detected" || echo "⚠️ Trixie Headless NOT Detected"
+uname -a | grep -q "Debian 1:6.18.34-1+rpt1 (2026-06-09) aarch64" && echo "✅ Trixie Headless Detected" || echo "⚠️ Trixie Headless NOT Detected"
 ethtool eth0 | grep -q "Speed: 1000Mb/s" && echo "✅ Ethernet GbE OK" || echo "❌ Ethernet NOT GbE"
 sudo i2cdetect -l | grep -q "i2c-13" && echo "✅ I2C OK" || echo "❌ I2C not detected"
 ls -l /dev/tpm* | grep -q "/dev/tpm0" && echo "✅ TPM Driver OK" || echo "❌ TPM driver not detected"
