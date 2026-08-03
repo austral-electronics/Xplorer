@@ -2081,7 +2081,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[ Axelera Embedded 110m](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera|Europe| 214 (INT8)| 1GB LPDDR4| 3.5-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[ Axelera Embedded 110m](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera|Europe| 214 (INT8)| 1GB LPDDR4| 3.5-9W | [Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/07272b6a9c64e727161edad9a6d44552b67ed7fb/docs/reference/models/model-zoo.md)| 
 |[SAKURA-II](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|EdgeCortix|Japan| 60 (INT8), 30 (BF16)| 16GB, LPDDR4, 68GB/s | 10W typ | [VLMs, LLMs, MultiModal](y)| 
 |[Ara-240](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|NXP/Kinara|Europe| 40 (INT8)| 8 or 16GB LPDDR4 | 3-8W, <12W | [VLMs, LLMs, MultiModal](y)| Llama2-7B (12T/s)
 |[DX-M1](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7201/DX_M1BNM5604.pdf)|DeepX|South Korea| 25 (INT8)| 4GB LPDDR5 | 2-5W | [VLMs](https://developer.deepx.ai/modelzoo/)| YOLO8
@@ -2091,7 +2091,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 Announced ⌛ :
 |Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Axelera Embedded 113m](https://axelera.ai/hubfs/Product%20Brochure/Axelera%20Embedded%20113m.pdf?hsLang=en)|Axelera|Europe| 214 (INT8)| 8GB | 15 TOPS/W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| LLM & VLM, multi-camera vision inference with cascaded or parallel models
+|[Axelera Embedded 113m](https://axelera.ai/hubfs/Product%20Brochure/Axelera%20Embedded%20113m.pdf?hsLang=en)|Axelera|Europe| 214 (INT8)| 8GB | 15 TOPS/W | [Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/07272b6a9c64e727161edad9a6d44552b67ed7fb/docs/reference/models/model-zoo.md)| **LLM:** phi-3-mini, Llama-3.2-1B/3B/8B, Velvet-2B & **VLM:** multi-camera vision inference with cascaded or parallel models
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
@@ -2119,7 +2119,7 @@ Announced ⌛ :
 ### 4.13.3.4 - Axelera Embedded 110m / 113m<a name="4.13.3.4"></a> [📚](#0) 
 - PyTorch, ONNX
 - [Getting Started with Metis](https://support.axelera.ai/hc/en-us/articles/25494427062802-Getting-Started-with-Metis-M-2)
- - [Github Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/HEAD/docs/reference/model_zoo.md)
+ - [Github Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/07272b6a9c64e727161edad9a6d44552b67ed7fb/docs/reference/models/model-zoo.md)
 ---
 
 ## 4.14 - Improving energy efficiency and thermal performance  <a name="4.14"></a> [📚](#0) 
