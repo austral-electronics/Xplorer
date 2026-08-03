@@ -2095,10 +2095,11 @@ Announced ⌛ :
     - TensorFlow, TensorFlow Lite, Keras, PyTorch & ONNX
     - [VLMs Model Zoo](https://hailo.ai/products/hailo-software/model-explorer-vision/)
     - [LLMs, MMs, Audio Model Zoo](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/)
+    - [Every LLM that runs on Hailo-10H](https://www.codesota.com/embedded-ai/hailo-10h-llms)
     - Tutorials :
     	-  	 [YOLO versions Benchmark with Hailo 8](https://www.youtube.com/watch?v=iAFGUgFyYKg&t=2s)
 	    -  	 [Convert Fine-Tuned YOLOv8 from ONNX to HEF for Hailo-8L](https://www.youtube.com/watch?v=f-mP6UqCsKI&t=7s)
-        -  	 [urning an ONNX Model into a HEF for Inference](https://www.youtube.com/watch?v=tDq6RIIhIlc)
+        -  	 [Turning an ONNX Model into a HEF for Inference](https://www.youtube.com/watch?v=tDq6RIIhIlc)
 - **Deepx** :
     - TensorFlow, TensorFlow Lite, ONNX, Keras, PyTorch by Dataflow complier converted
     - [DXNN SDK](https://developer.deepx.ai/article/get-started/)
