@@ -2076,7 +2076,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 
 |Chipset|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis Embedded 110m](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera|Europe| 214 (INT8)| 1GB LPDDR4| 3.5-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[ Axelera Embedded 110m](https://store.axelera.ai/products/metis-m-2-card-the-most-performant-m-2-edge-ai-accelerator)|Axelera|Europe| 214 (INT8)| 1GB LPDDR4| 3.5-9W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[SAKURA-II](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|EdgeCortix|Japan| 60 (INT8), 30 (BF16)| 16GB, LPDDR4, 68GB/s | 10W typ | [VLMs, LLMs, MultiModal](y)| 
 |[Ara-240](https://www.nxp.com/design/design-center/development-boards-and-designs/ARA2-M2-16G-GT)|NXP/Kinara|Europe| 40 (INT8)| 8 or 16GB LPDDR4 | 3-8W, <12W | [VLMs, LLMs, MultiModal](y)| Llama2-7B (12T/s)
 |[DX-M1](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7201/DX_M1BNM5604.pdf)|DeepX|South Korea| 25 (INT8)| 4GB LPDDR5 | 2-5W | [VLMs](https://developer.deepx.ai/modelzoo/)| YOLO8
@@ -2086,7 +2086,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 Announced ⌛ :
 |Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Metis 113m](https://axelera.ai/hubfs/Product%20Brochure/Axelera%20Embedded%20113m.pdf?hsLang=en)|Axelera|Europe| 214 (INT8)| 8GB | 15 TOPS/W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Axelera Empbedded 113m](https://axelera.ai/hubfs/Product%20Brochure/Axelera%20Embedded%20113m.pdf?hsLang=en)|Axelera|Europe| 214 (INT8)| 8GB | 15 TOPS/W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
