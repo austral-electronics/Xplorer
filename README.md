@@ -2090,7 +2090,7 @@ Announced ⌛ :
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
-### 4.13.3 - AI Frameworks, SDK, Model Zoo <a name="4.13.3"></a> [📚](#0) 
+### 4.13.3 - AI Frameworks, SDK, Model Zoo, Tutorials <a name="4.13.3"></a> [📚](#0) 
 - **Hailo** :
     - TensorFlow, TensorFlow Lite, Keras, PyTorch & ONNX
     - [VLMs Model Zoo](https://hailo.ai/products/hailo-software/model-explorer-vision/)
