@@ -2098,7 +2098,7 @@ Announced ⌛ :
     - [LLMs, MMs, Audio Model Zoo](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/)
     - [Every LLM that runs on Hailo-10H](https://www.codesota.com/embedded-ai/hailo-10h-llms)
     - Tutorials :
-    	-    Hailo 10-H LLM tutorial [Video1](https://www.youtube.com/watch?v=820nG-bmWx4),[Link1](https://toucancreator.com/learn/wagner-s-techtalk/tutorial/ai-hat-2-quick-setup-on-a-raspberry-pi-5)
+    	-    Hailo 10-H LLM tutorials : [Video1](https://www.youtube.com/watch?v=820nG-bmWx4), [Link1](https://toucancreator.com/learn/wagner-s-techtalk/tutorial/ai-hat-2-quick-setup-on-a-raspberry-pi-5)
         -  	 [YOLO versions Benchmark with Hailo 8](https://www.youtube.com/watch?v=iAFGUgFyYKg&t=2s)
 	    -  	 [Convert Fine-Tuned YOLOv8 from ONNX to HEF for Hailo-8L](https://www.youtube.com/watch?v=f-mP6UqCsKI&t=7s)
         -  	 [Turning an ONNX Model into a HEF for Inference](https://www.youtube.com/watch?v=tDq6RIIhIlc)
