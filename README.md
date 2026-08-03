@@ -78,6 +78,10 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
   		- [4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)](#4.13.1)
     	- [4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
      	- [4.13.3 - AI Frameworks, SDK, Model Zoo, Tutorials](#4.13.3)
+      		- [4.13.3.1 - Hailo 8L/8/10-H](#4.13.3.1)
+            - [4.13.3.2 - Espressif / Axera AX8850](#4.13.3.2)
+            - [4.13.3.3 - Deepx DX-M1M](#4.13.3.3)
+            - [4.13.3.4 - Axelera Embedded 110m / 113m](#4.13.3.4)
      - [4.14 - Improving energy efficiency and thermal performance](#4.14)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
@@ -2092,7 +2096,7 @@ Announced ⌛ :
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
 ### 4.13.3 - AI Frameworks, SDK, Model Zoo, Tutorials <a name="4.13.3"></a> [📚](#0) 
-- **Hailo** :
+### 4.13.3.1 - Hailo 8L/8/10-H<a name="4.13.3.1"></a> [📚](#0) 
     - TensorFlow, TensorFlow Lite, Keras, PyTorch & ONNX
     - [VLMs Model Zoo](https://hailo.ai/products/hailo-software/model-explorer-vision/)
     - [LLMs, MMs, Audio Model Zoo](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/)
@@ -2102,16 +2106,16 @@ Announced ⌛ :
         -  	 [YOLO versions Benchmark with Hailo 8](https://www.youtube.com/watch?v=iAFGUgFyYKg&t=2s)
 	    -  	 [Convert Fine-Tuned YOLOv8 from ONNX to HEF for Hailo-8L](https://www.youtube.com/watch?v=f-mP6UqCsKI&t=7s)
         -  	 [Turning an ONNX Model into a HEF for Inference](https://www.youtube.com/watch?v=tDq6RIIhIlc)
-- **Deepx** :
+### 4.13.3.2 - Espressif / Axera AX8850<a name="4.13.3.2"></a> [📚](#0)
+	- LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)
+### 4.13.3.3 - Deepx DX-M1M<a name="4.13.3.3"></a> [📚](#0)
     - TensorFlow, TensorFlow Lite, ONNX, Keras, PyTorch by Dataflow complier converted
     - [DXNN SDK](https://developer.deepx.ai/article/get-started/)
     - [VLMs Model Zoo](https://developer.deepx.ai/modelzoo/)
-- **Axelera** : 
+### 4.13.3.4 - Axelera Embedded 110m / 113m<a name="4.13.3.4"></a> [📚](#0)
     - PyTorch, ONNX
     - [Getting Started with Metis](https://support.axelera.ai/hc/en-us/articles/25494427062802-Getting-Started-with-Metis-M-2)
     - [Github Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/HEAD/docs/reference/model_zoo.md)
-- **Espressif / Axera** :
-	- LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)
 ---
 
 ## 4.14 - Improving energy efficiency and thermal performance  <a name="4.14"></a> [📚](#0) 
