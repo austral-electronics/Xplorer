@@ -2045,7 +2045,7 @@ You can currently use an LLM on some modules (Hailo-10H, AX8850), but in april 2
 With the arrival of new very compact and smart multimodal models such as **Gemma 4 or Qwen 3.6**, your application will be able to make truly relevant decisions based on video and audio streams, and all the embedded and web knowledge.  
 
 **Applications** :
-- **Edge/mobile smart automation server** : [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/), [Hermes-agent](https://hermes-agent.nousresearch.com/)...
+- **Edge/mobile smart automation server** : [openclaw](https://openclaw.ai/), [n8n](https://n8n.io/), [Hermes-agent](https://hermes-agent.nousresearch.com/), [taOS](https://github.com/jaylfc/taOS)...
 - **Drone autonomy / Smart Autopilot** : combines data from different sensors, recognising unpredictable obstacles, estimates the positions and velocity vectors of the obstacles, sort them by level of danger, makes decisions, choose the best evasion speed and trajectory and prepare and submit a warning messages to humans or other drones. This level of IA knows the their model all the rules of priority and call procedures for air, road and maritime traffic. 
 
 **Do I really need an AI accelerator to run a multimodal LLM ?** 
