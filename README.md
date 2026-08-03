@@ -2103,13 +2103,13 @@ Announced ⌛ :
 - [LLMs, MMs, Audio Model Zoo](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/)
 - [Every LLM that runs on Hailo-10H](https://www.codesota.com/embedded-ai/hailo-10h-llms)
 - Tutorials :
-  	-    Hailo 10-H LLM tutorials : [Video1](https://www.youtube.com/watch?v=820nG-bmWx4), [Link1](https://toucancreator.com/learn/wagner-s-techtalk/tutorial/ai-hat-2-quick-setup-on-a-raspberry-pi-5),  [Link2](https://toucancreator.com/learn/wagner-s-techtalk/tutorial/asus-ugen300-m-2-ai-accelerator-setup-guide)
+  	-    Hailo 10-H LLM tutorials : [Video1](https://www.youtube.com/watch?v=820nG-bmWx4), [(1)](https://toucancreator.com/learn/wagner-s-techtalk/tutorial/ai-hat-2-quick-setup-on-a-raspberry-pi-5),  [(2)](https://toucancreator.com/learn/wagner-s-techtalk/tutorial/asus-ugen300-m-2-ai-accelerator-setup-guide)
 -  	 [YOLO versions Benchmark with Hailo 8](https://www.youtube.com/watch?v=iAFGUgFyYKg&t=2s)
 -  	 [Convert Fine-Tuned YOLOv8 from ONNX to HEF for Hailo-8L](https://www.youtube.com/watch?v=f-mP6UqCsKI&t=7s)
 -  	 [Turning an ONNX Model into a HEF for Inference](https://www.youtube.com/watch?v=tDq6RIIhIlc)
 
 ### 4.13.3.2 - Espressif / Axera AX8850<a name="4.13.3.2"></a> [📚](#0) 
-- LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)
+- LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview) [(2)](https://docs.radxa.com/en/aicore/ax-m1) [(3)](https://huggingface.co/AXERA-TECH)
 
 ### 4.13.3.3 - Deepx DX-M1M<a name="4.13.3.3"></a> [📚](#0) 
 - TensorFlow, TensorFlow Lite, ONNX, Keras, PyTorch by Dataflow complier converted
