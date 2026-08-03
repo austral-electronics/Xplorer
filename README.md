@@ -2086,7 +2086,7 @@ Require an enlarged enclosure + an enlarged PCB or a 90° M.2 Key M adapter.
 Announced ⌛ :
 |Reference|Brand|Sourcing|TOPS|DRAM|Consumption|Use|Models                                                                              
 |---------|-----|--------|----|----|-----------|---|-| 
-|[Axelera Empbedded 113m](https://axelera.ai/hubfs/Product%20Brochure/Axelera%20Embedded%20113m.pdf?hsLang=en)|Axelera|Europe| 214 (INT8)| 8GB | 15 TOPS/W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| 
+|[Axelera Empbedded 113m](https://axelera.ai/hubfs/Product%20Brochure/Axelera%20Embedded%20113m.pdf?hsLang=en)|Axelera|Europe| 214 (INT8)| 8GB | 15 TOPS/W | [Voyager model zoo](https://axelera.ai/ai-software/model-zoo)| LLM & VLM, multi-camera vision inference with cascaded or parallel models
 |[EN100](https://en100.enchargeai.com/)|EnChargeAI| US| 40 (INT8)| 32GB@68GB/s | <8.25W | | 
 |[MM1076](https://mythic.ai/products/mm1076-m-2-m-key-card/)|MYTIC| US| 0 | 80M weights  | 25 | | Analog AI
 
