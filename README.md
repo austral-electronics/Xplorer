@@ -2097,6 +2097,7 @@ Announced ⌛ :
 
 ### 4.13.3 - AI Frameworks, SDK, Model Zoo, Tutorials <a name="4.13.3"></a> [📚](#0) 
 ### 4.13.3.1 - Hailo 8L/8/10-H<a name="4.13.3.1"></a> [📚](#0) 
+
     - TensorFlow, TensorFlow Lite, Keras, PyTorch & ONNX
     - [VLMs Model Zoo](https://hailo.ai/products/hailo-software/model-explorer-vision/)
     - [LLMs, MMs, Audio Model Zoo](https://hailo.ai/products/hailo-software/model-explorer/generative-ai/)
@@ -2106,13 +2107,16 @@ Announced ⌛ :
         -  	 [YOLO versions Benchmark with Hailo 8](https://www.youtube.com/watch?v=iAFGUgFyYKg&t=2s)
 	    -  	 [Convert Fine-Tuned YOLOv8 from ONNX to HEF for Hailo-8L](https://www.youtube.com/watch?v=f-mP6UqCsKI&t=7s)
         -  	 [Turning an ONNX Model into a HEF for Inference](https://www.youtube.com/watch?v=tDq6RIIhIlc)
-### 4.13.3.2 - Espressif / Axera AX8850<a name="4.13.3.2"></a> [📚](#0)
+### 4.13.3.2 - Espressif / Axera AX8850<a name="4.13.3.2"></a> [📚](#0) 
+
 	- LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview)[(2)](https://docs.radxa.com/en/aicore/ax-m1)[(3)](https://huggingface.co/AXERA-TECH)
-### 4.13.3.3 - Deepx DX-M1M<a name="4.13.3.3"></a> [📚](#0)
+### 4.13.3.3 - Deepx DX-M1M<a name="4.13.3.3"></a> [📚](#0) 
+
     - TensorFlow, TensorFlow Lite, ONNX, Keras, PyTorch by Dataflow complier converted
     - [DXNN SDK](https://developer.deepx.ai/article/get-started/)
     - [VLMs Model Zoo](https://developer.deepx.ai/modelzoo/)
-### 4.13.3.4 - Axelera Embedded 110m / 113m<a name="4.13.3.4"></a> [📚](#0)
+### 4.13.3.4 - Axelera Embedded 110m / 113m<a name="4.13.3.4"></a> [📚](#0) 
+
     - PyTorch, ONNX
     - [Getting Started with Metis](https://support.axelera.ai/hc/en-us/articles/25494427062802-Getting-Started-with-Metis-M-2)
     - [Github Voyager model zoo](https://github.com/axelera-ai-hub/voyager-sdk/blob/HEAD/docs/reference/model_zoo.md)
