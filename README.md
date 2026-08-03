@@ -77,7 +77,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.13 - Optional AI Accelerators](#4.13)
   		- [4.13.1 - Compatible AI Accelerator for standard enclosure (M.2 2230 to 3042 Key M or B+M modules)](#4.13.1)
     	- [4.13.2 - 🚧 Require a customization on request 🚧 : AI Accelerator in M.2 2280 Key M form factor](#4.13.2)
-     	- [4.13.3 - AI Frameworks, SDK, Model Zoo](#4.13.3)
+     	- [4.13.3 - AI Frameworks, SDK, Model Zoo, Tutorials](#4.13.3)
      - [4.14 - Improving energy efficiency and thermal performance](#4.14)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
