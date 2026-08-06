@@ -1836,7 +1836,7 @@ if (GPIO_PinInGet(BTL_BUTTON_PORT, BTL_BUTTON_PIN)
 }
 ```
 
-#### 4.10.3.2 - Command NRST and NBOOT <a name="4.10.3.2"></a> [📚](#0) 
+#### 4.10.3.2 - Command NRST and NBOOT (understand the principle) <a name="4.10.3.2"></a> [📚](#0) 
 
 To control NRST and NBOOT, config.txt must contain :
 ```
