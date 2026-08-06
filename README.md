@@ -1913,13 +1913,13 @@ Press Ctrl + A an then S to select the minicom upload mode in the pop up menu :
 +-----------+ 
 ```
 Select 'xmodem'.  
-With arrows and space go to 'home' and 'xplr' (or your work directory) to found your .gbl firmware.
+With arrows and space go to [..] [home] [xplr] (or your working directory) to found your .gbl firmware.
 Select your .gbl firmware to flash with the arrows, space and enter.
 You will see a blue pop up window :
 ```
 +----------------[xmodem upload - Press CTRL-C to quit]----------------+    
 |Sending mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl, 2117 blocks: Gi|    
-|ve your local XMODEM receive command now.                             |    
+|ve your local XMODEM receive command now.                             |     
 |Xmodem sectors/kbytes sent: 808/101k                                  |
 +----------------------------------------------------------------------+   
 ```
