@@ -1789,7 +1789,7 @@ The pinout is compliant with the Network Co-Processor (NCP) Application with UAR
 | 6        | PB00   | CM5 Pin 19        | FAN_PWM /GPIO45 | **NBOOT_MP_RAD** | MG24 Factory-programmed bootload pin (Will be connected to RTS in future PCB Revision)
 | 11       | PA04   | TP21              | TP21            | **TP21**         | Test Point (Reserved for a LED activated at low level in future PCB Revision) 
 | 12       | PA05   | FT432H-56Q Pin 23 | BDBUS1          | **RXD_B**        | MG24 USART1.TX (Xmodem & NCP Compliant)  
-| 13       | PA06   | FT432H-56Q Pin 21 | BDBUS0          | **TXD_B**        | MG24 USART1.RX (Xmodem & NCP Compliant)
+| 13       | PA06   | FT432H-56Q Pin 22 | BDBUS0          | **TXD_B**        | MG24 USART1.RX (Xmodem & NCP Compliant)
 | 16       | PA07   | FT432H-56Q Pin 25 | BDBUS3          | **CTS_B**        | MG24 (NCP Compliant)
 | 17       | PA08   | FT432H-56Q Pin 24 | BDBUS2          | **RTS_B**        | MG24 (NCP Compliant)
 | 31       | #RESET|  CM5 Pin 80        | SCL0 / GPIO39   | **NRST_MP_RAD**  | MG24 Reset (Will be connected to DTR in future PCB Revision)
