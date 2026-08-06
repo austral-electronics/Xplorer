@@ -1944,7 +1944,7 @@ BL >
 ```
 Press 2 or launch a Reset sequence to run this firmware
 
-#### 4.10.3.4 - Flash automatically the MGM240 with a python script (recommanded) <a name="4.10.3.4"></a> [📚](#0) 
+#### 4.10.3.4 - Flash automatically the MGM240 with a python script (recommended) <a name="4.10.3.4"></a> [📚](#0) 
 Install :
 ```
 sudo apt update
