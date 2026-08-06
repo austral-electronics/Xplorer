@@ -1913,6 +1913,7 @@ Press Ctrl + A an then S to select the minicom upload mode in the pop up menu :
 +-----------+ 
 ```
 Select 'xmodem'.  
+With arrows and space go to 'home' and 'xplr' (or your work directory) to found your .gbl firmware.
 Select your .gbl firmware to flash with the arrows, space and enter.
 You will see a blue pop up window :
 ```
