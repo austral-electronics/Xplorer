@@ -67,10 +67,11 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.10.2 - Pre-build Firmware](#4.10.2)
         - [4.10.3 - UART Xmodem Bootload](#4.10.3)
             - [4.10.3.1 - Define the bootloader activation pin](#4.10.3.1)
-            - [4.10.3.2 - Command NRST and NBOOT](#4.10.3.2)
-            - [4.10.3.3 - Flash manually using Minicom](#4.10.3.3)
-            - [4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher](#4.10.3.4)
-            - [4.10.3.5 - Firmware update with Silicon Labs Commander](#4.10.3.5)
+            - [4.10.3.2 - Command NRST and NBOOT (understand the principle)](#4.10.3.2)
+            - [4.10.3.3 - Flash manually using Minicom (understand the principle)](#4.10.3.3)
+            - [4.10.3.4 - Flash automatically the MGM240 with a python script (recommended)](#4.10.3.4)
+            - [4.10.3.5 - Firmware update with the NabuCasa Universal Silicon Labs Flasher (obsolete)](#4.10.3.5)
+            - [4.10.3.6 - Firmware update with Silicon Labs Commander (obsolete)](#4.10.3.6)
         - [4.10.4 - Usefull Links](#4.10.4)
     - [4.11 - Optional LoRa/Sigfox](#4.11)
     - [4.12 - RTC](#4.12)
@@ -1875,7 +1876,7 @@ or in one line :
 ```
 pinctrl set 45 op pn dh && pinctrl set 39 op pn dl && sleep .1 && pinctrl set 39 op pn dh && sleep .2 && pinctrl set 45 op pn dl
 ```
-#### 4.10.3.3 - Flash manually using Minicom <a name="4.10.3.3"></a> [📚](#0) 
+#### 4.10.3.3 - Flash manually using Minicom (understand the principle) <a name="4.10.3.3"></a> [📚](#0) 
 Install and minicom :
 ```
 sudo apt-get install minicom
@@ -1943,7 +1944,152 @@ BL >
 ```
 Press 2 or launch a Reset sequence to run this firmware
 
-#### 4.10.3.4 - Firmware update with the NabuCasa Universal Silicon Labs Flasher <a name="4.10.3.4"></a> [📚](#0) 
+#### 4.10.3.4 - Flash automatically the MGM240 with a python script (recommanded) <a name="4.10.3.4"></a> [📚](#0) 
+Install :
+```
+sudo apt update
+sudo apt install python3-pip python3-serial -y
+sudo pip3 install xmodem pyserial --break-system-packages
+```
+Edit the python script :
+```
+sudo nano flash_mgm240.py
+```
+with
+```
+#!/usr/bin/env python3
+"""
+Flash a .gbl firmware image onto an MGM240 target via the Gecko Bootloader
+UART/XMODEM interface, driving the BOOT/RESET GPIO sequence with pinctrl.
+
+Usage:
+    python3 flash_mgm240.py <firmware.gbl> [serial_port]
+
+Example:
+    python3 flash_mgm240.py mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl /dev/ttyUSB1
+"""
+
+import sys
+import time
+import subprocess
+import serial
+from xmodem import XMODEM
+
+# Default serial port and baud rate (override port via 2nd CLI argument)
+DEFAULT_PORT = "/dev/ttyUSB1"
+BAUDRATE = 115200
+
+# GPIO sequences (exact commands as provided)
+BOOTLOAD_CMD = (
+    "pinctrl set 45 op pn dh && "
+    "pinctrl set 39 op pn dl && "
+    "sleep .1 && "
+    "pinctrl set 39 op pn dh && "
+    "sleep .2 && "
+    "pinctrl set 45 op pn dl"
+)
+
+RESET_CMD = (
+    "pinctrl set 45 op pn dl && "
+    "pinctrl set 39 op pn dl && "
+    "sleep .1 && "
+    "pinctrl set 39 op pn dh"
+)
+
+def run_pin_sequence(cmd, label):
+    """Run a pinctrl GPIO sequence via bash and check for errors."""
+    print(f"[*] Running {label} sequence...")
+    result = subprocess.run(["bash", "-c", cmd])
+    if result.returncode != 0:
+        print(f"[!] {label} sequence failed (exit code {result.returncode})")
+        sys.exit(1)
+
+def enter_bootloader():
+    """Assert the GPIO sequence that puts the MGM240 into bootloader mode."""
+    run_pin_sequence(BOOTLOAD_CMD, "bootload")
+    # Give the bootloader time to start and print its menu
+    time.sleep(0.5)
+
+def reset_target():
+    """Assert the GPIO sequence that resets the MGM240 (runs the application)."""
+    run_pin_sequence(RESET_CMD, "reset")
+
+def transfer_firmware(port, filepath):
+    """Select 'upload gbl' in the bootloader menu and perform the XMODEM transfer."""
+    ser = serial.Serial(port, BAUDRATE, timeout=1, rtscts=False, dsrdtr=False)
+    time.sleep(0.2)
+    ser.reset_input_buffer()
+
+    # Select "1) upload gbl" in the bootloader menu
+    ser.write(b"1")
+    time.sleep(0.3)
+    menu_response = ser.read(200)
+    print(f"[*] Bootloader response: {menu_response}")
+
+    def getc(size, timeout=1):
+        return ser.read(size) or None
+
+    def putc(data, timeout=1):
+        return ser.write(data)
+
+    modem = XMODEM(getc, putc)
+
+    print(f"[*] Starting XMODEM transfer of {filepath}...")
+    with open(filepath, "rb") as f:
+        success = modem.send(f, retry=16)
+
+    ser.close()
+    return success
+
+
+def main():
+    if len(sys.argv) < 2:
+        print(f"Usage: {sys.argv[0]} <firmware.gbl> [serial_port]")
+        sys.exit(1)
+
+    filepath = sys.argv[1]
+    port = sys.argv[2] if len(sys.argv) > 2 else DEFAULT_PORT
+
+    print(f"[*] Target file : {filepath}")
+    print(f"[*] Serial port : {port} @ {BAUDRATE} baud")
+
+    enter_bootloader()
+
+    success = transfer_firmware(port, filepath)
+
+    if success:
+        print("[*] Transfer successful. Resetting target to run the application.")
+        reset_target()
+        print("[*] Done.")
+    else:
+        print("[!] Transfer failed. Target left in bootloader mode.")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+```
+Get a .gbl image (example)  :
+```
+wget https://github.com/darkxst/silabs-firmware-builder/releases/download/20250220/mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
+```
+Flash to the MGM240 and run :
+```
+python3 flash_mgm240.py mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
+```
+you must see :
+```
+python3 flash_mgm240.py mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
+[*] Target file : mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
+[*] Serial port : /dev/ttyUSB1 @ 115200 baud
+[*] Running bootload sequence...
+[*] Bootloader response: b'\r\nbegin upload\r\n\x00CC'
+[*] Starting XMODEM transfer of mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl...
+[*] Transfer successful. Resetting target to run the application.
+[*] Running reset sequence...
+[*] Done.
+```
+
+#### 4.10.3.5 - Firmware update with the NabuCasa Universal Silicon Labs Flasher (obsolete) <a name="4.10.3.5"></a> [📚](#0) 
 
 Universal Silicon Labs Flasher Links :  
 - https://github.com/NabuCasa/universal-silabs-flasher
@@ -1962,7 +2108,7 @@ Flash the MG24 :
 universal-silabs-flasher --device /dev/ttyUSB1 flash --firmware xxxxx-115200.gbl
 ```
 
-#### 4.10.3.5 - Firmware/Bootloader update with Silicon Labs Commander <a name="4.10.3.5"></a> [📚](#0) 
+#### 4.10.3.6 - Firmware/Bootloader update with Silicon Labs Commander (obsolete) <a name="4.10.3.6"></a> [📚](#0) 
 https://siliconlabs.github.io/matter/2.3.0-1.3-alpha.2/general/FLASH_SILABS_DEVICE.html
 https://community.silabs.com/s/article/setting-up-raspberry-pi-for-development-with-silicon-labs-emberznet-stack
 
