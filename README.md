@@ -1871,6 +1871,10 @@ pinctrl set 39 op pn dh
 sleep .2
 pinctrl set 45 op pn dl
 ```
+or in one line :
+```
+pinctrl set 45 op pn dh && pinctrl set 39 op pn dl && sleep .1 && pinctrl set 39 op pn dh && sleep .2 && pinctrl set 45 op pn dl
+```
 #### 4.10.3.3 - Flash manually using Minicom <a name="4.10.3.3"></a> [📚](#0) 
 Install and minicom :
 ```
