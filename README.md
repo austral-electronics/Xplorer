@@ -1979,7 +1979,7 @@ from xmodem import XMODEM
 DEFAULT_PORT = "/dev/ttyUSB1"
 BAUDRATE = 115200
 
-# GPIO sequences (exact commands as provided)
+# GPIO sequences
 BOOTLOAD_CMD = (
     "pinctrl set 45 op pn dh && "
     "pinctrl set 39 op pn dl && "
@@ -2041,7 +2041,6 @@ def transfer_firmware(port, filepath):
     ser.close()
     return success
 
-
 def main():
     if len(sys.argv) < 2:
         print(f"Usage: {sys.argv[0]} <firmware.gbl> [serial_port]")
@@ -2078,7 +2077,6 @@ python3 flash_mgm240.py mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
 ```
 you must see :
 ```
-python3 flash_mgm240.py mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
 [*] Target file : mgm240p_zigbee_ncp_8.0.2.0_sw_flow_115200.gbl
 [*] Serial port : /dev/ttyUSB1 @ 115200 baud
 [*] Running bootload sequence...
