@@ -2257,6 +2257,45 @@ Announced ⌛ :
 -  	 [Convert Fine-Tuned YOLOv8 from ONNX to HEF for Hailo-8L](https://www.youtube.com/watch?v=f-mP6UqCsKI&t=7s)
 -  	 [Turning an ONNX Model into a HEF for Inference](https://www.youtube.com/watch?v=tDq6RIIhIlc)
 
+Update the Linux and eeprom:
+```
+sudo apt update
+sudo apt full-upgrade -y
+sudo rpi-eeprom-update -a
+sudo reboot
+```
+
+Check if the Hailo M.2 module is installed:
+```
+lspci
+```
+You must see :
+...
+0001:06:00.0 Co-processor: Hailo Technologies Ltd. Hailo-8 AI Processor (rev 01)
+...
+```
+For Hailo 8/8L, Install required dependencies and reboot 🥐☕ :
+```
+sudo apt install dkms
+sudo apt install hailo-all
+sudo reboot
+```
+Or for Hailo 10-H, Install required dependencies and reboot 🥐☕ :
+```
+sudo apt install dkms
+sudo apt install hailo-h10-all
+sudo reboot
+```
+Check that everything is running correctly :
+```
+hailortcli fw-control identify
+```
+You must see the Hailo M.2 module version :
+
+
+[Run VLM on Hailo 8L/8/10-H](https://www.raspberrypi.com/documentation/computers/ai.html#vision-ai)
+[Run LLM Hailo 10-H](https://www.raspberrypi.com/documentation/computers/ai.html#LLMs)
+
 ### 4.13.3.2 - Espressif / Axera AX8850<a name="4.13.3.2"></a> [📚](#0) 
 - LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview) [(2)](https://docs.radxa.com/en/aicore/ax-m1) [(3)](https://huggingface.co/AXERA-TECH)
 
