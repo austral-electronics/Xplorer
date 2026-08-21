@@ -2321,6 +2321,45 @@ FHD Camera: FHD Camera (usb-xhci-hcd.0-1):
 	/dev/video0
 ...
 ```
+Benchmark the FPS of a yolo8n model on Hailo 8L :
+```
+wget https://hailo-model-zoo.s3.eu-west-2.amazonaws.com/ModelZoo/Compiled/v2.14.0/hailo8l/yolov8n.hef
+hailortcli run yolov8n.hef
+```
+Or Benchmark the FPS of a yolo8n model on Hailo 8 :
+```
+wget https://hailo-model-zoo.s3.eu-west-2.amazonaws.com/ModelZoo/Compiled/v2.14.0/hailo8/yolov8n.hef
+hailortcli run yolov8n.hef
+```
+It must gives you with a Hailo 8L :
+```
+Running streaming inference (yolov8n.hef):
+  Transform data: true
+    Type:      auto
+    Quantized: true
+Network yolov8n/yolov8n: 100% | 306 | FPS: 60.81 | ETA: 00:00:00
+> Inference result:
+ Network group: yolov8n
+    Frames count: 306
+    FPS: 60.81
+    Send Rate: 597.77 Mbit/s
+    Recv Rate: 594.04 Mbit/s
+```
+Or on Hailo 8 :
+```
+Running streaming inference (yolov8n.hef):
+  Transform data: true
+    Type:      auto
+    Quantized: true
+Network yolov8n/yolov8n: 100% | 1057 | FPS: 211.15 | ETA: 00:00:00
+> Inference result:
+ Network group: yolov8n
+    Frames count: 1057
+    FPS: 211.15
+    Send Rate: 2075.70 Mbit/s
+    Recv Rate: 2062.73 Mbit/s
+```
+
 Run VLM, LLM demonstrations :
 - [Run VLM on Hailo 8L/8/10-H](https://www.raspberrypi.com/documentation/computers/ai.html#vision-ai)
 - [Run LLM Hailo 10-H](https://www.raspberrypi.com/documentation/computers/ai.html#LLMs)
