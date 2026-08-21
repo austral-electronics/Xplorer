@@ -392,6 +392,9 @@ dtparam=act_led_activelow=off
 gpio=39=op,dh
 gpio=45=op,dl
 
+# Xplorer CM5 with Hailo 8L, 8 or 10-H M.2 AI Module
+#dtoverlay=pineboards-hat-ai
+
 # Xplorer CM5 : Required for derating temperature >48°C/122°F (Enclosure V3, CM5 16G/64G/WIFI, PCIe Switch ON, SSD 256G)
 #arm_freq=2200
 #over_voltage=-2
@@ -2262,6 +2265,14 @@ You must see :
 0001:06:00.0 Co-processor: Hailo Technologies Ltd. Hailo-8 AI Processor (rev 01)
 ...
 ```
+Edit the configuration file :
+```
+sudo nano /boot/firmware/config.txt
+```
+Check to make sure this line is not a comment :
+```
+dtoverlay=pineboards-hat-ai
+```
 For Hailo 8/8L, Install required dependencies and reboot 🥐☕ :
 ```
 sudo apt install dkms
@@ -2279,7 +2290,15 @@ Check that everything is running correctly :
 hailortcli fw-control identify
 ```
 You must see the Hailo M.2 module version :
-
+```
+Executing on device: 0001:06:00.0
+Identifying board
+Control Protocol Version: 2
+Firmware Version: 4.23.0 (release,app,extended context switch buffer)
+Logger Version: 0
+Board Name: Hailo-8
+Device Architecture: HAILO8
+```
 
 [Run VLM on Hailo 8L/8/10-H](https://www.raspberrypi.com/documentation/computers/ai.html#vision-ai)
 [Run LLM Hailo 10-H](https://www.raspberrypi.com/documentation/computers/ai.html#LLMs)
