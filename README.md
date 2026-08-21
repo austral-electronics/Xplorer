@@ -27,21 +27,8 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
         - [4.2.1 - GbE over M12](#4.2.1)
         - [4.2.2 - 5 GbE over USB-C](#4.2.1)
     - [4.3 - WiFi/BT](#4.3)
-    - [4.4 - Serials](#4.4)
-        - [4.4.1 - UART0](#4.4.1)
-        - [4.4.2 - COM1](#4.4.2)
-        - [4.4.3 - COM2](#4.4.3)
-        - [4.4.4 - COM3 in RS232 Mode](#4.4.4)
-        - [4.4.5 - COM3 in RS485 Mode](#4.4.5)
-        - [4.4.6 - COM4](#4.4.6)
-        - [4.4.7 - RXDA](#4.4.7)
-        - [4.4.8 - RXDB](#4.4.8)
-        - [4.4.9 - RXDC](#4.4.9)
-        - [4.4.10 - RXDD](#4.4.10)
-    - [4.5 - CAN-FD](#4.5)
-        - [4.5.1 - SPI](#4.5.1)
-        - [4.5.2 - CAN1](#4.5.2)
-        - [4.5.3 - CAN2](#4.5.3)
+    - [4.4 - Serials (UART0, COM1..3, RXDA..RXDD)](#4.4)
+    - [4.5 - CAN-FD (SPI, CAN1, CAN2)](#4.5)
     - [4.6 - CyberSecurity](#4.6)
         - [4.6.1 - I2C](#4.6.1)
         - [4.6.2 - TPM2.0](#4.6.2)
@@ -2270,6 +2257,7 @@ Check if the Hailo M.2 module is installed:
 lspci
 ```
 You must see :
+```
 ...
 0001:06:00.0 Co-processor: Hailo Technologies Ltd. Hailo-8 AI Processor (rev 01)
 ...
