@@ -2331,7 +2331,7 @@ Or Benchmark the FPS of a yolo8n model on Hailo 8 :
 wget https://hailo-model-zoo.s3.eu-west-2.amazonaws.com/ModelZoo/Compiled/v2.14.0/hailo8/yolov8n.hef
 hailortcli run yolov8n.hef
 ```
-It must gives you with a Hailo 8L :
+It must gives you with a Hailo 8L (Add 2W -> 30 FPS/W):
 ```
 Running streaming inference (yolov8n.hef):
   Transform data: true
@@ -2345,7 +2345,7 @@ Network yolov8n/yolov8n: 100% | 306 | FPS: 60.81 | ETA: 00:00:00
     Send Rate: 597.77 Mbit/s
     Recv Rate: 594.04 Mbit/s
 ```
-Or on Hailo 8 :
+Or on Hailo 8 (Add 3.2W -> 66 FPS/W) :
 ```
 Running streaming inference (yolov8n.hef):
   Transform data: true
@@ -2359,7 +2359,24 @@ Network yolov8n/yolov8n: 100% | 1057 | FPS: 211.15 | ETA: 00:00:00
     Send Rate: 2075.70 Mbit/s
     Recv Rate: 2062.73 Mbit/s
 ```
-
+Benchmark the FPS and Latency of a yolo8n model (here on Hailo 8L) :
+```
+hailortcli benchmark yolov8n.hef
+```
+it gives :
+```
+Starting Measurements...
+Measuring FPS in HW-only mode
+Network yolov8n/yolov8n: 100% | 919 | FPS: 61.13 | ETA: 00:00:00
+Measuring FPS (and Power on supported platforms) in streaming mode
+Network yolov8n/yolov8n: 100% | 918 | FPS: 61.07 | ETA: 00:00:00
+Measuring HW Latency
+Network yolov8n/yolov8n: 100% | 917 | HW Latency: 12.56 ms | ETA: 00:00:00
+...
+FPS     (hw_only)                 = 61.0679
+        (streaming)               = 61.0683
+Latency (hw)                      = 12.5603 ms
+```
 Run VLM, LLM demonstrations :
 - [Run VLM on Hailo 8L/8/10-H](https://www.raspberrypi.com/documentation/computers/ai.html#vision-ai)
 - [Run LLM Hailo 10-H](https://www.raspberrypi.com/documentation/computers/ai.html#LLMs)
