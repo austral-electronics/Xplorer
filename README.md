@@ -2309,6 +2309,18 @@ You must detect your camera :
 Bus 002 Device 002: ID 1bcf:2286 Sunplus Innovation Technology Inc. FHD Camera
 ...
 ```
+And :
+```
+v4l2-ctl --list-devices
+ls /dev/video*
+```
+must give you :
+```
+...
+FHD Camera: FHD Camera (usb-xhci-hcd.0-1):
+	/dev/video0
+...
+```
 Run VLM, LLM demonstrations :
 - [Run VLM on Hailo 8L/8/10-H](https://www.raspberrypi.com/documentation/computers/ai.html#vision-ai)
 - [Run LLM Hailo 10-H](https://www.raspberrypi.com/documentation/computers/ai.html#LLMs)
