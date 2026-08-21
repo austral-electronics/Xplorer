@@ -2299,9 +2299,19 @@ Logger Version: 0
 Board Name: Hailo-8
 Device Architecture: HAILO8
 ```
-
-[Run VLM on Hailo 8L/8/10-H](https://www.raspberrypi.com/documentation/computers/ai.html#vision-ai)
-[Run LLM Hailo 10-H](https://www.raspberrypi.com/documentation/computers/ai.html#LLMs)
+If you have an USB-C Camera connected , check it with :
+```
+lsusb
+```
+You must detect your camera :
+```
+...
+Bus 002 Device 002: ID 1bcf:2286 Sunplus Innovation Technology Inc. FHD Camera
+...
+```
+Run VLM, LLM demonstrations :
+- [Run VLM on Hailo 8L/8/10-H](https://www.raspberrypi.com/documentation/computers/ai.html#vision-ai)
+- [Run LLM Hailo 10-H](https://www.raspberrypi.com/documentation/computers/ai.html#LLMs)
 
 ### 4.13.3.2 - Espressif / Axera AX8850<a name="4.13.3.2"></a> [📚](#0) 
 - LLMs,VLMs,MMs,Audio,GMs [(1)](https://docs.m5stack.com/en/guide/ai_accelerator/overview) [(2)](https://docs.radxa.com/en/aicore/ax-m1) [(3)](https://huggingface.co/AXERA-TECH)
