@@ -25,7 +25,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [4.1 - Linux configuration](#4.1)
     - [4.2 - Ethernet (GbE over M12, 5 GbE over USB-C)](#4.2)
     - [4.3 - WiFi/BT](#4.3)
-    - [4.4 - Serials (UART0, COM1..3, RXDA..RXDD)](#4.4)
+    - [4.4 - Serials (UART0, COM1..3, Option 4x RS232 RX Only RXDA..RXDD)](#4.4)
     - [4.5 - CAN-FD (SPI, CAN1, CAN2)](#4.5)
     - [4.6 - CyberSecurity (I2C, TPM2.0, Optional CrytoAuthentication Co-Processor](#4.6)
     - [4.7 - Storages](#4.7)
@@ -682,7 +682,7 @@ Write Test :
 ```
 echo -e "TX COM4 Working \x0D\x0A" > /dev/ttyAMA4
 ```
-### 4.4.7 - RXDA <a name="4.4.7"></a> [📚](#0) 
+### 4.4.7 - Option 4xRS232 Rx Only: RXDA <a name="4.4.7"></a> [📚](#0) 
 ```
 stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
 ```
@@ -690,7 +690,7 @@ Read Test :
 ```
 cat /dev/ttyUSB0
 ```
-### 4.4.8 - RXDB <a name="4.4.8"></a> [📚](#0) 
+### 4.4.8 - Option 4xRS232 Rx Only: RXDB <a name="4.4.8"></a> [📚](#0) 
 ⚠️ IN1_RXDB is not functional with the **Matter** hardware option
 ```
 stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
@@ -699,7 +699,7 @@ Read Test :
 ```
 cat /dev/ttyUSB1
 ```
-### 4.4.9 - RXDC <a name="4.4.9"></a> [📚](#0) 
+### 4.4.9 - Option 4xRS232 Rx Only: RXDC <a name="4.4.9"></a> [📚](#0) 
 ```
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 ```
@@ -707,7 +707,7 @@ Read Test :
 ```
 cat /dev/ttyUSB2
 ```
-### 4.4.10 - RXDD <a name="4.4.10"></a> [📚](#0) 
+### 4.4.10 - Option 4xRS232 Rx Only: RXDD <a name="4.4.10"></a> [📚](#0) 
 ```
 stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
 ```
