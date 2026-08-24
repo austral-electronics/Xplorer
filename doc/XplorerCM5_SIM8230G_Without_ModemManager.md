@@ -49,11 +49,11 @@ Good USB Driver (cdc_ether)
 ```
 ls /dev/ttyUSB*
 ```
+If you see with the Option 4xRS232 Rx Only
 ```
 /dev/ttyUSB0  /dev/ttyUSB1  /dev/ttyUSB2  /dev/ttyUSB3
 ```
-
-With bookworm and depending of the module software version, you have not ttyUSB4 to ttyUSB6 you must load dynamically the driver descriptor with the following commands :
+Or nothing without this option. With bookworm and depending of the module software version, you have not ttyUSB4 to ttyUSB6 (with the Option 4xRS232 Rx Only) you must load dynamically the driver descriptor with the following commands :
 ```
 sudo modprobe option
 sudo sh -c 'echo "1e0e 9073" > /sys/bus/usb-serial/drivers/option1/new_id'
@@ -67,19 +67,28 @@ You must see 3 new descriptor :
 ```
 ls /dev/ttyUSB*
 ```
-Response:
+Response With the Option 4xRS232 Rx Only:
 ```
 /dev/ttyUSB0  /dev/ttyUSB1  /dev/ttyUSB2  /dev/ttyUSB3  /dev/ttyUSB4  /dev/ttyUSB5  /dev/ttyUSB6
+```
+Or Without the Option 4xRS232 Rx Only:
+```
+/dev/ttyUSB0  /dev/ttyUSB1  /dev/ttyUSB2
 ```
 
 Install and open minicom :
 ```
 sudo apt-get install minicom
 ```
+With the Option 4xRS232 Rx Only:
 ```
 sudo minicom -D /dev/ttyUSB6
 ```
-You must focre the PID/VID USB of the modem to a Linux compatible MBIM/QMI profile. Send the following command via minicom :
+Without the Option 4xRS232 Rx Only:
+```
+sudo minicom -D /dev/ttyUSB2
+```
+You must force the PID/VID USB of the modem to a Linux compatible MBIM/QMI profile. Send the following command via minicom :
 ```
 at+cusbcfg=usbid,1e0e,9078
 ```
