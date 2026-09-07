@@ -62,7 +62,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
      - [4.14 - Improving energy efficiency and thermal performance](#4.14)
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
-    - [5.2 - Shrink a pi image](#5.2)
+    - [5.2 - Backup your development image to a file](#5.2)
     - [5.3 - Manage Energy](#5.3)
     - [5.4 - Watchdog](#5.4)
     - [5.5 - NAS Setup](#5.5)
@@ -2453,8 +2453,72 @@ sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
 CPU speed:
     events per second:  4036.34
 ```
-## 5.2 - Shrink a pi image  <a name="5.2"></a> [📚](#0) 
-https://github.com/Drewsif/PiShrink
+## 5.2 - Backup your development image to a file <a name="5.2"></a> [📚](#0) 
+You’ll need a few GB or tens of GB to store the backup image and shrink tools. To avoid using the eMMC or SSD, the most versatile solution is to store it temporarily on a drive connected via USB-C. First, plug it and vefify the detection :
+```
+lsblk -f
+```
+You must detect your USB disk :
+```
+NAME   FSTYPE FSVER LABEL           UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+loop0  swap   1     origin:rpi-swap                                                     
+sda                                                                                     
+└─sda1 vfat   FAT32 CORSAIR         ECD4-C7DC                                           
+```
+Mount the USB-C disk :
+```
+sudo mkdir -p /media/usb
+sudo mount /dev/sda1 /media/usb
+```
+Stop our application and clone your development image to the USB-C disk :
+```
+cd /media/usb
+sudo dd if=/dev/mmcblk0 of=/media/usb/Xplorer_CM5_Backup.img bs=4M status=progress conv=fsync
+```
+Install [PiShrink](https://github.com/Drewsif/PiShrink) on the USB-C disk :
+```
+sudo apt install git
+sudo git clone https://github.com/Drewsif/PiShrink.git
+cd PiShrink
+sudo chmod +x pishrink.sh
+```
+Or shink the image without compression (Fewer compatibility issues) :
+```
+sudo ./pishrink.sh /media/usb/Xplorer_CM5_Backup.img
+```
+Or with xz compression (Not compatible with the Raspberry PI CM5 JIG):
+```
+sudo ./pishrink.sh -Z /media/usb/Xplorer_CM5_Backup.img 
+```
+To copy this image to CM5 programming PC/JIG or Development computer with **magic-wormhole**. First, install and run it on the Xplorer CM5 Side :
+```
+sudo apt install -y magic-wormhole
+wormhole send /media/usb/Xplorer_CM5_Backup.img         # or .img.xz
+```
+You will see :
+```
+Sending XXX MB file named 'Xplorer_CM5_Backup.img'
+Wormhole code is: XX-YYYYYY-ZZZZ         # Copy this unique ID
+```
+Then, install also **magic-wormhole** on the destination computer.
+On Linux :
+```
+sudo apt install -y magic-wormhole
+```
+Or MAC :
+```
+brew install magic-wormhole
+```
+Or Windows :
+```
+winget install -e --id magic-wormhole.magic-wormhole
+```
+Then receive the backup image on this computer with :
+```
+wormhole receive XX-YYYYYY-ZZZZ   # Paste the unique ID
+```
+You can use this image on **Raspberry Pi Imager** in order to restore or clone your development Xplorer CM5, select 'Raspberry PI 5' then 'Use a custom image'
+
 ## 5.3 - Manage Energy <a name="5.3"></a> [📚](#0) 
 https://forums.raspberrypi.com/viewtopic.php?t=361542
 https://forums.raspberrypi.com/viewtopic.php?t=360658
