@@ -63,12 +63,13 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
 - **[5 - TIPS](#5)**
     - [5.1 - Benchmark](#5.1)
     - [5.2 - Backup your development image to a file](#5.2)
-    - [5.3 - Manage Energy](#5.3)
-    - [5.4 - Watchdog](#5.4)
-    - [5.5 - NAS Setup](#5.5)
-    - [5.6 - Reduce boot time](#5.6)
-    - [5.7 - CPU Isolation and Task Affinity for Multicore Optimization](#5.7)
-    - [5.8 - Security Hardening](#5.8)
+    - [5.3 - Clone the eMMC to a USB-C disk or to SSD](#5.3)
+    - [5.4 - Manage Energy](#5.4)
+    - [5.5 - Watchdog](#5.5)
+    - [5.6 - NAS Setup](#5.6)
+    - [5.7 - Reduce boot time](#5.7)
+    - [5.8 - CPU Isolation and Task Affinity for Multicore Optimization](#5.8)
+    - [5.9 - Security Hardening](#5.9)
 - **[6 - GPIO CONFIGURATION](#6)**
 - **[7 - SELF-TEST](#7)**
 
@@ -2518,8 +2519,23 @@ Then receive the backup image on this computer with :
 wormhole receive XX-YYYYYY-ZZZZ   # Paste the unique ID
 ```
 You can use this image on **Raspberry Pi Imager** in order to restore or clone your development Xplorer CM5, select 'Raspberry PI 5' then 'Use a custom image'
-
-## 5.3 - Manage Energy <a name="5.3"></a> [📚](#0) 
+## 5.3 - Clone the eMMC to a USB-C disk or to SSD <a name="5.3"></a> [📚](#0) 
+```
+sudo apt update
+sudo apt install git
+sudo git clone https://github.com/billw2/rpi-clone.git
+cd rpi-clone
+sudo cp rpi-clone rpi-clone-setup /usr/local/sbin
+```
+To clone to a backup USB disk
+```
+sudo rpi-clone sda
+```
+To clone to the SSD disk
+```
+sudo rpi-clone nvme0n1
+```
+## 5.4 - Manage Energy <a name="5.4"></a> [📚](#0) 
 https://forums.raspberrypi.com/viewtopic.php?t=361542
 https://forums.raspberrypi.com/viewtopic.php?t=360658
 ### Underclocking
@@ -2591,7 +2607,7 @@ The Halt mode power is 278mW, you can test it with the shutdown command:
 ```
 sudo shutdown now
 ```
-## 5.4 - Watchdog <a name="5.4"></a> [📚](#0)
+## 5.5 - Watchdog <a name="5.5"></a> [📚](#0)
 https://diode.io/blog/running-forever-with-the-raspberry-pi-hardware-watchdog
 
 Enable the hardware watchdog and reboot:
@@ -2619,11 +2635,11 @@ If you want to test this you can try running a fork bomb on your shell:
 ```
 sudo bash -c ':(){ :|:& };:'
 ```
-## 5.5 - NAS Setup <a name="5.5"></a> [📚](#0) 
+## 5.6 - NAS Setup <a name="5.6"></a> [📚](#0) 
 The Xplorer can be setup with 2 NVMe SSD to make an embedded RAID NAS.
 https://ohyaan.github.io/tips/network_attached_storage__nas__setup_guide/
 
-## 5.6 - Reduce boot time <a name="5.6"></a> [📚](#0) 
+## 5.7 - Reduce boot time <a name="5.7"></a> [📚](#0) 
 #### Get the boot time
 ```
 $ systemd-analyze
@@ -2632,10 +2648,10 @@ graphical.target reached after 4.830s in userspace.
 ```
 #### To reduce boot time
 https://ohyaan.github.io/tips/raspberry_pi_boot_time_optimization__complete_performance_guide/#understanding-the-boot-process
-## 5.7 - CPU Isolation and Task Affinity for Multicore Optimization <a name="5.7"></a> [📚](#0) 
+## 5.8 - CPU Isolation and Task Affinity for Multicore Optimization <a name="5.8"></a> [📚](#0) 
 https://ohyaan.github.io/tips/cpu_isolation_and_task_affinity_for_multicore_optimization/
 
-## 5.8 - Security Hardening <a name="5.8"></a> [📚](#0) 
+## 5.9 - Security Hardening <a name="5.9></a> [📚](#0) 
 https://ohyaan.github.io/tips/raspberry_pi_security_hardening_complete_guide/#network-security
 
 ---
