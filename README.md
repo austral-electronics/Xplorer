@@ -64,12 +64,13 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [5.1 - Benchmark](#5.1)
     - [5.2 - Backup your development image to a file](#5.2)
     - [5.3 - Clone the eMMC to a USB-C disk or to SSD](#5.3)
-    - [5.4 - Manage Energy](#5.4)
-    - [5.5 - Watchdog](#5.5)
-    - [5.6 - NAS Setup](#5.6)
-    - [5.7 - Reduce boot time](#5.7)
-    - [5.8 - CPU Isolation and Task Affinity for Multicore Optimization](#5.8)
-    - [5.9 - Security Hardening](#5.9)
+    - [5.4 - CI/CD pipeline - Custom debian image creation with rpi-image-gen](#5.4)
+    - [5.5 - Manage Energy](#5.5)
+    - [5.6 - Watchdog](#5.6)
+    - [5.7 - NAS Setup](#5.7)
+    - [5.8 - Reduce boot time](#5.8)
+    - [5.9 - CPU Isolation and Task Affinity for Multicore Optimization](#5.9)
+    - [5.10 - Security Hardening](#5.10)
 - **[6 - GPIO CONFIGURATION](#6)**
 - **[7 - SELF-TEST](#7)**
 
@@ -2534,6 +2535,7 @@ Then receive the backup image on this computer with :
 wormhole receive XX-YYYYYY-ZZZZ   # Paste the unique ID
 ```
 You can use this image on **Raspberry Pi Imager** in order to restore or clone your development Xplorer CM5, select 'Raspberry PI 5' then 'Use a custom image'
+
 ## 5.3 - Clone the eMMC to a USB-C disk or to SSD <a name="5.3"></a> [📚](#0) 
 ```
 sudo apt update
@@ -2550,7 +2552,276 @@ To clone to the SSD disk
 ```
 sudo rpi-clone nvme0n1
 ```
-## 5.4 - Manage Energy <a name="5.4"></a> [📚](#0) 
+## 5.4 - CI/CD pipeline - Custom debian image creation with rpi-image-gen <a name="5.4"></a> [📚](#0) 
+In chapter 3, we looked at how to modify an existing Debian image to adapt it for the Xplorer CM5, in chapter 5 how to clone an image.
+[rpi-image-gen](https://github.com/raspberrypi/rpi-image-gen) is one possible method you can use in your CI/CD pipeline to automatically create ready to run images with your application already installed.  
+**rpi-image-gen** is a tool for creating custom images for Raspberry Pi based devices. It runs best on a Raspberry Pi 5 Host / Xplorer CM5 / Debian VM / CM5 Programming JIG running up-to-date 64-bit Raspberry Pi OS or Debian (We’ve had some issues with Ubuntu). 
+**rpi-image-gen** create images compatible with **Secure Boot Provisioning** and the [Raspberry PI Compute Module 5 Programming JIG](https://www.raspberrypi.com/documentation/accessories/cm5-programming-jig.html) .
+
+You can find the more documentation [here](https://raspberrypi.github.io/rpi-image-gen/#_viewing_documentation).
+For the tool used to create the Raspberry Pi OS distribution, please go to [https://github.com/RPi-Distro/pi-gen](https://github.com/RPi-Distro/pi-gen)
+
+1) Install **rpi-image-gen** with:
+```
+sudo apt-get install git
+git clone https://github.com/raspberrypi/rpi-image-gen.git
+```
+2) First, clear the working directory and test creating an headless trixie image for the Raspberry CM5 without any customization for the XplorerCM5 hardware :
+```
+cd rpi-image-gen
+sudo rm -rf /home/xplr/rpi-image-gen/work
+sudo ./install_deps.sh
+./rpi-image-gen build -c ./config/trixie-minbase.yaml -- IGconf_device_layer=rpi-cm5
+```
+It takes a few minutes  🥐☕. You must see at the end :
+```
+...
+Installing assets...
+*** Zstandard CLI (64-bit) v1.5.7, by Yann Collet ***
+/home/xplr/rpi-image-gen/work/image-deb13-arm64-min/deb13-arm64-min.img : 12.88%   (  1.53 GiB =>    202 MiB, /home/xplr/rpi-image-gen/work/deploy-v2.8.0-31-ga50372b/deb13-arm64-min.img.zst) 
+....
+Creating manifest...
+runner: out deploy
+```
+If your image has been generated correctly, move on to the next step.
+
+> [!TIP]
+> You may have a memory error if the Host is the RPI CM5 Programming JIG, you must clean the tmp directory and increase the tmp size. Execute this and retry.
+```
+sudo mount -o remount,size=6G /tmp
+sudo rm -rf /tmp/tmp.*
+```
+
+3) In a second stage, customize the image with the Xplorer CM5 hardware required and config.txt & packages, your packages, application and service. Start by creating the directories of your project source tree overlay at the root of **rpi-image-gen**:
+```
+my-project/
+├── config/
+│   └── my-config.yaml        ← Image configuration
+├── layer/
+│   ├── hw-support.yaml       ← Add packages related to the Xplorer CM5 hardware
+│   └── relaxed-password.yaml ← Usefull only for a very simple password
+└── rootfs-overlay/
+    ├── usr/
+    │   └── local/
+    │       └── bin/
+    │           └── my-appli  ← Your binary app to launch at startup
+    ├── etc/
+    │   └── systemd/
+    │       └── system/
+    │           └── my-appli.service ← Your services at startup
+    └── boot/
+        └── firmware/
+            └── config.txt    ← Xplorer CM5 hardware configuration
+```
+It's quick to do with :
+```
+mkdir my-project my-project/config my-project/layer my-project/rootfs-overlay my-project/rootfs-overlay/usr my-project/rootfs-overlay/usr/local my-project/rootfs-overlay/usr/local/bin my-project/rootfs-overlay/etc my-project/rootfs-overlay/etc/systemd my-project/rootfs-overlay/etc/systemd/system my-project/rootfs-overlay/boot my-project/rootfs-overlay/boot/firmware
+```
+
+5) Copy your custom **config.txt** in **my-project/rootfs-overlay/boot/firmware/**
+See chapter 3.3
+If you are usign an Xplorer CM5 to get this image :
+```
+cp /boot/firmware/config.txt my-project/rootfs-overlay/boot/firmware/config.txt
+```
+
+6) Create your layer custom YAML file with the packages to be installed, add or remove packages depending on your needs :
+```
+sudo nano my-project/layer/hw-support.yaml
+```
+Edit with :
+```
+# METABEGIN
+# X-Env-Layer-Name: hw-support
+# X-Env-Layer-Desc: TPM2, I2C, CAN, custom Hardware
+# X-Env-Layer-Version: 1.0.0
+# X-Env-Layer-Category: general
+# METAEND
+
+mmdebstrap:
+  packages:
+    - ethtool
+    - i2c-tools
+    - tpm-udev
+    - tpm2-abrmd
+    - tpm2-tools
+    - can-utils
+    - libtss2-dev                # Equivalent to libtss2-*
+    - libtss2-doc
+    - libtss2-esys-3.0.2-0t64
+    - libtss2-fapi1t64
+    - libtss2-mu-4.0.1-0t64
+    - libtss2-policy0t64
+    - libtss2-rc0t64
+    - libtss2-sys1t64
+    - libtss2-tctildr0t64
+    - libtss2-tcti-cmd0t64
+    - libtss2-tcti-device0t64
+    - libtss2-tcti-i2c-ftdi0
+    - libtss2-tcti-i2c-helper0
+    - libtss2-tcti-libtpms0t64
+    - libtss2-tcti-mssim0t64
+    - libtss2-tcti-pcap0t64
+    - libtss2-tcti-spi-ftdi0
+    - libtss2-tcti-spi-helper0t64
+    - libtss2-tcti-spi-ltt2go0
+    - libtss2-tcti-spidev0
+    - libtss2-tcti-swtpm0t64
+    - avahi-daemon               # Option, usefull for 'ping xplorercm5.local' resolution
+    - libnss-mdns                # Option, usefull for 'ping xplorercm5.local' resolution
+    - minicom                    # Option, for production to test the cellular
+    - smartmontools              # Option, for production to verify the SDD
+    - stress-ng                  # Option, for production to test the thermal pad and max power consumption
+    # Add required packages for your app here
+
+  customize-hooks:
+    - |
+      chroot "$1" usermod --append --groups tss "$IGconf_device_user1"
+      echo "i2c-dev" >> "$1/etc/modules"
+      $BDEBSTRAP_HOOKS/enable-units "$1" avahi-daemon  # Option, usefull for 'ping xplorercm5.local' resolution  
+```
+Note : This is equivalent to the packages installation in the chapter 3.7 (don't execute this):
+```
+# sudo apt --yes install ethtool i2c-tools libtss2-* tpm-udev tpm2-abrmd tpm2-tools can-utils minicom
+# sudo usermod --append --groups tss $(whoami)
+# echo "i2c-dev" | sudo tee -a /etc/modules
+```
+7) Create your config YAML file :
+```
+sudo nano my-project/config/my-config.yaml
+```
+Edit with :
+```
+device:
+  layer: rpi-cm5
+  user1: xplr               # change the login for production
+  user1pass: changeme       # change the password for production
+  storage_type: emmc        # or nvme
+  hostname: xplorercm5      # change the hostname with your product name  
+
+image:
+  layer: image-rpios
+  boot_part_size: 200%
+  root_part_size: 300%
+  name: deb13-xplorercm5    # Change the name of the .img file here
+
+layer:
+  base: trixie-minbase
+  custom1: hw-support
+  custom2: relaxed-password # Remove this overlay for production
+  #custom3: my-appli        # Uncomment to launch your application at startup
+```
+8) Create your my-appli YAML layer file to launch your binary application:
+```
+sudo nano my-project/rootfs-overlay/usr/local/bin/my-appli.yaml
+```
+Edit with :
+```
+# METABEGIN
+# X-Env-Layer-Name: my-appli
+# X-Env-Layer-Desc: Deploy and activate my custom binary at boot
+# X-Env-Layer-Version: 1.0.0
+# X-Env-Layer-Category: general
+# METAEND
+
+mmdebstrap:
+  customize-hooks:
+    - |
+      chmod +x "$1/usr/local/bin/my-appli"
+      $BDEBSTRAP_HOOKS/enable-units "$1" my-appli
+```
+
+9) Create your my-appli YAML layer file to define the systemd service:
+```
+sudo nano my-project/rootfs-overlay/etc/systemd/system/my-appli.service
+```
+With :
+```
+[Unit]
+Description=My custom application
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/my-appli
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target
+```
+10) Create a relaxed password regex custom layer in order to authorise 'changeme' as password (without the need for capital letters, numbers or special characters). Not required in production with a strong password.
+```
+sudo nano my-project/layer/relaxed-password.yaml
+```
+With
+```
+# my-project/layer/relaxed-password.yaml
+# METABEGIN
+# X-Env-Layer-Name: relaxed-password
+# X-Env-Layer-Desc: Assouplit la validation du mot de passe user1 (dev/test uniquement)
+# X-Env-Layer-Version: 1.0.0
+# X-Env-Layer-Category: device
+# X-Env-Layer-Requires: device-user-credentials
+# X-Env-VarPrefix: device
+# X-Env-Var-user1pass: changeme
+# X-Env-Var-user1pass-Valid: regex:^.{1,}$
+# X-Env-Var-user1pass-Set: immediate
+# METAEND
+```
+
+11) Copy the binary of your application in **rootfs-overlay/usr/local/bin** and change the permissions with **chmod +x**
+
+12) Build your custom image for the Xplorer CM5 :
+
+You may have a memory error if the Host is the RPI CM5 Programming JIG, you must clean the tmp directory and increase the tmp size. On this Host execute this first :
+```
+sudo mount -o remount,size=6G /tmp
+sudo rm -rf /tmp/tmp.*
+```
+To cleanup the working directory and build the image :
+```
+sudo rm -rf /home/xplr/rpi-image-gen/work
+sudo ./install_deps.sh
+./rpi-image-gen build -S ./my-project/ -c my-config.yaml
+```
+It takes a few minutes  🥐☕. You must see at the end:
+```
+...
+/home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img : 12.12%   (  1.77 GiB =>    219 MiB, /home/xplr/rpi-image-gen/work/deploy-v2.8.0-31-ga50372b/deb13-xplorercm5.img.zst) 
+...
+runner: out deploy
+```
+13) If needed, copy this image to the PC with Raspberry PI Imager with **magic-wormhole** :
+```
+sudo apt install -y magic-wormhole
+wormhole send /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img
+```
+You will see :
+```
+Sending XXX MB file named 'deb13-cm5-hw.img'
+Wormhole code is: XX-YYYYYY-ZZZZ         # Copy this unique ID
+```
+Then, install also **magic-wormhole** on the destination computer.
+On Linux :
+```
+sudo apt install -y magic-wormhole
+```
+Or MAC :
+```
+brew install magic-wormhole
+```
+Or Windows :
+```
+winget install -e --id magic-wormhole.magic-wormhole
+```
+Then receive the backup image on this computer with :
+```
+wormhole receive XX-YYYYYY-ZZZZ   # Paste the unique ID
+```
+It takes a few tens of seconds with GbE.
+
+## 5.5 - Manage Energy <a name="5.5"></a> [📚](#0) 
 https://forums.raspberrypi.com/viewtopic.php?t=361542
 https://forums.raspberrypi.com/viewtopic.php?t=360658
 ### Underclocking
@@ -2622,7 +2893,7 @@ The Halt mode power is 278mW, you can test it with the shutdown command:
 ```
 sudo shutdown now
 ```
-## 5.5 - Watchdog <a name="5.5"></a> [📚](#0)
+## 5.6 - Watchdog <a name="5.6"></a> [📚](#0)
 https://diode.io/blog/running-forever-with-the-raspberry-pi-hardware-watchdog
 
 Enable the hardware watchdog and reboot:
@@ -2650,11 +2921,11 @@ If you want to test this you can try running a fork bomb on your shell:
 ```
 sudo bash -c ':(){ :|:& };:'
 ```
-## 5.6 - NAS Setup <a name="5.6"></a> [📚](#0) 
+## 5.7 - NAS Setup <a name="5.7"></a> [📚](#0) 
 The Xplorer can be setup with 2 NVMe SSD to make an embedded RAID NAS.
 https://ohyaan.github.io/tips/network_attached_storage__nas__setup_guide/
 
-## 5.7 - Reduce boot time <a name="5.7"></a> [📚](#0) 
+## 5.8 - Reduce boot time <a name="5.8"></a> [📚](#0) 
 #### Get the boot time
 ```
 $ systemd-analyze
@@ -2663,10 +2934,10 @@ graphical.target reached after 4.830s in userspace.
 ```
 #### To reduce boot time
 https://ohyaan.github.io/tips/raspberry_pi_boot_time_optimization__complete_performance_guide/#understanding-the-boot-process
-## 5.8 - CPU Isolation and Task Affinity for Multicore Optimization <a name="5.8"></a> [📚](#0) 
+## 5.9 - CPU Isolation and Task Affinity for Multicore Optimization <a name="5.9"></a> [📚](#0) 
 https://ohyaan.github.io/tips/cpu_isolation_and_task_affinity_for_multicore_optimization/
 
-## 5.9 - Security Hardening <a name="5.9></a> [📚](#0) 
+## 5.10 - Security Hardening <a name="5.10></a> [📚](#0) 
 https://ohyaan.github.io/tips/raspberry_pi_security_hardening_complete_guide/#network-security
 
 ---
