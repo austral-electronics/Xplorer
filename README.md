@@ -500,7 +500,6 @@ sudo passwd xplr
 ```
 ## 3.7 - 🛠️ Installation of usefull tools <a name="3.7"></a> [📚](#0)
 > [!NOTE]  
-> If you have flashed a new image, you must configure the Xplorer CM5 peripherals.
 > **This step is not necessary with the factory pre-build image**.
 > 
 Install usefull tools to follow this tutorial and reboot :
