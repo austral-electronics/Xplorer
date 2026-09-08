@@ -213,7 +213,7 @@ https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5.img
 - Choose :
     - **mmcblk0** for eMMC (recommanded for the OS)
     - **nvme0n1** for the main NVMe SSD storage (you must change the boot order if you choose this drive)
-- Configure the settings, the default factory settings are :
+- Using a raspberry Pi OS image you will need to configure the settings, the default factory settings are :
     - host: **xplorercm5**
     - User : **xplr**
     - Password : **changeme**
