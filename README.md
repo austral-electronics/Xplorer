@@ -202,8 +202,8 @@ https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5.img
 - Launch **Raspberry Pi Imager** on your PC
 - Select a Raspberry PI5/CM5 model
 - Select your image :
-    - If you want to use your image or an already configured image go to **custom** and select the image
-    - Otherwise select RPI OS without desktop (Recommanded):	
+    - If you want to use your image or an already configured image (Recommanded), go to **Custom** and select the image
+    - Otherwise select RPI OS without desktop :	
         - In raspberry Pi OS (Other) -> Raspberry PI OS Lite (64-bit) to select last Debian (Trixie factory delivery)
         - Or 👉 [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/) to select an old LTS RPI OS image
     - Or RPI OS with desktop :
