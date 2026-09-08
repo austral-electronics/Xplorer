@@ -2837,21 +2837,21 @@ Cloudflare is free for up to 10GB of storage, which allows you to share 4 or 5 L
 https://www.cloudflare.com/products/r2/
 ```
 2. Configure your cloudflare account :
-Add a bucket "xplorercm5"
-R2 Object Storage -> Manage API token -> Create Account API token
-Token name : R2 Account Token
-Select : Object Read & Write
-Backup your privates ID & keys :
-- Token value : TTTTTTTTTTTTTTTT
-- Access Key ID : AAAAAAAAAAAAAAAAAAAAA
-- Secret Access Key : ZZZZZZZZZZZZZZZZ
-- Use jurisdiction-specific endpoints for S3 clients: https://SSSSSSSSSSSSSSSS.r2.cloudflarestorage.com
+- Add a bucket "xplorercm5"
+- R2 Object Storage -> Manage API token -> Create Account API token
+- Token name : R2 Account Token
+- Select : Object Read & Write
+- Backup your privates ID & keys :
+	- Token value : TTTTTTTTTTTTTTTT
+	- Access Key ID : AAAAAAAAAAAAAAAAAAAAA
+	- Secret Access Key : ZZZZZZZZZZZZZZZZ
+	- Use jurisdiction-specific endpoints for S3 clients: https://SSSSSSSSSSSSSSSS.r2.cloudflarestorage.com
 
 If you want a public repository : in "Public Development URL" select "enable" and get the public URL, for Austral it's :
 ```
 https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev
 ```
-3. Install **rclone** on the linux image building machine 
+3. Install **rclone** on the linux image building machine :  
 Install rclone :
 ```
 sudo apt update
@@ -2879,8 +2879,7 @@ no_check_bucket = true
 ```
 rclone copy /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img r2:xplorercm5/ --progress
 ```
-5. To download the latest image from a public Cloudflare R2
-
+5. To download the latest image from a public Cloudflare R2 :  
 Under CLI :
 ```
 wget --show-progress \
