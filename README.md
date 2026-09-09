@@ -2647,6 +2647,7 @@ mmdebstrap:
     - tpm2-abrmd
     - tpm2-tools
     - can-utils
+    - iproute2
     - libtss2-dev                # Equivalent to libtss2-*
     - libtss2-doc
     - libtss2-esys-3.0.2-0t64
