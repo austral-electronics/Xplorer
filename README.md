@@ -3129,6 +3129,8 @@ stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
 stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
+sudo apt update
+sudo apt install -y iproute2
 sudo ip link set can0 up type can bitrate 250000
 sudo ip link set can1 up type can bitrate 250000
 
