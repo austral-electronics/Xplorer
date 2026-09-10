@@ -2641,13 +2641,17 @@ Edit with :
 
 mmdebstrap:
   packages:
+    # Optional Ethernet tool
     - ethtool
+    # Optional I2C tool
     - i2c-tools
+    # Optional CANbus tools
+    - can-utils
+    - iproute2
+    # Optional TPM 2.0 Tools
     - tpm-udev
     - tpm2-abrmd
     - tpm2-tools
-    - can-utils
-    - iproute2
     - libtss2-dev                # Equivalent to libtss2-*
     - libtss2-doc
     - libtss2-esys-3.0.2-0t64
@@ -2669,18 +2673,39 @@ mmdebstrap:
     - libtss2-tcti-spi-ltt2go0
     - libtss2-tcti-spidev0
     - libtss2-tcti-swtpm0t64
-    - avahi-daemon               # Option, usefull for 'ping xplorercm5.local' resolution
-    - libnss-mdns                # Option, usefull for 'ping xplorercm5.local' resolution
-    - minicom                    # Option, for production to test the cellular
-    - smartmontools              # Option, for production to verify the SDD
-    - stress-ng                  # Option, for production to test the thermal pad and max power consumption
+    # Optional Bonjour protocol: useful  to discover the IP address with "ping xplorercm5.local"
+    - avahi-daemon
+    - libnss-mdns
+    # Manufacturing tools, To be removed for deployment
+    - minicom
+    - smartmontools
+    - stress-ng
+    # Optional Python build toolchain : for spidev to test the SPI DAQ in python without driver
+    - build-essential
+    - python3-dev
+    - python3-pip
+    - python3-venv
+    - python3-wheel
+    - gcc
     # Add required packages for your app here
 
   customize-hooks:
     - |
+      # TSS group + i2c-dev module
       chroot "$1" usermod --append --groups tss "$IGconf_device_user1"
       echo "i2c-dev" >> "$1/etc/modules"
-      $BDEBSTRAP_HOOKS/enable-units "$1" avahi-daemon  # Option, usefull for 'ping xplorercm5.local' resolution  
+
+      # avahi deamon
+      $BDEBSTRAP_HOOKS/enable-units "$1" avahi-daemon
+
+      # spidev Python package (equivalent to pip install --break-system-packages)
+      chroot "$1" python3 -m pip install spidev --break-system-packages
+
+      # udev rule for SPI permissions (root:spi, 0660 instead of root:root)
+      echo 'SUBSYSTEM=="spidev", GROUP="spi", MODE="0660"' > "$1/etc/udev/rules.d/90-spidev-permissions.rules"
+
+      # Move debug console from serial0 to ttyAMA1 (RS232) (useful for debugging the mobile connection)
+      sed -i 's/serial0/ttyAMA1/g' "$1/boot/firmware/cmdline.txt"
 ```
 Note : This is equivalent to the packages installation in the chapter 3.7 (don't execute this):
 ```
