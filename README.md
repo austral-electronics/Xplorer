@@ -2701,6 +2701,9 @@ mmdebstrap:
       # spidev Python package (equivalent to pip install --break-system-packages)
       chroot "$1" python3 -m pip install spidev --break-system-packages
 
+	  # python alias pointing to python3
+      chroot "$1" ln -sf /usr/bin/python3 /usr/bin/python
+	  
       # udev rule for SPI permissions (root:spi, 0660 instead of root:root)
       echo 'SUBSYSTEM=="spidev", GROUP="spi", MODE="0660"' > "$1/etc/udev/rules.d/90-spidev-permissions.rules"
 
