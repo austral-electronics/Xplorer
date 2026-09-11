@@ -2562,10 +2562,14 @@ In chapter 3, we looked at how to modify an existing Debian image to adapt it fo
 You can find the more documentation [here](https://raspberrypi.github.io/rpi-image-gen/#_viewing_documentation).
 For the tool used to create the Raspberry Pi OS distribution, please go to [https://github.com/RPi-Distro/pi-gen](https://github.com/RPi-Distro/pi-gen)
 
-1) Install **rpi-image-gen** with:
+1) Install **rpi-image-gen** and **PiShrink** with:
 ```
 sudo apt-get install git
 git clone https://github.com/raspberrypi/rpi-image-gen.git
+git clone https://github.com/Drewsif/PiShrink.git
+cd PiShrink
+sudo chmod +x pishrink.sh
+cd ..
 ```
 2) First, clear the working directory and test creating an headless trixie image for the Raspberry CM5 without any customization for the XplorerCM5 hardware :
 ```
@@ -2822,20 +2826,21 @@ It takes a few minutes  🥐☕. You must see at the end:
 ...
 runner: out deploy
 ```
-13) If you want to share this image to a **cloudflare R2** storage :  
-See the next chapter to configure **cloudflare** and **rclone**.   
-And copy with :
+13) Compress the generated image (3.1GB->290MB for a headless debian)
 ```
-rclone copy /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img r2:xplorercm5/ --progress
+cd /home/xplr/PiShrink
+sudo ./pishrink.sh -Z /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5_xz.img
 ```
-14) If needed, copy this image to the PC with Raspberry PI Imager with **magic-wormhole** :
+Note : You will need the uncompressed image if you use a Raspberry PI CM5 Programming JIG
+
+15) You can copy this compressed image to the PC with Raspberry PI Imager with **magic-wormhole** :
 ```
 sudo apt install -y magic-wormhole
-wormhole send /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img
+wormhole send /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5-xz.img.xz
 ```
 You will see :
 ```
-Sending XXX MB file named 'deb13-cm5-hw.img'
+Sending XXX MB file named 'deb13-xplorercm5-xz.img.xz'
 Wormhole code is: XX-YYYYYY-ZZZZ         # Copy this unique ID
 ```
 Then, install also **magic-wormhole** on the destination computer.
@@ -2855,11 +2860,25 @@ Then receive the backup image on this computer with :
 ```
 wormhole receive XX-YYYYYY-ZZZZ   # Paste the unique ID
 ```
-It takes a few tens of seconds with GbE.
+15) Or share this compressed image in private or in public usign a **cloudflare R2** storage :  
+See the next chapter to configure **cloudflare** and **rclone**.   
+Then copy to the **cloudflare R2** storage with :
+```
+rclone copy /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5-xz.img.xz r2:xplorercm5/ --progress
+```
+To download this compressed image from **cloudflare R2** to any PC under CLI :
+```
+wget --show-progress \
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz  # Adapt to your cloudflare endpoint
+```
+Or with a browser, simply opening this URL :
+```
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz  # Adapt to your cloudflare endpoint
+```
 
 ## 5.5 - Share your images with Cloudflare R2<a name="5.5"></a> [📚](#0) 
 
-Cloudflare is free for up to 10GB of storage, which allows you to share 4 or 5 Linux images privately or publicly.
+Cloudflare is free for up to 10GB of storage, a compressed headless Debian image is 300MB in size, you can share images privately or publicly.
 
 1. Create a cloudflare account here :
 ```
