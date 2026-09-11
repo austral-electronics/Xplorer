@@ -770,7 +770,7 @@ You must see **can0** and **can1**
 ### 4.5.2 - CAN1 <a name="4.5.2"></a> [📚](#0) 
 To configure the main CANBus 'can1' on CAN1/PWR connector (NMEA2000 compatible):
 ```
-sudo apt-get install can-utils iproute2
+sudo apt-get install can-utils
 sudo ip link set can1 up type can bitrate 250000
 ```
 Test the reception with : 
@@ -784,7 +784,7 @@ cansend can1 7DF#0201050000000000
 ### 4.5.3 - CAN2 <a name="4.5.3"></a> [📚](#0) 
 To configure the secondary CANbus 'can0' on DAQ/CAN2 connector:
 ```
-sudo apt-get install can-utils iproute2
+sudo apt-get install can-utils
 sudo ip link set can0 up type can bitrate 250000
 ```
 Test the reception with : 
@@ -3157,8 +3157,6 @@ stty -F /dev/ttyUSB0 speed 115200 cs8 -cstopb -parenb
 stty -F /dev/ttyUSB1 speed 115200 cs8 -cstopb -parenb
 stty -F /dev/ttyUSB2 speed 115200 cs8 -cstopb -parenb
 stty -F /dev/ttyUSB3 speed 115200 cs8 -cstopb -parenb
-sudo apt update
-sudo apt install -y iproute2
 sudo ip link set can0 up type can bitrate 250000
 sudo ip link set can1 up type can bitrate 250000
 
