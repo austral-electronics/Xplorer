@@ -191,14 +191,14 @@ Loading: mass-storage-gadget64//boot.img
 File read: boot.img
 ```
 You can use a latest Raspberry Pi OS image and then customize yourself to the Xplorer CM5 hardware (See from Chapter 3.2), or build your custom image with **rpi-image-gen** (See chapter 5.4), but the easiest way to get started is download a Debian image generated using **rpi-image-gen** and already configured for the Xplorer CM5 hardware and default factory settings :  
-To download a pre-build headless Debian Trixie image under CLI :
+To download a pre-build headless Debian Trixie compressed image under CLI (<300MB) :
 ```
 wget --show-progress \
-https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5.img
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz
 ```
 Or with a browser, opening this URL :
 ```
-https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5.img
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz
 ```
 		
 - Launch **Raspberry Pi Imager** on your PC
