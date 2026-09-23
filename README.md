@@ -2837,11 +2837,11 @@ sudo /home/xplr/PiShrink/pishrink.sh -Z /home/xplr/rpi-image-gen/work/image-deb1
 ```
 Note : You will need the uncompressed image if you use a Raspberry PI CM5 Programming JIG
 
-14) Compress the generated SBOM
+14) Compress and rename the generated SBOM
 ```
 zstd -d /home/xplr/rpi-image-gen/work/deploy-*/filesystem-*.sbom.zst -o /tmp/filesystem.sbom
 xz -T0 -9 /tmp/filesystem.sbom
-mv /tmp/filesystem.sbom.xz /home/xplr/rpi-image-gen/work/deploy-*/
+mv /tmp/filesystem.sbom.xz /home/xplr/rpi-image-gen/work/"${DATE}_xplorercm5_debian_${DEBVER}_vmlinuz-${KVER}_xz.sbom.xz"
 ```
 The compressed SBOM is in /home/xplr/rpi-image-gen/work/deploy-*/in filesystem.sbom.xz
 
@@ -2872,20 +2872,21 @@ Then receive the backup image on this computer with :
 ```
 wormhole receive XX-YYYYYY-ZZZZ   # Paste the unique ID
 ```
-15) Or share this compressed image in private or in public usign a **cloudflare R2** storage :  
+16) Or share this compressed image ans SBOM in private or in public usign a **cloudflare R2** storage :  
 See the next chapter to configure **cloudflare** and **rclone**.   
 Then copy to the **cloudflare R2** storage with :
 ```
-rclone copy /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5-xz.img.xz r2:xplorercm5/ --progress
+rclone copy /home/xplr/rpi-image-gen/work/*.img.xz r2:xplorercm5/ --progress
+rclone copy /home/xplr/rpi-image-gen/work/*.sbom.xz r2:xplorercm5/ --progress
 ```
 To download this compressed image from **cloudflare R2** to any PC under CLI :
 ```
 wget --show-progress \
-https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz  # Adapt to your cloudflare endpoint
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/XXXXX.img.xz  # Adapt to your cloudflare endpoint
 ```
 Or with a browser, simply opening this URL :
 ```
-https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz  # Adapt to your cloudflare endpoint
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/XXXXXX.img.xz  # Adapt to your cloudflare endpoint
 ```
 
 ## 5.5 - Share your images with Cloudflare R2<a name="5.5"></a> [📚](#0) 
