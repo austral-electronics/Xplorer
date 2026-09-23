@@ -64,7 +64,7 @@ Xplorer CM5 are a familly of products. They can be used when reliability is not 
     - [5.1 - Benchmark](#5.1)
     - [5.2 - Backup your development image to a file](#5.2)
     - [5.3 - Clone the eMMC to a USB-C disk or to SSD](#5.3)
-    - [5.4 - CI/CD pipeline - Custom debian image creation with rpi-image-gen](#5.4)
+    - [5.4 - CI/CD pipeline - Custom debian image & SBOM creation with rpi-image-gen](#5.4)
     - [5.5 - Share your images with Cloudflare R2](#5.5)
     - [5.6 - OTA update](#5.6)
     - [5.7 - Manage Energy](#5.7)
@@ -2554,7 +2554,7 @@ To clone to the SSD disk
 ```
 sudo rpi-clone nvme0n1
 ```
-## 5.4 - CI/CD pipeline - Custom debian image creation with rpi-image-gen <a name="5.4"></a> [📚](#0) 
+## 5.4 - CI/CD pipeline - Custom debian image & SBOM creation with rpi-image-gen <a name="5.4"></a> [📚](#0) 
 In chapter 3, we looked at how to modify an existing Debian image to adapt it for the Xplorer CM5, in chapter 5 how to clone an image.
 [rpi-image-gen](https://github.com/raspberrypi/rpi-image-gen) is one possible method you can use in your CI/CD pipeline to automatically create ready to run images with your application already installed.  
 **rpi-image-gen** is a tool for creating custom images for Raspberry Pi based devices. It runs best on a Raspberry Pi 5 Host / Xplorer CM5 / Debian VM / CM5 Programming JIG running up-to-date 64-bit Raspberry Pi OS or Debian (We’ve had some issues with Ubuntu). 
