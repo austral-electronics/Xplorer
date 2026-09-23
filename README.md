@@ -2834,6 +2834,14 @@ sudo ./pishrink.sh -Z /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13
 ```
 Note : You will need the uncompressed image if you use a Raspberry PI CM5 Programming JIG
 
+14) Compress the generated SBOM
+```
+zstd -d /home/xplr/rpi-image-gen/work/deploy-*/filesystem-*.sbom.zst -o /tmp/filesystem.sbom
+xz -T0 -9 /tmp/filesystem.sbom
+mv /tmp/filesystem.sbom.xz /home/xplr/rpi-image-gen/work/deploy-*/
+```
+The compressed SBOM is in /home/xplr/rpi-image-gen/work/deploy-*/in filesystem.sbom.xz
+
 15) You can copy this compressed image to the PC with Raspberry PI Imager with **magic-wormhole** :
 ```
 sudo apt install -y magic-wormhole
