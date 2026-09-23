@@ -213,10 +213,10 @@ https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/260923_xplorercm5_debian_13.
     - If you want to use your image or an already configured image (Recommanded), Select **Custom** at the very bottom of the list and select the image.
     - Otherwise select RPI OS without desktop :	
         - In raspberry Pi OS (Other) -> Raspberry PI OS Lite (64-bit) to select last Debian (Trixie factory delivery)
-        - Or 👉 [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/) to select an old LTS RPI OS image
+        - Or 👉 [here](https://www.raspberrypi.com/software/operating-systems/) to get also the SBOM or 👉 [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/) to select an old LTS RPI OS image
     - Or RPI OS with desktop :
         - Last Debian Trixie 64 bits
-        - Or 👉 [here](https://downloads.raspberrypi.org/raspios_full_arm64/images/) to select an old LTS RPI OS image
+        - Or 👉 [here](https://www.raspberrypi.com/software/operating-systems/) to get also the SBOM or 👉 [here](https://downloads.raspberrypi.org/raspios_full_arm64/images/) to select an old LTS RPI OS image
     - Or in Other general-purpose OS -> Ubuntu to select an Ubuntu desktop or server Image
 - Choose :
     - **mmcblk0** for eMMC (recommanded for the OS)
