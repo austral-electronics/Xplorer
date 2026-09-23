@@ -195,12 +195,17 @@ You can use a latest Raspberry Pi OS image and then customize yourself to the Xp
 To download a pre-build headless Debian Trixie compressed image under CLI (<300MB) :
 ```
 wget --show-progress \
-https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/260923_xplorercm5_debian_13.7_vmlinuz-6.18.50+rpt-rpi-2712_xz.img.xz
 ```
-Or with a browser, opening this URL :
+Or to get the image with a browser, opening this URL :
 ```
-https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/deb13-xplorercm5-xz.img.xz
+https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/260923_xplorercm5_debian_13.7_vmlinuz-6.18.50+rpt-rpi-2712_xz.img.xz
 ```
+> [!NOTE]  
+> To get the SBOM with a browser, opening this URL :
+> ```
+> https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/260923_xplorercm5_debian_13.7_vmlinuz-6.18.50+rpt-rpi-2712_xz.sbom.xz
+> ```
 		
 - Launch **Raspberry Pi Imager** on your PC
 - Select a Raspberry PI5/CM5 model
