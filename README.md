@@ -2833,10 +2833,7 @@ DATE=$(date +%y%m%d)
 CHROOT_DIR=$(ls -td /home/xplr/rpi-image-gen/work/chroot-*/ | head -n1)
 DEBVER=$(cat "${CHROOT_DIR}filesystem/etc/debian_version")
 KVER=$(ls "${CHROOT_DIR}filesystem/lib/modules/" | head -n1)
-
-cd /home/xplr/PiShrink
-#sudo ./pishrink.sh -Z /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5_xz.img
-sudo ./pishrink.sh -Z /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img /home/xplr/rpi-image-gen/work/"${DATE}_xplorercm5_debian_${DEBVER}_vmlinuz-${KVER}_xz.img"
+sudo /home/xplr/PiShrink/pishrink.sh -Z /home/xplr/rpi-image-gen/work/image-deb13-xplorercm5/deb13-xplorercm5.img /home/xplr/rpi-image-gen/work/"${DATE}_xplorercm5_debian_${DEBVER}_vmlinuz-${KVER}_xz.img"
 ```
 Note : You will need the uncompressed image if you use a Raspberry PI CM5 Programming JIG
 
