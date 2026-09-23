@@ -193,13 +193,7 @@ File read: boot.img
 ```
 You can use a latest Raspberry Pi OS image and then customize yourself to the Xplorer CM5 hardware (See from Chapter 3.2), or build your custom image with **rpi-image-gen** (See chapter 5.4), but the easiest way to get started is download a Debian image generated using **rpi-image-gen** and already configured for the Xplorer CM5 hardware and default factory settings :  
 
-Get the a pre-build headless Debian Trixie compressed images & SBOMs, opening this URL in a browser (<300MB) : [https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/index.html](https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/index.html)
-
-Or download under CLI :
-```
-wget --show-progress \
-https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/260923_xplorercm5_debian_13.7_vmlinuz-6.18.50+rpt-rpi-2712_xz.img.xz
-```
+Get the a pre-build headless Debian Trixie compressed images & SBOMs, opening this URL in a browser (<300MB) : 👉 [https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/index.html](https://pub-692ebc85676c478e89540d1cc6b15d11.r2.dev/index.html)
 		
 - Launch **Raspberry Pi Imager** on your PC
 - Select a Raspberry PI5/CM5 model
