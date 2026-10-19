@@ -201,11 +201,12 @@ Get the a pre-build compressed images & SBOMs, opening this URL 👉 [https://pu
     - If you want to use your image or an already configured image (Recommanded), Select **Custom** at the very bottom of the list and select the image.
     - Otherwise select RPI OS without desktop :	
         - In raspberry Pi OS (Other) -> Raspberry PI OS Lite (64-bit) to select last Debian (Trixie factory delivery)
-        - Or 👉 [here](https://www.raspberrypi.com/software/operating-systems/) to get also the SBOM or 👉 [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/) to select an old LTS RPI OS image
+        - Or 👉 [Raspberry Pi OS](https://www.raspberrypi.com/software/operating-systems/) to get also the SBOM or 👉 [Raspberry Pi OS Legacy](https://downloads.raspberrypi.org/raspios_lite_arm64/images/) to select an old LTS RPI OS image
     - Or RPI OS with desktop :
         - Last Debian Trixie 64 bits
         - Or 👉 [here](https://www.raspberrypi.com/software/operating-systems/) to get also the SBOM or 👉 [here](https://downloads.raspberrypi.org/raspios_full_arm64/images/) to select an old LTS RPI OS image
-    - Or in Other general-purpose OS -> Ubuntu to select an Ubuntu desktop or server Image
+    - Or in Other general-purpose OS -> Ubuntu to select an Ubuntu desktop or server Image or here 👉 [Ubuntu](https://ubuntu.com/download/raspberry-pi)
+    - You can also get the latest "testing" or "sid" Debian image generated with [Debian Cloud Image](https://raspi.debian.net/)
 - Choose :
     - **mmcblk0** for eMMC (recommanded for the OS)
     - **nvme0n1** for the main NVMe SSD storage (you must change the boot order if you choose this drive)
